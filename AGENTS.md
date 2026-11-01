@@ -9,4 +9,4 @@
 - Validate with npm test, npm run db:seed, npm run build and npm run typecheck.
 - Main deploys through .github/workflows/deploy.yml to the VPS runner labelled seo-sites.
 - Deployment touches only seo-rowna-sciana and /opt/seo-sites/rowna-sciana.
-- Keep noindex until the domain and editorial launch are explicitly finalized.
+- Public launch and search registration were authorized on 2026-11-01. Index article pages; keep search and API pages out of the index. Preserve consent-before-analytics behavior.

@@ -1,0 +1,92 @@
+{
+  "/images/acrylic-painting-illustration.png": {
+    "src": "/images/acrylic-painting-illustration-039474ece6.webp",
+    "small": "/images/acrylic-painting-illustration-039474ece6-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2459817,
+    "bytes": 72620,
+    "smallBytes": 16658
+  },
+  "/images/ceiling-light-illustration.png": {
+    "src": "/images/ceiling-light-illustration-d24661eacd.webp",
+    "small": "/images/ceiling-light-illustration-d24661eacd-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2395889,
+    "bytes": 45402,
+    "smallBytes": 12788
+  },
+  "/images/paint-coverage-illustration.png": {
+    "src": "/images/paint-coverage-illustration-f03b7a0283.webp",
+    "small": "/images/paint-coverage-illustration-f03b7a0283-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2270196,
+    "bytes": 27752,
+    "smallBytes": 8078
+  },
+  "/images/paint-drying-illustration.png": {
+    "src": "/images/paint-drying-illustration-313b24d6dd.webp",
+    "small": "/images/paint-drying-illustration-313b24d6dd-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2271180,
+    "bytes": 68858,
+    "smallBytes": 22988
+  },
+  "/images/roller-peeling-illustration.png": {
+    "src": "/images/roller-peeling-illustration-5ef1d8afe0.webp",
+    "small": "/images/roller-peeling-illustration-5ef1d8afe0-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2318132,
+    "bytes": 58366,
+    "smallBytes": 14752
+  },
+  "/images/skim-old-paint-illustration.png": {
+    "src": "/images/skim-old-paint-illustration-1c76eca3f5.webp",
+    "small": "/images/skim-old-paint-illustration-1c76eca3f5-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2787882,
+    "bytes": 78956,
+    "smallBytes": 15088
+  },
+  "/images/stain-blocking-illustration.png": {
+    "src": "/images/stain-blocking-illustration-2ba855f8db.webp",
+    "small": "/images/stain-blocking-illustration-2ba855f8db-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2896160,
+    "bytes": 69358,
+    "smallBytes": 13508
+  },
+  "/images/tape-paint-illustration.png": {
+    "src": "/images/tape-paint-illustration-dd4ef85b58.webp",
+    "small": "/images/tape-paint-illustration-dd4ef85b58-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2605935,
+    "bytes": 77564,
+    "smallBytes": 19794
+  },
+  "/images/wall-dust-illustration.png": {
+    "src": "/images/wall-dust-illustration-a744c9f74d.webp",
+    "small": "/images/wall-dust-illustration-a744c9f74d-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2546438,
+    "bytes": 81596,
+    "smallBytes": 17158
+  },
+  "/images/wall-streaks-illustration.png": {
+    "src": "/images/wall-streaks-illustration-5ecc8fdde4.webp",
+    "small": "/images/wall-streaks-illustration-5ecc8fdde4-640.webp",
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 2332527,
+    "bytes": 25300,
+    "smallBytes": 7340
+  }
+}

@@ -1,30 +1,45 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const base = new URL(process.env.SITE_TEST_URL || 'http://127.0.0.1:3000');
-const catalog = JSON.parse(fs.readFileSync(new URL('../content/catalog.json', import.meta.url), 'utf8'));
-async function get(path) {
-  const response = await fetch(new URL(path, base), { signal: AbortSignal.timeout(10000) });
-  assert.equal(response.status, 200, path);
-  return response;
+const base=new URL(process.env.SITE_TEST_URL||'http://127.0.0.1:3000');
+const canonical='https://rownasciana.site';
+const catalog=JSON.parse(fs.readFileSync(new URL('../content/catalog.json',import.meta.url),'utf8'));
+const images=JSON.parse(fs.readFileSync(new URL('../public/images/optimized-manifest.json',import.meta.url),'utf8'));
+async function get(path){const r=await fetch(new URL(path,base),{signal:AbortSignal.timeout(10000)});assert.equal(r.status,200,path);return r;}
+const health=await(await get('/api/health')).json();
+assert.equal(health.status,'ok');assert.equal(health.articles,catalog.length);
+if(process.env.EXPECTED_DEPLOY_COMMIT)assert.equal(health.commit,process.env.EXPECTED_DEPLOY_COMMIT);
+const homeResponse=await get('/');
+assert(!homeResponse.headers.get('x-robots-tag')?.includes('noindex'));
+const home=await homeResponse.text();
+assert(home.includes('rel="canonical" href="'+canonical+'"'));
+assert(/srcset=/i.test(home));
+assert(!home.includes('<script async="" src="https://www.googletagmanager.com'));
+for(const entry of catalog){
+ const route='/poradniki/'+entry.slug;
+ assert(home.includes(route));
+ const page=await get(route);const html=await page.text();
+ assert.equal((html.match(/<h1[ >]/g)||[]).length,1,route);
+ assert(html.includes('checklist'));
+ assert(!page.headers.get('x-robots-tag')?.includes('noindex'));
+ assert(!/<meta name="robots" content="[^"]*noindex/.test(html));
+ assert(html.includes('rel="canonical" href="'+canonical+route+'"'),route);
+ const jsonld=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+ assert(jsonld,route);assert.equal(JSON.parse(jsonld[1])['@type'],'Article');
+ const image=images[entry.coverImage];
+ assert(image&&image.bytes<image.originalBytes);
+ assert(html.includes(image.src));
+ const ir=await fetch(new URL(image.src,base),{method:'HEAD'});
+ assert.equal(ir.status,200);assert(ir.headers.get('content-type')?.includes('webp'));
 }
-const health = await (await get('/api/health')).json();
-assert.equal(health.status, 'ok');
-assert.equal(health.articles, catalog.length);
-if (process.env.EXPECTED_DEPLOY_COMMIT) assert.equal(health.commit, process.env.EXPECTED_DEPLOY_COMMIT);
-const home = await (await get('/')).text();
-for (const entry of catalog) {
-  const route = '/poradniki/' + entry.slug;
-  assert(home.includes(route), 'Missing home link: ' + route);
-  const page = await get(route);
-  const html = await page.text();
-  assert.equal((html.match(/<h1[ >]/g) || []).length, 1, route);
-  assert(html.includes('checklist'), route);
-  assert(html.includes('noindex'), route);
-  assert.equal((await fetch(new URL(entry.coverImage, base), {method:'HEAD'})).status, 200);
-}
-const search = await (await get('/szukaj?q=ile+schnie+farba+na+scianie')).text();
-assert(search.includes('Wyniki dla'));
+const search=await(await get('/szukaj?q=ile+schnie+farba+na+scianie')).text();
 assert(search.includes('/poradniki/ile-schnie-farba-na-scianie'));
-assert.equal((await fetch(new URL('/poradniki/not-a-real-article',base))).status, 404);
-assert((await (await get('/robots.txt')).text()).includes('Disallow: /'));
-console.log(JSON.stringify({status:'ok',articles:catalog.length,commit:health.commit,base:base.origin}));
+assert(/<meta name="robots" content="[^"]*noindex/.test(search));
+assert.equal((await fetch(new URL('/poradniki/not-a-real-article',base))).status,404);
+const robots=await(await get('/robots.txt')).text();
+assert(robots.includes('Allow: /'));assert(!robots.includes('Disallow: /\n'));
+assert(robots.includes('Sitemap: '+canonical+'/sitemap.xml'));
+const sitemap=await(await get('/sitemap.xml')).text();
+assert.equal((sitemap.match(/<loc>/g)||[]).length,catalog.length+3);
+assert(!sitemap.includes('/szukaj'));assert(!sitemap.includes('/api/'));
+for(const entry of catalog)assert(sitemap.includes(canonical+'/poradniki/'+entry.slug));
+console.log(JSON.stringify({status:'ok',articles:catalog.length,sitemapUrls:catalog.length+3,commit:health.commit,base:base.origin}));
