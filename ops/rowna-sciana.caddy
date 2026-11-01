@@ -1,0 +1,8 @@
+rownasciana.site {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:5005
+}
+
+www.rownasciana.site {
+    redir https://rownasciana.site{uri} permanent
+}
