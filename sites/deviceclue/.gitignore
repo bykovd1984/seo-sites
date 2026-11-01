@@ -1,0 +1,7 @@
+node_modules/
+.next/
+data/*.sqlite*
+*.tsbuildinfo
+.env*
+screenshots/
+verification.json

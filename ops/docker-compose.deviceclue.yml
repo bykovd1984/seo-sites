@@ -1,0 +1,16 @@
+services:
+  deviceclue:
+    image: ${SITE_IMAGE:-seo-deviceclue:latest}
+    container_name: seo-deviceclue
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5006:3000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1.0

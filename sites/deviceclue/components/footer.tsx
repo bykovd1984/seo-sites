@@ -1,0 +1,3 @@
+import { ArrowUpRight } from 'lucide-react';
+import { Brand } from './brand';
+export function Footer() { return <footer className="site-footer"><div className="container"><div className="footer-top"><div><Brand light/><p>A little clarity goes a long way.</p></div><div className="footer-links"><a href="/#guides">All guides <ArrowUpRight size={14}/></a><a href="/about">How we research</a><a href="/privacy">Privacy</a></div></div><div className="footer-bottom"><span>© 2026 DeviceClue</span><span>Independent explanations. Manufacturer sources.</span><span>Know what you’re working with.</span></div></div></footer>; }

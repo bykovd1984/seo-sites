@@ -1,0 +1,2 @@
+import { ArrowRight } from 'lucide-react';
+export default function NotFound(){return <main id="main" className="container not-found"><p className="eyebrow">404 / NO SIGNAL HERE</p><h1 className="page-title">This clue leads nowhere.</h1><p>That page isn’t in our library. Start with the guides or search for your equipment question.</p><a className="primary-button" href="/">Back to the guides <ArrowRight size={18}/></a></main>;}

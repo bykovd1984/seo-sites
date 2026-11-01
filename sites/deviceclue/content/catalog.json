@@ -1,0 +1,420 @@
+[
+  {
+    "slug": "zanussi-oven-clock",
+    "title": "Zanussi oven clock: set the time and stop the flashing",
+    "shortTitle": "Zanussi clock flashing? Start here.",
+    "description": "Set the time after a power cut, tell the clock from the timer, and match the steps to your control panel.",
+    "category": "ovens",
+    "brand": "Zanussi",
+    "type": "Settings",
+    "diagram": "clock",
+    "answer": "A flashing 00:00 or 12:00 often means the clock lost its setting after a power interruption. On Zanussi’s documented +/− panels, set the time with those controls and allow about five seconds for it to save. Other panels use a different sequence.",
+    "scope": "Use the +/− procedure only on a matching panel. Knob-operated and other programmers have different steps; identify the model and PNC first.",
+    "tags": [
+      "clock",
+      "time",
+      "flashing",
+      "00:00",
+      "12:00",
+      "power cut",
+      "set clock"
+    ],
+    "related": [
+      "smeg-oven-clock",
+      "beko-oven-symbols",
+      "fridge-coldest-setting"
+    ],
+    "takeaway": "A flashing time display is a useful starting clue. Identify the panel, set the time of day, and check that the display stays steady before investigating a heating fault.",
+    "sources": [
+      {
+        "title": "Zanussi UK — oven clock flashes or displays 00:00 / 12:00",
+        "url": "https://support.zanussi.co.uk/support-articles/article/oven-clock-flashes-or-time-displaying-00-00-12-00-zanussi",
+        "note": "Manufacturer examples for several panel types; the +/− steps are not a universal instruction for every oven."
+      },
+      {
+        "title": "Zanussi — how to set an oven clock",
+        "url": "https://support.zanussi.ie/support-articles/article/how-to-set-an-oven-clock",
+        "note": "Explains model differences and how to identify the model and Product Number Code."
+      }
+    ]
+  },
+  {
+    "slug": "hoshizaki-ice-machine-beeping",
+    "title": "Hoshizaki ice machine beeping: what the alarm means",
+    "shortTitle": "One, two, three beeps. What’s the clue?",
+    "description": "Understand common KM-series alarms, record the repeating pattern, and know what to check before calling for service.",
+    "category": "cooling",
+    "brand": "Hoshizaki",
+    "type": "Fault signals",
+    "diagram": "beeps",
+    "answer": "On the documented Hoshizaki KM control system, one repeating beep is a high-temperature safety alarm, two indicate repeated long harvest cycles, and three indicate repeated long freeze cycles. These meanings are model-specific; count the pattern and check the machine’s own fault information.",
+    "scope": "This is an explanation of documented KM-style controls, not a fault-code chart for every Hoshizaki ice machine. Internal resets and service tests belong to a qualified technician.",
+    "tags": [
+      "beeping",
+      "3 beeps",
+      "three beeps",
+      "ice machine",
+      "alarm",
+      "freeze cycle",
+      "KM"
+    ],
+    "related": [
+      "fridge-coldest-setting",
+      "craftsman-garage-door-troubleshooting",
+      "sul-on-battery-charger"
+    ],
+    "takeaway": "Record the beep count and model before any reset. The alarm identifies a protective condition, not the specific part that needs replacement.",
+    "sources": [
+      {
+        "title": "Hoshizaki — KMD-450MAH / MWH service documentation",
+        "url": "https://secure.hoshizakiamerica.com/docs/manuals/KMD-450M_H_serv.pdf",
+        "note": "Primary manufacturer document describing high-temperature, long-harvest and long-freeze protections. Timer settings and procedures are specific to the documented models."
+      },
+      {
+        "title": "Hoshizaki America — training and KM cuber FAQs",
+        "url": "https://www.hoshizakiamerica.com/support/training/",
+        "note": "Manufacturer explanation of one-beep and three-beep conditions, with model-dependent freeze timing. The service procedures are intended for technicians."
+      }
+    ]
+  },
+  {
+    "slug": "beko-oven-symbols",
+    "title": "Beko oven symbols: fan, grill and heating explained",
+    "shortTitle": "Make sense of your Beko oven symbols.",
+    "description": "Read the common visual clues for fan cooking, conventional heat and grilling, with the model differences kept in view.",
+    "category": "ovens",
+    "brand": "Beko",
+    "type": "Symbols",
+    "diagram": "symbols",
+    "answer": "In Beko’s general explanation, two horizontal lines indicate conventional top-and-bottom heating, a fan indicates a fan-related cooking mode, and a jagged line at the top indicates grilling. The exact combination of fan, circle and heating lines must be checked against your model’s function table.",
+    "scope": "The drawings are conceptual examples, not a verified image atlas for every Beko oven. A fan symbol alone is not enough to establish whether a particular mode adds heat.",
+    "tags": [
+      "oven symbols",
+      "fan",
+      "grill",
+      "meaning",
+      "old oven",
+      "defrost",
+      "functions"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "smeg-oven-clock",
+      "choke-symbols-on-off"
+    ],
+    "takeaway": "Read the whole symbol, including the surrounding circle and heating lines. Use the model’s own function table to distinguish fan heating, fan-assisted grilling and unheated fan functions.",
+    "sources": [
+      {
+        "title": "Beko — decoding the symbols",
+        "url": "https://www.beko.com/en-en/Blog/tips-and-tricks/decoding-the-symbols",
+        "note": "Manufacturer’s general explanation of common oven symbols. It does not certify the controls of every model."
+      },
+      {
+        "title": "Beko UK — what do the symbols on the oven dial mean?",
+        "url": "https://www.beko.co.uk/support/faqs/ovens/what-do-symbols-on-the-oven-dial-mean",
+        "note": "Manufacturer guidance directs users to the function information for their individual oven."
+      }
+    ]
+  },
+  {
+    "slug": "smeg-oven-clock",
+    "title": "Smeg oven clock: set, change and reset the time",
+    "shortTitle": "Set your Smeg clock. Skip the guesswork.",
+    "description": "A worked example for a documented three-button programmer, plus how to avoid confusing the clock with a cooking timer.",
+    "category": "ovens",
+    "brand": "Smeg",
+    "type": "Settings",
+    "diagram": "smeg",
+    "answer": "For the three-button programmer in the linked Smeg guide, the initial setting is: hold the clock button for two seconds, adjust the time with +/−, then wait seven seconds. To change an already set time, that guide uses + and − together for two seconds. Check the panel and guide before following either sequence.",
+    "scope": "These steps cover the programmer in section 3.10 of the linked Smeg document only. They are not a universal procedure for five-button, six-button, analogue or touchscreen Smeg clocks.",
+    "tags": [
+      "clock",
+      "time",
+      "set clock",
+      "reset",
+      "power cut",
+      "programmer",
+      "three button"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "beko-oven-symbols"
+    ],
+    "takeaway": "Initial setup and changing an existing time may use different button combinations, even on the same programmer. Match both the panel and the task before pressing anything.",
+    "sources": [
+      {
+        "title": "Smeg — programmer clock, section 3.10, printed pages 33–34",
+        "url": "https://img.smeg.com.au/upload/attachments/A20240823153656079687460349.pdf#page=31",
+        "note": "Official Smeg-hosted document. The worked sequence applies to its specific three-button programmer; users must verify their own model’s documentation."
+      },
+      {
+        "title": "Smeg UK — how do I set the clock on my oven/cooker?",
+        "url": "https://help.smeguk.com/app/answers/detail/a_id/30/~/how-do-i-set-the-clock-on-my-oven%2Fcooker%3F",
+        "note": "Manufacturer FAQ confirms that the instructions must be selected by model."
+      }
+    ]
+  },
+  {
+    "slug": "honeywell-thermostat-battery-replacement",
+    "title": "Honeywell thermostat battery replacement: check your T6 Pro model",
+    "shortTitle": "A low battery warning on your Honeywell?",
+    "description": "Find the right battery arrangement, replace the cells on supported T6 Pro variants, and check the display afterward.",
+    "category": "home-systems",
+    "brand": "Honeywell Home",
+    "type": "Maintenance",
+    "diagram": "thermostat",
+    "answer": "The T6 Pro programmable thermostat in Resideo guide 33-00182EFS uses two AA alkaline batteries. The T6 Pro Z-Wave guide 33-00588EFS shows three AA batteries. “Pro Series” alone is not enough to choose the cells or removal method: match the full model number first.",
+    "scope": "This guide compares the documented T6 Pro programmable and T6 Pro Z-Wave variants. It does not cover every Honeywell thermostat or assume that every smart model uses batteries.",
+    "tags": [
+      "Honeywell",
+      "battery replacement",
+      "change battery",
+      "Pro Series",
+      "T6 Pro",
+      "AA",
+      "BATT",
+      "low battery"
+    ],
+    "related": [
+      "sul-on-battery-charger",
+      "sulfated-battery-meaning",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Find the full model number, prepare the right number of fresh cells, and follow that model’s mounting instructions. A blank display with fresh batteries needs further diagnosis, not an assumed factory reset.",
+    "sources": [
+      {
+        "title": "Resideo — T6 Pro Programmable Thermostat, 33-00182EFS",
+        "url": "https://customer.resideo.com/resources/Techlit/TechLitDocuments/33-00000s/33-00182EFS.pdf#page=6",
+        "note": "Battery arrangement, wall-mount removal, replacement interval and retention of settings for the documented programmable T6 Pro family."
+      },
+      {
+        "title": "Resideo — T6 Pro Z-Wave, 33-00588EFS",
+        "url": "https://customer.resideo.com/resources/Techlit/TechLitDocuments/33-00000s/33-00588EFS.pdf#page=20",
+        "note": "Documents three AA cells and model-specific battery and power behavior. This is a different variant from the two-cell programmable family."
+      }
+    ]
+  },
+  {
+    "slug": "choke-symbols-on-off",
+    "title": "Choke symbols: on vs off, open vs closed",
+    "shortTitle": "Choke on or off? Read the control.",
+    "description": "Understand the difference between the choke setting and the engine stop switch, with a documented STIHL example.",
+    "category": "small-engines",
+    "brand": "Small engines",
+    "type": "Symbols",
+    "diagram": "choke",
+    "answer": "On a conventional carburettor choke, choke ON means the air restriction is applied: the choke is closed for cold starting. Choke OFF means the restriction is removed: the choke is open for normal running. An engine’s STOP / 0 control is a separate function.",
+    "scope": "This explanation concerns conventional carburettor choke controls. Enrichener systems, automatic chokes and individual lever layouts can differ; the diagram shows airflow conceptually, not a universal switch symbol.",
+    "tags": [
+      "choke on off",
+      "open closed",
+      "choke symbols",
+      "cold start",
+      "STIHL",
+      "engine controls"
+    ],
+    "related": [
+      "beko-oven-symbols",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Translate the label into a function: cold-start enrichment versus normal running. Do not infer the lever direction or the stopping procedure from a generic symbol alone.",
+    "sources": [
+      {
+        "title": "STIHL — MS 311 / MS 391, starting and stopping the engine",
+        "url": "https://ssc.stihl.com/tsa/techdoc-documents/DVS_STIHL/ZBA/ZBA/0458-542-0121-F_ZBA_04_01.pdf",
+        "note": "Manufacturer’s distinction between STOP, normal run, starting throttle and the closed-choke cold-start position for these models."
+      },
+      {
+        "title": "Briggs & Stratton — documented engine starting and stopping",
+        "url": "https://www.briggsandstratton.com/content/dam/briggsandstratton/na/en_us/Files/FAQs/23C_23C-B_23C-FB_23C-R6_270028-domestic.pdf",
+        "note": "A manufacturer example of starting with the choke closed and moving toward open as the engine warms; not an instruction for all current engines."
+      }
+    ]
+  },
+  {
+    "slug": "fridge-coldest-setting",
+    "title": "Coldest fridge setting: what 1–5, 1–6 and 1–7 mean",
+    "shortTitle": "Is 1 or 7 colder on your fridge?",
+    "description": "Separate a cooling-power dial from a temperature display, then check the actual temperature instead of guessing.",
+    "category": "cooling",
+    "brand": "Fridge controls",
+    "type": "Settings",
+    "diagram": "fridge",
+    "answer": "On a numbered cooling-power dial, the higher number usually means stronger cooling: 5, 6 or 7 is generally the coldest end of the respective scale. A display marked °C works differently: 2°C is a colder target than 5°C. Confirm the control type and check the actual fridge temperature with a thermometer.",
+    "scope": "Numbered power dials are not temperature readouts, and the scale is not universal across brands. This guide uses UK food-storage guidance; follow your model’s temperature instructions.",
+    "tags": [
+      "coldest setting",
+      "fridge dial",
+      "1-5",
+      "1-6",
+      "1-7",
+      "temperature",
+      "refrigerator",
+      "thermometer"
+    ],
+    "related": [
+      "hoshizaki-ice-machine-beeping",
+      "beko-oven-symbols",
+      "honeywell-thermostat-battery-replacement"
+    ],
+    "takeaway": "Higher cooling-power number usually means colder; lower temperature in degrees means colder. Verify the actual temperature rather than leaving the dial at maximum by default.",
+    "sources": [
+      {
+        "title": "Beko UK — how to set the ideal fridge temperature",
+        "url": "https://www.beko.co.uk/support/how-to-guides/refrigeration/change-the-temperature-on-your-fridge-freezer",
+        "note": "Manufacturer explanation of a 1–5 dial and the distinction between a control setting and the resulting temperature."
+      },
+      {
+        "title": "Beko — TCL5249 temperature control",
+        "url": "https://storage.beko.co.uk/bekoupload/manuals/TCL5249.pdf",
+        "note": "A concrete manufacturer example in which 5 is coldest and the middle setting is a starting point to verify by temperature."
+      },
+      {
+        "title": "GOV.UK — how to chill, freeze and defrost food safely",
+        "url": "https://www.gov.uk/government/publications/how-to-chill-freeze-and-defrost-food-safely/how-to-chill-freeze-and-defrost-food-safely",
+        "note": "UK guidance to keep the fridge at 0–5°C and use a thermometer rather than assuming the dial reports degrees."
+      },
+      {
+        "title": "GOV.UK — food safety in a heatwave",
+        "url": "https://www.gov.uk/government/publications/food-safety-in-a-heatwave-advice-for-consumers/food-safety-in-a-heatwave-advice-for-consumers",
+        "note": "Explains that higher dial numbers usually mean stronger cooling; users should check their manufacturer’s instructions."
+      }
+    ]
+  },
+  {
+    "slug": "craftsman-garage-door-troubleshooting",
+    "title": "Craftsman garage door opener troubleshooting: lights, sensors and first checks",
+    "shortTitle": "Craftsman door won’t close? Follow the lights.",
+    "description": "Distinguish lamp flashes from diagnostic LEDs and check the simple symptoms before changing settings.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Fault signals",
+    "diagram": "garage",
+    "answer": "Start by recording which light flashes and whether the door opens, closes or reverses. On compatible older Chamberlain-made Craftsman systems, ten work-light flashes with a refusal to close can indicate a safety-sensor issue. That is not a universal Craftsman fault code: the model and control generation determine the meaning.",
+    "scope": "Examples from Chamberlain Group support apply only where your Craftsman model uses that documented system. Newer controls and other Craftsman product families may report faults differently.",
+    "tags": [
+      "Craftsman",
+      "garage door opener",
+      "troubleshooting",
+      "not closing",
+      "10 flashes",
+      "blinking",
+      "sensors",
+      "remote"
+    ],
+    "related": [
+      "honeywell-thermostat-battery-replacement",
+      "hoshizaki-ice-machine-beeping",
+      "choke-symbols-on-off"
+    ],
+    "takeaway": "Identify the light, the pattern and the model together. Check an unobstructed sensor beam before assuming a reset is needed; never bypass a safety sensor or adjust spring tension.",
+    "sources": [
+      {
+        "title": "Craftsman 139.53918D — original owner document (hosted copy)",
+        "url": "https://ismartgate.com/manuals/Craftsman_13953918D_manual416464.pdf",
+        "note": "A copy of the Craftsman/Sears manufacturer document hosted by ismartgate. Confirms model-specific sensor and diagnostic information; it is not hosted by Craftsman and is not a universal model chart."
+      },
+      {
+        "title": "Chamberlain Group — opener light blinks but the door will not close",
+        "url": "https://support.chamberlaingroup.com/s/article/Why-do-the-lights-on-my-garage-door-opener-flash-and-my-door-will-not-close-1484145609322",
+        "note": "Explains ten work-light flashes on compatible systems and warns that this reporting feature was removed from newer equipment and replacement boards."
+      },
+      {
+        "title": "Chamberlain Group — flashing LED next to the learn button",
+        "url": "https://support.chamberlaingroup.com/s/article/What-does-the-flashing-LED-next-to-the-learn-button-mean-1484145519298",
+        "note": "An example of a separate diagnostic LED code table. Use it only when the product’s own documentation identifies the same system."
+      },
+      {
+        "title": "Chamberlain Group — safety sensor LEDs off or flickering",
+        "url": "https://support.chamberlaingroup.com/s/article/How-To-Troubleshoot-The-Safety-Reversing-Sensors-When-One-LED-Is-Off-Or-Flickering",
+        "note": "Manufacturer-level guidance for unobstructed, aligned safety sensors on supported opener systems."
+      }
+    ]
+  },
+  {
+    "slug": "sul-on-battery-charger",
+    "title": "What does SUL mean on a battery charger?",
+    "shortTitle": "SUL on your charger? Decode the message.",
+    "description": "What the message can mean, why the charger model matters, and why it is not an automatic verdict on the battery.",
+    "category": "batteries",
+    "brand": "Schumacher",
+    "type": "Display messages",
+    "diagram": "sul",
+    "answer": "In the Schumacher documentation linked from the SC1325 product page, SUL means the charger detected sulfation and entered a desulfation process. It is a status message, not proof that the battery has recovered. Other chargers and document revisions must be checked separately.",
+    "scope": "This interpretation is tied to the documentation linked by Schumacher for SC1325. The linked document is marked 101-11 / 101-12, so match the edition to the actual charger before applying its codes.",
+    "tags": [
+      "SUL",
+      "battery charger",
+      "Schumacher",
+      "sulfated",
+      "message",
+      "desulfation",
+      "SC1325"
+    ],
+    "related": [
+      "sulfated-battery-meaning",
+      "honeywell-thermostat-battery-replacement",
+      "hoshizaki-ice-machine-beeping"
+    ],
+    "takeaway": "Read SUL as the beginning of a model-specific decision, not the end of a diagnosis. Check battery compatibility, the correct document edition and the charger’s eventual result.",
+    "sources": [
+      {
+        "title": "Schumacher — SC1325 product and documentation",
+        "url": "https://www.schumacherelectric.com/products/250a-6-12v-battery-charger-engine-starter/",
+        "note": "Manufacturer product page linking the document used here. A product-page link does not establish compatibility with every hardware revision."
+      },
+      {
+        "title": "Schumacher-linked charger instructions — digital display messages",
+        "url": "https://images.salsify.com/image/upload/s--fpZAqRhp--/koadseb2lto1b10ckarj#page=11",
+        "note": "Manufacturer-linked document labelled 101-11 / 101-12; distinguishes SUL from failed-desulfation code F02. Confirm that this edition matches the device."
+      },
+      {
+        "title": "Schneider Electric — battery damage when left discharged",
+        "url": "https://www.se.com/au/en/faqs/FA157446/",
+        "note": "Background explanation of lead-acid sulfation and why severe deposits may not reverse with ordinary charging."
+      }
+    ]
+  },
+  {
+    "slug": "sulfated-battery-meaning",
+    "title": "What is a sulfated battery? Meaning, signs and next steps",
+    "shortTitle": "What “sulfated battery” actually means.",
+    "description": "Understand the lead-acid chemistry, the limits of symptoms, and the difference between a condition and a recovery claim.",
+    "category": "batteries",
+    "brand": "Lead-acid batteries",
+    "type": "Explained",
+    "diagram": "battery",
+    "answer": "A sulfated lead-acid battery has a buildup of lead-sulfate crystals on its internal plates that can limit effective charging and usable capacity. The term describes an internal condition, not just a low state of charge or visible deposits on the terminals. Severe sulfation may be difficult or impossible to reverse.",
+    "scope": "This article concerns lead-acid batteries, including relevant AGM types. It is not a lithium-battery diagnosis or a do-it-yourself recipe for adding chemicals or forcing a recovery charge.",
+    "tags": [
+      "sulfated battery",
+      "sulfation",
+      "meaning",
+      "lead acid",
+      "battery condition",
+      "desulfation"
+    ],
+    "related": [
+      "sul-on-battery-charger",
+      "honeywell-thermostat-battery-replacement"
+    ],
+    "takeaway": "A weak battery is a symptom; sulfation is one possible internal condition. Identify the battery chemistry and use an appropriate assessment before trusting a recovery message or buying a replacement.",
+    "sources": [
+      {
+        "title": "Schneider Electric — battery damage when left discharged",
+        "url": "https://www.se.com/au/en/faqs/FA157446/",
+        "note": "Primary manufacturer explanation of hard lead-sulfate deposits, reduced performance, and the limitations of conventional charging."
+      },
+      {
+        "title": "CTEK — battery charging glossary",
+        "url": "https://ctek.com/pages/ctek-battery-charging-glossary",
+        "note": "Manufacturer terminology for sulfation and desulfation; descriptions of charger functions are not guarantees of restoring a particular battery."
+      },
+      {
+        "title": "BS Battery — frequently asked questions",
+        "url": "https://bs-battery.com/usa/faq/",
+        "note": "Manufacturer discussion of battery condition and the possibility that serious sulfation prevents recovery of original capacity."
+      }
+    ]
+  }
+]

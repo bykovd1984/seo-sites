@@ -1,0 +1,62 @@
+name: Validate and deploy DeviceClue
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sites/deviceclue/**'
+      - 'ops/deploy-deviceclue.sh'
+      - 'ops/docker-compose.deviceclue.yml'
+      - 'ops/deviceclue.caddy'
+      - '.github/workflows/deploy-deviceclue.yml'
+  pull_request:
+    paths:
+      - 'sites/deviceclue/**'
+      - 'ops/deploy-deviceclue.sh'
+      - 'ops/docker-compose.deviceclue.yml'
+      - 'ops/deviceclue.caddy'
+      - '.github/workflows/deploy-deviceclue.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: seo-deviceclue-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: sites/deviceclue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: sites/deviceclue/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run db:seed
+      - run: npm run build
+      - run: npm run typecheck
+  deploy:
+    needs: validate
+    if: github.repository == 'bykovd1984/seo-sites' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: [self-hosted, Linux, X64, seo-sites]
+    timeout-minutes: 30
+    env:
+      SITE_IMAGE: seo-deviceclue:${{ github.sha }}
+      EXPECTED_DEPLOY_COMMIT: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build and test release
+        run: docker build --build-arg DEPLOY_COMMIT="$EXPECTED_DEPLOY_COMMIT" -t "$SITE_IMAGE" sites/deviceclue
+      - name: Verify candidate and deploy with rollback
+        run: bash ops/deploy-deviceclue.sh
+      - name: Show site status
+        if: always()
+        run: docker ps -a --filter name=seo-deviceclue --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'

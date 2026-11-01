@@ -2,7 +2,17 @@ name: Validate and deploy Rowna sciana
 on:
   push:
     branches: [main]
+    paths:
+      - 'sites/rowna-sciana/**'
+      - 'ops/deploy-rowna-sciana.sh'
+      - 'ops/docker-compose.rowna-sciana.yml'
+      - 'ops/rowna-sciana.caddy'
   pull_request:
+    paths:
+      - 'sites/rowna-sciana/**'
+      - 'ops/deploy-rowna-sciana.sh'
+      - 'ops/docker-compose.rowna-sciana.yml'
+      - 'ops/rowna-sciana.caddy'
   workflow_dispatch:
 permissions:
   contents: read
