@@ -16,7 +16,9 @@ COPY --from=build --chown=nextjs:nextjs /app/.next/standalone ./
 COPY --from=build --chown=nextjs:nextjs /app/.next/static ./.next/static
 COPY --from=build --chown=nextjs:nextjs /app/public ./public
 COPY --from=build --chown=nextjs:nextjs /app/data/content.sqlite ./data/content.sqlite
+COPY --chown=nextjs:nextjs runtime ./runtime
+COPY --chown=nextjs:nextjs content/catalog.json ./runtime/log-routes.json
 USER nextjs
 EXPOSE 3000
 HEALTHCHECK --interval=15s --timeout=5s --start-period=20s --retries=3 CMD node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
-CMD ["node", "server.js"]
+CMD ["node", "--require", "./runtime/logging.cjs", "server.js"]

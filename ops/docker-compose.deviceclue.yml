@@ -14,3 +14,22 @@ services:
     pids_limit: 128
     mem_limit: 512m
     cpus: 1.0
+    environment:
+      DEVICECLUE_LOG_ENDPOINT: http://deviceclue-elasticsearch:9200
+      DEVICECLUE_LOG_KEY_FILE: /run/secrets/elasticsearch-api-key
+    secrets:
+      - elasticsearch-api-key
+    networks:
+      - default
+      - deviceclue-logs
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+secrets:
+  elasticsearch-api-key:
+    file: /opt/seo-sites/deviceclue/secrets/elasticsearch-api-key
+networks:
+  deviceclue-logs:
+    external: true

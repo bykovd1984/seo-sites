@@ -75,3 +75,13 @@ Service registration evidence is saved locally under the chat's `deviceclue-serv
 - `/api/health` includes the exact release SHA; deployment smoke checks compare it to `EXPECTED_DEPLOY_COMMIT`.
 
 The Polish workflow is path-filtered so DeviceClue-only changes do not redeploy it. Workflow-only maintenance can be run explicitly with `workflow_dispatch`.
+
+## Operational logging
+
+The production Node 24 process preloads `runtime/logging.cjs`. Node HTTP diagnostic channels record completed application requests (status and duration), startup and application errors. Health checks, Next static assets, favicon and social images are excluded. Only published article/topic paths and fixed public routes are admitted; other paths become `/[unmatched]`. Query strings, search terms, cookies, headers, IP addresses and raw error messages are not sent. Error objects retain built-in error type and code-frame locations under `/app`; full local container diagnostics remain separate.
+
+Logs are sent in ECS-shaped batches to data stream `logs-deviceclue-prod`, shown in Kibana as **DeviceClue — server logs** (data-view ID `deviceclue-logs`). Filter by `service.name: deviceclue`, `event.action`, `http.response.status_code`, `url.path` or `service.version`. The stream has a 30-day data-retention policy; actual deletion follows Elasticsearch's lifecycle schedule.
+
+`ops/provision-deviceclue-logging.py` runs as root on the existing VPS, using the existing administrative connection only to provision this site's resources. It creates a `create_doc`-only key for this exact stream, verifies it cannot read/delete/manage or access the main site's logs, stores it only in `/opt/seo-sites/deviceclue/secrets/elasticsearch-api-key` (root:10001, 0640), and creates the data view. No key or administrative credential is stored in Git, the image, build output or browser. The private internal Docker network `deviceclue-logs` connects only Elasticsearch and DeviceClue. Run provisioning again after recreating the Elasticsearch container to restore this network attachment. Deploy preflight checks both the attachment and secret readability before replacing a release.
+
+Delivery uses batches of up to 50, a 1.5-second timeout and bounded retries, with stable IDs preventing duplicates after ambiguous delivery. The in-memory queue holds at most 1,000 entries and never delays HTTP responses. Logging is best effort: a long Elasticsearch outage or an abrupt process stop can lose queued events, including the final crash event. No disk queue or browser error collector is installed. Local Docker logs rotate at 10 MB × 3. Unit/integration tests exercise privacy, partial retries and a real preloaded HTTP server. Local previews have remote logging disabled unless explicitly configured.

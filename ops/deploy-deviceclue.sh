@@ -11,6 +11,9 @@ test -w "$deploy_dir"
 exec 9>"$deploy_dir/deploy.lock"
 flock -w 300 9
 docker image inspect "$SITE_IMAGE" >/dev/null
+[[ $(docker network inspect deviceclue-logs -f '{{.Internal}}') == true ]] || { echo 'Private logging network missing' >&2; exit 1; }
+[[ -n $(docker inspect gt-elasticsearch -f '{{with index .NetworkSettings.Networks "deviceclue-logs"}}{{.NetworkID}}{{end}}') ]] || { echo 'Elasticsearch logging network attachment missing; run provisioning' >&2; exit 1; }
+docker run --rm --entrypoint node --mount type=bind,src="$deploy_dir/secrets/elasticsearch-api-key",dst=/run/secrets/elasticsearch-api-key,readonly "$SITE_IMAGE" -e "if (!require('node:fs').readFileSync('/run/secrets/elasticsearch-api-key','utf8').trim()) process.exit(1)"
 
 candidate="seo-deviceclue-check-${GITHUB_RUN_ID:-manual}-${GITHUB_RUN_ATTEMPT:-1}"
 cleanup_candidate() { docker rm -f "$candidate" >/dev/null 2>&1 || true; }
