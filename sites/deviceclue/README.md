@@ -46,7 +46,19 @@ Sources are linked per article; no hands-on testing or independent engineer revi
 
 Public article, topic, home and information pages allow indexing. Search is `noindex, follow`; API endpoints are `noindex, nofollow`. Robots excludes search and API, and the sitemap contains 18 public URLs. Search-engine account registration and sitemap submission are separate tasks and are not implied by publishing the site.
 
-No analytics, ad tags, tracking cookies or external embeds are present. A public operator/corrections contact is still to be supplied; registrar contact details are private and must not be reused. Independent technical review remains outstanding.
+Google Analytics is optional and loads only after consent. No advertising tags, third-party fonts or external embeds are present. A public operator/corrections contact is still to be supplied; registrar contact details are private and must not be reused. Independent technical review remains outstanding.
+
+## Search services and Analytics
+
+- Google Search Console: verified domain property `sc-domain:deviceclue.site`; DNS TXT verification must be preserved. The submitted sitemap was processed successfully with 18 discovered URLs.
+- Bing Webmaster Tools: verified `https://deviceclue.site/`; preserve CNAME `a144345c47f85ebf49a2c32b64a1aa1f` → `verify.bing.com.`. Sitemap status was Success, with 18 URLs.
+- GA4 account `365831891`, property `561806272` (DeviceClue — deviceclue.site), stream `16247839345` (DeviceClue Web), measurement ID `G-VRLR3QNXZQ`. Reporting timezone America/New_York; currency USD. Search Console is linked to this stream.
+- Google Signals is off; ad personalization is allowed in zero regions. Enhanced site-search, form, video and browser-history pageviews are off. Scroll, outbound-link and file-download measurement remain enabled.
+- `AnalyticsConsent` uses basic consent: no Google tag before acceptance or after a saved rejection. The footer reopens the choice. Revocation disables the stream, removes its first-party GA cookies and reloads without the tag.
+- Pageview and referrer URLs have all query strings and fragments removed. One explicit pageview is sent per full document after consent, with automatic initial pageviews disabled. The site currently uses native document navigation, not client-side Link routing.
+- Cookie lifetime is configured to 180 days. Privacy copy describes the current behavior; no independent legal review is claimed.
+
+Service registration evidence is saved locally under the chat's `deviceclue-services` visualization folder. Deployment and browser/network evidence for the installed tag are recorded separately in `.local/deviceclue-analytics-receipt.json` when verified.
 
 ## Deployment
 
