@@ -1,0 +1,91 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Ile schnie farba na ścianie? Druga warstwa i mycie",
+  "h1": "Ile schnie farba na ścianie? Druga warstwa i mycie",
+  "meta_description": "Ile schnie farba na ścianie? Porównaj czasy trzech farb, warunki i przerwy przed drugą warstwą. Sprawdź, kiedy powłoka nadaje się do mycia.",
+  "proposed_slug": "ile-schnie-farba-na-scianie",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "ile schnie farba na ścianie",
+    "russian_translation": "Сколько сохнет краска на стене",
+    "volume": 590,
+    "kd": 8,
+    "cpc_usd": 0,
+    "intent": "I",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md"
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "ile schnie farba lateksowa",
+      "russian_translation": "Сколько сохнет латексная краска",
+      "volume": 170,
+      "kd": 10,
+      "cpc_usd": 0,
+      "intent": "I",
+      "database": "pl",
+      "checked_date": "2026-10-30",
+      "note": "Same article cluster. Volumes must not be added."
+    },
+    {
+      "keyword": "kiedy druga warstwa farby",
+      "russian_translation": "Когда наносить второй слой краски",
+      "volume": "N/A",
+      "kd": "N/A"
+    },
+    {
+      "keyword": "kiedy można myć ścianę po malowaniu",
+      "russian_translation": "Когда можно мыть стену после покраски",
+      "volume": "N/A",
+      "kd": "N/A"
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "comparative_drying_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/paint-drying-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/paint-drying-sequence.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "Three responsive cards with SVG icons, HTML labels and section links."
+    }
+  ],
+  "product_examples": [
+    {
+      "product": "Dulux EasyCare Plamoodporna",
+      "document_revision": "2025-11",
+      "source": "https://msp.images.akzonobel.com/prd/dh/epldlx/documents/f6/b4/16/82/karta_techniczna_dulux_easycare_999__wolna_d_lzo.pdf"
+    },
+    {
+      "product": "Beckers Designer Colour",
+      "document_revision": "2025-06-30",
+      "source": "https://beckers.pl/sites/default/files/pim/documents/Beckers_Designer_Colour_PL_PDS_Beckers.pdf"
+    },
+    {
+      "product": "Flügger Flutex Pro 5",
+      "document_revision": "2026-10",
+      "source": "https://assets.flugger.dk/static/ir/947912/TDS_FLUPRO%205_pl.pdf"
+    }
+  ]
+}

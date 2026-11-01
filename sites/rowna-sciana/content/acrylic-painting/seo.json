@@ -1,0 +1,106 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Akryl przed czy po malowaniu? Kolejność i czas schnięcia",
+  "h1": "Akryl przed czy po malowaniu? Kolejność i czas schnięcia",
+  "meta_description": "Akryl przed czy po malowaniu? Porównaj terminy dla trzech produktów, sprawdź kolejność prac przy listwie i dowiedz się, kiedy można nałożyć farbę.",
+  "proposed_slug": "akryl-przed-czy-po-malowaniu",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "akryl przed czy po malowaniu",
+    "russian_translation": "Акриловый герметик до или после покраски",
+    "volume": 210,
+    "kd": 10,
+    "cpc_usd": 0,
+    "intent": "I",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Reused saved Semrush PL measurement. No fresh measurement or Google SERP check during article preparation."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "farba pęka na akrylu",
+      "russian_translation": "Краска трескается на акриловом герметике",
+      "volume": 30,
+      "kd": "N/A",
+      "cpc_usd": 0,
+      "intent": "N/A",
+      "source": "semrush-evidence.md",
+      "note": "Saved measurement. KD unavailable; volumes are not added."
+    },
+    {
+      "keyword": "kiedy malować akryl",
+      "russian_translation": "Когда красить акриловый герметик",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial formulation, not measured separately."
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/acrylic-painting-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/acrylic-painting-sequence.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "Three responsive cards with SVG icons, HTML labels and section links."
+    }
+  ],
+  "product_examples": [
+    {
+      "product": "Bostik Perfect Seal Akryl Mokro na Mokro",
+      "document_revision": "2018-07-19",
+      "document_pages": [
+        1,
+        2
+      ],
+      "source": "https://diy.bostik.com/sites/default/files/2023-10/bostik-polska-perfect-seal-akryl-mokro-na-mokro-karta-technicza.pdf",
+      "painting": "Immediately, wet-on-wet; compatibility with a specific paint must be verified.",
+      "full_cure": "1 to several days depending on conditions",
+      "compatible_paint_list": "Not exhaustively specified in cited sheet"
+    },
+    {
+      "product": "Soudal Akryl Błyskawiczny Turbo",
+      "document_revision": "AKR/EX/2022",
+      "document_pages": [
+        1,
+        2
+      ],
+      "source": "https://www.soudal.pl/sites/default/files/soudal_api/document/F0035448_0001.pdf",
+      "painting": "After 10 minutes; preliminary paint test recommended.",
+      "compatible_paints": "Most wall and ceiling paints, subject to test and suitable flexibility"
+    },
+    {
+      "product": "Den Braven Acryl All-Paints",
+      "document_revision": "2026-05-04",
+      "document_pages": [
+        1,
+        2,
+        3
+      ],
+      "source": "https://diy.bostik.com/sites/default/files/2026-05/Bostik-DIY-Poland-Den-Braven-Akryl-do-farb-ceramicznych-tds.pdf",
+      "painting": "After full drying, minimum 24 hours from application depending on conditions.",
+      "compatible_paints": "Waterborne ceramic, latex, acrylic and synthetic paints, subject to preliminary test"
+    }
+  ]
+}

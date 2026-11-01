@@ -1,0 +1,194 @@
+{
+  "checkedDate": "2026-10-30",
+  "slug": "farba-nie-kryje-sciany",
+  "scope": "local_only",
+  "content": {
+    "words": 1115,
+    "readingMinutes": 6,
+    "exampleSectionWords": 137,
+    "titleCharacters": 60,
+    "descriptionCharacters": 151,
+    "uniqueSources": 7,
+    "formulaCorrect": true,
+    "sourceSiteTextIdentical": true
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "localSeedCommands": 4,
+    "allImagesLoadedAfterScroll": true,
+    "checklistTestSelectionCleared": true,
+    "publication": false
+  },
+  "http": {
+    "health": {
+      "status": "ok",
+      "articles": 4
+    },
+    "articleStatus": 200,
+    "homeStatus": 200,
+    "homeHasNewSlug": true,
+    "noindexMeta": true,
+    "robots": "User-agent: *\nDisallow: /"
+  },
+  "browser": {
+    "desktop": {
+      "clientWidth": 1265,
+      "documentWidth": 1265,
+      "formula": "20 m² × 2 ÷ 16 m²/l = 2,5 l.",
+      "h1": [
+        "Farba nie kryje ściany — co sprawdzić przed kolejną warstwą?"
+      ],
+      "height": 720,
+      "images": [
+        {
+          "alt": "Ilustracja niebieskiej ściany częściowo pokrytej jasną farbą, przez którą nadal prześwituje stary kolor",
+          "loaded": true,
+          "src": "/images/paint-coverage-illustration.png"
+        },
+        {
+          "alt": "Schemat zasłaniania kontrastowego podłoża; porównanie pojęciowe, nie test farb.",
+          "loaded": false,
+          "src": "/images/coverage-opacity.svg"
+        },
+        {
+          "alt": "Schemat powierzchni podzielonej na pola; liczba pól nie określa wydajności produktu.",
+          "loaded": false,
+          "src": "/images/coverage-area.svg"
+        }
+      ],
+      "sourceLinks": 11,
+      "toc": [
+        {
+          "exists": true,
+          "href": "#co-wlasciwie-przeswituje-przez-farbe"
+        },
+        {
+          "exists": true,
+          "href": "#krycie-i-wydajnosc-to-dwie-rozne-informacje"
+        },
+        {
+          "exists": true,
+          "href": "#cztery-rzeczy-do-sprawdzenia-przed-zakupem-kolejnej-puszki"
+        },
+        {
+          "exists": true,
+          "href": "#jak-czytac-karte-przyklad-dla-20-m-sciany"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-kolejna-warstwa-jest-rozsadnym-krokiem"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-zwykla-emulsja-nie-rozwiaze-problemu"
+        }
+      ],
+      "width": 1280
+    },
+    "diagram": {
+      "columns": "359.2px 359.2px",
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/coverage-opacity.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/coverage-area.svg"
+        }
+      ],
+      "top": 295.8999938964844
+    },
+    "exampleNavigation": {
+      "formula": "20 m² × 2 ÷ 16 m²/l = 2,5 l.",
+      "hash": "#jak-czytac-karte-przyklad-dla-20-m-sciany",
+      "headingTop": 224.8000030517578
+    },
+    "checklistPersistence": [
+      false,
+      false,
+      false,
+      true
+    ],
+    "checklistIsolation": {
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "title": "Smugi na ścianie po malowaniu — jak je usunąć?"
+    },
+    "checklistReturn": [
+      false,
+      false,
+      false,
+      true
+    ],
+    "mobile": {
+      "cardFonts": [
+        "16px",
+        "16px"
+      ],
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "documentWidth": 375,
+      "height": 700,
+      "tableScrollWidth": 560,
+      "tableWidth": 331.20001220703125,
+      "width": 390
+    },
+    "search": {
+      "results": [
+        "/poradniki/farba-nie-kryje-sciany"
+      ],
+      "status": "Wyniki dla „przemarznac”: 1",
+      "url": "http://127.0.0.1:5174/szukaj?q=przemarznac"
+    },
+    "console": []
+  },
+  "integrity": {
+    "baselineHead": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "currentHead": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "unrelatedOrPreviousArticleChanges": [],
+    "gitDiffCheckExitCode": 0
+  },
+  "independentTechnicalReview": "not_performed",
+  "nativePolishEditor": "not_performed",
+  "repairTest": "not_performed",
+  "screenshots": [
+    "coverage-desktop-header.png",
+    "coverage-desktop-diagram.png",
+    "coverage-mobile-header.png",
+    "coverage-mobile-diagram.png"
+  ],
+  "cleanup": {
+    "previewStopped": true,
+    "browserTabClosed": true,
+    "viewportReset": true,
+    "previewListenersRemaining": 0
+  },
+  "graphUpdate": {
+    "exitCode": 0,
+    "scope": "AST code only",
+    "nodes": 21102,
+    "edges": 42067,
+    "limitations": [
+      "SQL parser unavailable",
+      "HTML visualization skipped: node limit"
+    ]
+  },
+  "localDocumentationLinksValid": true
+}

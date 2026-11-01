@@ -1,0 +1,77 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Gładź na starej farbie — kiedy można ją zostawić?",
+  "h1": "Gładź na starej farbie — kiedy można ją zostawić?",
+  "meta_description": "Czy można kłaść gładź na farbę? Sprawdź przyczepność, rodzaj powłoki i wymagania produktu. Porównujemy dwa rozwiązania oraz wyjaśniamy rolę gruntu.",
+  "proposed_slug": "gladz-na-starej-farbie",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "czy można kłaść gładź na farbę",
+    "russian_translation": "Можно ли наносить финишную шпаклёвку на краску",
+    "volume": 70,
+    "kd": 5,
+    "cpc_usd": 0,
+    "intent": "Informational",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Previously observed Semrush PL measurement reused; no new measurement or SERP check in this writing task."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "gładź na farbę",
+      "russian_translation": "Финишная шпаклёвка поверх краски",
+      "volume": 140,
+      "kd": 7,
+      "cpc_usd": 0,
+      "intent": "Informational",
+      "database": "pl",
+      "checked_date": "2026-10-30",
+      "source": "semrush-evidence.md",
+      "note": "Same task intent; volumes are not added together."
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/skim-old-paint-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/skim-layer-decision.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "Two responsive cards with SVG cross-sections and live HTML labels."
+    }
+  ],
+  "product_examples": [
+    {
+      "product": "CEKOL C-45 Finisz",
+      "source": "https://cekol.pl/oferta/cekol-c45-finisz/",
+      "document_revision": null
+    },
+    {
+      "product": "ACRYL-PUTZ FS20 FINISZ",
+      "document_revision": "2025-12-11",
+      "document_page": 2,
+      "source": "https://www.karty-techniczne.sniezka.pl/pl/%C5%9ANIE%C5%BBKA_ACRYL-PUTZ%C2%AE_FS20_FINISZ_G%C5%81AD%C5%B9_SZPACHLOWA_WYKO%C5%83CZENIOWA.pdf"
+    }
+  ]
+}

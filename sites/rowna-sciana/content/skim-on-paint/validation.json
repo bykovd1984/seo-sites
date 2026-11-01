@@ -1,0 +1,236 @@
+{
+  "content": {
+    "date": "2026-10-30",
+    "article": "gladz-na-starej-farbie",
+    "wordCount": 992,
+    "readingMinutes": 5,
+    "h2": [
+      "Najpierw oceń, czy farbę można pozostawić",
+      "Domowa próba przyczepności: co mówi, a czego nie sprawdza",
+      "Dlaczego grunt nie rozwiązuje każdego problemu",
+      "Dwa produkty, różne wymagania wobec starej farby",
+      "Jak zaplanować przygotowanie ściany",
+      "Co sprawdzić przed rozpoczęciem"
+    ],
+    "sourceLinks": 9,
+    "uniqueSources": 5,
+    "metaDescriptionLength": 147,
+    "researchTextMatchesSite": true,
+    "imageDisclosure": true,
+    "measurementReuse": true,
+    "publiclyPublished": false
+  },
+  "http": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "articles": 5
+      }
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "hasArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/poradniki/gladz-na-starej-farbie",
+      "status": 200,
+      "hasArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "body": "User-agent: *\nDisallow: /\n"
+    }
+  ],
+  "browser": {
+    "desktop": {
+      "clientWidth": 1265,
+      "documentWidth": 1265,
+      "h1": 1,
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/skim-old-paint-illustration.png"
+        },
+        {
+          "loaded": false,
+          "src": "/images/skim-bonded.svg"
+        },
+        {
+          "loaded": false,
+          "src": "/images/skim-detached.svg"
+        }
+      ],
+      "robots": "noindex, nofollow",
+      "toc": [
+        {
+          "href": "#najpierw-ocen-czy-farbe-mozna-pozostawic",
+          "target": true
+        },
+        {
+          "href": "#domowa-proba-przyczepnosci-co-mowi-a-czego-nie-sprawdza",
+          "target": true
+        },
+        {
+          "href": "#dlaczego-grunt-nie-rozwiazuje-kazdego-problemu",
+          "target": true
+        },
+        {
+          "href": "#dwa-produkty-rozne-wymagania-wobec-starej-farby",
+          "target": true
+        },
+        {
+          "href": "#jak-zaplanowac-przygotowanie-sciany",
+          "target": true
+        },
+        {
+          "href": "#co-sprawdzic-przed-rozpoczeciem",
+          "target": true
+        }
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "diagram": {
+      "box": {
+        "bottom": 927.7000122070312,
+        "height": 478.6000061035156,
+        "left": 48.400001525878906,
+        "right": 828.4000015258789,
+        "top": 449.1000061035156,
+        "width": 780,
+        "x": 48.400001525878906,
+        "y": 449.1000061035156
+      },
+      "columns": "359.2px 359.2px",
+      "headingTop": 225.1000061035156,
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/skim-bonded.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/skim-detached.svg"
+        }
+      ]
+    },
+    "mobile": {
+      "captionFont": "16px",
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "documentWidth": 375,
+      "table": {
+        "scrollWidth": 560,
+        "width": 330
+      },
+      "viewport": [
+        390,
+        700
+      ]
+    },
+    "checklistAfterReload": [
+      false,
+      false,
+      true,
+      false
+    ],
+    "otherArticleChecklist": {
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "url": "/poradniki/farba-nie-kryje-sciany"
+    },
+    "checklistAfterReturn": [
+      false,
+      false,
+      true,
+      false
+    ],
+    "search": {
+      "results": [
+        {
+          "href": "/poradniki/gladz-na-starej-farbie",
+          "title": "Gładź na starej farbie — kiedy można ją zostawić?"
+        }
+      ],
+      "url": "http://127.0.0.1:5174/szukaj?q=gladz+na+starej+farbie"
+    },
+    "finalImages": [
+      {
+        "loaded": true,
+        "src": "/images/skim-old-paint-illustration.png"
+      },
+      {
+        "loaded": true,
+        "src": "/images/skim-bonded.svg"
+      },
+      {
+        "loaded": true,
+        "src": "/images/skim-detached.svg"
+      }
+    ],
+    "checklistReset": true,
+    "console": []
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "protectedFiles": 19,
+    "changed": []
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "build": {
+      "exitCode": 0,
+      "note": "Final rebuild succeeded after stopping the preview that locked dist on Windows."
+    },
+    "seed": {
+      "localOnly": true,
+      "commandsSucceeded": 5
+    },
+    "gitDiffCheck": {
+      "exitCode": 0
+    },
+    "graphify": {
+      "exitCode": 0,
+      "nodes": 21168,
+      "edges": 42140,
+      "communities": 1319,
+      "mode": "AST only",
+      "limitations": [
+        "SQL parser not installed",
+        "HTML visualization skipped for graph size"
+      ]
+    }
+  },
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editor",
+    "No physical repair test",
+    "No fresh Semrush query or live SERP check",
+    "Not publicly published"
+  ],
+  "cleanup": {
+    "previewStopped": true,
+    "listeningSocketsOn5174": 0,
+    "temporaryTabClosed": true,
+    "viewportReset": true
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-10-30T08:55:24.038Z",
+  "status": "revised_draft",
+  "publication": false,
+  "word_count_method": "Unicode word tokens; links reduced to labels; headings, captions and table included",
+  "article_words": 1263,
+  "primary_source_urls": 7,
+  "seo_title_characters": 46,
+  "meta_description_characters": 147,
+  "site_copy_matches": true,
+  "hero_image": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2395889,
+    "generated_with": "built-in imagegen",
+    "visually_inspected": true,
+    "repair_evidence": false
+  },
+  "tests": {
+    "passed": 7,
+    "failed": 0,
+    "typecheck": "passed",
+    "production_build": "passed_after_svg_revision",
+    "local_database_articles": 2,
+    "article_http_status": 200
+  },
+  "browser": {
+    "desktop_width": 1280,
+    "mobile_viewports": [
+      "390x844",
+      "390x700"
+    ],
+    "mobile_document_width": 375,
+    "card_label_font_px": 16,
+    "images_loaded": 4,
+    "checklist_persistence": "passed",
+    "checklist_isolation": "passed",
+    "test_checklist_restored": "0/4",
+    "related_navigation": "both directions passed",
+    "search_suficie_results": 1,
+    "console_errors": 0,
+    "console_warnings": 0
+  },
+  "editorial": {
+    "model_language_review": true,
+    "primary_source_review": true,
+    "native_polish_editor": false,
+    "independent_building_expert": false,
+    "repair_test": false
+  }
+}

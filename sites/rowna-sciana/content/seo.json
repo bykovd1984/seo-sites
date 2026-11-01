@@ -1,0 +1,81 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "published": false,
+  "title": "Farba odchodzi z taśmą — co zrobić i jak naprawić ścianę?",
+  "meta_description": "Farba odchodzi razem z taśmą? Sprawdź, co się oderwało, jak przygotować mały ubytek do naprawy i kiedy miejscowa poprawka może nie wystarczyć.",
+  "proposed_slug": "farba-odchodzi-z-tasma",
+  "h1": "Co zrobić, gdy farba odchodzi z taśmą malarską?",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "co zrobić gdy farba odchodzi z taśmą",
+    "volume": 110,
+    "kd": 10,
+    "cpc_usd": 0,
+    "intent": "Informational",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Reused observed research; not remeasured while drafting."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "dlaczego farba odchodzi z taśmą",
+      "volume": 90,
+      "kd": 13,
+      "source": "semrush-evidence.md"
+    },
+    {
+      "keyword": "farba odeszła z taśmą jak naprawić",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial variant only; no measured demand assigned."
+    }
+  ],
+  "planned_internal_links": [
+    {
+      "topic_ru": "Краска отслаивается при покраске валиком",
+      "anchor_pl": "farba odchodzi przy malowaniu wałkiem",
+      "status": "target_not_written",
+      "reason_ru": "Если покрытие отслаивается и вне линии ленты."
+    },
+    {
+      "topic_ru": "Полосы после покраски",
+      "anchor_pl": "smugi po malowaniu",
+      "status": "target_not_written",
+      "reason_ru": "Если после исправления остаются полосы; различать их и локальную заплату."
+    }
+  ],
+  "images": [
+    {
+      "path": "assets/tape-paint-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/damage-layers.png",
+      "editable_source": "assets/damage-layers.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "responsive cards with live HTML labels and three derived SVG panels"
+    }
+  ],
+  "publication_checks": {
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included",
+    "model_language_review": "performed_v2",
+    "manufacturer_source_review": "performed",
+    "responsible_human_editor": "not_assigned"
+  },
+  "revision": 2,
+  "revised_date": "2026-10-30",
+  "source_checked_date": "2026-10-30"
+}

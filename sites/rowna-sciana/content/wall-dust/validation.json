@@ -1,0 +1,249 @@
+{
+  "checkedDate": "2026-10-30",
+  "slug": "odpylanie-scian-po-szlifowaniu",
+  "published": false,
+  "content": {
+    "wordCount": 1033,
+    "readingMinutes": 6,
+    "sourceLinks": 8,
+    "uniqueSources": 6,
+    "metaDescriptionLength": 145,
+    "articles": 8,
+    "h2": [
+      {
+        "text": "Najpierw ustal, co zostaje na powierzchni",
+        "id": "najpierw-ustal-co-zostaje-na-powierzchni"
+      },
+      {
+        "text": "Czym odpylić ścianę bez wzbijania chmury?",
+        "id": "czym-odpylic-sciane-bez-wzbijania-chmury"
+      },
+      {
+        "text": "Kolejność odpylania po szlifowaniu",
+        "id": "kolejnosc-odpylania-po-szlifowaniu"
+      },
+      {
+        "text": "Czy gładź można przetrzeć wilgotną szmatką?",
+        "id": "czy-gladz-mozna-przetrzec-wilgotna-szmatka"
+      },
+      {
+        "text": "Jak sprawdzić efekt i kiedy przejść do gruntu?",
+        "id": "jak-sprawdzic-efekt-i-kiedy-przejsc-do-gruntu"
+      },
+      {
+        "text": "Przed gruntowaniem sprawdź cztery rzeczy",
+        "id": "przed-gruntowaniem-sprawdz-cztery-rzeczy"
+      }
+    ],
+    "sourceAndSiteMatch": true,
+    "titleMatchesSeo": true,
+    "published": false
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "total": 7,
+      "exitCode": 0
+    },
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "seedCommandsSucceeded": 8,
+    "gitDiffCheckExitCode": 0
+  },
+  "http": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "articles": 8
+      }
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/poradniki/odpylanie-scian-po-szlifowaniu",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "body": "User-agent: *\nDisallow: /\n"
+    }
+  ],
+  "browser": {
+    "desktop": {
+      "clientWidth": 1265,
+      "diagramLinks": [
+        {
+          "href": "#kolejnosc-odpylania-po-szlifowaniu",
+          "valid": true
+        },
+        {
+          "href": "#jak-sprawdzic-efekt-i-kiedy-przejsc-do-gruntu",
+          "valid": true
+        },
+        {
+          "href": "#przed-gruntowaniem-sprawdz-cztery-rzeczy",
+          "valid": true
+        }
+      ],
+      "documentWidth": 1265,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "toc": [
+        {
+          "href": "#najpierw-ustal-co-zostaje-na-powierzchni",
+          "valid": true
+        },
+        {
+          "href": "#czym-odpylic-sciane-bez-wzbijania-chmury",
+          "valid": true
+        },
+        {
+          "href": "#kolejnosc-odpylania-po-szlifowaniu",
+          "valid": true
+        },
+        {
+          "href": "#czy-gladz-mozna-przetrzec-wilgotna-szmatka",
+          "valid": true
+        },
+        {
+          "href": "#jak-sprawdzic-efekt-i-kiedy-przejsc-do-gruntu",
+          "valid": true
+        },
+        {
+          "href": "#przed-gruntowaniem-sprawdz-cztery-rzeczy",
+          "valid": true
+        }
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "tableNavigation": {
+      "hash": "#najpierw-ustal-co-zostaje-na-powierzchni",
+      "rows": 3,
+      "top": 225.1000061035156
+    },
+    "diagram": {
+      "columns": "234.125px 234.137px 234.125px",
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/wall-dust-illustration.png"
+        },
+        {
+          "loaded": true,
+          "src": "/images/dust-collect.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/dust-check.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/dust-prepare.svg"
+        }
+      ]
+    },
+    "diagramNavigation": {
+      "hash": "#jak-sprawdzic-efekt-i-kiedy-przejsc-do-gruntu",
+      "top": 224.7375030517578
+    },
+    "mobile": {
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "diagramFont": "16px",
+      "documentWidth": 375,
+      "tableContainerWidth": 330,
+      "tableWidth": 560,
+      "viewport": [
+        390,
+        700
+      ]
+    },
+    "checklist": {
+      "afterReload": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "otherArticle": {
+        "checked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "path": "/poradniki/gladz-na-starej-farbie"
+      },
+      "afterReturn": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "afterCleanup": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "search": {
+      "results": [
+        {
+          "href": "/poradniki/odpylanie-scian-po-szlifowaniu",
+          "title": "Odpylanie ścian po szlifowaniu — jak przygotować je pod grunt?"
+        }
+      ],
+      "status": "Wyniki dla „odpylanie scian po szlifowaniu”: 1",
+      "url": "http://127.0.0.1:5174/szukaj?q=odpylanie+scian+po+szlifowaniu",
+      "opened": {
+        "h1": "Odpylanie ścian po szlifowaniu — jak przygotować je pod grunt?",
+        "path": "/poradniki/odpylanie-scian-po-szlifowaniu"
+      }
+    },
+    "console": []
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "protectedFileCount": 24,
+    "changed": []
+  },
+  "cleanup": {
+    "previewStopped": true,
+    "listeningConnections": 0,
+    "viewportReset": true,
+    "temporaryTabClosed": true
+  },
+  "graphify": {
+    "exitCode": 0,
+    "nodes": 21315,
+    "edges": 42335,
+    "communities": 1305,
+    "mode": "AST only",
+    "limitations": [
+      "SQL parser missing",
+      "195 files produced no nodes",
+      "HTML visualization skipped due to graph size"
+    ]
+  },
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editorial review",
+    "No physical repair or dust-removal test",
+    "No new Semrush or local Google SERP measurement",
+    "Local draft only; no commit, push or public deployment"
+  ]
+}

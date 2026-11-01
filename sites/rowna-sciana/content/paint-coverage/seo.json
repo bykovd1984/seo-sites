@@ -1,0 +1,75 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Farba nie kryje ściany — co sprawdzić przed kolejną warstwą?",
+  "h1": "Farba nie kryje ściany — co sprawdzić przed kolejną warstwą?",
+  "meta_description": "Farba nie kryje starego koloru? Sprawdź podłoże, wałek i rozcieńczenie. Zobacz, kiedy dodać warstwę, a kiedy potrzebny jest podkład lub izolacja plamy.",
+  "proposed_slug": "farba-nie-kryje-sciany",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "co zrobić gdy farba nie kryje",
+    "russian_translation": "Что делать, если краска не перекрывает основание",
+    "volume": 50,
+    "kd": 8,
+    "cpc_usd": 0,
+    "intent": "Informational",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Previously observed Semrush PL measurement reused; no new query, SERP check or traffic forecast in this writing task."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "farba nie kryje starego koloru",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial variant, not independently measured."
+    },
+    {
+      "keyword": "biała farba nie kryje ściany",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial variant, not independently measured."
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "worked_example": {
+    "product": "Dulux EasyCare+ Odporna na Plamy + Przetarcia",
+    "document_revision": "January 2024",
+    "document_page": 1,
+    "area_m2": 20,
+    "coats": 2,
+    "max_yield_m2_per_litre_per_coat": 16,
+    "calculated_litres": 2.5,
+    "basis": "Theoretical example at declared maximum yield; excludes undercoat and losses; actual consumption may be higher. Very dark colours may require 3 coats per the cited document.",
+    "source": "https://msp.images.akzonobel.com/prd/dh/epldlx/documents/dulux_easycareplus__karta_techniczna.pdf"
+  },
+  "images": [
+    {
+      "path": "assets/paint-coverage-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/coverage-and-yield.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "two responsive cards with SVG panels and live HTML labels"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Smugi na ścianie po malowaniu — jak je usunąć?",
+  "h1": "Smugi na ścianie po malowaniu — jak je usunąć?",
+  "meta_description": "Pasy po wałku, ciemna obwódka czy łata po poprawce? Sprawdź, jak usunąć smugi na ścianie i kiedy malować całą powierzchnię zamiast jednego miejsca.",
+  "proposed_slug": "smugi-na-scianie-po-malowaniu",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "jak zlikwidować smugi po malowaniu",
+    "russian_translation": "Как убрать полосы после покраски",
+    "volume": 210,
+    "kd": 12,
+    "cpc_usd": 0,
+    "intent": "Informational",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "../semrush-evidence.md",
+    "note": "Saved observed measurement reused; no new Semrush query in this writing task. Not a traffic forecast."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "smugi na ścianie po malowaniu",
+      "russian_translation": "Полосы на стене после покраски",
+      "volume": 90,
+      "kd": 6,
+      "cpc_usd": 0,
+      "database": "pl",
+      "checked_date": "2026-10-30",
+      "source": "../semrush-evidence.md",
+      "note": "Overlapping intent; do not add volumes as independent traffic."
+    },
+    {
+      "keyword": "ciemna obwódka po malowaniu",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial subtopic; no separate measured demand assigned."
+    },
+    {
+      "keyword": "widoczne poprawki na ścianie",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial subtopic; no separate measured demand assigned."
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/wall-streaks-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/wall-patterns.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "three responsive cards with SVG panels and live HTML labels"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "checkedDate": "2026-10-30",
+  "slug": "farba-na-plamy-i-zacieki",
+  "published": false,
+  "content": {
+    "wordCount": 1182,
+    "readingMinutes": 6,
+    "sourceLinks": 8,
+    "uniqueSources": 8,
+    "metaDescriptionLength": 142,
+    "articles": 9,
+    "h2": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Plama po wodzie czy zaciek samej farby?",
+        "id": "plama-po-wodzie-czy-zaciek-samej-farby"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Co sprawdzić przed zakupem farby izolującej?",
+        "id": "co-sprawdzic-przed-zakupem-farby-izolujacej"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Porównanie trzech produktów z dokumentacji",
+        "id": "porownanie-trzech-produktow-z-dokumentacji"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Ile farby potrzeba i kiedy nakładać kolejną warstwę?",
+        "id": "ile-farby-potrzeba-i-kiedy-nakladac-kolejna-warstwe"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Jak przygotować małą próbę przed malowaniem całości?",
+        "id": "jak-przygotowac-mala-probe-przed-malowaniem-calosci"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Cztery rzeczy do sprawdzenia przed otwarciem puszki",
+        "id": "cztery-rzeczy-do-sprawdzenia-przed-otwarciem-puszki"
+      }
+    ],
+    "tables": [
+      {
+        "columns": 3,
+        "rows": 3
+      },
+      {
+        "columns": 3,
+        "rows": 3
+      }
+    ],
+    "sourceAndSiteMatch": true,
+    "titleMatchesSeo": true,
+    "published": false
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "total": 7,
+      "exitCode": 0
+    },
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "seedCommandsSucceeded": 9,
+    "gitDiffCheckExitCode": 0
+  },
+  "http": {
+    "health": {
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "articles": 9
+      }
+    },
+    "home": {
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    "article": {
+      "status": 200,
+      "noindex": true
+    },
+    "robots": {
+      "status": 200,
+      "body": "User-agent: *\nDisallow: /\n"
+    }
+  },
+  "browser": {
+    "desktop": {
+      "anchors": [
+        {
+          "href": "#plama-po-wodzie-czy-zaciek-samej-farby",
+          "valid": true
+        },
+        {
+          "href": "#porownanie-trzech-produktow-z-dokumentacji",
+          "valid": true
+        },
+        {
+          "href": "#jak-przygotowac-mala-probe-przed-malowaniem-calosci",
+          "valid": true
+        },
+        {
+          "href": "#plama-po-wodzie-czy-zaciek-samej-farby",
+          "valid": true
+        },
+        {
+          "href": "#co-sprawdzic-przed-zakupem-farby-izolujacej",
+          "valid": true
+        },
+        {
+          "href": "#porownanie-trzech-produktow-z-dokumentacji",
+          "valid": true
+        },
+        {
+          "href": "#ile-farby-potrzeba-i-kiedy-nakladac-kolejna-warstwe",
+          "valid": true
+        },
+        {
+          "href": "#jak-przygotowac-mala-probe-przed-malowaniem-calosci",
+          "valid": true
+        },
+        {
+          "href": "#cztery-rzeczy-do-sprawdzenia-przed-otwarciem-puszki",
+          "valid": true
+        }
+      ],
+      "clientWidth": 1265,
+      "documentWidth": 1265,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "tableNavigation": {
+      "hash": "#porownanie-trzech-produktow-z-dokumentacji",
+      "tables": [
+        {
+          "containerWidth": 778,
+          "rows": 3,
+          "width": 778
+        },
+        {
+          "containerWidth": 778,
+          "rows": 3,
+          "width": 778
+        }
+      ],
+      "top": 224.6999969482422
+    },
+    "diagram": {
+      "columns": "234.125px 234.137px 234.125px",
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/stain-blocking-illustration.png"
+        },
+        {
+          "loaded": true,
+          "src": "/images/stain-inspect.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/stain-compare.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/stain-trial.svg"
+        }
+      ]
+    },
+    "diagramNavigation": {
+      "hash": "#jak-przygotowac-mala-probe-przed-malowaniem-calosci",
+      "top": 225.0375061035156
+    },
+    "mobile": {
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "diagramFont": "16px",
+      "documentWidth": 375,
+      "tables": [
+        {
+          "containerWidth": 330,
+          "width": 560
+        },
+        {
+          "containerWidth": 330,
+          "width": 560
+        }
+      ],
+      "viewport": [
+        390,
+        700
+      ],
+      "tableKeyboardScroll": {
+        "maxScroll": 230,
+        "scrollLeft": 40
+      }
+    },
+    "checklist": {
+      "afterReload": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "otherArticle": {
+        "checked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "path": "/poradniki/odpylanie-scian-po-szlifowaniu"
+      },
+      "afterReturn": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "afterCleanup": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "search": {
+      "results": [
+        {
+          "href": "/poradniki/farba-na-plamy-i-zacieki",
+          "title": "Farba na plamy i zacieki — jak dobrać ją do podłoża?"
+        }
+      ],
+      "status": "Wyniki dla „jak dobrac ja do podloza”: 1",
+      "url": "http://127.0.0.1:5174/szukaj?q=jak+dobrac+ja+do+podloza",
+      "opened": {
+        "h1": "Farba na plamy i zacieki — jak dobrać ją do podłoża?",
+        "path": "/poradniki/farba-na-plamy-i-zacieki"
+      }
+    },
+    "console": []
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "protectedFileCount": 25,
+    "changed": []
+  },
+  "cleanup": {
+    "previewStopped": true,
+    "listeningConnections": 0,
+    "viewportReset": true,
+    "temporaryTabClosed": true
+  },
+  "graphify": {
+    "exitCode": 0,
+    "nodes": 21366,
+    "edges": 42393,
+    "communities": 1308,
+    "mode": "AST only",
+    "limitations": [
+      "SQL parser missing",
+      "199 files produced no nodes",
+      "HTML visualization skipped due to graph size"
+    ]
+  },
+  "recoveredChecks": [
+    "Local DB import fetch failed in sandbox; successful authorized retry outside sandbox",
+    "Local HTTP requests socket denied in sandbox; authorized retry succeeded"
+  ],
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editorial review",
+    "No comparative paint test or moisture measurement",
+    "No new Semrush or local Google SERP audit",
+    "Local draft only; no commit, push or deployment"
+  ]
+}

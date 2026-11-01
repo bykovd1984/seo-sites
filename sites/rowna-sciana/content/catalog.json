@@ -1,0 +1,219 @@
+[
+  {
+    "slug": "farba-odchodzi-z-tasma",
+    "bodyPath": "content/article.pl.md",
+    "seoPath": "content/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "farba",
+      "taśma",
+      "naprawa ścian"
+    ],
+    "coverImage": "/images/tape-paint-illustration.png",
+    "coverAlt": "Poglądowa ilustracja taśmy odrywającej fragment niebieskiej farby",
+    "checklistStorageKey": "rowna-sciana:tape-checklist:v1",
+    "checklist": [
+      "Wiem, co oderwało się razem z taśmą.",
+      "Sprawdziłem stan odsłoniętego podłoża.",
+      "Mam instrukcje używanej farby i taśmy.",
+      "Wiem, kiedy przerwać samodzielną naprawę."
+    ]
+  },
+  {
+    "slug": "smugi-na-suficie-po-malowaniu",
+    "bodyPath": "content/ceiling-streaks/article.pl.md",
+    "seoPath": "content/ceiling-streaks/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "sufit",
+      "smugi",
+      "wałek",
+      "połysk"
+    ],
+    "coverImage": "/images/ceiling-light-illustration.png",
+    "coverAlt": "Ilustracja białego sufitu z pasami widocznymi przy bocznym świetle z okna",
+    "checklistStorageKey": "rowna-sciana:ceiling-checklist:v1",
+    "checklist": [
+      "Oceniłem suchy sufit w świetle dziennym i przy lampie.",
+      "Rozróżniam prześwity, różnice połysku i wypukłe ślady.",
+      "Sprawdziłem wałek oraz czas kolejnej warstwy w instrukcji farby.",
+      "Mam plan przygotowania podłoża i łączenia mokrych pasów."
+    ]
+  },
+  {
+    "slug": "smugi-na-scianie-po-malowaniu",
+    "bodyPath": "content/wall-streaks/article.pl.md",
+    "seoPath": "content/wall-streaks/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "ściana",
+      "smugi",
+      "wałek",
+      "obwódka",
+      "poprawki"
+    ],
+    "coverImage": "/images/wall-streaks-illustration.png",
+    "coverAlt": "Ilustracja szałwiowej ściany z ciemniejszymi pasami na łączeniach farby",
+    "checklistStorageKey": "rowna-sciana:wall-checklist:v1",
+    "checklist": [
+      "Sprawdziłem rozmieszczenie śladów na suchej ścianie.",
+      "Rozróżniam łączenia wałka, obwódkę i łatę po poprawce.",
+      "Mam instrukcję farby i plan przygotowania naprawionych miejsc.",
+      "Zaplanowałem połączenie krawędzi ze środkiem ściany bez podsychania."
+    ]
+  },
+  {
+    "slug": "farba-nie-kryje-sciany",
+    "bodyPath": "content/paint-coverage/article.pl.md",
+    "seoPath": "content/paint-coverage/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "krycie",
+      "farba",
+      "podkład",
+      "prześwity",
+      "wydajność"
+    ],
+    "coverImage": "/images/paint-coverage-illustration.png",
+    "coverAlt": "Ilustracja niebieskiego koloru prześwitującego przez jasną farbę na ścianie",
+    "checklistStorageKey": "rowna-sciana:coverage-checklist:v1",
+    "checklist": [
+      "Oceniłem wyschniętą powłokę i wiem, co prześwituje.",
+      "Sprawdziłem produkt, rozcieńczanie i zalecany wałek.",
+      "Rozróżniam przygotowanie podłoża od izolacji starej plamy.",
+      "Odczytałem liczbę warstw i wydajność dla swojej farby."
+    ]
+  },
+  {
+    "slug": "gladz-na-starej-farbie",
+    "bodyPath": "content/skim-on-paint/article.pl.md",
+    "seoPath": "content/skim-on-paint/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "gładź",
+      "farba",
+      "lamperia",
+      "przyczepność",
+      "grunt"
+    ],
+    "coverImage": "/images/skim-old-paint-illustration.png",
+    "coverAlt": "Ilustracja starej terakotowej powłoki odspajającej się od jasnego podłoża",
+    "checklistStorageKey": "rowna-sciana:skim-checklist:v1",
+    "checklist": [
+      "Ustaliłem rodzaj starej farby i stan podłoża.",
+      "Sprawdziłem dopuszczenie tej powłoki w instrukcji wybranej gładzi.",
+      "Mam opis przygotowania i zgodny grunt.",
+      "Wiem, które warstwy usunąć i jakie miejsca naprawić."
+    ]
+  },
+  {
+    "slug": "farba-odchodzi-przy-malowaniu-walkiem",
+    "bodyPath": "content/roller-peeling/article.pl.md",
+    "seoPath": "content/roller-peeling/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "wałek",
+      "odspajanie",
+      "stara farba",
+      "druga warstwa",
+      "przyczepność"
+    ],
+    "coverImage": "/images/roller-peeling-illustration.png",
+    "coverAlt": "Ilustracja odspojonej farby na ścianie i płatków powłoki na odłożonym wałku",
+    "checklistStorageKey": "rowna-sciana:roller-checklist:v1",
+    "checklist": [
+      "Zapisałem, kiedy farba zaczęła się odrywać.",
+      "Sprawdziłem odpadły fragment i stan odsłoniętego podłoża.",
+      "Mam plan przygotowania oraz czyste narzędzie.",
+      "Znam wymagane przerwy i oceniłem próbę po wyschnięciu."
+    ]
+  },
+  {
+    "slug": "akryl-przed-czy-po-malowaniu",
+    "bodyPath": "content/acrylic-painting/article.pl.md",
+    "seoPath": "content/acrylic-painting/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "akryl",
+      "spoina",
+      "listwy",
+      "czas schnięcia",
+      "malowanie"
+    ],
+    "coverImage": "/images/acrylic-painting-illustration.png",
+    "coverAlt": "Ilustracja białej spoiny przy listwie, kartusza i pędzla na tle zielonej ściany",
+    "checklistStorageKey": "rowna-sciana:acrylic-checklist:v1",
+    "checklist": [
+      "Znam dokładny produkt i dopuszczalne podłoża.",
+      "Sprawdziłem termin malowania oraz zgodność z farbą.",
+      "Spoina jest uformowana, a taśma po obróbce zdjęta.",
+      "Oceniłem próbny fragment i stan połączenia."
+    ]
+  },
+  {
+    "slug": "odpylanie-scian-po-szlifowaniu",
+    "bodyPath": "content/wall-dust/article.pl.md",
+    "seoPath": "content/wall-dust/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "odpylanie",
+      "gładź",
+      "szlifowanie",
+      "gruntowanie",
+      "przygotowanie podłoża"
+    ],
+    "coverImage": "/images/wall-dust-illustration.png",
+    "coverAlt": "Ilustracja gładzi, szczotkowej końcówki odkurzacza i suchej zielonej ściereczki",
+    "checklistStorageKey": "rowna-sciana:dust-checklist:v1",
+    "checklist": [
+      "Znam materiał i sposób jego przygotowania.",
+      "Zebrałem luźny pył ze ściany i otoczenia.",
+      "Sprawdziłem osad oraz stan oczyszczonej powierzchni.",
+      "Podłoże jest odpowiednio suche, a grunt zgodny z instrukcją."
+    ]
+  },
+  {
+    "slug": "farba-na-plamy-i-zacieki",
+    "bodyPath": "content/stain-blocking/article.pl.md",
+    "seoPath": "content/stain-blocking/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "plamy",
+      "zacieki",
+      "farba izolująca",
+      "zużycie",
+      "próba"
+    ],
+    "coverImage": "/images/stain-blocking-illustration.png",
+    "coverAlt": "Ilustracja ochrowego śladu na jasnej ścianie oraz puszki i pędzla",
+    "checklistStorageKey": "rowna-sciana:stain-checklist:v1",
+    "checklist": [
+      "Wyjaśniłem przyczynę plamy i stan podłoża.",
+      "Instrukcja obejmuje moje podłoże i zabrudzenie.",
+      "Znam warstwy, przerwy i wymagania wykończenia.",
+      "Mam warunki ochrony i plan małej próby."
+    ]
+  },
+  {
+    "slug": "ile-schnie-farba-na-scianie",
+    "bodyPath": "content/paint-drying/article.pl.md",
+    "seoPath": "content/paint-drying/seo.json",
+    "category": "Malowanie",
+    "tags": [
+      "schnięcie",
+      "druga warstwa",
+      "mycie",
+      "czas",
+      "wilgotność"
+    ],
+    "coverImage": "/images/paint-drying-illustration.png",
+    "coverAlt": "Ilustracja zielonej ściany, wałka w kuwecie i klepsydry przy oknie",
+    "checklistStorageKey": "rowna-sciana:drying-checklist:v1",
+    "checklist": [
+      "Znam dokładną nazwę farby i jej instrukcję.",
+      "Rozróżniam schnięcie powierzchniowe i następną warstwę.",
+      "Zapisałem godzinę zakończenia i warunki w pokoju.",
+      "Sprawdziłem termin odporności oraz sposób mycia."
+    ]
+  }
+]

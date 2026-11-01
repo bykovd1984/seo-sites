@@ -1,0 +1,1 @@
+export default function NotFound() { return <main id="main" className="container empty-state not-found"><p className="eyebrow">404 · Nie znaleziono strony</p><h1>Tu jeszcze nie malujemy.</h1><p>Ten adres nie prowadzi do dostępnego poradnika.</p><a className="button" href="/">Wróć na stronę główną →</a></main>; }

@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-30",
+  "article": "farba-odchodzi-przy-malowaniu-walkiem",
+  "content": {
+    "wordCount": 1041,
+    "readingMinutes": 6,
+    "sourceLinks": 11,
+    "uniqueSources": 7,
+    "metaDescriptionLength": 136,
+    "articles": 6,
+    "h2": [
+      {
+        "text": "Zatrzymaj pracę i zachowaj informacje",
+        "id": "zatrzymaj-prace-i-zachowaj-informacje"
+      },
+      {
+        "text": "Sprawdź, co naprawdę się odrywa",
+        "id": "sprawdz-co-naprawde-sie-odrywa"
+      },
+      {
+        "text": "Co może powodować odchodzenie farby",
+        "id": "co-moze-powodowac-odchodzenie-farby"
+      },
+      {
+        "text": "Druga warstwa: kiedy wolno wrócić z wałkiem?",
+        "id": "druga-warstwa-kiedy-wolno-wrocic-z-walkiem"
+      },
+      {
+        "text": "Przygotuj podłoże przed ponownym malowaniem",
+        "id": "przygotuj-podloze-przed-ponownym-malowaniem"
+      },
+      {
+        "text": "Przed wznowieniem sprawdź cztery rzeczy",
+        "id": "przed-wznowieniem-sprawdz-cztery-rzeczy"
+      }
+    ],
+    "sourceAndSiteMatch": true,
+    "titleMatchesSeo": true,
+    "published": false
+  },
+  "http": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "articles": 6
+      }
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/poradniki/farba-odchodzi-przy-malowaniu-walkiem",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "body": "User-agent: *\nDisallow: /\n"
+    }
+  ],
+  "browser": {
+    "desktop": {
+      "clientWidth": 1265,
+      "diagramLinks": [
+        {
+          "href": "#zatrzymaj-prace-i-zachowaj-informacje",
+          "valid": true
+        },
+        {
+          "href": "#sprawdz-co-naprawde-sie-odrywa",
+          "valid": true
+        },
+        {
+          "href": "#przygotuj-podloze-przed-ponownym-malowaniem",
+          "valid": true
+        }
+      ],
+      "documentWidth": 1265,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "toc": [
+        {
+          "href": "#zatrzymaj-prace-i-zachowaj-informacje",
+          "valid": true
+        },
+        {
+          "href": "#sprawdz-co-naprawde-sie-odrywa",
+          "valid": true
+        },
+        {
+          "href": "#co-moze-powodowac-odchodzenie-farby",
+          "valid": true
+        },
+        {
+          "href": "#druga-warstwa-kiedy-wolno-wrocic-z-walkiem",
+          "valid": true
+        },
+        {
+          "href": "#przygotuj-podloze-przed-ponownym-malowaniem",
+          "valid": true
+        },
+        {
+          "href": "#przed-wznowieniem-sprawdz-cztery-rzeczy",
+          "valid": true
+        }
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "diagram": {
+      "columns": "234.125px 234.137px 234.125px",
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/roller-peeling-illustration.png"
+        },
+        {
+          "loaded": true,
+          "src": "/images/roller-stop.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/roller-inspect.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/roller-prepare.svg"
+        }
+      ]
+    },
+    "diagramLinkNavigation": {
+      "hash": "#przygotuj-podloze-przed-ponownym-malowaniem",
+      "heading": "Przygotuj podłoże przed ponownym malowaniem",
+      "top": 225.3249969482422
+    },
+    "mobile": {
+      "cardTextFont": "16px",
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "documentWidth": 375,
+      "table": {
+        "scrollWidth": 560,
+        "width": 330
+      },
+      "viewport": [
+        390,
+        700
+      ]
+    },
+    "afterReload": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "otherArticle": {
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "url": "/poradniki/gladz-na-starej-farbie"
+    },
+    "afterReturn": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "reset": true,
+    "search": {
+      "results": [
+        {
+          "href": "/poradniki/farba-odchodzi-przy-malowaniu-walkiem",
+          "title": "Farba odchodzi przy malowaniu wałkiem — co zrobić?"
+        }
+      ],
+      "url": "http://127.0.0.1:5174/szukaj?q=farba+odchodzi+przy+malowaniu+walkiem"
+    },
+    "console": []
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "protectedFileCount": 20,
+    "changed": []
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "build": {
+      "exitCode": 0
+    },
+    "seed": {
+      "localOnly": true,
+      "commandsSucceeded": 6
+    },
+    "gitDiffCheck": {
+      "exitCode": 0
+    },
+    "graphify": {
+      "exitCode": 0,
+      "nodes": 21219,
+      "edges": 42225,
+      "communities": 1328,
+      "mode": "AST only",
+      "limitations": [
+        "SQL parser unavailable",
+        "HTML visualization skipped for graph size"
+      ]
+    }
+  },
+  "cleanup": {
+    "temporaryTabClosed": true,
+    "viewportReset": true,
+    "previewStopped": true,
+    "listeningSocketsOn5174": 0
+  },
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editor",
+    "No physical repair test",
+    "No fresh Semrush or local Google SERP check",
+    "Not publicly published"
+  ]
+}

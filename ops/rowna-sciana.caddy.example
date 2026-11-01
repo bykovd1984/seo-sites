@@ -1,0 +1,9 @@
+# Replace the example domain after purchase and DNS configuration.
+# Install as /etc/caddy/domains/rowna-sciana.caddy and import from Caddyfile.
+example.pl {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:5005
+}
+www.example.pl {
+    redir https://example.pl{uri} permanent
+}

@@ -1,0 +1,87 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Farba odchodzi przy malowaniu wałkiem — co zrobić?",
+  "h1": "Farba odchodzi przy malowaniu wałkiem — co zrobić?",
+  "meta_description": "Wałek odrywa farbę ze ściany? Sprawdź, która warstwa odchodzi, kiedy przerwać pracę i jak przygotować podłoże przed ponownym malowaniem.",
+  "proposed_slug": "farba-odchodzi-przy-malowaniu-walkiem",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "farba odchodzi przy malowaniu wałkiem",
+    "russian_translation": "Краска отслаивается при покраске валиком",
+    "volume": 140,
+    "kd": 11,
+    "cpc_usd": 0,
+    "intent": "N/A",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Previously observed Semrush PL measurement reused; measured Intent is not included in this source. No new measurement or SERP check in this writing task."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "wałek zrywa starą farbę",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial formulation, not measured separately."
+    },
+    {
+      "keyword": "farba odchodzi przy drugiej warstwie",
+      "volume": "N/A",
+      "kd": "N/A",
+      "note": "Editorial formulation, not measured separately."
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/roller-peeling-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/roller-repair-sequence.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "Three responsive cards with SVG icons, live labels and section links."
+    }
+  ],
+  "product_examples": [
+    {
+      "product": "Śnieżka MAX White Effect",
+      "document_revision": "2026-05-11",
+      "document_pages": [
+        2,
+        3
+      ],
+      "source": "https://www.karty-techniczne.sniezka.pl/pl/%C5%9ANIE%C5%BBKA_MAX_WHITE_EFFECT_MATOWA_LATEKSOWA_FARBA_DO_WN%C4%98TRZ.pdf",
+      "recoat": "After previous coat dries; approximately 2–4 hours per the cited sheet.",
+      "full_strength_days": 28,
+      "note": "Product-specific example, not a universal repair schedule."
+    },
+    {
+      "product": "Dulux Professional REZISTO 1",
+      "document_revision": "December 2022",
+      "document_pages": [
+        2,
+        3
+      ],
+      "source": "https://duluxprofessional.pl/dokumenty/DuluxProfessional_REZISTO_1_karta_techniczna.pdf"
+    }
+  ]
+}

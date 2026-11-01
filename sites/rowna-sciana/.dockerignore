@@ -1,0 +1,14 @@
+node_modules
+.next
+data
+.git
+.sites-runtime
+screenshots
+VALIDATION*
+README.md
+content/**/validation.json
+content/**/sources.ru.md
+content/**/editorial-review.ru.md
+content/**/semrush-evidence.md
+*.tsbuildinfo
+.env*

@@ -1,0 +1,232 @@
+{
+  "checked_date": "2026-10-30",
+  "content": {
+    "checked_date": "2026-10-30",
+    "articles": 10,
+    "words": 1116,
+    "reading_minutes": 6,
+    "meta_description_characters": 139,
+    "h2": [
+      "trzy-terminy-ktore-trzeba-rozroznic",
+      "ile-schna-konkretne-farby-porownanie-kart",
+      "kiedy-nakladac-druga-warstwe",
+      "co-wydluza-schniecie-i-czy-warto-je-przyspieszac",
+      "kiedy-mozna-umyc-pomalowana-sciane",
+      "najczestsze-pytania-przed-dalsza-praca"
+    ],
+    "tables": [
+      {
+        "rows": 4,
+        "columns": 3
+      },
+      {
+        "rows": 4,
+        "columns": 3
+      }
+    ],
+    "external_sources": [
+      "https://duluxprofessional.pl/porady/co-zrobic-gdy-farba-nie-schnie/",
+      "https://msp.images.akzonobel.com/prd/dh/epldlx/documents/f6/b4/16/82/karta_techniczna_dulux_easycare_999__wolna_d_lzo.pdf",
+      "https://beckers.pl/sites/default/files/pim/documents/Beckers_Designer_Colour_PL_PDS_Beckers.pdf",
+      "https://assets.flugger.dk/static/ir/947912/TDS_FLUPRO%205_pl.pdf",
+      "https://www.flugger.pl/poradniki/zrob-to-sam/ile-schnie-farba-na-scianie-zasady-prawidlowego-malowania/"
+    ],
+    "research_site_match": true,
+    "published": false
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "typecheck_exit_code": 0,
+    "build_exit_code": 0,
+    "seed_local_commands": 10,
+    "git_diff_check_exit_code": 0,
+    "graphify_status": "completed",
+    "graphify": {
+      "exit_code": 0,
+      "nodes": 21416,
+      "edges": 42450,
+      "communities": 1311,
+      "zero_node_files": 203,
+      "sql_parser_missing_files": 2,
+      "html_skipped": true,
+      "semantic_document_extraction": false
+    }
+  },
+  "http": {
+    "health_status": 200,
+    "health": {
+      "status": "ok",
+      "articles": 10
+    },
+    "home_status": 200,
+    "home_has_article": true,
+    "article_status": 200,
+    "article_noindex": true,
+    "robots_status": 200,
+    "robots_content": "User-agent: *\nDisallow: /\n"
+  },
+  "browser": {
+    "desktop": {
+      "anchors": [
+        {
+          "exists": true,
+          "href": "#ile-schna-konkretne-farby-porownanie-kart"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-nakladac-druga-warstwe"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-mozna-umyc-pomalowana-sciane"
+        },
+        {
+          "exists": true,
+          "href": "#trzy-terminy-ktore-trzeba-rozroznic"
+        },
+        {
+          "exists": true,
+          "href": "#ile-schna-konkretne-farby-porownanie-kart"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-nakladac-druga-warstwe"
+        },
+        {
+          "exists": true,
+          "href": "#co-wydluza-schniecie-i-czy-warto-je-przyspieszac"
+        },
+        {
+          "exists": true,
+          "href": "#kiedy-mozna-umyc-pomalowana-sciane"
+        },
+        {
+          "exists": true,
+          "href": "#najczestsze-pytania-przed-dalsza-praca"
+        }
+      ],
+      "columns": "234.125px 234.137px 234.125px",
+      "h1": 1,
+      "headings": [
+        "trzy-terminy-ktore-trzeba-rozroznic",
+        "ile-schna-konkretne-farby-porownanie-kart",
+        "kiedy-nakladac-druga-warstwe",
+        "co-wydluza-schniecie-i-czy-warto-je-przyspieszac",
+        "kiedy-mozna-umyc-pomalowana-sciane",
+        "najczestsze-pytania-przed-dalsza-praca"
+      ],
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/paint-drying-illustration.png"
+        },
+        {
+          "loaded": true,
+          "src": "/images/drying-card.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/drying-recoat.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/drying-wash.svg"
+        }
+      ],
+      "robots": "noindex, nofollow",
+      "scrollWidth": 1265,
+      "tables": [
+        {
+          "client": 778,
+          "scroll": 778
+        },
+        {
+          "client": 778,
+          "scroll": 778
+        }
+      ],
+      "width": 1265
+    },
+    "tocNavigation": {
+      "hash": "#ile-schna-konkretne-farby-porownanie-kart",
+      "top": 224.6000061035156
+    },
+    "diagramNavigation": {
+      "hash": "#kiedy-nakladac-druga-warstwe",
+      "top": 224.625
+    },
+    "checklistAfterReload": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "previousArticleChecklist": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "checklistAfterReturn": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "search": {
+      "headings": [
+        "Ile schnie farba na ścianie? Druga warstwa i mycie"
+      ],
+      "query": "ile schnie farba na scianie",
+      "status": "Wyniki dla „ile schnie farba na scianie”: 1"
+    },
+    "mobile": {
+      "cardTextSize": "16px",
+      "columns": "297.6px",
+      "scrollWidth": 375,
+      "tables": [
+        {
+          "client": 330,
+          "scroll": 560
+        },
+        {
+          "client": 330,
+          "scroll": 560
+        }
+      ],
+      "width": 375
+    },
+    "mobileTocNavigation": {
+      "hash": "#ile-schna-konkretne-farby-porownanie-kart",
+      "top": 225.0124969482422
+    },
+    "mobileTableScroll": {
+      "left": 40,
+      "restoredLeft": 0
+    },
+    "checklistCleaned": true,
+    "console": []
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "original_head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "protected_count": 26,
+    "changed_files": []
+  },
+  "cleanup": {
+    "preview_listeners": 0,
+    "tab_closed": true,
+    "viewport_reset": true
+  },
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editor review",
+    "No comparative drying test",
+    "No new Semrush or Google SERP measurement",
+    "Local draft only, no publication"
+  ]
+}

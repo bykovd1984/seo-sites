@@ -1,0 +1,177 @@
+{
+  "checkedDate": "2026-10-30",
+  "slug": "smugi-na-scianie-po-malowaniu",
+  "scope": "local_only",
+  "content": {
+    "words": 1163,
+    "readingMinutes": 6,
+    "primaryManufacturerSources": 8,
+    "inlineSourceLinks": 14,
+    "sourceSiteTextIdentical": true,
+    "titleCharacters": 46,
+    "descriptionCharacters": 147,
+    "modelEditorialReview": "performed",
+    "independentTechnicalReview": "not_performed",
+    "nativePolishEditor": "not_performed",
+    "repairTest": "not_performed"
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "buildExitCode": 0,
+    "localSeedCommands": 3,
+    "gitDiffCheckExitCode": 0,
+    "headUnchanged": true,
+    "unrelatedChangedFileHashesPreserved": true,
+    "publication": false
+  },
+  "http": {
+    "health": {
+      "status": "ok",
+      "articles": 3
+    },
+    "articleStatus": 200,
+    "homeStatus": 200,
+    "articleHasTitle": true,
+    "homeHasNewSlug": true,
+    "noindexMeta": true,
+    "robots": "User-agent: *\nDisallow: /"
+  },
+  "browser": {
+    "desktop": {
+      "cards": 3,
+      "documentWidth": 1265,
+      "h1": [
+        "Smugi na ścianie po malowaniu — jak je usunąć?"
+      ],
+      "height": 720,
+      "images": [
+        {
+          "alt": "Ilustracja szałwiowej ściany z ciemniejszymi pasami na łączeniach farby i wałkiem na podłodze",
+          "loaded": true,
+          "src": "/images/wall-streaks-illustration.png"
+        },
+        {
+          "alt": "Schemat ściany z ciemniejszymi pionowymi pasami na łączeniach farby.",
+          "loaded": true,
+          "src": "/images/wall-lap.svg"
+        },
+        {
+          "alt": "Schemat ściany z ciemniejszym pasem przy górnej i bocznych krawędziach.",
+          "loaded": true,
+          "src": "/images/wall-frame.svg"
+        },
+        {
+          "alt": "Schemat gładkiej ściany z jaśniejszą miejscową poprawką pośrodku.",
+          "loaded": true,
+          "src": "/images/wall-patch.svg"
+        }
+      ],
+      "internalLinks": [
+        "/poradniki/smugi-na-suficie-po-malowaniu",
+        "/poradniki/farba-odchodzi-z-tasma"
+      ],
+      "sourceLinks": 14,
+      "width": 1280
+    },
+    "diagram": {
+      "anchors": [
+        {
+          "exists": true,
+          "href": "#a-pasy-na-laczeniach-walka"
+        },
+        {
+          "exists": true,
+          "href": "#b-ciemniejsza-obwodka-przy-naroznikach"
+        },
+        {
+          "exists": true,
+          "href": "#c-widoczna-lata-po-miejscowej-poprawce"
+        }
+      ],
+      "layout": "234.125px 234.137px 234.125px",
+      "top": 295.5
+    },
+    "caseNavigation": {
+      "hash": "#b-ciemniejsza-obwodka-przy-naroznikach",
+      "targetTop": 225.3249969482422
+    },
+    "checklistPersistence": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "checklistIsolation": {
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "title": "Smugi na suficie po malowaniu — jak je usunąć?"
+    },
+    "checklistReturn": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "mobile": {
+      "cardText": [
+        {
+          "font": "16px",
+          "width": 261.6000061035156
+        },
+        {
+          "font": "16px",
+          "width": 261.6000061035156
+        },
+        {
+          "font": "16px",
+          "width": 261.6000061035156
+        }
+      ],
+      "clientWidth": 375,
+      "documentWidth": 375,
+      "gridColumns": "297.6px",
+      "height": 700,
+      "tableScrollWidth": 560,
+      "tableWidth": 331.20001220703125,
+      "width": 390
+    },
+    "search": {
+      "results": [
+        "/poradniki/smugi-na-scianie-po-malowaniu"
+      ],
+      "status": "Wyniki dla „obwodka”: 1",
+      "url": "http://127.0.0.1:5174/szukaj?q=obwodka"
+    },
+    "console": []
+  },
+  "checklistTestSelectionCleared": true,
+  "screenshots": [
+    "walls-desktop-header.png",
+    "walls-desktop-diagrams.png",
+    "walls-mobile-header.png",
+    "walls-mobile-diagrams.png"
+  ],
+  "graphUpdate": {
+    "exitCode": 0,
+    "scope": "AST code only",
+    "nodes": 21068,
+    "edges": 42030,
+    "limitations": [
+      "SQL parser unavailable",
+      "HTML visualization skipped: node limit"
+    ]
+  },
+  "cleanup": {
+    "previewStopped": true,
+    "temporaryBrowserTabClosed": true,
+    "viewportReset": true
+  }
+}

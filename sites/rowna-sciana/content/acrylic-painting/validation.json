@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-30",
+  "article": "akryl-przed-czy-po-malowaniu",
+  "content": {
+    "wordCount": 1020,
+    "readingMinutes": 6,
+    "sourceLinks": 11,
+    "uniqueSources": 7,
+    "metaDescriptionLength": 146,
+    "articles": 7,
+    "h2": [
+      {
+        "text": "Przed ostatnią warstwą, ale na przygotowanym podłożu",
+        "id": "przed-ostatnia-warstwa-ale-na-przygotowanym-podlozu"
+      },
+      {
+        "text": "Kiedy można malować akryl? Porównanie trzech produktów",
+        "id": "kiedy-mozna-malowac-akryl-porownanie-trzech-produktow"
+      },
+      {
+        "text": "Naskórek to nie to samo co gotowość do malowania",
+        "id": "naskorek-to-nie-to-samo-co-gotowosc-do-malowania"
+      },
+      {
+        "text": "Kolejność pracy przy listwie lub ościeżnicy",
+        "id": "kolejnosc-pracy-przy-listwie-lub-oscieznicy"
+      },
+      {
+        "text": "Dlaczego farba może pękać na akrylu?",
+        "id": "dlaczego-farba-moze-pekac-na-akrylu"
+      },
+      {
+        "text": "Przed malowaniem sprawdź cztery rzeczy",
+        "id": "przed-malowaniem-sprawdz-cztery-rzeczy"
+      }
+    ],
+    "sourceAndSiteMatch": true,
+    "titleMatchesSeo": true,
+    "published": false
+  },
+  "http": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "articles": 7
+      }
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/poradniki/akryl-przed-czy-po-malowaniu",
+      "status": 200,
+      "containsArticle": true,
+      "noindex": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "body": "User-agent: *\nDisallow: /\n"
+    }
+  ],
+  "browser": {
+    "desktop": {
+      "clientWidth": 1265,
+      "diagramLinks": [
+        {
+          "href": "#przed-ostatnia-warstwa-ale-na-przygotowanym-podlozu",
+          "valid": true
+        },
+        {
+          "href": "#kolejnosc-pracy-przy-listwie-lub-oscieznicy",
+          "valid": true
+        },
+        {
+          "href": "#kiedy-mozna-malowac-akryl-porownanie-trzech-produktow",
+          "valid": true
+        }
+      ],
+      "documentWidth": 1265,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "toc": [
+        {
+          "href": "#przed-ostatnia-warstwa-ale-na-przygotowanym-podlozu",
+          "valid": true
+        },
+        {
+          "href": "#kiedy-mozna-malowac-akryl-porownanie-trzech-produktow",
+          "valid": true
+        },
+        {
+          "href": "#naskorek-to-nie-to-samo-co-gotowosc-do-malowania",
+          "valid": true
+        },
+        {
+          "href": "#kolejnosc-pracy-przy-listwie-lub-oscieznicy",
+          "valid": true
+        },
+        {
+          "href": "#dlaczego-farba-moze-pekac-na-akrylu",
+          "valid": true
+        },
+        {
+          "href": "#przed-malowaniem-sprawdz-cztery-rzeczy",
+          "valid": true
+        }
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "tableNavigation": {
+      "hash": "#kiedy-mozna-malowac-akryl-porownanie-trzech-produktow",
+      "rows": 3,
+      "top": 224.6000061035156
+    },
+    "diagram": {
+      "columns": "234.125px 234.137px 234.125px",
+      "images": [
+        {
+          "loaded": true,
+          "src": "/images/acrylic-painting-illustration.png"
+        },
+        {
+          "loaded": true,
+          "src": "/images/acrylic-joint.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/acrylic-shape.svg"
+        },
+        {
+          "loaded": true,
+          "src": "/images/acrylic-paint.svg"
+        }
+      ]
+    },
+    "diagramLinkNavigation": {
+      "hash": "#kiedy-mozna-malowac-akryl-porownanie-trzech-produktow",
+      "heading": "Kiedy można malować akryl? Porównanie trzech produktów",
+      "top": 224.6000061035156
+    },
+    "mobile": {
+      "cardTextFont": "16px",
+      "clientWidth": 375,
+      "columns": "297.6px",
+      "documentWidth": 375,
+      "table": {
+        "scrollWidth": 560,
+        "width": 330
+      },
+      "viewport": [
+        390,
+        700
+      ]
+    },
+    "afterReload": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "otherArticle": {
+      "checked": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "url": "/poradniki/farba-odchodzi-przy-malowaniu-walkiem"
+    },
+    "afterReturn": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "reset": true,
+    "search": {
+      "results": [
+        {
+          "href": "/poradniki/akryl-przed-czy-po-malowaniu",
+          "title": "Akryl przed czy po malowaniu? Kolejność i czas schnięcia"
+        }
+      ],
+      "url": "http://127.0.0.1:5174/szukaj?q=kolejnosc+i+czas+schniecia"
+    },
+    "console": [],
+    "navigationNote": "The first pointer click on the offscreen related link did not navigate; after inspecting the current DOM, keyboard activation opened the correct page."
+  },
+  "preservation": {
+    "head": "fbc48eefead974fa39cdc2b5900ddfcdf3004df5",
+    "headUnchanged": true,
+    "protectedFileCount": 23,
+    "changed": []
+  },
+  "checks": {
+    "tests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "build": {
+      "exitCode": 0
+    },
+    "seed": {
+      "localOnly": true,
+      "commandsSucceeded": 7
+    },
+    "gitDiffCheck": {
+      "exitCode": 0
+    },
+    "graphify": {
+      "exitCode": 0,
+      "nodes": 21266,
+      "edges": 42279,
+      "communities": 1324,
+      "mode": "AST only",
+      "limitations": [
+        "SQL parser unavailable",
+        "Some source files produced zero nodes",
+        "HTML visualization skipped for graph size"
+      ]
+    }
+  },
+  "cleanup": {
+    "temporaryTabClosed": true,
+    "viewportReset": true,
+    "previewStopped": true,
+    "listeningSocketsOn5174": 0
+  },
+  "limitations": [
+    "No independent technical review",
+    "No native Polish editor",
+    "No physical sealant or repair test",
+    "No fresh Semrush or local Google SERP check",
+    "Not publicly published"
+  ]
+}

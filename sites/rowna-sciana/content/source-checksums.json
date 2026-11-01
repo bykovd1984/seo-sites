@@ -1,0 +1,42 @@
+[
+  {
+    "path": "content/article.pl.md",
+    "sha256": "F72CF924BE96C1840608FB1A8524CB7C8F1A29675FEBD47CD1B08CC9E24E7E4C"
+  },
+  {
+    "path": "content/ceiling-streaks/article.pl.md",
+    "sha256": "3AA339E3EADBEA7E8AEBCDD70829809D511D0CBD5D0893B15F1FFA25C70AA554"
+  },
+  {
+    "path": "content/wall-streaks/article.pl.md",
+    "sha256": "683D42B158DC3A4F71CCC0E7B4AD3265CBE98935D015F0D559F9E7983EF8C50F"
+  },
+  {
+    "path": "content/paint-coverage/article.pl.md",
+    "sha256": "BCA93A2D3AC29BEC9BDD0C7956ACE2826249DDE4AFB6D071BC763AE6C4C9F0DB"
+  },
+  {
+    "path": "content/skim-on-paint/article.pl.md",
+    "sha256": "CC82BE0D0940CECA828305C69C31B54BD88C1A75107A54F11B25E1250E577607"
+  },
+  {
+    "path": "content/roller-peeling/article.pl.md",
+    "sha256": "574657CF21569572C989A3290A6B5A92C93C75D92504888B46B6CBEF241E6FB9"
+  },
+  {
+    "path": "content/acrylic-painting/article.pl.md",
+    "sha256": "E1B11B390DB995160A06103C3F5BD94D165BE58516D37658DB1258FBE8EE03D8"
+  },
+  {
+    "path": "content/wall-dust/article.pl.md",
+    "sha256": "C8C7EF83E78DD14C9B209A40325C13F9D29062A4DEDB73A7C1F2BDD4450354C4"
+  },
+  {
+    "path": "content/stain-blocking/article.pl.md",
+    "sha256": "6CAE44A7280323F6D3C7CC8AC53191DB0DF38FB13CB1E9B023ABFE64ED941764"
+  },
+  {
+    "path": "content/paint-drying/article.pl.md",
+    "sha256": "2BFF6DCBC8CBF1C41C7C27B03A6A22EE3E276FB83EC9CBEE8671D64814DEA118"
+  }
+]

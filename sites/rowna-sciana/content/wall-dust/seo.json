@@ -1,0 +1,96 @@
+{
+  "language": "pl-PL",
+  "country": "PL",
+  "status": "revised_draft",
+  "prepared_date": "2026-10-30",
+  "source_checked_date": "2026-10-30",
+  "published": false,
+  "title": "Odpylanie ścian po szlifowaniu — jak przygotować je pod grunt?",
+  "h1": "Odpylanie ścian po szlifowaniu — jak przygotować je pod grunt?",
+  "meta_description": "Jak odpylić ściany po szlifowaniu? Sprawdź sprzęt, kolejność czyszczenia, ograniczenia wilgotnego przecierania i stan podłoża przed gruntowaniem.",
+  "proposed_slug": "odpylanie-scian-po-szlifowaniu",
+  "canonical_url": null,
+  "author": null,
+  "technical_reviewer": null,
+  "primary_keyword": {
+    "keyword": "odpylanie ścian po szlifowaniu",
+    "russian_translation": "Обеспыливание стен после шлифования",
+    "volume": "N/A",
+    "kd": "N/A",
+    "cpc_usd": "N/A",
+    "intent": "N/A",
+    "note": "Narrow editorial target, not measured separately. Do not inherit the broad query metrics."
+  },
+  "measured_parent_keyword": {
+    "keyword": "odpylanie ścian",
+    "russian_translation": "Удаление пыли со стен",
+    "volume": 260,
+    "kd": 23,
+    "cpc_usd": 0.03,
+    "intent": "I",
+    "database": "pl",
+    "checked_date": "2026-10-30",
+    "source": "semrush-evidence.md",
+    "note": "Reused saved Semrush PL measurement for the broader query. No new measurement or SERP audit. Not a traffic forecast for this article."
+  },
+  "secondary_keywords": [
+    {
+      "keyword": "jak odpylić gładź",
+      "russian_translation": "Как обеспылить шпаклёвку",
+      "volume": "N/A",
+      "kd": "N/A"
+    },
+    {
+      "keyword": "czy myć ściany po szlifowaniu",
+      "russian_translation": "Нужно ли мыть стены после шлифования",
+      "volume": "N/A",
+      "kd": "N/A"
+    }
+  ],
+  "publication_checks": {
+    "manufacturer_source_review": "performed",
+    "model_language_review": "performed",
+    "native_polish_editor": "not_performed",
+    "independent_technical_review": "not_performed",
+    "repair_test": "not_performed",
+    "dust_exposure_measurement": "not_performed",
+    "real_defect_photos": "not_included"
+  },
+  "images": [
+    {
+      "path": "assets/wall-dust-illustration.png",
+      "type": "ai_generated_editorial_illustration",
+      "generator": "built-in imagegen",
+      "prompt_file": "assets/image-prompt.txt",
+      "edit_prompt_file": "assets/image-edit-prompt.txt",
+      "documentary_evidence": false
+    },
+    {
+      "path": "assets/wall-dust-sequence.svg",
+      "type": "authored_schematic",
+      "documentary_evidence": false,
+      "site_presentation": "Three responsive cards with SVG icons, HTML labels and section links."
+    }
+  ],
+  "product_examples": [
+    {
+      "product": "MAGNAT Style Samum",
+      "document_revision": "2022-07-18",
+      "document_pages": [
+        2
+      ],
+      "source": "https://www.karty-techniczne.sniezka.pl/pl/MAGNAT_STYLE_SAMUM.pdf",
+      "scope": "Different preparation for sanding dust, chalking and old paint. Instructions belong to this decorative system."
+    },
+    {
+      "product": "Knauf GRUNTiFARBA",
+      "document_revision": "08/2026",
+      "document_code": "B161.pl",
+      "document_pages": [
+        2
+      ],
+      "source": "https://knauf.com/api/download-center/v1/assets/7b1aa0f4-6b7f-42ff-a652-c73471f68806?country=pl&download=true",
+      "scope": "Dust removal before recommended penetrating primer on sanded surfaces. Not a universal priming specification."
+    }
+  ]
+}
