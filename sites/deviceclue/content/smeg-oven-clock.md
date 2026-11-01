@@ -2,6 +2,8 @@
 
 Smeg has used different timer and clock layouts. A three-button programmer, an analogue clock, and a touchscreen should not share an assumed button sequence. Photograph the controls and find the appliance model first.
 
+For a Zanussi appliance, follow the [Zanussi oven clock guide](/guides/zanussi-oven-clock) instead. It separates the documented plus/minus panels from a rotary-control example; those instructions should not be transferred to a Smeg programmer.
+
 The worked example here comes from section 3.10 of an official Smeg-hosted document. Its programmer has a decrease button, a clock button and an increase button. Verify that both the controls and the instructions match your appliance. This is a documented panel example, not a verified list of every model that uses it.
 
 ## Initial setting on the documented three-button panel
@@ -25,6 +27,8 @@ That difference matters when changing the clock seasonally. Holding the clock bu
 A flashing display after power returns can mean the time needs setting again. The example programmer requires the time to be set before the oven can switch on. That is a statement about the linked system, not every Smeg appliance.
 
 Before investigating a heating fault, check whether the clock is steady and whether a timed-cooking function is still selected. Identify any symbol using the same model document. An unfamiliar symbol is a reason to check the guide, not to try random combinations.
+
+A fan or grill marking raises a different question from setting the time. If you are identifying that kind of control on a Beko appliance, see the [Beko oven symbols explained](/guides/beko-oven-symbols) guide. Its cooking-function examples are specific to Beko and do not identify the symbols on a Smeg model.
 
 ## Keep the clock and cooking timer separate
 

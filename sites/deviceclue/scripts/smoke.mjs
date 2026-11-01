@@ -11,6 +11,10 @@ const home=await read('/');assert.match(home,/Less guesswork/);assert.match(home
 for(const a of catalog){
  const html=await read('/guides/'+a.slug);assert.match(html,/application\/ld\+json/);assert.ok(html.includes('https://deviceclue.site/guides/'+a.slug));assert.ok(!html.includes('noindex'));
  assert.ok(html.includes('The quick answer'));assert.ok(html.includes('Sources &amp; scope'));
+ const markdown=fs.readFileSync(new URL('../content/'+a.slug+'.md',import.meta.url),'utf8');
+ const body=/<div class="prose">([\s\S]*?)<\/div><section class="takeaway"/.exec(html)?.[1];
+ assert.ok(body,`Article body missing in ${a.slug}`);
+ for(const link of markdown.matchAll(/\]\((\/guides\/[a-z0-9-]+)\)/g))assert.ok(body.includes(`href="${link[1]}"`),`Body cross-link missing in ${a.slug}: ${link[1]}`);
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert.ok(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]} in ${a.slug}`);
 }
 for(const route of ['/topics/ovens','/topics/cooling','/topics/home-systems','/topics/batteries','/topics/small-engines','/about','/privacy','/search','/favicon.svg','/opengraph-image.png'])await read(route);

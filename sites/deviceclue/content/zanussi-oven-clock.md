@@ -4,6 +4,8 @@ Look for the exact model and Product Number Code (PNC) on the appliance data pla
 
 Zanussi’s support page shows several different layouts. Some have plus and minus buttons; others use a rotary control. Match the picture and the instructions before choosing a sequence. The schematic on this page shows an idea, not your actual panel.
 
+If the appliance is a Smeg rather than a Zanussi, use the separate [Smeg oven clock guide](/guides/smeg-oven-clock). Similar-looking buttons do not make the clock-setting sequences interchangeable.
+
 ## Set the time on a matching +/− panel
 
 For the +/− panels illustrated in Zanussi’s support article, the time indicator flashes after the appliance is connected or its clock loses power. Use the plus or minus control to adjust the displayed time, then stop pressing buttons. The documented examples save the setting after about five seconds.
