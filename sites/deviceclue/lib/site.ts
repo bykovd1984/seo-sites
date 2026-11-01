@@ -9,4 +9,5 @@ export const categories = [
   { id: 'home-systems', name: 'Home systems', short: 'Home systems', description: 'Thermostats and garage door openers', icon: 'home' },
   { id: 'batteries', name: 'Batteries & charging', short: 'Batteries', description: 'Charger messages and battery condition', icon: 'battery' },
   { id: 'small-engines', name: 'Small engines', short: 'Small engines', description: 'Choke controls and starting symbols', icon: 'engine' },
+  { id: 'dishwashers', name: 'Dishwashers', short: 'Dishwashers', description: 'Drainage, fault codes and programme symbols', icon: 'dishwasher' },
 ] as const;

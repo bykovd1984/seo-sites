@@ -31,3 +31,16 @@ Primary sources were consulted through the available web service on 2026-11-01, 
 - Add analytics only after choosing a consent and privacy approach. Do not reuse the sibling site’s measurement ID.
 
 No manufacturer's images are redistributed. SVG schematics are original, labelled conceptual, and contain no claimed test observations. Metadata names DeviceClue as an organization; no fictitious experts, ratings or testing claims are present.
+
+## Six-article scheduled release, 1 November 2026
+
+The owner authorized six more answer-focused articles and daily publication. See `PUBLICATION.md` for measured-query selection and exact dates. Five earlier source-based drafts were edited for the site; the Zanussi dishwasher-symbols article was written from manufacturer support material.
+
+- Electrolux: the plus/minus, five-second example applies to the documented freestanding panel only.
+- Craftsman reset: the six-second erase applies to 139.54915 and removes all remote/keypad codes. It is not a universal repair or force/travel adjustment.
+- Fisher & Paykel drainage: user-accessible maintenance only; DD24SA/SC A3 examples are not general fault charts.
+- Fisher & Paykel F1: older DD24 flood-switch guidance and Australian support differ; preserve model limits and the safe-isolation/service path.
+- AEG: grill/fan descriptions are examples; Competence is not a single panel. Original schematics are conceptual.
+- Zanussi: distinguish refill, cycle, maintenance and fault indicators. Machine Care controls differ; no universal reset shortcut.
+
+Manufacturer pages were reviewed again on 1 November. The Fisher & Paykel Salesforce support page did not render through the web text reader; its same-day saved official-page capture was used alongside the manufacturer PDF. No equipment test, universal applicability or independent technical review is claimed.

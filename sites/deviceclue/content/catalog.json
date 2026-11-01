@@ -20,9 +20,9 @@
       "set clock"
     ],
     "related": [
+      "electrolux-oven-clock",
       "smeg-oven-clock",
-      "beko-oven-symbols",
-      "fridge-coldest-setting"
+      "beko-oven-symbols"
     ],
     "takeaway": "A flashing time display is a useful starting clue. Identify the panel, set the time of day, and check that the display stays steady before investigating a heating fault.",
     "sources": [
@@ -98,9 +98,9 @@
       "functions"
     ],
     "related": [
-      "zanussi-oven-clock",
+      "aeg-oven-symbols",
       "smeg-oven-clock",
-      "choke-symbols-on-off"
+      "zanussi-oven-clock"
     ],
     "takeaway": "Read the whole symbol, including the surrounding circle and heating lines. Use the model’s own function table to distinguish fan heating, fan-assisted grilling and unheated fan functions.",
     "sources": [
@@ -303,9 +303,7 @@
       "remote"
     ],
     "related": [
-      "honeywell-thermostat-battery-replacement",
-      "hoshizaki-ice-machine-beeping",
-      "choke-symbols-on-off"
+      "craftsman-garage-door-opener-reset"
     ],
     "takeaway": "Identify the light, the pattern and the model together. Check an unobstructed sensor beam before assuming a reset is needed; never bypass a safety sensor or adjust spring tension.",
     "sources": [
@@ -416,5 +414,317 @@
         "note": "Manufacturer discussion of battery condition and the possibility that serious sulfation prevents recovery of original capacity."
       }
     ]
+  },
+  {
+    "slug": "electrolux-oven-clock",
+    "title": "How to set the clock on an Electrolux oven",
+    "shortTitle": "Electrolux clock flashing? Set the time.",
+    "description": "Set or change an Electrolux oven clock, understand a flashing 00:00 or 12:00, and find the steps for your control panel.",
+    "category": "ovens",
+    "brand": "Electrolux",
+    "type": "Settings",
+    "diagram": "clock",
+    "answer": "A flashing time after a power cut can mean the oven needs its clock set. On one documented Electrolux freestanding panel, use + or − while the time-of-day indicator flashes, then wait about five seconds. Other panels use different controls, so match the procedure to your model first.",
+    "scope": "The plus/minus and five-second example applies to the manufacturer's illustrated freestanding panel. It is not a reset sequence for every Electrolux oven.",
+    "tags": [
+      "set clock",
+      "set time",
+      "reset clock",
+      "change time",
+      "flashing",
+      "00:00",
+      "12:00",
+      "power cut"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "smeg-oven-clock",
+      "aeg-oven-symbols"
+    ],
+    "takeaway": "Identify the panel, select time of day rather than a cooking timer, and confirm that the display becomes steady. A clock setting does not diagnose an unresolved heating or power fault.",
+    "sources": [
+      {
+        "title": "Electrolux UK: oven clock flashes or displays 00:00 / 12:00",
+        "url": "https://support.electrolux.co.uk/support-articles/article/oven-clock-flashes-or-time-displaying-0000-1200-electrolux",
+        "note": "several control-panel examples and the freestanding-cooker example described above."
+      },
+      {
+        "title": "Electrolux UK: oven does not heat up",
+        "url": "https://support.electrolux.co.uk/support-articles/article/oven-does-not-heat-up",
+        "note": "clock, function and timer checks as possible explanations."
+      },
+      {
+        "title": "Electrolux UK: time is not shown when the oven is turned off",
+        "url": "https://support.electrolux.co.uk/support-articles/article/the-time-is-not-shown-on-the-display-when-the-oven-is-turned-off",
+        "note": "an example of standby behaviour; verify your own panel."
+      }
+    ],
+    "publishAt": "2026-11-02T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "craftsman-garage-door-opener-reset",
+    "title": "How to reset a Craftsman garage door opener",
+    "shortTitle": "Reset, pair or erase? Know the difference.",
+    "description": "Choose between pairing a remote, changing a keypad PIN and erasing opener memory, with a documented Craftsman 139.54915 example.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Settings",
+    "diagram": "garage",
+    "answer": "First decide what needs resetting. On Craftsman 139.54915, holding the opener's LEARN button until its indicator goes out, approximately six seconds, erases all remote and keypad codes. Pairing one remote is a different operation. Check the full model before pressing and holding any control.",
+    "scope": "The memory-erasure example is for Craftsman 139.54915 only. A 1/2 HP label does not identify the control system; resets do not repair mechanical or safety-sensor faults.",
+    "tags": [
+      "reset",
+      "how to reset",
+      "1/2 hp",
+      "learn button",
+      "erase codes",
+      "remote",
+      "keypad",
+      "139.54915"
+    ],
+    "related": [
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Choose the operation before pressing LEARN. Erasing access codes is intentional and affects the controls you must reprogram; it is not a substitute for investigating an unsafe or faulty door.",
+    "sources": [
+      {
+        "title": "Craftsman 139.54915 owner’s guide",
+        "url": "https://www.toolservicenet.com/i/CRAFTSMAN/GLOBALBOM/QUCA/139.54915/0/Repair_Notice_or_Repair_Instruction/EN/1405210L.pdf",
+        "note": "programming and two distinct memory-erasure operations. Check the printed programming section and the complete safety instructions."
+      },
+      {
+        "title": "Craftsman Support: wall button works but remote does not",
+        "url": "https://support.craftsman.com/hc/en-us/articles/360014046758-Why-is-my-wall-button-working-but-my-remote-is-not-on-my-garage-door-opener",
+        "note": "possible causes including a supported lock feature."
+      },
+      {
+        "title": "Chamberlain Group: erasing a remote from opener memory",
+        "url": "https://support.chamberlaingroup.com/s/article/How-do-I-erase-the-remote-control-from-the-garage-door-opener-s-memory-1484145516379",
+        "note": "example of memory retention when unplugged on the systems described, not a universal Craftsman procedure."
+      }
+    ],
+    "publishAt": "2026-11-03T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "fisher-paykel-dishwasher-not-draining",
+    "title": "Fisher & Paykel dishwasher not draining: what to check",
+    "shortTitle": "Water left in the drawer? Start here.",
+    "description": "Check cycle status, the user-accessible filter and visible drain hose, and distinguish a drainage symptom from a model-specific fault code.",
+    "category": "dishwashers",
+    "brand": "Fisher & Paykel",
+    "type": "Troubleshooting",
+    "diagram": "dishwasher",
+    "answer": "Check whether the programme finished, record any displayed code, and follow your model's filter-cleaning instructions. A visible kink in the drain hose is another clue. Standing water does not prove a failed pump, and leaking water or an F1 warning requires the model's separate fault guidance.",
+    "scope": "Focuses on DishDrawer user-level checks. Filter designs and controls differ; A3 examples apply only to the listed DD24 models, and F1 is not a universal drainage code.",
+    "tags": [
+      "not draining",
+      "drawer not draining",
+      "standing water",
+      "drain hose",
+      "filter",
+      "A3",
+      "DishDrawer"
+    ],
+    "related": [
+      "fisher-paykel-dishdrawer-f1-error",
+      "zanussi-dishwasher-symbols"
+    ],
+    "takeaway": "Record the cycle status and code before trying anything. Clean only user-maintenance parts for your model; unresolved drainage or leakage needs service rather than repeated resets.",
+    "sources": [
+      {
+        "title": "Fisher & Paykel: DishDrawer not draining",
+        "url": "https://support.fisherpaykel.com/au/s/article/DishDrawer-Not-Draining",
+        "note": "common filter, hose and connection checks for DishDrawer units."
+      },
+      {
+        "title": "Fisher & Paykel: DishDrawer dishwasher is not draining",
+        "url": "https://support.fisherpaykel.com/au/s/article/DishDrawer%C3%B4-Dishwasher-is-not-draining",
+        "note": "filter and hose checks and when to book service."
+      },
+      {
+        "title": "Fisher & Paykel: installation guide for listed US/Canada single DishDrawer models",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe0203e9d/InstallationManuals-FisherPaykelUS/FP-InstallGuide-en-DD24SAX9-DD24SCTW9-DD24SCTB9-DD24SCTX9-DD24SDFTX9-DD24SV2T9-DD24SV2T9-SingleDishDrawer-0-592796A-US-CA.pdf",
+        "note": "model-specific examples of `A3` and drainage checks."
+      },
+      {
+        "title": "Fisher & Paykel: older DD24 US/Canada guide",
+        "url": "https://www.fisherpaykel.com/download/user-guide/Kitchen/Clean/DishDrawer/599595B-us-ca-dishdrawer-dd24-guide.pdf#page=34",
+        "note": "the F1 flood-switch example; do not generalise its code table to every model."
+      },
+      {
+        "title": "Fisher & Paykel: integrated DishDrawer quick-start guide",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd19d0a13/GeneralFiles-FisherPaykelUS/FP-QuickStartGuide-DD24SI9%20N-IntegratedSingleDishDrawer-CA-US-591379B.pdf",
+        "note": "an example of model-specific cancellation and drain behaviour."
+      }
+    ],
+    "publishAt": "2026-11-04T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "fisher-paykel-dishdrawer-f1-error",
+    "title": "Fisher & Paykel DishDrawer F1 error: what it means",
+    "shortTitle": "An F1 warning needs the right next step.",
+    "description": "Understand the documented F1 flood warning, what to do if water is visible, and why reset instructions depend on the DishDrawer model.",
+    "category": "dishwashers",
+    "brand": "Fisher & Paykel",
+    "type": "Fault signals",
+    "diagram": "dishwasher",
+    "answer": "On the documented older DD24 DishDrawer, F1 means the flood switch has activated. Australian support also identifies excess foaming as a possible cause. The code alone does not identify a failed part. If water is on the floor, isolate water and power only if safe and arrange service.",
+    "scope": "Covers the older DD24 flood-switch example and Australian DishDrawer support guidance. Fault charts and recovery instructions vary; do not apply them to an unidentified dishwasher.",
+    "tags": [
+      "F1",
+      "F1 fault",
+      "F1 error",
+      "flood switch",
+      "beeping",
+      "DishDrawer",
+      "excess foaming"
+    ],
+    "related": [
+      "fisher-paykel-dishwasher-not-draining",
+      "zanussi-dishwasher-symbols"
+    ],
+    "takeaway": "F1 is a protective warning on the systems described. Match the code to the model and address leakage safely; a cleared display does not establish that the cause has been repaired.",
+    "sources": [
+      {
+        "title": "Fisher & Paykel: F-code displaying on a DishDrawer dishwasher",
+        "url": "https://support.fisherpaykel.com/au/s/article/f-code-displaying-on-dishdrawer-dishwasher",
+        "note": "Australian support guidance, including F1 and its stated conditions."
+      },
+      {
+        "title": "Fisher & Paykel: older DD24 US/Canada guide",
+        "url": "https://www.fisherpaykel.com/download/user-guide/Kitchen/Clean/DishDrawer/599595B-us-ca-dishdrawer-dd24-guide.pdf#page=34",
+        "note": "F1 flood-switch example and service instruction for the documented series."
+      },
+      {
+        "title": "Fisher & Paykel: US/Canada single DishDrawer installation guide",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe0203e9d/InstallationManuals-FisherPaykelUS/FP-InstallGuide-en-DD24SAX9-DD24SCTW9-DD24SCTB9-DD24SCTX9-DD24SDFTX9-DD24SV2T9-DD24SV2T9-SingleDishDrawer-0-592796A-US-CA.pdf",
+        "note": "`A3` example for specified models."
+      }
+    ],
+    "publishAt": "2026-11-05T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "aeg-oven-symbols",
+    "title": "AEG oven symbols: grill, fan and other settings explained",
+    "shortTitle": "Grill, fan or both? Read the whole symbol.",
+    "description": "Identify common AEG grill and fan symbols, separate cooking functions from timer and cleaning indicators, and check older Competence panels.",
+    "category": "ovens",
+    "brand": "AEG",
+    "type": "Symbols",
+    "diagram": "symbols",
+    "answer": "A row of triangles or a zigzag at the top commonly indicates a grill; a fan combined with that mark can indicate fan-assisted grilling. A fan inside a circle commonly represents fan cooking. Compare the entire symbol with the function chart for your model, because the controls vary.",
+    "scope": "Symbol descriptions are examples, not a chart for every AEG oven. Competence covers multiple generations, and each cavity of a double oven may have different functions.",
+    "tags": [
+      "oven symbols",
+      "grill symbol",
+      "fan symbol",
+      "Competence",
+      "top and bottom heat",
+      "timer symbols",
+      "PYR",
+      "cleaning"
+    ],
+    "related": [
+      "beko-oven-symbols",
+      "electrolux-oven-clock",
+      "zanussi-oven-clock"
+    ],
+    "takeaway": "Identify the whole symbol and the control it belongs to. A fan does not always mean ordinary fan baking, and a timer or cleaning indicator is not a cooking-function setting.",
+    "sources": [
+      {
+        "title": "AEG UK: symbols and functions on your oven or cooker",
+        "url": "https://support.aeg.co.uk/support-articles/article/symbols-and-functions-on-your-aeg-oven-or-cooker?locale=en-GB",
+        "note": "example functions, illustrations and model differences."
+      },
+      {
+        "title": "AEG Netherlands: oven functions and symbols",
+        "url": "https://www.aeg.nl/taste/discover/steam-oven/ovenfuncties-aeg/",
+        "note": "example grill symbol with triangles."
+      },
+      {
+        "title": "AEG UK: using the oven grill",
+        "url": "https://support.aeg.co.uk/support-articles/article/using-the-oven-grill-function",
+        "note": "grill options and example control types."
+      },
+      {
+        "title": "AEG UK: setting an oven timer",
+        "url": "https://support.aeg.co.uk/support-articles/article/how-to-set-an-oven-timer-aeg",
+        "note": "timer and cleaning distinctions."
+      },
+      {
+        "title": "PYR display guidance",
+        "url": "https://support.aeg.co.uk/support-articles/article/oven-display-shows-pyr",
+        "note": "timer and cleaning distinctions."
+      }
+    ],
+    "publishAt": "2026-11-06T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "zanussi-dishwasher-symbols",
+    "title": "Zanussi dishwasher symbols: indicators and programmes explained",
+    "shortTitle": "Refill reminder, wash phase or warning?",
+    "description": "Understand Zanussi dishwasher indicators, programme labels and Machine Care, and tell a refill reminder from a flashing fault signal.",
+    "category": "dishwashers",
+    "brand": "Zanussi",
+    "type": "Symbols",
+    "diagram": "dishwasher",
+    "answer": "First identify the indicator, not just its colour. A salt or rinse-aid light is a refill reminder; a cycle indicator describes programme progress. Machine Care asks for appliance cleaning. Repeated beeps, an error code or a stopped cycle need a separate fault check for your exact model.",
+    "scope": "Uses Zanussi's illustrated indicator guide and support examples. Symbols, available programmes and button combinations differ between models; no universal reset is provided.",
+    "tags": [
+      "dishwasher symbols",
+      "symbols meaning",
+      "salt indicator",
+      "rinse aid",
+      "Machine Care",
+      "flashing light",
+      "ECO",
+      "AUTO",
+      "delay start"
+    ],
+    "related": [
+      "fisher-paykel-dishwasher-not-draining",
+      "fisher-paykel-dishdrawer-f1-error",
+      "zanussi-oven-clock"
+    ],
+    "takeaway": "Match the indicator to the model, then decide whether it calls for a refill, routine maintenance or a fault check. Record an error or repeating flash pattern before cancelling anything.",
+    "sources": [
+      {
+        "title": "Zanussi — symbols and programmes",
+        "url": "https://support.zanussi.co.uk/support-articles/article/symbols-and-programmes-on-your-zanussi-dishwasher",
+        "note": "Illustrated indicator and programme examples; available functions differ by model."
+      },
+      {
+        "title": "Zanussi — Machine Care indicator",
+        "url": "https://support.zanussi.co.uk/support-articles/article/the-auto-cleaning-indicator-machine-care-lights-up-on-the-dishwasher",
+        "note": "Maintenance-reminder meaning, cleaning preparation and different controls across models."
+      },
+      {
+        "title": "Zanussi — why use dishwasher salt",
+        "url": "https://support.zanussi.co.uk/support-articles/article/why-should-i-use-salt-in-dishwasher?locale=en-GB",
+        "note": "Salt-container filling and removal of spilled salt; match location and softener settings to the model."
+      },
+      {
+        "title": "Zanussi — programme not starting and cycle light flashing",
+        "url": "https://support.zanussi.co.uk/support-articles/article/program-not-starting-and-cycle-indicator-light-flashing-on-dishwasher",
+        "note": "Door closure, delay start and user checks; controls vary by model."
+      },
+      {
+        "title": "Zanussi — error codes explained",
+        "url": "https://support.zanussi.co.uk/support-articles/article/zanussi-dishwasher-displays-an-error-code-how-to-fix-it",
+        "note": "Distinguishes water-supply, drainage and leak warnings from normal indicators."
+      },
+      {
+        "title": "Zanussi — i20 and two-beep drainage warning",
+        "url": "https://support.zanussi.co.uk/support-articles/article/dishwasher-displays-error-code-i20-c2-f2-or-al6-or-beeps-twice-not-draining",
+        "note": "Drainage checks and service escalation for the documented fault family."
+      }
+    ],
+    "publishAt": "2026-11-07T07:00:00.000Z",
+    "checkedDate": "2026-11-01"
   }
 ]

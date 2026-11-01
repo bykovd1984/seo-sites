@@ -10,8 +10,8 @@ import { openRepository } from '../db/repository.ts';
 import { parseMarkdown, safeHref } from '../lib/content.ts';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const rows=loadContent(root);
-test('ten complete answer-focused articles have valid cross-links and model scopes',()=>{
- assert.equal(rows.length,10);
+test('sixteen complete answer-focused articles have valid cross-links and model scopes',()=>{
+ assert.equal(rows.length,16);
  const slugs=new Set(rows.map(r=>r.slug));
  const titles=new Set();
  for(const row of rows){
@@ -31,7 +31,7 @@ test('SQLite snapshot supports multiword search, exact slug lookup and literal w
   const db=new DatabaseSync(filename);db.exec(fs.readFileSync(path.join(root,'db/schema.sql'),'utf8'));
   const insert=db.prepare('INSERT INTO articles VALUES (?, ?, ?, ?, ?)');
   for(const row of rows)insert.run(row.slug,JSON.stringify(row.metadata),row.body,row.searchText,row.order);db.close();
-  const repo=openRepository(filename);
+  const repo=openRepository(filename,()=>new Date('2026-11-01T12:00:00.000Z'));
   try{
    assert.equal(repo.count(),10);
    assert.equal(repo.find('sul-on-battery-charger')?.brand,'Schumacher');

@@ -3,7 +3,7 @@ export type Block =
   | { type: "paragraph"; text: string }
   | { type: "image"; alt: string; src: string }
   | { type: "table"; rows: string[][] }
-  | { type: "list"; items: string[] };
+  | { type: "list"; items: string[]; ordered?: boolean };
 export function normalizeText(value: string): string {
   return value.toLowerCase().replace(/ł/g, "l").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -38,7 +38,21 @@ export function parseMarkdown(markdown: string): Block[] {
       blocks.push({ type: "table", rows });
     } else if (text.split("\n").every(line => /^[-*] /.test(line))) {
       blocks.push({ type: "list", items: text.split("\n").map(line => line.slice(2)) });
+    } else if (text.split("\n").every(line => /^\d+\. /.test(line))) {
+      blocks.push({ type: "list", ordered: true, items: text.split("\n").map(line => line.replace(/^\d+\. /, "")) });
     } else blocks.push({ type: "paragraph", text });
   }
   return blocks;
+}
+
+// Future guide links stay readable as text until their target is published.
+export function publishedHref(value: string, availableSlugs: ReadonlySet<string>): string | null {
+  const href = safeHref(value);
+  if (!href) return null;
+  const url = new URL(href, 'https://deviceclue.site');
+  if (url.origin === 'https://deviceclue.site' && url.pathname.startsWith('/guides/')) {
+    const slug = url.pathname.slice('/guides/'.length).replace(/\/$/, '');
+    if (!availableSlugs.has(slug)) return null;
+  }
+  return href;
 }

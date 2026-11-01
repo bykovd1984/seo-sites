@@ -29,10 +29,10 @@ npm run smoke
 ## Structure
 
 - `content/catalog.json`: article identity, quick answers, scope, categories, related guides and source citations.
-- `content/*.md`: ten full English editorial drafts.
+- `content/*.md`: sixteen full English articles; six use the daily release schedule in `PUBLICATION.md`.
 - `scripts/seed.mjs`: validates content and creates an atomic SQLite snapshot. Re-run after editing content.
 - `db/repository.ts`: read-only SQLite queries. No account or user database.
-- `app/`: home, five topic pages, ten article pages, search, about, privacy, 404, robots, sitemap and health.
+- `app/`: home, six topic pages, date-filtered article pages, search, about, privacy, 404, robots, sitemap and health.
 - `components/diagram.tsx`: original conceptual SVG diagrams. They do not document actual hardware geometry or certify a model.
 - `app/globals.css`: responsive graphite / warm-white / amber visual system; no external fonts.
 
@@ -44,7 +44,7 @@ These are **new answer-focused drafts**, not the withdrawn Miller manual-oriente
 
 Sources are linked per article; no hands-on testing or independent engineer review is claimed. See `EDITORIAL.md` for the publication checklist and known model limitations.
 
-Public article, topic, home and information pages allow indexing. Search is `noindex, follow`; API endpoints are `noindex, nofollow`. Robots excludes search and API, and the sitemap contains 18 public URLs. Search-engine account registration and sitemap submission are separate tasks and are not implied by publishing the site.
+Public article, topic, home and information pages allow indexing. Search is `noindex, follow`; API endpoints are `noindex, nofollow`. Robots excludes search and API, and the sitemap includes only articles whose publication time has arrived. Search-engine account registration and sitemap submission are separate tasks and are not implied by publishing the site.
 
 Google Analytics is optional and loads only after consent. No advertising tags, third-party fonts or external embeds are present. A public operator/corrections contact is still to be supplied; registrar contact details are private and must not be reused. Independent technical review remains outstanding.
 
@@ -85,3 +85,11 @@ Logs are sent in ECS-shaped batches to data stream `logs-deviceclue-prod`, shown
 `ops/provision-deviceclue-logging.py` runs as root on the existing VPS, using the existing administrative connection only to provision this site's resources. It creates a `create_doc`-only key for this exact stream, verifies it cannot read/delete/manage or access the main site's logs, stores it only in `/opt/seo-sites/deviceclue/secrets/elasticsearch-api-key` (root:10001, 0640), and creates the data view. No key or administrative credential is stored in Git, the image, build output or browser. The private internal Docker network `deviceclue-logs` connects only Elasticsearch and DeviceClue. Run provisioning again after recreating the Elasticsearch container to restore this network attachment. Deploy preflight checks both the attachment and secret readability before replacing a release.
 
 Delivery uses batches of up to 50, a 1.5-second timeout and bounded retries, with stable IDs preventing duplicates after ambiguous delivery. The in-memory queue holds at most 1,000 entries and never delays HTTP responses. Logging is best effort: a long Elasticsearch outage or an abrupt process stop can lose queued events, including the final crash event. No disk queue or browser error collector is installed. Local Docker logs rotate at 10 MB × 3. Unit/integration tests exercise privacy, partial retries and a real preloaded HTTP server. Local previews have remote logging disabled unless explicitly configured.
+
+## Daily publication
+
+`content/catalog.json` uses optional `publishAt` timestamps in canonical UTC (`YYYY-MM-DDTHH:mm:ss.sssZ`). Entries without it remain immediately public. The six-article schedule is documented in `PUBLICATION.md`: 2–7 November 2026 at 09:00 Europe/Kyiv (07:00 UTC).
+
+The read-only repository evaluates the current clock for every lookup, count and search. Home, topics, guides and sitemap are dynamic, so a release needs no rebuild, cron or manual deployment. Before release the guide returns 404 and is excluded from listings, search, structured data and sitemap. Contextual links are plain text until their target is available. Browser tabs already open need a reload; search-engine discovery is not instantaneous.
+
+Run `npm test`, reseed, build, typecheck, then run the HTTP smoke against the deployment. Tests exercise every release boundary on the same repository connection. The smoke derives published and pending counts from the actual schedule.

@@ -19,7 +19,7 @@ These are descriptions, not a photographic identification chart. The artwork on 
 
 The important question is not simply whether a fan is pictured. Ask what else is drawn with it. A grill line combined with a fan points to a different cooking function from a plain fan-related setting.
 
-Do not choose a mode solely because another oven had a similar symbol. Put a photo of your own dial beside the correct model’s function table and compare the complete shapes. If the printed marking is worn away, the knob position by itself is not a reliable identification.
+If the appliance is an AEG, use the separate [AEG oven symbols guide](/guides/aeg-oven-symbols) for its grill and fan examples. Do not choose a mode solely because another oven had a similar symbol. Put a photo of your own dial beside the correct model’s function table and compare the complete shapes. If the printed marking is worn away, the knob position by itself is not a reliable identification.
 
 ## What about an older oven?
 

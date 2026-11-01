@@ -31,7 +31,7 @@ Do not assume that a table for one board applies to a newer unit with separate u
 
 ## What not to reset or adjust speculatively
 
-Erasing learned controls can remove remote access without fixing a closing fault. Changing force or travel can introduce a different problem. A reset is a procedure for a defined situation, not a diagnosis.
+Erasing learned controls can remove remote access without fixing a closing fault. Changing force or travel can introduce a different problem. A reset is a procedure for a defined situation, not a diagnosis. If your goal is to remove a lost remote or pair a control, our [Craftsman reset guide](/guides/craftsman-garage-door-opener-reset) separates those actions and explains what the documented memory erase removes.
 
 Leave spring tension, cables, door balance repairs, live electrical work and internal board work to an appropriate professional. If the door is crooked, a cable is displaced, or there is visible mechanical damage, keep people clear and seek service rather than continuing movement tests.
 

@@ -21,6 +21,8 @@ When changing a time that is already set, select the time-of-day function first 
 
 Do not apply the +/− sequence to a panel that does not have those controls. Zanussi documents a different interface in which the temperature knob changes hours and minutes, with confirmation between them. The page also shows the confirmation symbol. Use the image in that source and your model documentation rather than guessing a nearby button.
 
+For an Electrolux-branded appliance, see our [Electrolux oven clock guide](/guides/electrolux-oven-clock) and match its examples to that panel.
+
 The useful distinction is the control type: the same task can have a different entry point, confirmation step and saving behavior.
 
 ## Flashing after a power cut

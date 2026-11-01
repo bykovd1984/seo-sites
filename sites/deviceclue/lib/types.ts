@@ -4,6 +4,6 @@ export type Article = {
   category: string; brand: string; type: string; diagram: string;
   answer: string; scope: string; tags: string[]; related: string[];
   sources: Source[]; checkedDate: string; readingMinutes: number;
-  bodyMarkdown: string; takeaway: string;
+  bodyMarkdown: string; takeaway: string; publishAt?: string;
 };
-export type ArticleSummary = Omit<Article, 'bodyMarkdown' | 'sources'>;
+export type ArticleSummary = Omit<Article, 'bodyMarkdown' | 'sources' | 'related'>;
