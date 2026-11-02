@@ -68,3 +68,5 @@ Not necessarily. A refusal to close can involve safety sensors or other conditio
 ### Is changing the keypad PIN the same as erasing opener memory?
 
 Not necessarily. A keypad can have its own PIN-change procedure. An opener memory erase may remove multiple paired controls. Use the instructions for your exact keypad and opener, and check the effect before proceeding.
+
+To add an accessory without a full reset, see the model-specific guides to [programming a Craftsman remote](/guides/craftsman-garage-door-remote-programming) and [programming a Craftsman keypad](/guides/craftsman-garage-door-keypad-programming).

@@ -36,3 +36,5 @@ Identify the battery chemistry before choosing a charger or interpreting a recov
 Do not add household chemicals, open a sealed case or force an improvised high-voltage treatment. These are not justified by the meaning of the word “sulfation”. A physically damaged, leaking, frozen or abnormally hot battery should not be treated as a routine charging project.
 
 The useful decision is whether the battery can meet its intended load safely and reliably. That requires more than making a warning disappear or seeing a charger reach a final stage.
+
+For practical compatibility and timing questions, see [how to desulfate a battery](/guides/how-to-desulfate-a-battery).

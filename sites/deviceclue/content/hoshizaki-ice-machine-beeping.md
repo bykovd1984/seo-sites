@@ -37,3 +37,5 @@ A reset can remove the alarm state while leaving the underlying condition unchan
 Stop user-level troubleshooting when it would require entering a service compartment, testing live components, changing factory settings, or handling refrigeration components. A protective alarm deserves a model-specific assessment.
 
 For a business using the ice machine, keep the operational issue and the handling of existing ice separate. An alarm explanation does not certify the quality or suitability of ice already in the bin. Follow your establishment’s procedures and the machine’s sanitation guidance.
+
+If production has stopped, our guide to a [Hoshizaki ice machine not making ice](/guides/hoshizaki-ice-machine-not-making-ice) covers safe observations before service.

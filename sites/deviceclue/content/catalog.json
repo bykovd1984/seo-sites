@@ -726,5 +726,241 @@
     ],
     "publishAt": "2026-11-07T07:00:00.000Z",
     "checkedDate": "2026-11-01"
+  },
+  {
+    "slug": "honeywell-thermostat-recovery-mode",
+    "title": "Honeywell thermostat recovery mode: meaning and settings",
+    "shortTitle": "Why does the thermostat say recovery?",
+    "description": "Understand early heating or cooling, following schedule, and model-specific adaptive recovery settings.",
+    "category": "home-systems",
+    "brand": "Honeywell",
+    "type": "Settings",
+    "diagram": "thermostat",
+    "answer": "On many programmable Honeywell Home thermostats, recovery means heating or cooling starts early so the home can reach the next scheduled temperature on time. It is normally a scheduling feature, not an error.",
+    "scope": "Recovery names, controls and availability vary by thermostat. The Lyric app setting is an example for the documented product, not a universal menu.",
+    "tags": [
+      "recovery mode",
+      "in recovery",
+      "following schedule",
+      "adaptive recovery",
+      "early start"
+    ],
+    "related": [
+      "honeywell-thermostat-battery-replacement",
+      "fridge-coldest-setting"
+    ],
+    "takeaway": "Compare the schedule and target first. Recovery is generally an early-start feature; an uncomfortable home or separate fault needs its own diagnosis.",
+    "sources": [
+      {
+        "title": "Honeywell Home: thermostat starting before scheduled time",
+        "url": "https://www.honeywellhome.com/blogs/support/wireless-5-1-1-day-programmable-thermostat-4",
+        "note": "Explains recovery and early-start behaviour."
+      },
+      {
+        "title": "Honeywell Home: Lyric adaptive recovery",
+        "url": "https://www.honeywellhome.com/blogs/support/lyric-thermostat-comfort-and-savings-5",
+        "note": "Documented Lyric app example for disabling the feature."
+      }
+    ],
+    "publishAt": "2026-11-08T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "craftsman-garage-door-remote-programming",
+    "title": "How to program a Craftsman garage door remote",
+    "shortTitle": "Pair the remote without erasing everything.",
+    "description": "Pair a compatible Craftsman remote using a model-specific example and troubleshoot a remote that will not program.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Settings",
+    "diagram": "garage",
+    "answer": "Identify the full opener and remote models and confirm compatibility. On documented Craftsman 139.54915, briefly press LEARN, then hold the remote button within 30 seconds until the opener confirms.",
+    "scope": "The timed LEARN example is for Craftsman 139.54915 and a compatible remote. Other openers and accessories can use different programming sequences.",
+    "tags": [
+      "program remote",
+      "garage door remote",
+      "learn button",
+      "remote control",
+      "1/2 hp"
+    ],
+    "related": [
+      "craftsman-garage-door-opener-reset",
+      "craftsman-garage-door-keypad-programming",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Confirm compatibility and distinguish a brief programming press from a memory erase. Keep the door path clear during every test.",
+    "sources": [
+      {
+        "title": "Craftsman: 139.54915 owner instructions",
+        "url": "https://www.toolservicenet.com/i/CRAFTSMAN/GLOBALBOM/QUCA/139.54915/0/Repair_Notice_or_Repair_Instruction/EN/1405210L.pdf",
+        "note": "Model-specific remote, wall-control keypad and memory-erase procedures."
+      },
+      {
+        "title": "Craftsman: wall button works but remote does not",
+        "url": "https://support.craftsman.com/hc/en-us/articles/360014046758-Why-is-my-wall-button-working-but-my-remote-is-not-on-my-garage-door-opener",
+        "note": "Example of the wall-control lock feature and remote checks."
+      }
+    ],
+    "publishAt": "2026-11-09T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "craftsman-garage-door-keypad-programming",
+    "title": "How to program a Craftsman garage door keypad",
+    "shortTitle": "Set a keypad PIN without a full reset.",
+    "description": "Set or change a compatible keypad PIN with a documented Craftsman example and distinguish pairing from erasing memory.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Settings",
+    "diagram": "garage",
+    "answer": "Identify the opener, wall control and keypad models before programming. The documented Craftsman 139.54915 offers a wall-control sequence for a compatible keyless entry and four-digit PIN.",
+    "scope": "The example applies to model 139.54915 and its documented motion-detecting wall control. Keypad setup and compatibility can differ by model.",
+    "tags": [
+      "program keypad",
+      "garage door keypad",
+      "keyless entry",
+      "PIN",
+      "reprogram keypad"
+    ],
+    "related": [
+      "craftsman-garage-door-opener-reset",
+      "craftsman-garage-door-remote-programming",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Programming a PIN and erasing the opener’s memory are different actions. Verify compatibility and test with the door path clear.",
+    "sources": [
+      {
+        "title": "Craftsman: 139.54915 owner instructions",
+        "url": "https://www.toolservicenet.com/i/CRAFTSMAN/GLOBALBOM/QUCA/139.54915/0/Repair_Notice_or_Repair_Instruction/EN/1405210L.pdf",
+        "note": "Model-specific remote, wall-control keypad and memory-erase procedures."
+      },
+      {
+        "title": "Chamberlain: 940EV keypad programming",
+        "url": "https://support.chamberlaingroup.com/s/programming/940ev",
+        "note": "Example showing that another keypad may require its own preliminary setup."
+      }
+    ],
+    "publishAt": "2026-11-10T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "kenmore-oven-self-clean",
+    "title": "Kenmore oven self-clean: preparation, cycle and locked door",
+    "shortTitle": "Prepare for a self-clean cycle.",
+    "description": "Prepare a Kenmore oven for high-temperature self-cleaning, understand rack and door-lock differences, and distinguish steam clean.",
+    "category": "ovens",
+    "brand": "Kenmore",
+    "type": "Settings",
+    "diagram": "symbols",
+    "answer": "Confirm that your exact Kenmore oven cavity has a high-temperature self-clean cycle. Prepare it as directed for that model, run its cycle, and allow the oven to cool and unlock before wiping away ash.",
+    "scope": "Controls, rack instructions and cycle lengths differ by oven and cavity. Steam-clean and manual-clean procedures are not interchangeable with high-temperature self-clean.",
+    "tags": [
+      "self clean",
+      "cleaning oven",
+      "oven door locked",
+      "oven racks",
+      "steam clean"
+    ],
+    "related": [
+      "aeg-oven-symbols",
+      "beko-oven-symbols"
+    ],
+    "takeaway": "Use the correct cavity and model instructions, remove unsuitable items and never force the door while it is locked.",
+    "sources": [
+      {
+        "title": "Kenmore: oven cleaning tips",
+        "url": "https://inspiration.kenmore.com/hot-oven-cleaning-tips-and-tricks/",
+        "note": "General self-clean preparation and wiping ash after cooling."
+      },
+      {
+        "title": "Kenmore: Elite 48343 wall oven",
+        "url": "https://www.kenmore.com/products/kenmore-elite-48343-27-electric-single-wall-oven-stainless-steel-48343/",
+        "note": "Example of model-specific Flex Clean duration and racks."
+      },
+      {
+        "title": "Kenmore: 790.40413J gas wall oven",
+        "url": "https://www.kenmore.com/products/kenmore-790-40413j-24-gas-wall-oven-stainless-steel",
+        "note": "Example of high-temperature self-clean and automatic door lock."
+      }
+    ],
+    "publishAt": "2026-11-11T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "hoshizaki-ice-machine-not-making-ice",
+    "title": "Hoshizaki ice machine not making ice: safe first checks",
+    "shortTitle": "No ice? Start with the symptom.",
+    "description": "Separate no power, slow production, alarms and dispensing issues before requesting Hoshizaki ice-machine service.",
+    "category": "cooling",
+    "brand": "Hoshizaki",
+    "type": "Troubleshooting",
+    "diagram": "beeps",
+    "answer": "Check whether the bin is full, the user-accessible power and water supplies are available, and an alarm is sounding. Record the exact model and symptom; no ice alone does not identify a failed part.",
+    "scope": "Checks are limited to user-accessible observations. Alarm meanings, drain-pump behaviour and service procedures depend on the model and installation.",
+    "tags": [
+      "not making ice",
+      "no ice",
+      "ice machine",
+      "slow production",
+      "alarm",
+      "drain pump"
+    ],
+    "related": [
+      "hoshizaki-ice-machine-beeping",
+      "fridge-coldest-setting"
+    ],
+    "takeaway": "Record the model and any alarm pattern before a reset. Leave electrical, internal water and refrigeration diagnosis to a qualified technician.",
+    "sources": [
+      {
+        "title": "Hoshizaki: HS-5061 drain-pump bulletin",
+        "url": "https://secure.hoshizakiamerica.com/ServiceBulletins/docs/SB20-0003.pdf",
+        "note": "Specific drain-pump examples; applicability depends on model and installation."
+      },
+      {
+        "title": "Hoshizaki: training and KM cuber FAQs",
+        "url": "https://www.hoshizakiamerica.com/support/training/",
+        "note": "Manufacturer training and KM alarm information."
+      }
+    ],
+    "publishAt": "2026-11-12T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "how-to-desulfate-a-battery",
+    "title": "How to desulfate a battery: compatibility, time and limits",
+    "shortTitle": "Can a sulfated battery be recovered?",
+    "description": "Check lead-acid battery and charger compatibility, understand desulfation time and know when recovery is not appropriate.",
+    "category": "batteries",
+    "brand": "Battery care",
+    "type": "Troubleshooting",
+    "diagram": "battery",
+    "answer": "Some compatible lead-acid battery chargers include a desulfation stage. Check the battery and charger instructions, use only an approved programme, and assess performance afterward; recovery is not guaranteed.",
+    "scope": "This guide concerns lead-acid batteries only. The cited time limit is for one stage of the CTEK PRO25S, not a universal duration or a guarantee of recovery.",
+    "tags": [
+      "desulfate a battery",
+      "desulfating a battery",
+      "desulfation time",
+      "lead acid",
+      "recovery"
+    ],
+    "related": [
+      "sulfated-battery-meaning",
+      "sul-on-battery-charger"
+    ],
+    "takeaway": "A charger message or completed stage does not prove capacity. Match the battery and programme and stop if the battery is damaged, frozen, leaking or abnormally hot.",
+    "sources": [
+      {
+        "title": "CTEK: PRO25S North American manual",
+        "url": "https://www.ctek.com/storage/4265ED155A7D9876D0FF71C59ED2608BBD4C807A64EDA11F42F2B5A5C094B8FD/00000000000000000000000000016939/pdf/media/10e9a4bb672043418856c082df03894b/PRO25S_NA-manual-low-US-EN.pdf",
+        "note": "Lead-acid charging stages and model-specific maximum stage time."
+      },
+      {
+        "title": "CTEK: battery charging glossary",
+        "url": "https://ctek.com/pages/ctek-battery-charging-glossary",
+        "note": "Terminology for sulfation and desulfation."
+      }
+    ],
+    "publishAt": "2026-11-13T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
   }
 ]
