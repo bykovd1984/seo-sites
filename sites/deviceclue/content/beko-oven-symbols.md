@@ -37,3 +37,5 @@ If the symbols are unreadable, avoid testing unknown heating modes to work out w
 A flashing time display calls for a clock-setting procedure rather than a different cooking mode. If the appliance you are checking is a Smeg or Zanussi, use the separate guide to [setting a Smeg oven clock](/guides/smeg-oven-clock) or [setting a Zanussi oven clock](/guides/zanussi-oven-clock). Those brand-specific button sequences are not instructions for a Beko programmer.
 
 If a correctly identified function does not behave as the model documentation describes, treat that as a separate operating question. A symbol guide explains the intended setting; it cannot confirm that the appliance’s elements, fan or thermostat are working.
+
+For a different appliance, see the separate guides to [Bertazzoni oven functions](/guides/bertazzoni-oven-symbols) and [Zanussi oven symbols](/guides/zanussi-oven-symbols). Their function charts must be matched to the actual brand and model.

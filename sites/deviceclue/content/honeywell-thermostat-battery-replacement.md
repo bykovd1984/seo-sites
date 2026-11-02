@@ -39,3 +39,5 @@ Some installations use external power, with batteries serving a different role f
 A factory reset and a battery change are different tasks. Resetting can change user or installation settings, so it should not be the automatic response to a battery warning. If normal operation does not return, record the full model, warning text, power arrangement if known, and what happened after replacement for support.
 
 If the display says recovery rather than low battery, see [what Honeywell recovery mode means](/guides/honeywell-thermostat-recovery-mode).
+
+For a schedule problem, see our [Honeywell thermostat reset guide](/guides/honeywell-thermostat-reset) before choosing a factory reset.

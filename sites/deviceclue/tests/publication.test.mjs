@@ -14,8 +14,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rows = loadContent(root);
 const scheduled = rows.filter(row => row.metadata.publishAt).sort((a, b) => a.metadata.publishAt.localeCompare(b.metadata.publishAt));
 
-test('twelve consecutive releases are at 09:00 Kyiv, starting 2 November', () => {
-  assert.equal(scheduled.length, 12);
+test('eighteen consecutive releases are at 09:00 Kyiv, starting 2 November', () => {
+  assert.equal(scheduled.length, 18);
   const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   for (let i = 0; i < scheduled.length; i++) {
     const date = new Date(scheduled[i].metadata.publishAt);

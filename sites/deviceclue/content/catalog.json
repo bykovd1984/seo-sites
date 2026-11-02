@@ -962,5 +962,234 @@
     ],
     "publishAt": "2026-11-13T07:00:00.000Z",
     "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "la-crosse-clock-setting",
+    "title": "How to set a La Crosse Technology clock",
+    "shortTitle": "Set the time, zone and date.",
+    "description": "Set a La Crosse clock, select the right time zone and understand atomic time reception.",
+    "category": "devices",
+    "brand": "La Crosse Technology",
+    "type": "Settings",
+    "diagram": "clock",
+    "answer": "On the WT-8005U-S and WT-8005U-B, hold SET, adjust values with UP or DOWN and confirm with SET. Choose the correct time zone; other models use different controls.",
+    "scope": "The button sequence is for WT-8005U-S and WT-8005U-B only. Radio reception and time-zone settings vary by model.",
+    "tags": [
+      "la crosse clock how to set time",
+      "atomic clock",
+      "time zone",
+      "daylight saving"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "electrolux-oven-clock"
+    ],
+    "takeaway": "Match the model, set the time zone and check daylight saving before assuming the clock is faulty.",
+    "sources": [
+      {
+        "title": "La Crosse: WT-8005U-S / WT-8005U-B setup",
+        "url": "https://lacrossetechnology.zendesk.com/hc/en-us/articles/4410769291931-WT-8005U-S-WT-8005U-B-Set-Up",
+        "note": "Model-specific controls, signal search and time-zone selection."
+      },
+      {
+        "title": "La Crosse: atomic time",
+        "url": "https://www.lacrossetechnology.com/pages/atomic-time",
+        "note": "WWVB reception and manual-setting overview."
+      }
+    ],
+    "publishAt": "2026-11-14T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "schlage-lock-battery-replacement",
+    "title": "How to change the battery in a Schlage lock",
+    "shortTitle": "Replace a Schlage lock battery.",
+    "description": "Replace a BE365 battery and learn why other Schlage models need different steps.",
+    "category": "home-systems",
+    "brand": "Schlage",
+    "type": "Maintenance",
+    "diagram": "battery",
+    "answer": "For a Schlage BE365, remove the inside cover, disconnect the old 9-volt battery and connect a new alkaline 9-volt battery. Other Schlage locks have different battery arrangements.",
+    "scope": "The steps and 9-volt battery are specific to BE365. Keep the door open while testing and follow the instructions for your lock model.",
+    "tags": [
+      "schlage lock battery",
+      "change battery",
+      "keypad lock",
+      "BE365"
+    ],
+    "related": [
+      "honeywell-thermostat-battery-replacement"
+    ],
+    "takeaway": "Match the model and battery type, then test the code while the door is open.",
+    "sources": [
+      {
+        "title": "Schlage: Keypad and Touch locks battery change",
+        "url": "https://schlage-res.zendesk.com/hc/en-us/articles/35147753364884-Schlage-Keypad-and-Touch-Locks-Change-the-Battery",
+        "note": "BE365 cover, battery and connector steps."
+      },
+      {
+        "title": "Schlage: BE365 keypad deadbolt",
+        "url": "https://www.schlage.com/en/home/products/BE365CAMFFF.html",
+        "note": "BE365 battery and product details."
+      }
+    ],
+    "publishAt": "2026-11-15T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "honeywell-thermostat-reset",
+    "title": "How to reset a Honeywell thermostat: schedule and factory settings",
+    "shortTitle": "Choose the right thermostat reset.",
+    "description": "Understand schedule and factory resets, with a T6 Pro Smart example and model-specific cautions.",
+    "category": "home-systems",
+    "brand": "Honeywell Home",
+    "type": "Settings",
+    "diagram": "thermostat",
+    "answer": "Choose the reset for the problem: schedule, Wi-Fi and factory resets have different effects. On a T6 Pro Smart, MENU → RESET → SCHEDULE restores the default schedule.",
+    "scope": "The menu example is specific to the T6 Pro Smart. Factory reset can affect equipment configuration and may require an installer.",
+    "tags": [
+      "honeywell thermostat reset",
+      "factory reset",
+      "pro series",
+      "reset schedule"
+    ],
+    "related": [
+      "honeywell-thermostat-recovery-mode",
+      "honeywell-thermostat-battery-replacement"
+    ],
+    "takeaway": "Identify the exact model and reset type before changing settings; consult an HVAC professional about installer configuration.",
+    "sources": [
+      {
+        "title": "Resideo: T6 Pro Smart user guide",
+        "url": "https://customer.resideo.com/resources/techlit/TechLitDocuments/33-00000s/33-00410EFS.pdf",
+        "note": "The documented schedule-reset sequence and default schedule."
+      },
+      {
+        "title": "Resideo: T6 Pro Smart installation guide",
+        "url": "https://customer.resideo.com/resources/Techlit/TechLitDocuments/33-00000s/33-00392EFS.pdf",
+        "note": "Advanced menu and factory reset location."
+      }
+    ],
+    "publishAt": "2026-11-16T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "sharp-printer-default-admin-password",
+    "title": "Sharp printer default admin password: check your model",
+    "shortTitle": "Find the right Sharp admin login.",
+    "description": "Find the documented Sharp MX-C312 factory administrator password and understand model and login differences.",
+    "category": "devices",
+    "brand": "Sharp",
+    "type": "Settings",
+    "diagram": "symbols",
+    "answer": "Sharp lists admin as the factory administrator password for the MX-C312. Other Sharp models can differ, and a changed password will not revert just because the default is known.",
+    "scope": "The password example applies to the MX-C312 only. Use it solely on equipment you are authorised to administer.",
+    "tags": [
+      "sharp default admin password",
+      "sharp default administrator password",
+      "sharp printer default password",
+      "MX-C312"
+    ],
+    "related": [
+      "la-crosse-clock-setting"
+    ],
+    "takeaway": "Identify the model and login interface; contact the authorised administrator when a changed password is unknown.",
+    "sources": [
+      {
+        "title": "Sharp: MX-C312 start guide",
+        "url": "https://business.sharpusa.com/portals/0/downloads/Manuals/MX-C312_StartGuide_US.pdf",
+        "note": "Factory administrator password for the named model."
+      },
+      {
+        "title": "Sharp: MX-3070N / MX-3570N / MX-4070N FAQ",
+        "url": "https://business.sharpusa.com/portals/0/downloads/Manuals/MX_3070_3570_4070N_FAQ.pdf",
+        "note": "Dealer or service contact for a forgotten changed administrator password."
+      },
+      {
+        "title": "Sharp: MX-M260 / MX-M310",
+        "url": "https://business.sharpusa.com/portals/0/downloads/Manuals/cop_man_MXM260_310.pdf",
+        "note": "Model-specific panel and web credentials may differ."
+      }
+    ],
+    "publishAt": "2026-11-17T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "bertazzoni-oven-symbols",
+    "title": "Bertazzoni oven symbols: bake, fan, broil and defrost",
+    "shortTitle": "Understand Bertazzoni oven functions.",
+    "description": "Compare documented XT and XE oven functions and identify when you need a different model chart.",
+    "category": "ovens",
+    "brand": "Bertazzoni",
+    "type": "Symbols",
+    "diagram": "symbols",
+    "answer": "Bertazzoni XT and XE ovens offer functions including bake, convection and broil. The exact symbol and available functions depend on the model; compare the control with its manufacturer chart.",
+    "scope": "Function examples are limited to the XT/XE reference. Similar icons on other models may mean different things.",
+    "tags": [
+      "bertazzoni oven symbols",
+      "convection",
+      "broil",
+      "defrost",
+      "XT",
+      "XE"
+    ],
+    "related": [
+      "beko-oven-symbols",
+      "zanussi-oven-symbols"
+    ],
+    "takeaway": "Match the complete symbol to the exact model before selecting a cooking or cleaning mode.",
+    "sources": [
+      {
+        "title": "Bertazzoni: XT and XE ovens quick reference",
+        "url": "https://us.bertazzoni.com/media/userfiles/files/Quick%20reference%20guide_XT%20and%20XE%20ovens.pdf",
+        "note": "Functions and illustrations for the stated oven families."
+      },
+      {
+        "title": "Bertazzoni US: frequently asked questions",
+        "url": "https://us.bertazzoni.com/more/faq/",
+        "note": "Model-specific function charts and fan operation after use."
+      }
+    ],
+    "publishAt": "2026-11-18T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "zanussi-oven-symbols",
+    "title": "Zanussi oven symbols: fan, grill and cleaning settings",
+    "shortTitle": "Identify Zanussi oven functions.",
+    "description": "Understand Zanussi fan, conventional heat, grill and cleaning functions and check your model.",
+    "category": "ovens",
+    "brand": "Zanussi",
+    "type": "Symbols",
+    "diagram": "symbols",
+    "answer": "Zanussi explains conventional heat, fan cooking, grill, fan grilling and defrost for supported ovens. Check the exact symbol and model because the available functions vary.",
+    "scope": "Examples follow Zanussi UK’s single and compact oven guide. Do not assume every oven has the same cleaning or grill setting.",
+    "tags": [
+      "zanussi oven symbols",
+      "grill symbol zanussi",
+      "fan",
+      "self clean",
+      "oven functions"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "aeg-oven-symbols",
+      "bertazzoni-oven-symbols"
+    ],
+    "takeaway": "Compare the whole icon with the manufacturer chart and verify cleaning instructions for the exact model.",
+    "sources": [
+      {
+        "title": "Zanussi UK: oven and cooker functions and symbols",
+        "url": "https://support.zanussi.co.uk/support-articles/article/zanussi-oven-and-cooker-functionssymbols",
+        "note": "Manufacturer descriptions and images for multiple oven functions."
+      },
+      {
+        "title": "Zanussi Ireland: setting an oven clock",
+        "url": "https://support.zanussi.ie/support-articles/article/how-to-set-an-oven-clock",
+        "note": "Finding the model and product number code."
+      }
+    ],
+    "publishAt": "2026-11-19T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
   }
 ]
