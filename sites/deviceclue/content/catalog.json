@@ -1191,5 +1191,242 @@
     ],
     "publishAt": "2026-11-19T07:00:00.000Z",
     "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "stihl-choke-symbols",
+    "title": "STIHL choke symbols: cold start, warm start and run",
+    "shortTitle": "Read STIHL choke positions.",
+    "description": "Understand choke on and off, cold start and warm start on documented STIHL chainsaws.",
+    "category": "small-engines",
+    "brand": "STIHL",
+    "type": "Symbols",
+    "diagram": "choke",
+    "answer": "On the documented STIHL 017 and 018 chainsaws, cold start closes the choke shutter and warm start opens it. Engine stop is a separate position.",
+    "scope": "The described Master Control positions apply to the documented 017 and 018. Other saws and M-Tronic starting systems can differ.",
+    "tags": [
+      "choke symbol on stihl",
+      "stihl choke position",
+      "stihl choke on or off",
+      "cold start",
+      "warm start"
+    ],
+    "related": [
+      "choke-symbols-on-off"
+    ],
+    "takeaway": "Identify the model and distinguish the open choke position from the engine stop position.",
+    "sources": [
+      {
+        "title": "STIHL 017 / 018 starting instructions",
+        "url": "https://cdnassets.stihlusa.com/1625858197-017018manual.pdf",
+        "note": "Model-specific control positions and starting sequence."
+      },
+      {
+        "title": "STIHL: how to start a chainsaw",
+        "url": "https://www.stihlusa.com/en/guides-projects/how-to-use-start/how-to-start-chainsaw",
+        "note": "Safety precautions and distinction between conventional and M-Tronic starting."
+      }
+    ],
+    "publishAt": "2026-11-20T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "fisher-paykel-oven-clock",
+    "title": "Fisher & Paykel oven clock: set the time after a power cut",
+    "shortTitle": "Set a Fisher & Paykel oven clock.",
+    "description": "Find the correct clock-setting sequence for two Fisher & Paykel oven panels and learn what a flashing display means.",
+    "category": "ovens",
+    "brand": "Fisher & Paykel",
+    "type": "Settings",
+    "diagram": "clock",
+    "answer": "For the OB60SC6CEX2, adjust a flashing time with − and +, then touch the cooking-time and stop-time controls together for two seconds. Other models use different controls.",
+    "scope": "The two described button sequences apply only to the specified OB60SC6CEX2 and OB90S9LEX1 ovens and matching control panels.",
+    "tags": [
+      "set clock fisher paykel oven",
+      "fisher and paykel oven clock",
+      "set time",
+      "flashing",
+      "power cut"
+    ],
+    "related": [
+      "electrolux-oven-clock",
+      "zanussi-oven-clock"
+    ],
+    "takeaway": "Match the model and panel before setting the time; some ovens need a set clock before they operate.",
+    "sources": [
+      {
+        "title": "Fisher & Paykel OB60SC6CEX2: setting the clock",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwaf93cb51/GeneralFiles-FisherPaykelAU/FP-UserGuide-OB60SC6CEX2-Oven-AU-NZ-591802A.pdf",
+        "note": "Model-specific initial and change-time procedures."
+      },
+      {
+        "title": "Fisher & Paykel OB90S9LEX1: first use",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwb92f552d/GeneralFiles-FisherPaykelAU/FP-UserGuide-OB90S9LEX1-Oven-0-AU-591929A.pdf",
+        "note": "Scroll and select controls for this oven."
+      },
+      {
+        "title": "Fisher & Paykel: find the clock procedure for your display",
+        "url": "https://support.fisherpaykel.com/au/s/article/How-To-Set-the-Clock-on-Your-Oven-or-Range",
+        "note": "Manufacturer guidance to compare the particular control panel."
+      }
+    ],
+    "publishAt": "2026-11-21T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "defy-fridge-temperature-settings",
+    "title": "Defy fridge temperature settings: which number is coldest?",
+    "shortTitle": "Set a Defy fridge temperature.",
+    "description": "Understand a documented Defy 1–5 thermostat and why digital temperatures and other scales differ.",
+    "category": "cooling",
+    "brand": "Defy",
+    "type": "Settings",
+    "diagram": "fridge",
+    "answer": "In Defy's cited C380, C425 and C455 instructions, the 1–5 thermostat has 5 as its coldest setting. Check the actual temperature with a fridge thermometer.",
+    "scope": "The 1–5 example is limited to the cited thermostat and model family. A different dial or a digital Celsius display cannot be assumed to work the same way.",
+    "tags": [
+      "defy double door fridge temperature settings",
+      "defy fridge temperature setting 1 7",
+      "coldest",
+      "thermostat"
+    ],
+    "related": [
+      "fridge-coldest-setting"
+    ],
+    "takeaway": "Identify the control and measure the compartment temperature; dial numbers are not necessarily degrees.",
+    "sources": [
+      {
+        "title": "Defy C380/C425/C455: thermostat operation",
+        "url": "https://www.defy.co.za/content/dam/defy-rainbow-za-aem/defy-rainbow-za-aemProductCatalog/product-documents/8110310140-DAC675/en-GB-8110310140-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "note": "The named models' 1–5 thermostat and middle initial setting."
+      },
+      {
+        "title": "Defy DFD448: digital control",
+        "url": "https://www.defy.co.za/content/dam/defy-rainbow-za-aem/defy-rainbow-za-aemProductCatalog/product-documents/7284641290-DFD448/en-GB-7284641290-202403281641794-User-Manual---File-Longen-US.pdf",
+        "note": "A different, digital Celsius control; not an example of a 1–7 two-door dial."
+      },
+      {
+        "title": "FDA: refrigerator thermometers and food safety",
+        "url": "https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety",
+        "note": "Temperature and thermometer guidance."
+      }
+    ],
+    "publishAt": "2026-11-22T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "craftsman-garage-remote-battery",
+    "title": "Craftsman garage door remote battery: how to replace it",
+    "shortTitle": "Replace a Craftsman remote battery.",
+    "description": "Identify your remote, check its battery and follow a model-specific replacement example.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Battery",
+    "diagram": "garage",
+    "answer": "The documented Craftsman Security+ 139.53752 and 139.53753 remote instructions list a 3 V 2032 lithium battery. Check the remote model and polarity marks before replacing it.",
+    "scope": "The opening and battery example is for the documented original remote instructions; other remotes, keypads and opener backup batteries can differ.",
+    "tags": [
+      "craftsman garage door remote battery replacement",
+      "how to change battery in craftsman garage door remote",
+      "139.53753",
+      "remote"
+    ],
+    "related": [
+      "craftsman-garage-door-remote-programming",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Check the remote model and test the new battery before considering reprogramming or erasing codes.",
+    "sources": [
+      {
+        "title": "Craftsman Security+ 139.53752 / 139.53753 instructions",
+        "url": "https://manualsplanet.com/manualPdf/craftsman-13953752.pdf",
+        "note": "Manufacturer-authored replacement-parts list, case opening and polarity; hosted copy."
+      },
+      {
+        "title": "Craftsman 139.53753 FCC filing instructions",
+        "url": "https://fcc.report/FCC-ID/HBW2028/495091.pdf",
+        "note": "Manufacturer instruction copy: opening, polarity and battery warning."
+      }
+    ],
+    "publishAt": "2026-11-23T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "jet-jps-10ts-dimensions-weight",
+    "title": "JET JPS-10TS dimensions and weight: check the stock number",
+    "shortTitle": "Find JPS-10TS dimensions.",
+    "description": "Compare JPS-10TS dimensions and weights by stock number, wing material and rail configuration.",
+    "category": "devices",
+    "brand": "JET",
+    "type": "Specifications",
+    "diagram": "garage",
+    "answer": "JET's 2008 table lists 60 × 27 × 40 inches for stock 708480 and 708481, with net weights of 205 lb and 270 lb respectively. Later configurations differ.",
+    "scope": "The 2008 numbers are for two named stocks; 2014 assembled dimensions refer to specified rails and accessories and use a different measurement description.",
+    "tags": [
+      "jet jps 10ts dimensions",
+      "jet jps 10ts weight",
+      "table size",
+      "708480",
+      "708481"
+    ],
+    "related": [
+      "millermatic-350p-settings"
+    ],
+    "takeaway": "Check the stock number, revision, wings and rails before using a size or weight for a move.",
+    "sources": [
+      {
+        "title": "JET JPS-10TS M-708480 revision C, 2008",
+        "url": "https://s3.amazonaws.com/jpw-assets/e/c/9/1/ec91916b229091b9866be0293a93231fb7aff801_708482k_man_en.pdf",
+        "note": "Manufacturer-authored specification table for 708480 and 708481."
+      },
+      {
+        "title": "JET JPS-10TS M-708490 revision C, 2014",
+        "url": "https://www.mikestools.com/download/Jet-Owners-manuals/Jet%20Tablesaws/Jet_708490.pdf",
+        "note": "Manufacturer-authored later configuration and rail-specific assembled dimensions; hosted copy."
+      }
+    ],
+    "publishAt": "2026-11-24T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "millermatic-350p-settings",
+    "title": "Millermatic 350P settings chart: match MIG and pulse settings",
+    "shortTitle": "Read a Millermatic 350P settings chart.",
+    "description": "Identify the right process, wire and machine configuration before using a 350P welding chart.",
+    "category": "devices",
+    "brand": "Miller",
+    "type": "Settings",
+    "diagram": "symbols",
+    "answer": "For a Millermatic 350P, select settings for the exact machine, MIG or pulse process, wire, shielding gas and material thickness; a single voltage and wire speed is not universal.",
+    "scope": "The wire ranges refer to the standard 350P specification, not a universal welding recipe or the separate 350P Aluminum configuration.",
+    "tags": [
+      "millermatic 350p settings chart",
+      "millermatic 350p pulse settings",
+      "wire speed",
+      "MIG",
+      "aluminum"
+    ],
+    "related": [
+      "jet-jps-10ts-dimensions-weight"
+    ],
+    "takeaway": "Use the correct machine-specific chart and qualified procedure for the actual job instead of transferring settings between modes.",
+    "sources": [
+      {
+        "title": "Miller: international product specification, Millermatic 350P",
+        "url": "https://www.millerwelds.com/-/media/miller-electric/files/pdf/products/international-spec-sheets/internationalfullline.pdf",
+        "note": "350P wire capacities, processes and control panel characteristics."
+      },
+      {
+        "title": "Miller: MIG basics for automotive welding",
+        "url": "https://www.millerwelds.com/en-US/resources/knowledge-hub/mig-welding/how-to/mig-basics-for-automotive-welding-repair",
+        "note": "Variables that affect welding settings and use of equipment charts."
+      },
+      {
+        "title": "Miller OM-1327: 350 / 350P MIG chart",
+        "url": "https://manualsdump.com/en/manuals/miller_electric-350_350p-millermatic_350/280620/32",
+        "note": "Manufacturer-authored MIG chart and horizontal T fillet limitation; hosted copy."
+      }
+    ],
+    "publishAt": "2026-11-25T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
   }
 ]

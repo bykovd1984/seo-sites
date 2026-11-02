@@ -34,3 +34,5 @@ Note the dial position, measured temperature, approximate thermometer location a
 Confirm the control interpretation first, then follow the model’s normal checks for closing the door, ventilation and loading. If the temperature remains outside the recommended range, use the manufacturer’s troubleshooting or service route.
 
 Changing the dial is not evidence that food exposed to unsafe storage conditions is safe again. Handle that as a separate food-storage decision using the relevant official guidance.
+
+For a model-specific 1–5 example, see our [Defy fridge temperature guide](/guides/defy-fridge-temperature-settings).

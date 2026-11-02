@@ -33,3 +33,5 @@ Do not use a generic instruction about choking as a substitute for the correct s
 That observation is useful to report, but it does not identify a single failed part. Record whether it happens cold or warm and which marked position keeps the engine running. An engine needing continued enrichment after warm-up warrants model-specific troubleshooting.
 
 Avoid speculative carburettor adjustments, removing guards while running, or testing a fuel-burning engine in an enclosed space. The next useful step is to match the symptom to the exact engine, not to keep operating it in a misunderstood control position.
+
+For a specific STIHL saw, compare the cold-start and warm-start controls in our [STIHL choke positions guide](/guides/stihl-choke-symbols).

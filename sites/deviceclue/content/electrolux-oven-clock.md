@@ -63,3 +63,5 @@ An unset clock is one possibility on models that require it, but it is not the o
 ### Why is the clock display dark when the oven is off?
 
 Some panels have a standby setting that hides the time. Electrolux describes this behaviour for an example panel, but a blank display can also have another cause. Check the exact model’s display and power guidance before changing settings.
+
+For a Fisher & Paykel appliance, see the model-specific examples in our [Fisher & Paykel oven clock guide](/guides/fisher-paykel-oven-clock).

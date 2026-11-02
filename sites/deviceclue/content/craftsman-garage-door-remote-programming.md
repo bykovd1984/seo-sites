@@ -37,3 +37,5 @@ Adding a remote is not the same instruction as the full memory erase on the docu
 ## How do I program a keypad instead?
 
 A keypad uses a PIN and may have its own setup sequence in addition to the opener instructions. See [programming a Craftsman garage door keypad](/guides/craftsman-garage-door-keypad-programming) for a model-specific example. Never share your PIN in a public support request.
+
+If the remote battery is weak, see our [Craftsman remote battery replacement guide](/guides/craftsman-garage-remote-battery) before attempting to reprogram it.
