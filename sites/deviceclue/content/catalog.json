@@ -1670,5 +1670,221 @@
     ],
     "publishAt": "2026-12-01T07:00:00.000Z",
     "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "electrolux-oven-symbols",
+    "title": "Electrolux oven symbols: fan, grill and heating functions",
+    "shortTitle": "Which oven function?",
+    "description": "Identify common Electrolux oven function symbols and distinguish cooking modes from timer and cleaning indicators.",
+    "category": "ovens",
+    "brand": "Electrolux",
+    "type": "Symbols",
+    "diagram": "symbols",
+    "answer": "A fan usually identifies a fan-assisted function and a zigzag line at the top commonly indicates a grill. Check the exact symbol and model: Electrolux uses different functions and names across its ovens.",
+    "scope": "These are visual clues from Electrolux support, not a symbol chart for every oven. Check the product number and the function list for the particular panel.",
+    "tags": [
+      "electrolux oven symbols",
+      "electrolux oven icons",
+      "electrolux oven symbols meaning",
+      "electrolux grill symbol"
+    ],
+    "related": [
+      "electrolux-oven-clock",
+      "aeg-oven-symbols",
+      "zanussi-oven-symbols"
+    ],
+    "takeaway": "Match the complete symbol to the model before choosing a cooking function.",
+    "sources": [
+      {
+        "title": "Electrolux UK: oven and microwave functions and symbols",
+        "url": "https://support.electrolux.co.uk/support-articles/article/electrolux-oven-and-microwave-functionssymbols",
+        "note": "Manufacturer overview; functions and symbols vary by model."
+      },
+      {
+        "title": "Electrolux UK: using the oven grill function",
+        "url": "https://support.electrolux.co.uk/support-articles/article/how-to-use-the-oven-grill-function-types-of-grilling-options",
+        "note": "Examples of grill options and controls on different ovens."
+      }
+    ],
+    "publishAt": "2026-12-02T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "fisher-paykel-fridge-filter-reset",
+    "title": "Fisher & Paykel fridge water filter reset: clear the indicator",
+    "shortTitle": "Filter light still on?",
+    "description": "Reset a Fisher & Paykel refrigerator filter indicator after replacement using a model-matched example.",
+    "category": "cooling",
+    "brand": "Fisher & Paykel",
+    "type": "Settings",
+    "diagram": "symbols",
+    "answer": "Replace the refrigerator water filter first, then use the reset sequence for the exact model. For the documented RF730Q panel, hold the filter button and plus together for four seconds.",
+    "scope": "The RF730Q sequence is one documented example; RS80A/RS90A/RS9120W controls use a different combination. Do not reset before replacing the filter.",
+    "tags": [
+      "fisher paykel fridge filter reset",
+      "fisher and paykel fridge water filter reset",
+      "fisher paykel refrigerator water filter reset",
+      "filter light"
+    ],
+    "related": [
+      "defy-fridge-temperature-settings",
+      "fridge-coldest-setting"
+    ],
+    "takeaway": "The indicator tracks replacement; clearing it does not replace or flush the filter.",
+    "sources": [
+      {
+        "title": "Fisher & Paykel RF730Q refrigerator guide",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw66754e6e/technical-content/product/refrigeration/freestanding/quad-door/activesmart-refrigerator-contemporary-user-installation-guide-RF730Q-866127A.pdf",
+        "note": "RF730Q water filter reset example."
+      },
+      {
+        "title": "Fisher & Paykel RS80A, RS90A and RS9120W refrigerator guide",
+        "url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw53c3ecaa/GeneralFiles-FisherPaykelAU/FP-UserGuide-en-RS80A-RS90A-RS9120W-IntegratedRefrigeratorFreezer-0-867292C-NZ-AU-UK-IE-SG-ASIA.pdf",
+        "note": "Different documented control combination for the named integrated models."
+      },
+      {
+        "title": "Fisher & Paykel water filter replacement",
+        "url": "https://www.fisherpaykel.com/au/help-and-support/water-filter-replacement/",
+        "note": "Replacement, flushing and indicator guidance."
+      }
+    ],
+    "publishAt": "2026-12-03T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "singer-4423-threading-bobbin",
+    "title": "How to thread a Singer 4423 and wind the bobbin",
+    "shortTitle": "Threading the 4423?",
+    "description": "Follow the Singer 4423 upper thread path, wind and insert its bobbin, and check common threading problems.",
+    "category": "devices",
+    "brand": "Singer",
+    "type": "Settings",
+    "diagram": "symbols",
+    "answer": "Raise the presser foot and needle, then follow the Singer 4423 upper thread path through the guides, tension area, take-up lever and needle. Wind and insert the correct bobbin using the 4423 guide.",
+    "scope": "The steps describe the documented Singer 4423, not all Singer machines. Switch off before threading the needle and check the model-specific diagrams for the thread path.",
+    "tags": [
+      "how to thread singer 4423",
+      "singer 4423 threading",
+      "singer 4423 bobbin winding",
+      "singer 4423 bobbin threading"
+    ],
+    "related": [],
+    "takeaway": "If stitches loop, recheck both thread paths before changing tension.",
+    "sources": [
+      {
+        "title": "Singer 4423 instructions",
+        "url": "https://singerlatam.com/camc/wp-content/uploads/sites/5/2022/10/4423-manual-u.pdf",
+        "note": "Model-specific upper threading, winding, bobbin insertion and diagrams."
+      },
+      {
+        "title": "Singer: winding a bobbin",
+        "url": "https://help.singer.com/en-US/winding-a-bobbin-389010",
+        "note": "General advice on correct bobbin type and winding tension."
+      }
+    ],
+    "publishAt": "2026-12-04T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "uniden-bc75xlt-all-lockout",
+    "title": "Uniden BC75XLT all lockout: channels, scanning and keypad",
+    "shortTitle": "All locked out?",
+    "description": "Distinguish empty channels, channel lockout and keypad lock on the Uniden BC75XLT scanner.",
+    "category": "devices",
+    "brand": "Uniden",
+    "type": "Troubleshooting",
+    "diagram": "symbols",
+    "answer": "On the BC75XLT, ALL Locked Out can mean there are no programmed channels available to scan. Check for programmed frequencies and enabled banks, then distinguish channel lockout from the keypad lock.",
+    "scope": "This guide applies to the BC75XLT documentation; scanner models and local radio systems differ. Do not erase memory as a first troubleshooting step.",
+    "tags": [
+      "uniden bc75xlt lockout",
+      "uniden bc75xlt all lockout",
+      "uniden bearcat bc75xlt all lockout",
+      "bc75xlt unlock channels"
+    ],
+    "related": [],
+    "takeaway": "Record programmed frequencies before changing scanner memory or performing any reset.",
+    "sources": [
+      {
+        "title": "Uniden: common scanner questions",
+        "url": "https://support.uniden.com/support/solutions/articles/153000195181-common-scanner-questions",
+        "note": "BC75XLT and BC125AT all-locked-out explanation and BC75XLT programming example."
+      },
+      {
+        "title": "Uniden BC75XLT owner instructions",
+        "url": "https://www.uniden.info/download/ompdf/BC75XLTom.pdf",
+        "note": "Model-specific channel lockout, keypad lock and scanning controls."
+      }
+    ],
+    "publishAt": "2026-12-05T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "lifebreath-hrv-flashing-light",
+    "title": "Lifebreath HRV flashing light: red indicator and control checks",
+    "shortTitle": "What is flashing?",
+    "description": "Identify the controller, red light or RH indicator before interpreting a flashing Lifebreath HRV signal.",
+    "category": "cooling",
+    "brand": "Lifebreath",
+    "type": "Fault signals",
+    "diagram": "symbols",
+    "answer": "A flashing Lifebreath control does not have one meaning across all models. Identify the control and indicator: flashing RH can indicate dehumidistat operation, while a flashing control on a non-working unit may need service.",
+    "scope": "Interpretation depends on the exact HRV/ERV, control and operating state. Do not open the unit or infer a universal red-light fault code from colour alone.",
+    "tags": [
+      "lifebreath hrv blinking red light",
+      "lifebreath hrv control flashing",
+      "lifebreath hrv flashing red light",
+      "lifebreath hrv not working"
+    ],
+    "related": [],
+    "takeaway": "Record the control model, exact light and whether the unit is operating before requesting service.",
+    "sources": [
+      {
+        "title": "Lifebreath frequently asked questions",
+        "url": "https://www.lifebreath.com/faq/",
+        "note": "Separate explanations for flashing RH and a flashing control when the unit is non-functional."
+      },
+      {
+        "title": "Lifebreath 500-series control documentation",
+        "url": "https://www.lifebreath.com/wp-content/uploads/2024/08/500DCS8507001200500ERV700ERV1200ERV-2005.pdf",
+        "note": "Documents operating indicators and defrost behaviour for specified equipment."
+      }
+    ],
+    "publishAt": "2026-12-06T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "trane-chiller-latched-fault",
+    "title": "Trane chiller latched fault: what the message means",
+    "shortTitle": "Latched fault on a chiller?",
+    "description": "Understand a latched chiller diagnostic, what to record and why the underlying fault must be investigated.",
+    "category": "cooling",
+    "brand": "Trane",
+    "type": "Fault signals",
+    "diagram": "symbols",
+    "answer": "A latched fault generally means a diagnostic remains active until the appropriate manual reset. It describes how the diagnostic persists, not which component failed or why the chiller stopped.",
+    "scope": "This explanation uses documented Trane RTAA and CGAM/CH530 examples; controller behaviour and reset authority differ. Only qualified personnel should diagnose and reset industrial equipment.",
+    "tags": [
+      "latched fault on trane chiller",
+      "latched fault trane chiller",
+      "latch fault on trane chiller",
+      "trane chiller latched fault"
+    ],
+    "related": [],
+    "takeaway": "Capture the full diagnostic and operating context before an authorized technician investigates.",
+    "sources": [
+      {
+        "title": "Trane RTAA installation and operation documentation",
+        "url": "https://support.trane.com/hc/en-us/article_attachments/17994102528653",
+        "note": "Shows a latched-fault/manual-reset message and separate diagnostic description in the RTAA control example."
+      },
+      {
+        "title": "Trane CGAM 20–130 ton installation and operation",
+        "url": "https://www.trane.com/content/dam/Trane/Commercial/lar/Peru/Manuales/Chiller_CGAM/CG-SVX17H-EN_IOM.pdf",
+        "note": "CH530 diagnostic view distinguishes description, target, severity and persistence; reset can cause a restart."
+      }
+    ],
+    "publishAt": "2026-12-07T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
   }
 ]
