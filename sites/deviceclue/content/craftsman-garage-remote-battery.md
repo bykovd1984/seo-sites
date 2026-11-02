@@ -22,3 +22,5 @@ The remote is the small handheld transmitter. A wall-mounted wireless keypad is 
 Do not erase the opener’s memory merely because you changed a remote battery. Test the remote first. If it still does not work, verify the battery type and orientation, try another working control if available and check the model-specific instructions. Our [Craftsman remote programming guide](/guides/craftsman-garage-door-remote-programming) covers a documented pairing example; holding LEARN can erase stored controls on some openers.
 
 A weak battery is one possibility, not a diagnosis. If the wall control also fails, or the door moves unexpectedly, use the [garage door troubleshooting guide](/guides/craftsman-garage-door-troubleshooting) and arrange qualified service when needed.
+
+If a fresh battery does not help, use the [remote troubleshooting checklist](/guides/craftsman-garage-remote-not-working) to compare the wall control, lock mode and range.

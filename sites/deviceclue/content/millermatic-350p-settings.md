@@ -37,3 +37,5 @@ For structural or safety-critical work, follow the applicable qualified welding 
 ## Why is my result different from a chart?
 
 A chart is conditional. Recheck the process, material, wire diameter, gas, machine revision and gun before changing settings. Do not treat a value from a forum or another model as a universal fix. If the machine does not feed consistently, the programmed option is unavailable, or the equipment behaves abnormally, use the model-specific troubleshooting information or ask a qualified technician.
+
+For a different machine, see the [Millermatic 175 specifications](/guides/millermatic-175-specifications); its ratings and settings must not be transferred to the 350P.

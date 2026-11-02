@@ -43,3 +43,5 @@ If the display loses its setting again, record when it happens and whether other
 Do not open the control panel or expose wiring to fix a clock setting. If the correct user-level instructions do not work, give the service provider the model, PNC and a clear description of the display.
 
 For a cooking-function question, see our [Zanussi oven symbols guide](/guides/zanussi-oven-symbols); a clock setting and a heating mode serve different purposes.
+
+If you are cleaning a conventional oven, our [oven door glass guide](/guides/oven-door-glass-removal) explains why the door construction must be checked first.

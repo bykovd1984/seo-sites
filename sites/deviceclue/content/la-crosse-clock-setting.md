@@ -25,3 +25,5 @@ If the display has the wrong date as well, check the manually entered year, mont
 On the WT-8005 models, first check whether the initial seven-minute signal search is in progress. The manufacturer's setup page describes how to stop that search. For a blank or weak display, check battery orientation and use the type specified for the actual clock. If your controls do not match this example, look up the model before attempting a reset: resetting is not the same as setting the time and may clear preferences.
 
 For another appliance with a flashing time display, see our [oven clock guide](/guides/zanussi-oven-clock); the controls and procedure are different.
+
+If the issue is a restart or signal reception rather than setting the time, see the [atomic clock reset guide](/guides/la-crosse-atomic-clock-reset) and match its example to your controls.

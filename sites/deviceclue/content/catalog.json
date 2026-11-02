@@ -1428,5 +1428,247 @@
     ],
     "publishAt": "2026-11-25T07:00:00.000Z",
     "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "craftsman-garage-remote-not-working",
+    "title": "Craftsman garage door remote not working: checks that help",
+    "shortTitle": "The remote stopped working?",
+    "description": "Compare the wall control and remote, then check batteries, lock mode, range and programming.",
+    "category": "home-systems",
+    "brand": "Craftsman",
+    "type": "Troubleshooting",
+    "diagram": "garage",
+    "answer": "If the wall control works but one Craftsman remote does not, compare a second paired remote and check the correct battery, lock mode, range and compatibility before reprogramming.",
+    "scope": "Craftsman systems vary. Chamberlain Group examples are conditional on the actual opener and remote; do not erase all paired devices as a first step.",
+    "tags": [
+      "craftsman garage door opener remote control not working",
+      "craftsman remote not working",
+      "wall button works",
+      "remote range",
+      "lock mode"
+    ],
+    "related": [
+      "craftsman-garage-remote-battery",
+      "craftsman-garage-door-remote-programming",
+      "craftsman-garage-door-troubleshooting"
+    ],
+    "takeaway": "Use the wall control and a second remote to narrow the fault before changing settings.",
+    "sources": [
+      {
+        "title": "Chamberlain Group: remote control does not work",
+        "url": "https://support.chamberlaingroup.com/s/article/The-button-on-the-wall-works-so-why-won-t-my-remote-control-work-1484145519289",
+        "note": "Lock mode, batteries, range and pairing for the documented systems."
+      },
+      {
+        "title": "Chamberlain Group: radio interference and range",
+        "url": "https://support.chamberlaingroup.com/s/article/How-to-resolve-issues-with-radio-control-range-issues-and-radio-frequency-interference-1480438299400",
+        "note": "Potential causes of reduced range; system-specific troubleshooting."
+      }
+    ],
+    "publishAt": "2026-11-26T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "oven-door-glass-removal",
+    "title": "How to remove oven door glass for cleaning",
+    "shortTitle": "Cleaning between oven door panes?",
+    "description": "Check your oven model before removing door glass and learn the limits of a Zanussi example.",
+    "category": "ovens",
+    "brand": "Oven care",
+    "type": "Cleaning",
+    "diagram": "symbols",
+    "answer": "Some conventional oven door panes can be removed after the appliance cools, but the retainers and pane order vary. Follow the instructions for the exact model and never operate the oven with a pane removed.",
+    "scope": "The removable-strip example is limited to the Zanussi door shown by the manufacturer. Microwave and combination microwave doors require authorised service.",
+    "tags": [
+      "how to remove oven door glass",
+      "oven door glass cleaning",
+      "glass panels",
+      "oven door"
+    ],
+    "related": [
+      "zanussi-oven-clock",
+      "kenmore-oven-self-clean"
+    ],
+    "takeaway": "Identify the exact door construction, protect the glass and hinges, and refit every part before use.",
+    "sources": [
+      {
+        "title": "Zanussi: clean a single oven, door and glass",
+        "url": "https://support.zanussi.co.uk/support-articles/article/how-to-clean-a-zanussi-single-oven-manually-removing-oven-door-and-glass",
+        "note": "Example door and pane removal; cooling and spring-hinge warnings."
+      },
+      {
+        "title": "Zanussi: condensation in microwave and combination oven doors",
+        "url": "https://support.zanussi.co.uk/support-articles/article/condensation-in-microwave-combi-oven-door-and-between-the-glass-panels",
+        "note": "Microwave and combination door removal is for authorised technicians."
+      },
+      {
+        "title": "Zanussi: oven glass shattered",
+        "url": "https://support.zanussi.co.uk/support-articles/article/oven-glass-shattered",
+        "note": "Glass handling and avoidance of sudden temperature changes."
+      }
+    ],
+    "publishAt": "2026-11-27T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "hoshizaki-ice-machine-reset-button",
+    "title": "Hoshizaki ice machine reset button: what to check first",
+    "shortTitle": "Where is the alarm reset?",
+    "description": "Distinguish a Hoshizaki alarm reset from the power switch and know what to record before service.",
+    "category": "cooling",
+    "brand": "Hoshizaki",
+    "type": "Fault signals",
+    "diagram": "beeps",
+    "answer": "Some Hoshizaki KM machines have an alarm reset on an internal control board. Location and procedure vary by model, and a cleared alarm does not fix its cause; internal access belongs to a technician.",
+    "scope": "The control-board example concerns documented KM models. Do not open electrical panels or repeatedly reset a safety alarm.",
+    "tags": [
+      "hoshizaki ice machine reset button",
+      "reset button on hoshizaki ice machine",
+      "alarm reset",
+      "beeping",
+      "KM"
+    ],
+    "related": [
+      "hoshizaki-ice-machine-beeping",
+      "hoshizaki-ice-machine-not-making-ice"
+    ],
+    "takeaway": "Record the model and alarm before calling service; a reset does not diagnose the cause.",
+    "sources": [
+      {
+        "title": "Hoshizaki America: KM cuber training and FAQs",
+        "url": "https://www.hoshizakiamerica.com/support/training/",
+        "note": "Technician guidance on KM three-beep alarms and board reset."
+      },
+      {
+        "title": "Hoshizaki: KM-61 / 101 / 151 service documentation",
+        "url": "https://secure.hoshizakiamerica.com/docs/manuals/KM-61_101_151BAH_serv_LTR.pdf",
+        "note": "A specific H control board distinguishes alarm reset from output test."
+      }
+    ],
+    "publishAt": "2026-11-28T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "millermatic-175-specifications",
+    "title": "Millermatic 175 specs: voltage, duty cycle, weight and dimensions",
+    "shortTitle": "Millermatic 175 specifications.",
+    "description": "Read the documented 230 V Millermatic 175 output, input, weight and dimensions in context.",
+    "category": "devices",
+    "brand": "Miller",
+    "type": "Specifications",
+    "diagram": "symbols",
+    "answer": "Miller OM-1324 revision C lists a 230 V single-phase model rated 130 A at 20 V DC and 30% duty cycle at 60 Hz, with a 30–175 A output range and 33 kg weight including the gun.",
+    "scope": "Figures are from the April 2003 manufacturer specification for the 230 V model; check your unit, serial number and revision. Input current is not a breaker recommendation.",
+    "tags": [
+      "millermatic 175 specs",
+      "millermatic 175 weight",
+      "millermatic 175 dimensions",
+      "millermatic 175 duty cycle",
+      "millermatic 175 voltage"
+    ],
+    "related": [
+      "millermatic-350p-settings",
+      "jet-jps-10ts-dimensions-weight"
+    ],
+    "takeaway": "Separate input current from output current and check the exact model and duty-cycle conditions.",
+    "sources": [
+      {
+        "title": "Miller OM-1324 revision C, April 2003",
+        "url": "https://www.millerwelds.com/files/owners-manuals/o1324c_fre.pdf",
+        "note": "Manufacturer French-language specifications, section 2, 230 V model and duty-cycle conditions."
+      },
+      {
+        "title": "Miller: MIG basics for automotive welding",
+        "url": "https://www.millerwelds.com/en-US/resources/knowledge-hub/mig-welding/how-to/mig-basics-for-automotive-welding-repair",
+        "note": "Material, wire, gas and joint conditions affect the appropriate welding parameters."
+      }
+    ],
+    "publishAt": "2026-11-29T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "hp-designjet-t520-not-printing",
+    "title": "HP DesignJet T520 not printing: queue, network and page checks",
+    "shortTitle": "T520 not printing?",
+    "description": "Separate a stuck queue, offline printer, clipped drawing and missing colours on the DesignJet T520.",
+    "category": "devices",
+    "brand": "HP",
+    "type": "Troubleshooting",
+    "diagram": "symbols",
+    "answer": "Check the DesignJet T520 panel for errors, then distinguish an offline or stuck print queue from a clipped page or print-quality problem. Each symptom needs a different check.",
+    "scope": "T120/T520 manufacturer guidance is model-specific; computer menus and drivers vary. Avoid clearing shared jobs without coordinating with other users.",
+    "tags": [
+      "hp designjet t520 not printing",
+      "hp designjet t520 not printing full page",
+      "t520 print queue",
+      "t520 printing problems",
+      "black ink"
+    ],
+    "related": [
+      "sharp-printer-default-admin-password"
+    ],
+    "takeaway": "Record the panel message and test one symptom at a time before changing the printer setup.",
+    "sources": [
+      {
+        "title": "HP: DesignJet T120/T520 wireless network issues",
+        "url": "https://support.hp.com/ie-en/document/c03551419",
+        "note": "Network status and offline or paused queues."
+      },
+      {
+        "title": "HP: DesignJet print jobs stuck in a Windows queue",
+        "url": "https://support.hp.com/us-en/document/c04695514",
+        "note": "Windows queue and spooler troubleshooting; shared jobs can be affected."
+      },
+      {
+        "title": "HP: T120/T520 image quality issues",
+        "url": "https://support.hp.com/us-en/document/c04568625",
+        "note": "Model-specific print quality diagnostic information."
+      },
+      {
+        "title": "HP: T120/T520 front-panel messages",
+        "url": "https://support.hp.com/ca-en/document/c03547179",
+        "note": "Different front-panel errors require different responses."
+      }
+    ],
+    "publishAt": "2026-11-30T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "la-crosse-atomic-clock-reset",
+    "title": "La Crosse atomic clock reset: signal, time zone and restart",
+    "shortTitle": "Reset or fix the time zone?",
+    "description": "Troubleshoot an atomic clock and understand a La Crosse analogue-clock restart example.",
+    "category": "devices",
+    "brand": "La Crosse Technology",
+    "type": "Troubleshooting",
+    "diagram": "clock",
+    "answer": "Check the model, battery, time zone and WWVB reception first. La Crosse describes a factory restart for a particular analogue clock configuration; digital clocks can use different steps.",
+    "scope": "The manufacturer example has hands, SET, a time-zone switch and one AA battery but no model number on its support page. It is not a universal reset for weather stations or digital clocks.",
+    "tags": [
+      "la crosse atomic clock reset",
+      "la crosse technology atomic clock reset",
+      "lacrosse atomic clock reset",
+      "wwvb reception",
+      "time zone"
+    ],
+    "related": [
+      "la-crosse-clock-setting",
+      "zanussi-oven-clock"
+    ],
+    "takeaway": "Match the controls before resetting and allow time for reception after a restart.",
+    "sources": [
+      {
+        "title": "La Crosse: how to set or reset an atomic clock",
+        "url": "https://lacrossetechnology.zendesk.com/hc/en-us/articles/5278162570395-How-do-I-set-or-reset-my-atomic-clock",
+        "note": "Analogue-clock factory restart example; model number not stated."
+      },
+      {
+        "title": "La Crosse: daylight saving time questions",
+        "url": "https://www.lacrossetechnology.com/pages/daylight-saving-time-questions",
+        "note": "Time-zone, DST and radio-signal settings vary by product."
+      }
+    ],
+    "publishAt": "2026-12-01T07:00:00.000Z",
+    "checkedDate": "2026-11-02"
   }
 ]

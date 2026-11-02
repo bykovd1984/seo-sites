@@ -30,3 +30,5 @@ Hoshizaki’s HS-5061 drain-pump bulletin describes certain AM-50, C-80BAJ, C-10
 Routine cleaning depends on the model, water conditions and installation. Use the manufacturer’s prescribed procedure and schedule; do not mix chemicals or substitute an unverified cleaning method. Commercial equipment may require trained personnel and food-safety procedures.
 
 Before any reset, record the model, alarm pattern and conditions. A cleared alarm does not establish that its cause is fixed. If the machine has no ice after basic user-accessible checks, contact a qualified technician with those details, the maintenance history and whether water or ice is present in the bin.
+
+For the difference between a control-board reset and a user power switch, see the [Hoshizaki alarm reset guide](/guides/hoshizaki-ice-machine-reset-button).

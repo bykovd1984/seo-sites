@@ -14,12 +14,13 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rows = loadContent(root);
 const scheduled = rows.filter(row => row.metadata.publishAt).sort((a, b) => a.metadata.publishAt.localeCompare(b.metadata.publishAt));
 
-test('twenty-four consecutive releases are at 09:00 Kyiv, starting 2 November', () => {
-  assert.equal(scheduled.length, 24);
+test('thirty consecutive releases are at 09:00 Kyiv, starting 2 November', () => {
+  assert.equal(scheduled.length, 30);
   const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   for (let i = 0; i < scheduled.length; i++) {
     const date = new Date(scheduled[i].metadata.publishAt);
-    assert.equal(formatter.format(date), `${String(i + 2).padStart(2, "0")}/11/2026, 09:00`);
+    assert.equal(date.getTime(), Date.parse('2026-11-02T07:00:00.000Z') + i * 86_400_000);
+    assert.ok(formatter.format(date).endsWith(', 09:00'));
     if (i) assert.equal(date - new Date(scheduled[i - 1].metadata.publishAt), 86_400_000);
   }
 });
