@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { verifyMarkdown } from './markdown-smoke.mjs';
 import fs from 'node:fs';
 import { parseArgs } from 'node:util';
 import { categories } from '../lib/site.ts';
@@ -11,6 +12,7 @@ const catalog = JSON.parse(fs.readFileSync(new URL('../content/catalog.json', im
 const published = catalog.filter(a => !a.publishAt || a.publishAt <= at);
 const pending = catalog.filter(a => a.publishAt && a.publishAt > at);
 const publicCategories = categories.filter(c => published.some(a => a.category === c.id));
+await verifyMarkdown(base, ['/', '/about', '/privacy', ...publicCategories.map(c => '/topics/' + c.id), ...published.map(a => '/guides/' + a.slug)], [...pending.map(a => '/guides/' + a.slug), '/guides/missing-guide']);
 const pendingCategories = categories.filter(c => !published.some(a => a.category === c.id));
 const publicSlugs = new Set(published.map(a => a.slug));
 async function read(route, expected = 200) {

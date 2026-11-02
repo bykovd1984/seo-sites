@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
+import { verifyMarkdown } from './markdown-smoke.mjs';
 import fs from 'node:fs';
 const base=new URL(process.env.SITE_TEST_URL||'http://127.0.0.1:3000');
 const canonical='https://rownasciana.site';
 const catalog=JSON.parse(fs.readFileSync(new URL('../content/catalog.json',import.meta.url),'utf8'));
+await verifyMarkdown(base, ['/', '/o-poradniku', '/prywatnosc', ...catalog.map(a => '/poradniki/' + a.slug)], ['/poradniki/not-a-real-article']);
 const images=JSON.parse(fs.readFileSync(new URL('../public/images/optimized-manifest.json',import.meta.url),'utf8'));
 async function get(path){const r=await fetch(new URL(path,base),{signal:AbortSignal.timeout(10000)});assert.equal(r.status,200,path);return r;}
 const health=await(await get('/api/health')).json();
