@@ -1886,5 +1886,386 @@
     ],
     "publishAt": "2026-12-07T07:00:00.000Z",
     "checkedDate": "2026-11-02"
+  },
+  {
+    "slug": "vtech-phone-ringer-volume",
+    "shortTitle": "Make a VTech phone ring louder",
+    "brand": "VTech",
+    "type": "Settings",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Adjust VTech handset and base ringer volume, turn ringing back on and check Quiet mode using I6765 and CS5129 examples.",
+    "answer": "Adjust ringer volume while the handset is idle, then test with an incoming call. Listening volume, base ringer volume and Quiet mode are separate settings on the documented VTech examples.",
+    "scope": "The button sequences cover the VTech I6765 and CS5129 families. DECT 6.0 is not a model number; other VTech phones may use different menus and controls.",
+    "tags": [
+      "vtech cordless phone ringer volume",
+      "vtech phone ringer volume",
+      "how to turn up ringer volume on vtech phone",
+      "vtech phone ringer settings",
+      "how to turn on ringer on vtech phone",
+      "how to lower ringer volume on vtech phone"
+    ],
+    "related": [
+      "att-phone-out-of-range-no-power"
+    ],
+    "takeaway": "Choose the ringer setting for the correct model and verify it with a real incoming call.",
+    "sources": [
+      {
+        "title": "VTech I6765 product support",
+        "url": "https://www.vtechphones.com/support/technical-support/product/569",
+        "note": "Model-specific handset ringer menu, levels and side-key shortcut."
+      },
+      {
+        "title": "VTech CS5129 family instructions",
+        "url": "https://cdn-media.vtechphones.com/media/p/document2/products/%7BF2FE0709-18C0-4F92-9257-E93C1F032BE5%7D/CS5129-X_WEBCIB_V2_20160215.pdf",
+        "note": "Printed page 22 distinguishes handset/base volume, Quiet mode and paging behavior."
+      }
+    ],
+    "title": "VTech phone ringer volume: turn the ring up, down or on",
+    "publishAt": "2026-12-08T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "att-phone-out-of-range-no-power",
+    "shortTitle": "Out of range or no power at base?",
+    "brand": "AT&T",
+    "type": "Troubleshooting",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Check base power, handset distance and registration when an AT&T cordless phone displays out of range or no power at base.",
+    "answer": "Check power to the main base and move the handset beside it. Compare other handsets before restarting a matching system; a Not Registered message requires its own model-specific procedure.",
+    "scope": "The restart example is from AT&T TL86109 support. DLP73210 registration is a separate example, not a procedure for every AT&T handset or replacement base.",
+    "tags": [
+      "what does out of range and no power at base mean on a at&t phone",
+      "at&t telephone base land line no power at the base or out of range",
+      "cordless at&t phone says out of range and no power at base, how to fix?"
+    ],
+    "related": [
+      "vtech-phone-ringer-volume"
+    ],
+    "takeaway": "Identify whether the fault affects the shared base, one handset or a particular location.",
+    "sources": [
+      {
+        "title": "AT&T TL86109 out-of-range troubleshooting",
+        "url": "https://telephones.att.com/product-support/faqs/symptom/378/353",
+        "note": "Base power, proximity, interference and the documented battery/base restart sequence."
+      },
+      {
+        "title": "AT&T DLP73210 registration support",
+        "url": "https://telephones.att.com/product-support/faqs/symptom/4375/446",
+        "note": "Demonstrates a distinct model-specific registration workflow; not a universal reset."
+      }
+    ],
+    "title": "AT&T phone says out of range or no power at base",
+    "publishAt": "2026-12-09T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "avaya-phone-do-not-disturb",
+    "shortTitle": "Turn off Avaya Do Not Disturb",
+    "brand": "Avaya",
+    "type": "Settings",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Turn off DND on a compatible Avaya IP Office extension and distinguish it from silent ringing, forwarding and connection faults.",
+    "answer": "On Avaya IP Office with the documented default short codes enabled, dial *09 to disable Do Not Disturb. Confirm the platform and configured code before using it, then test an incoming call.",
+    "scope": "This guide concerns Avaya IP Office, with J100 status-icon examples. Administrators can change short codes; Aura and other platforms require their own instructions.",
+    "tags": [
+      "how to turn off dnd on avaya desk phone",
+      "avaya phone do not disturb",
+      "avaya do not disturb feature code",
+      "avaya phone do not disturb mode"
+    ],
+    "related": [],
+    "takeaway": "Disable only the setting causing the problem and preserve intentional call routing.",
+    "sources": [
+      {
+        "title": "Avaya IP Office DND short codes",
+        "url": "https://documentation.avaya.com/bundle/IPOfficeJ100User/page/Short_Codes_DND.html",
+        "note": "Default DND on/off codes and the broader effect of Cancel All Forwarding."
+      },
+      {
+        "title": "Avaya IP Office Do Not Disturb behavior",
+        "url": "https://documentation.avaya.com/en-us/home/bundle/ip-office/ipofficemanager-12-2/dnd%2C-follow-me-and-forwarding/do-not-disturb-%28dnd%29.html",
+        "note": "Call treatment, exceptions and outgoing-call behavior."
+      },
+      {
+        "title": "Avaya J100 status icons",
+        "url": "https://documentation.avaya.com/en-us/home/bundle/ip-office/ipofficej100user/phone-keys-and-display/icons.html",
+        "note": "Distinguishes DND, ringer silence, call volume, forwarding and connection status."
+      },
+      {
+        "title": "Avaya IP Office user-rights settings",
+        "url": "https://documentation.avaya.com/en-us/home/bundle/ip-office/ipofficemanager-12-2/user-rights/user.html",
+        "note": "Administrative user rights can set and lock DND status."
+      }
+    ],
+    "title": "How to turn off Do Not Disturb on an Avaya phone",
+    "publishAt": "2026-12-10T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "mitel-phone-transfer-call",
+    "shortTitle": "Transfer a call on a Mitel phone",
+    "brand": "Mitel",
+    "type": "Settings",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Transfer an active call on a Mitel 5330 or 5330e with Office 250, announce the caller and return to a call when needed.",
+    "answer": "On the documented Office 250 phones, press Transfer during the connected call and dial the extension. Announce the caller and hang up, or complete an unannounced transfer as the model instructions allow.",
+    "scope": "Main procedures apply to Mitel 5330/5330e on MiVoice Office 250. The Communications Director reference illustrates a different platform; SIP and other deployments need their own controls.",
+    "tags": [
+      "how to transfer a call on a mitel phone",
+      "how to transfer a call on mitel 5330 ip phone",
+      "how to transfer a call on mitel phone",
+      "mitel 5330e ip phone transfer call",
+      "mitel phone how to transfer calls"
+    ],
+    "related": [
+      "mitel-phone-call-forwarding"
+    ],
+    "takeaway": "Confirm the platform and practice completing and recovering a transfer with a test call.",
+    "sources": [
+      {
+        "title": "Mitel Office 250 5330 quick reference",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20250/6.1/en/Mitel%205330%20IP%20Phone%20QRG_6.1.pdf",
+        "note": "Printed page 3 explains internal transfer, announcement and returning to the caller."
+      },
+      {
+        "title": "Mitel Office 250 5320e/5330e/5340e guide",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20250/6.3/en/5320e5330e5340e_UG_6.3.pdf",
+        "note": "Printed page 59 covers transfers to extensions and external numbers."
+      },
+      {
+        "title": "Mitel Communications Director 5330 reference",
+        "url": "https://productdocuments.mitel.com/doc_finder/UG/EN/MCD_5330_QRG_R6.0_EN.pdf",
+        "note": "Different Transfer/Conference labeling and a separate documentation route for SIP users."
+      }
+    ],
+    "title": "How to transfer a call on a Mitel 5330 or 5330e phone",
+    "publishAt": "2026-12-11T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "mitel-phone-call-forwarding",
+    "shortTitle": "Forward incoming Mitel calls",
+    "brand": "Mitel",
+    "type": "Settings",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Set and cancel manual call forwarding on Office 250 Mitel phones, choose the right condition and test the destination.",
+    "answer": "On a documented Office 250 5320e/5330e, Fwd All starts manual forwarding to a destination you enter. Confirm the condition and destination, then test an incoming call and the cancellation procedure.",
+    "scope": "Button steps cover 5320e/5330e/5340e on MiVoice Office 250, with an older 5330 labeling example. System Forwarding and other Mitel platforms can use different administration and controls.",
+    "tags": [
+      "mitel call forwarding",
+      "mitel 5330e ip phone call forwarding",
+      "how to forward calls on mitel phone",
+      "mitel forward calls to another extension",
+      "mitel call forwarding to cell phone",
+      "mitel call forwarding not working"
+    ],
+    "related": [
+      "mitel-phone-transfer-call"
+    ],
+    "takeaway": "Choose when to forward, verify where calls arrive and test again after canceling the rule.",
+    "sources": [
+      {
+        "title": "Mitel Office 250 5320e/5330e/5340e forwarding",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20250/6.3/en/5320e5330e5340e_UG_6.3.pdf",
+        "note": "Printed pages 61–62 cover forwarding conditions, destinations and cancellation."
+      },
+      {
+        "title": "Mitel Office 250 5330 quick reference",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20250/6.1/en/Mitel%205330%20IP%20Phone%20QRG_6.1.pdf",
+        "note": "Fwd labeling and the older 5330 destination-entry example."
+      },
+      {
+        "title": "Mitel Office 250 system forwarding explanation",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/Digital%20Phones/8500%20Series/MiVoice%20Office%20250/6.3/en/Mitel%208560%20and%208660%20Phone%20User%20Guide.pdf",
+        "note": "Different handset family; used only to explain centrally administered System Forwarding."
+      }
+    ],
+    "title": "Mitel phone call forwarding: set a destination and turn it off",
+    "publishAt": "2026-12-12T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "hp-officejet-6500-ink-replacement",
+    "shortTitle": "Replace Officejet 6500 ink",
+    "brand": "HP",
+    "type": "Maintenance",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Replace cartridges in an HP Officejet 6500 E709 or 6500A E710, check the slot and keep the printhead latch closed.",
+    "answer": "With the Officejet 6500 or 6500A switched on, open the cartridge door and wait for the carriage to stop. Release the cartridge tab and insert a compatible replacement in its matching slot without lifting the printhead latch.",
+    "scope": "Covers Officejet 6500 E709 and Officejet 6500A E710 cartridge replacement. ENVY and DeskJet 6500 families are different products; cartridge compatibility must match the printer and region.",
+    "tags": [
+      "how to change ink on hp 6500",
+      "hp officejet 6500 ink replacement",
+      "hp officejet 6500 ink cartridge replacement",
+      "hp officejet 6500a plus ink replacement"
+    ],
+    "related": [],
+    "takeaway": "Identify the exact Officejet family before replacing an individual cartridge.",
+    "sources": [
+      {
+        "title": "HP Officejet 6500 E709 guide",
+        "url": "https://www.hp.com/ctg/Manual/c01669504.pdf",
+        "note": "Printed pages 145–147 describe cartridge replacement and the printhead-latch warning."
+      },
+      {
+        "title": "HP Officejet 6500A E710 guide",
+        "url": "https://www.hp.com/ctg/Manual/c02519721.pdf",
+        "note": "Printed pages 70–74 cover ink alerts, packaging, the vent channel and replacement."
+      }
+    ],
+    "title": "How to replace ink cartridges in an HP Officejet 6500",
+    "publishAt": "2026-12-13T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "kenmore-washer-not-filling-with-water",
+    "shortTitle": "Kenmore washer will not fill?",
+    "brand": "Kenmore",
+    "type": "Troubleshooting",
+    "category": "devices",
+    "diagram": "dishwasher",
+    "description": "Check a Kenmore washer that will not fill, separate normal HE water levels from a fill fault and identify when service is needed.",
+    "answer": "Check the supply taps, accessible inlet hoses, selected cycle and closed lid. First establish whether water never enters or the level merely looks low; high-efficiency operation can use less visible water.",
+    "scope": "Operating examples are Kenmore 110.22532512 and 110.20232711. F8 E1 is discussed only for the documented 110-series VMW family; other models need their own code and installation guidance.",
+    "tags": [
+      "kenmore washer not filling with water",
+      "kenmore top load washer not filling with water",
+      "kenmore washer no water fill",
+      "kenmore washer will not fill with water",
+      "kenmore washing machine not filling with water"
+    ],
+    "related": [
+      "hitachi-washing-machine-c1-c2-errors"
+    ],
+    "takeaway": "Observe the fill behavior before assuming a low water level means a failed part.",
+    "sources": [
+      {
+        "title": "Kenmore 110.22532512 and 110.20232711 care guide",
+        "url": "https://c.searspartsdirect.com/mmh/lis_pdf/OWNM/1709420L.pdf",
+        "note": "Printed pages 12–14 cover HE water levels, cycle limitations, water supply and no-fill checks."
+      },
+      {
+        "title": "Sears PartsDirect Kenmore VMW code explanations",
+        "url": "https://www.searspartsdirect.com/diy/error-codes/washer-repair/1234598/kenmore-110-model-vmw-top-load-washer/tnyvm87x1cw4.jsp",
+        "note": "F8 E1 distinguishes absent water from a fill-detection issue; no internal repair procedure is reproduced."
+      }
+    ],
+    "title": "Kenmore washer not filling with water: safe first checks",
+    "publishAt": "2026-12-14T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "hitachi-washing-machine-c1-c2-errors",
+    "shortTitle": "Hitachi C1 or C2 on the display?",
+    "brand": "Hitachi",
+    "type": "Fault signals",
+    "category": "devices",
+    "diagram": "dishwasher",
+    "description": "Understand C1 supply and C2 drain warnings on documented Hitachi top-load washers, with safe checks and model-specific limits.",
+    "answer": "For Hitachi SF-240XWV, SF-200XWV and SF-180XWV washers, C1 concerns incoming water and C2 concerns drainage. Check the appropriate external supply or drain path before arranging service.",
+    "scope": "The code examples apply to SF-240XWV/200XWV/180XWV top-load models and the cited regional support guidance. They are not a universal chart for Hitachi front-load, dryer or other product families.",
+    "tags": [
+      "hitachi washing machine error code",
+      "hitachi washing machine error code list",
+      "hitachi washing machine error codes",
+      "hitachi washing machine c1",
+      "hitachi washing machine c2"
+    ],
+    "related": [
+      "kenmore-washer-not-filling-with-water"
+    ],
+    "takeaway": "Match the exact code and model, then distinguish supply, drainage and lid-related warnings.",
+    "sources": [
+      {
+        "title": "Hitachi washing-machine support FAQ",
+        "url": "https://www.hitachi-homeappliances.com/sg/support/products_faqs/washing-machines.html",
+        "note": "C1 supply, C2 drain and model-dependent top-load troubleshooting."
+      },
+      {
+        "title": "Hitachi SF-240XWV/200XWV/180XWV instructions",
+        "url": "https://www.hitachi-homeappliances.com/my/SF240XWV_200XWV_180XWV_EN.pdf",
+        "note": "Printed pages 24–26 identify codes and the specific drain installation limits."
+      }
+    ],
+    "title": "Hitachi washing machine C1 and C2 errors: supply or drainage",
+    "publishAt": "2026-12-15T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "samsung-powerbot-not-charging",
+    "shortTitle": "POWERbot will not charge?",
+    "brand": "Samsung",
+    "type": "Troubleshooting",
+    "category": "devices",
+    "diagram": "battery",
+    "description": "Check the POWERbot emergency switch, dock power, contacts and charging display, and separate docking failures from charging faults.",
+    "answer": "Check the bottom emergency switch, the compatible dock supply and contact alignment. Try manual docking to distinguish a robot that cannot find its charger from one that will not charge while seated.",
+    "scope": "Uses Samsung POWERbot support examples with a bottom emergency switch. Jet Bot, POWERbot-E and other families require their own guidance; charging displays and dock clearances can differ.",
+    "tags": [
+      "samsung powerbot not charging"
+    ],
+    "related": [
+      "samsung-powerbot-c03-c05-errors"
+    ],
+    "takeaway": "Observe the robot charging indicator during manual docking before diagnosing the battery.",
+    "sources": [
+      {
+        "title": "Samsung POWERbot charging troubleshooting",
+        "url": "https://www.samsung.com/my/support/home-appliances/why-is-my-powerbot-not-working-or-unable-to-charge-properly/",
+        "note": "Emergency switch, dock location, dry contact cleaning and initial display delay."
+      },
+      {
+        "title": "Samsung POWERbot stops during cleaning",
+        "url": "https://www.samsung.com/za/support/home-appliances/why-has-the-powerbot-stopped-during-cleaning/",
+        "note": "Manual docking for Lo, contact alignment and alternative charging-display examples."
+      }
+    ],
+    "title": "Samsung POWERbot not charging: dock and battery checks",
+    "publishAt": "2026-12-16T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "samsung-powerbot-c03-c05-errors",
+    "shortTitle": "POWERbot C03 or C05 warning?",
+    "brand": "Samsung",
+    "type": "Fault signals",
+    "category": "devices",
+    "diagram": "beeps",
+    "description": "Check the wheel for POWERbot C03 and the bumper for C05, clean accessible sensors safely and know when to stop for service.",
+    "answer": "In the cited Samsung POWERbot table, C03 concerns a right drive-wheel obstruction and C05 a bumper-sensor check. Confirm the model, switch off before debris removal and seek service if the warning returns.",
+    "scope": "These are examples from Samsung regional POWERbot support, not a universal code list for every Samsung robot. Internal wheel, sensor and control-board repairs are outside this guide.",
+    "tags": [
+      "samsung robot vacuum c05 error",
+      "samsung powerbot error c03",
+      "samsung powerbot error codes",
+      "samsung powerbot c03",
+      "samsung robot vacuum c05",
+      "c 05 samsung powerbot"
+    ],
+    "related": [
+      "samsung-powerbot-not-charging"
+    ],
+    "takeaway": "Record the exact code and inspect only the matching user-accessible area.",
+    "sources": [
+      {
+        "title": "Samsung POWERbot information codes",
+        "url": "https://www.samsung.com/za/support/home-appliances/check-the-information-codes-on-my-powerbot/",
+        "note": "C03/C05 and related examples, with an explicit warning that codes depend on the model."
+      },
+      {
+        "title": "Samsung POWERbot maintenance",
+        "url": "https://www.samsung.com/sg/support/home-appliances/how-to-clean-and-maintain-samsung-powerbot-robot/",
+        "note": "Soft-cloth sensor cleaning without water or solution; wheel-cleaning steps specify the emergency switch off."
+      }
+    ],
+    "title": "Samsung POWERbot C03 and C05 errors: wheel and bumper checks",
+    "publishAt": "2026-12-17T07:00:00.000Z",
+    "checkedDate": "2026-11-06"
   }
 ]
