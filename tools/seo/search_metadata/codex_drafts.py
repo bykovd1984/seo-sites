@@ -11,7 +11,7 @@ from pathlib import Path
 from archive_catalog import init_catalog, period_status, reconcile_period
 from generate import atomic_json
 from history import connect
-from model_stage import page_bundle
+from model_stage import page_bundle, SourceTextUnavailable
 from research import ROOT, GENERATOR, artifact, import_generation, now, packed
 from semrush_workflow import init
 
@@ -103,6 +103,13 @@ def prepare(db,period,directory,limit):
     queued=[];held={}
     for row in rows:
         try:source=page_bundle(db,row['pdf'],row['page'])
+        except SourceTextUnavailable as exc:
+            row_detail=db.execute('SELECT detail FROM research_archive_pages WHERE period_id=? AND pdf=? AND page=?',
+                (period,row['pdf'],row['page'])).fetchone()
+            detail=json.loads(row_detail['detail']);detail['sourceTextGap']=exc.proof
+            db.execute("UPDATE research_archive_pages SET state='skipped',reason=?,detail=?,updated=? WHERE period_id=? AND pdf=? AND page=?",
+                (exc.reason,packed(detail),now(),period,row['pdf'],row['page']))
+            held[exc.reason]=held.get(exc.reason,0)+1;continue
         except ValueError as exc:
             reason=str(exc);held[reason]=held.get(reason,0)+1;continue
         if db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()[0]=='generated':continue

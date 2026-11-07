@@ -175,4 +175,34 @@ class CodexDraftTests(unittest.TestCase):
         self.assertEqual([r['requestId'] for r in tasks['queued']],[task['requestId']])
         self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
 
+    def test_empty_text_is_a_source_backed_skip_and_is_reassessed_when_text_appears(self):
+        import base64
+        from research import import_contexts
+        from outcomes import page_outcome
+        from archive_catalog import reconcile_period
+        from model_stage import SourceTextUnavailable
+        def context(html):
+            source=dict(type='seo_context',sourcePdfId=286733,page=69,brand='HP',models=['M1005'],readOnly=True,
+                rawHtmlBase64=base64.b64encode(html).decode())
+            path=self.root/'updated-context.jsonl';atomic_json(path,source);import_contexts(self.db,path)
+        context(b'<img src="cover.png">')
+        result=prepare(self.db,self.period,self.root/'drafts',10)
+        self.assertEqual(result['queued'],[])
+        self.assertEqual(result['held'],{'source_text_unavailable':1})
+        outcome=page_outcome(self.db,286733,69)
+        self.assertEqual((outcome['state'],outcome['reason']),('skipped','source_text_unavailable'))
+        self.assertEqual(outcome['sourceEvidence']['extractedCharacters'],0)
+        self.assertEqual(len(outcome['sourceEvidence']['contentSha256']),64)
+        self.assertTrue(outcome['sourceEvidence']['sourceArtifact'])
+        self.assertEqual(self.db.execute('SELECT state FROM research_archive_pages').fetchone()[0],'skipped')
+        context(b'<p>abcd</p>')
+        with self.assertRaises(SourceTextUnavailable):
+            from model_stage import page_bundle
+            page_bundle(self.db,286733,69)
+        context(b'<p>abcde</p>')
+        result=reconcile_period(self.db,self.period)
+        self.assertEqual(self.db.execute('SELECT state FROM research_archive_pages').fetchone()[0],'pending')
+        self.assertEqual(len(prepare(self.db,self.period,self.root/'drafts',10)['queued']),1)
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
+
 if __name__=='__main__':unittest.main()

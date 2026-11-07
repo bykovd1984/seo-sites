@@ -13,6 +13,13 @@ from research import (ROOT, GENERATOR, bundle, import_generation, key, packed,
 from semrush_workflow import init
 
 
+class SourceTextUnavailable(ValueError):
+    def __init__(self,proof):
+        super().__init__('No extractable page text for source-grounded metadata')
+        self.reason='source_text_unavailable'
+        self.proof=proof
+
+
 def draft_policy(db):
     row=db.execute("SELECT value FROM research_settings WHERE name='allow_missing_semrush'").fetchone()
     return bool(row and json.loads(row['value']) is True)
@@ -31,7 +38,7 @@ def page_bundle(db,pdf,page,allow_missing_semrush=None):
     if allow_missing_semrush is None: allow_missing_semrush=draft_policy(db)
     if not isinstance(allow_missing_semrush,bool): raise ValueError('Draft policy must be boolean')
     refresh_stage(db,pdf,page)
-    record=db.execute('''SELECT p.stage,c.raw_sha256 FROM research_pages p
+    record=db.execute('''SELECT p.stage,c.raw_sha256,c.source_artifact FROM research_pages p
         LEFT JOIN research_content c ON c.id=p.content_id WHERE p.pdf=? AND p.page=?''',(pdf,page)).fetchone()
     if not record or not record['raw_sha256']: raise ValueError('Exact page context is required')
     if record['stage']=='identity_review': raise ValueError('Source identity requires review')
@@ -61,7 +68,12 @@ def page_bundle(db,pdf,page,allow_missing_semrush=None):
             candidates.append(dict(candidateId=key((job['id'],observation['keyword'])),jobId=job['id'],
                                    request=request,metrics=observation,observedAt=job['updated'],
                                    sourceArtifact=job['artifact_id'],seedSources=seed_sources))
-    return bundle(db,pdf,page,imported_candidates=candidates,draft_coverage=coverage)
+    result=bundle(db,pdf,page,imported_candidates=candidates,draft_coverage=coverage)
+    text=re.sub(r'\s+',' ',unicodedata.normalize('NFKC',result['pageText'])).casefold().strip()
+    if len(text)<5:
+        raise SourceTextUnavailable(dict(sourcePdfId=pdf,page=page,contentSha256=record['raw_sha256'],
+            sourceArtifact=record['source_artifact'],extractedCharacters=len(text),minimumQuoteCharacters=5))
+    return result
 
 
 def validate_keyword_decisions(source,response):

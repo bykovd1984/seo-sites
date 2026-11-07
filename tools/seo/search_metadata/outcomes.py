@@ -2,7 +2,7 @@
 from collections import Counter
 import json
 
-from model_stage import page_bundle
+from model_stage import page_bundle, SourceTextUnavailable
 from ranking_policy import eligibility
 from research import GENERATOR, now, packed
 
@@ -36,6 +36,9 @@ def page_outcome(db, pdf, page):
         return dict(outcome, state='pending', reason='page_search_report_missing')
     try:
         request = page_bundle(db, pdf, page)
+    except SourceTextUnavailable as exc:
+        return dict(outcome,state='skipped',reason=exc.reason,sourceEvidence=exc.proof,
+                    followUp='Image/OCR review is required before text-grounded metadata can be generated.')
     except ValueError as exc:
         return dict(outcome, state='pending', reason=str(exc))
     version = db.execute('''SELECT id,status FROM research_metadata_versions

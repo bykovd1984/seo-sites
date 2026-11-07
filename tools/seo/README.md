@@ -232,6 +232,13 @@ outputs; the original response is preserved. Validation feedback emphasizes
 contiguous source quotes, unchanged numeric spellings and plain metadata. New
 receipts also bind the prompt and bundle hashes. No repair activates metadata.
 
+Pages with fewer than five normalized extractable text characters cannot satisfy
+the existing verbatim-quote validator. They are explicitly recorded as
+`skipped/source_text_unavailable` with source hash, artifact and character count,
+without a model call. This reason requests image/OCR follow-up; it does not claim
+metadata was generated. A changed source is reassessed by period reconciliation.
+Other missing evidence and uncertain calls remain pending.
+
 ## Worker and verification
 
 For a foreground collector, run `python tools/seo/launch.py daemon` in a separate
