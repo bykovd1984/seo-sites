@@ -2267,5 +2267,118 @@
     "title": "Samsung POWERbot C03 and C05 errors: wheel and bumper checks",
     "publishAt": "2026-12-17T07:00:00.000Z",
     "checkedDate": "2026-11-06"
+  },
+  {
+    "slug": "omron-hem-907xl-error-codes",
+    "title": "Omron HEM-907XL error codes Er1 through Er9",
+    "shortTitle": "What does Er1–Er9 mean on the HEM-907XL?",
+    "description": "Look up the error on an Omron HEM-907XL professional monitor, distinguish cuff and signal problems, and see which code calls for equipment service.",
+    "brand": "Omron",
+    "type": "Fault signals",
+    "category": "devices",
+    "diagram": "beeps",
+    "answer": "On the Omron HEM-907XL, Er1–Er4 concern cuff pressure, Er5–Er8 concern the measurement or signal, and Er9 means the main unit needs service. Match the full code before choosing a check.",
+    "scope": "For operators of the professional HEM-907XL upper-arm monitor. Other Omron models have different code tables. This guide covers equipment messages and does not interpret a patient's condition.",
+    "tags": [
+      "omron hem 907xl error codes",
+      "omron hem-907xl error codes",
+      "Omron Er1",
+      "Omron Er2",
+      "Omron Er3",
+      "Omron Er4",
+      "Omron Er5",
+      "Omron Er6",
+      "Omron Er7",
+      "Omron Er8",
+      "Omron Er9"
+    ],
+    "related": [],
+    "takeaway": "Check the model and the complete display. An Er9 goes to equipment service, while a reading that the unit could not complete needs the operator’s usual clinical assessment process.",
+    "sources": [
+      {
+        "title": "Omron HEM-907XL instruction manual, List of Error Codes",
+        "url": "https://medaval.ie/docs/manuals/Omron-HEM-907XL-Manual.pdf",
+        "note": "Omron-authored English instructions hosted by Medaval. Printed page 27 gives the individual codes and operator checks."
+      },
+      {
+        "title": "Omron Healthcare US, Professional IntelliSense blood pressure monitor",
+        "url": "https://omronhealthcare.com/products/intellisense-professional-digital-blood-pressure-monitor-hem-907xl",
+        "note": "Identifies the HEM-907XL and its intended professional use."
+      }
+    ],
+    "publishAt": "2026-12-18T07:00:00.000Z",
+    "checkedDate": "2026-11-07"
+  },
+  {
+    "slug": "vtech-ds6751-set-date-time",
+    "title": "How to set the date and time on a VTech DS6751 phone",
+    "shortTitle": "Set the DS6751 clock and fix the message day",
+    "description": "Change the clock from the DS6751 handset or base, correct the weekday on recorded messages, and see what caller ID updates automatically.",
+    "brand": "VTech",
+    "category": "devices",
+    "diagram": "clock",
+    "type": "Settings",
+    "answer": "With the DS6751 handset or base idle, open MENU and select Set date/time. Enter the date including the year, set the hour and minute, choose AM or PM, then press SELECT to save.",
+    "scope": "Applies to the VTech DS6751, DS6751-2 and DS6751-3 family identified on the source cover. The DECT 6.0 label also appears on phones with different menus.",
+    "tags": [
+      "how to change the time on a vtech phone",
+      "how to change time on vtech phone",
+      "VTech DS6751 set date and time",
+      "VTech answering system wrong day",
+      "time and date not set"
+    ],
+    "related": [
+      "vtech-phone-ringer-volume"
+    ],
+    "takeaway": "Save the year and AM/PM as well as the digits on the clock. Check a newly recorded message to hear the result.",
+    "sources": [
+      {
+        "title": "VTech DS6751 complete user’s manual",
+        "url": "https://cdn-media.vtechphones.com/products/DS/DS6751/DS6751-X_WEBCIB_V5_20161215.pdf",
+        "note": "Printed page 24 explains the menu, field ranges, confirmation tone, caller ID and message announcements."
+      },
+      {
+        "title": "VTech DS6751 abbreviated instructions",
+        "url": "https://cdn-media.vtechphones.com/products/DS/DS6751/DS6751-X_ACIB_V6_20161215.pdf",
+        "note": "Configure your phone confirms the idle handset/base procedure and date entry order."
+      }
+    ],
+    "publishAt": "2026-12-19T07:00:00.000Z",
+    "checkedDate": "2026-11-07"
+  },
+  {
+    "slug": "frigidaire-fget3065pf-set-oven-clock",
+    "title": "How to set the clock on a Frigidaire Gallery FGET3065PF oven",
+    "shortTitle": "Set the FGET3065PF oven clock after a power cut",
+    "description": "Set the time on the Frigidaire Gallery FGET3065PF wall oven, clear the CLO prompt, and switch between the 12- and 24-hour display.",
+    "brand": "Frigidaire",
+    "category": "ovens",
+    "diagram": "clock",
+    "type": "Settings",
+    "answer": "On the FGET3065PF keypad, tap Set Clock, enter the current time using the number keys, then press Start. The CLO prompt clears when the oven accepts the setting.",
+    "scope": "For the Frigidaire Gallery FGET3065PF double electric wall oven with Set Clock, a number pad and Start. Frigidaire ranges and touchscreens can use different controls.",
+    "tags": [
+      "set clock on frigidaire oven",
+      "frigidaire oven clock set",
+      "how to change time on frigidaire oven",
+      "Frigidaire FGET3065PF CLO",
+      "Frigidaire oven 24 hour clock"
+    ],
+    "related": [],
+    "takeaway": "A short press of Set Clock changes the time. Hold the same key to enter the hour-format setting, then reset the time after changing format.",
+    "sources": [
+      {
+        "title": "Frigidaire Gallery FGET3065PF owner support",
+        "url": "https://www.frigidaire.ca/Owner-Centre/Product-Support/FGET3065PF",
+        "note": "Identifies the double wall oven and links its English owner's guide."
+      },
+      {
+        "title": "Frigidaire wall oven Use & Care, document 139900302",
+        "url": "https://frigidaire.bynder.com/m/6b871c8c77870ad0/original/139900302en-pdf.pdf",
+        "note": "Printed pages 8–9 identify the keys and distinguish time entry from the 12/24-hour format menu."
+      }
+    ],
+    "publishAt": "2026-12-20T07:00:00.000Z",
+    "checkedDate": "2026-11-07"
   }
 ]
