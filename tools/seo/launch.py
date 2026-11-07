@@ -1,6 +1,7 @@
 """Stable repository entry point for the installed shared runtime."""
 import json
 import os
+import subprocess
 from pathlib import Path
 import sys
 
@@ -15,6 +16,8 @@ def main():
     command = config['command']
     if not command or not Path(command[0]).is_file():
         raise SystemExit('The runtime Python executable is missing. Reinstall the runtime.')
+    if os.name == 'nt':
+        raise SystemExit(subprocess.call(command+sys.argv[1:]))
     os.execv(command[0], command+sys.argv[1:])
 
 
