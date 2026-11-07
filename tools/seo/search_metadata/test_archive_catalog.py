@@ -155,6 +155,25 @@ class ArchiveCatalogTests(unittest.TestCase):
         self.assertEqual(sum(r['pages'] for r in result['states'] if r['state']=='pending'),2)
         self.assertEqual(self.db.execute("SELECT COUNT(*) FROM research_archive_pages WHERE state='validated_draft'").fetchone()[0],0)
 
+    def test_reconciliation_commits_each_page_and_keeps_progress_after_interruption(self):
+        self.seed_page_history(1);self.seed_page_history(2)
+        period=self.prepare()['periodId'];hydrate_pages(self.db,period,self.root/'batch',2)
+        calls=[]
+        def assess(db,pdf,page):
+            calls.append(pdf)
+            if len(calls)==2:
+                other=sqlite3.connect(self.root/'research.sqlite3')
+                try:reason=other.execute('SELECT reason FROM research_archive_pages WHERE period_id=? AND pdf=1',(period,)).fetchone()[0]
+                finally:other.close()
+                self.assertEqual(reason,'fixture_assessed')
+                raise RuntimeError('fixture assessment interruption')
+            return dict(eligible=True,state='pending',reason='fixture_assessed')
+        with patch('outcomes.page_outcome',side_effect=assess):
+            with self.assertRaisesRegex(RuntimeError,'assessment interruption'):reconcile_period(self.db,period)
+        self.assertEqual(self.db.execute('SELECT reason FROM research_archive_pages WHERE pdf=1').fetchone()[0],'fixture_assessed')
+        with patch('outcomes.page_outcome',return_value=dict(eligible=True,state='pending',reason='fixture_assessed')):
+            self.assertEqual(reconcile_period(self.db,period)['assessedImportedPages'],2)
+
 
 if __name__ == '__main__':
     unittest.main()

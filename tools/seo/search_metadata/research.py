@@ -12,6 +12,7 @@ import os
 import re
 import sqlite3
 import tempfile
+import time
 import unicodedata
 from urllib.parse import urlsplit
 import zipfile
@@ -517,6 +518,23 @@ def import_contexts(db,path):
     return count
 
 
+def import_context_file(db,path,attempts=3,retry_delay=.25):
+    """Atomically import saved evidence; only transient SQLite lock failures retry."""
+    if db.in_transaction:raise ValueError('Commit initialization before importing a context file')
+    if not 1<=attempts<=5 or not 0<=retry_delay<=5:raise ValueError('Invalid bounded context retry settings')
+    for attempt in range(attempts):
+        try:
+            with db:
+                db.execute('BEGIN IMMEDIATE')
+                result=import_contexts(db,path)
+            return result
+        except sqlite3.OperationalError as exc:
+            code=getattr(exc,'sqlite_errorcode',0) & 255
+            if code not in (sqlite3.SQLITE_BUSY,sqlite3.SQLITE_LOCKED) or attempt+1==attempts:
+                raise
+            time.sleep(retry_delay*(attempt+1))
+
+
 def context_queue(db,limit,retry_unavailable=False):
     result=[];seen=set()
     # Imported API windows can already exist before their source context does.
@@ -759,7 +777,9 @@ def main():
         if args.command=='import':
             start_run(db,args.run);print(packed({'imported':[import_page(db,p,args.run) for p in args.manifests]}))
         elif args.command=='keyword-only': print(packed(import_keyword_evidence(db,args.manifest)))
-        elif args.command=='contexts': print(packed({'contexts':import_contexts(db,args.file)}))
+        elif args.command=='contexts':
+            db.commit()  # Complete schema initialization before the retryable file transaction.
+            print(packed({'contexts':import_context_file(db,args.file)}))
         elif args.command=='bundle':
             value=bundle(db,args.pdf,args.page,args.allow_partial);atomic_json(args.output,value);print(packed({'requestId':value['requestId'],'partial':value['partialResearch']}))
         elif args.command=='generation': print(packed(import_generation(db,args.file,args.activate_directory)))

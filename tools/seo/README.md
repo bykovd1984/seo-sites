@@ -239,6 +239,13 @@ without a model call. This reason requests image/OCR follow-up; it does not clai
 metadata was generated. A changed source is reassessed by period reconciliation.
 Other missing evidence and uncertain calls remain pending.
 
+Archive reconciliation commits each assessed page separately instead of holding
+the writer for the full period. Saved context-file imports acquire the write
+transaction before reading/updating research state and retry only transient
+SQLite lock errors, up to three attempts. Invalid evidence is not retried. A
+failed file remains available for local replay; no server export, model request
+or provider lookup is repeated by this retry path.
+
 ## Worker and verification
 
 For a foreground collector, run `python tools/seo/launch.py daemon` in a separate

@@ -6,6 +6,7 @@ import json
 import os
 import sqlite3
 import tempfile
+import time
 from pathlib import Path
 
 from generate import atomic_json
@@ -324,11 +325,17 @@ def reconcile_period(db,period_id):
     rows=db.execute('''SELECT pdf,page,detail FROM research_archive_pages
         WHERE period_id=? AND eligible=1 AND history_imported=1
         ORDER BY last_seen DESC,priority_clicks DESC,pdf,page''',(period_id,)).fetchall()
-    with db:
-        for row in rows:
+    for row in rows:
+        # Release the writer between pages so concurrent source imports can proceed.
+        # A failed assessment rolls back only its page; completed progress survives.
+        with db:
+            if not db.in_transaction: db.execute('BEGIN IMMEDIATE')
             outcome=page_outcome(db,row['pdf'],row['page'])
-            detail=json.loads(row['detail']);detail['processing']=outcome
+            current=db.execute('SELECT detail FROM research_archive_pages WHERE period_id=? AND pdf=? AND page=?',
+                (period_id,row['pdf'],row['page'])).fetchone()
+            detail=json.loads(current['detail']);detail['processing']=outcome
             db.execute('''UPDATE research_archive_pages SET state=?,reason=?,detail=?,updated=?
                 WHERE period_id=? AND pdf=? AND page=?''',(outcome['state'],outcome['reason'] or 'metadata_draft_saved',
                 packed(detail),now(),period_id,row['pdf'],row['page']))
+        time.sleep(0)
     return dict(period_status(db,period_id),assessedImportedPages=len(rows))
