@@ -7,6 +7,7 @@ from pathlib import Path
 from research import ROOT,artifact,key,now,packed
 
 TERMINAL_REASONS={'file_missing','not_in_test_catalog','missing_storage_or_page_out_of_range'}
+CONVERTED_TERMINAL_REASONS={'file_missing','not_in_test_catalog','page_out_of_range','missing_partition'}
 
 
 def init_failures(db):
@@ -33,11 +34,11 @@ def records(data,converted):
             raise ValueError('Invalid paired source identity')
         identity=(pdf,page)
         if identity in rows or len(rows)>=100:raise ValueError('Duplicate or excessive paired source rows')
-        allowed=('seo_context',) if converted else ('legacy_seo_example','legacy_source_unavailable')
+        allowed=('seo_context','converted_source_unavailable') if converted else ('legacy_seo_example','legacy_source_unavailable')
         if value.get('type') not in allowed:raise ValueError('Unexpected paired source record')
-        if value['type']=='legacy_source_unavailable':
+        if value['type'] in ('legacy_source_unavailable','converted_source_unavailable'):
             if not isinstance(value.get('reason'),str):raise ValueError('Missing source failure reason')
-        elif value.get('readOnly') is not True:
+        if (converted or value['type']=='legacy_seo_example') and value.get('readOnly') is not True:
             raise ValueError('Source context lacks its read-only guard')
         rows[identity]=value
     return rows
@@ -59,15 +60,15 @@ def unavailable_outcome(db,pdf,page):
     if db.execute('SELECT 1 FROM research_content WHERE pdf=? AND page=? LIMIT 1',(pdf,page)).fetchone():return None
     try:
         proof=json.loads(row['payload'])
-        if proof.get('schemaVersion')!=1 or proof.get('kind')!='paired_source_export_unavailable' or key(proof)!=row['proof_id'] or (proof['sourcePdfId'],proof['page'])!=(pdf,page) or proof['failureReason'] not in TERMINAL_REASONS:
+        if proof.get('schemaVersion')!=2 or proof.get('kind')!='paired_source_export_unavailable' or key(proof)!=row['proof_id'] or (proof['sourcePdfId'],proof['page'])!=(pdf,page) or proof['failureReason'] not in TERMINAL_REASONS or proof['convertedFailureReason'] not in CONVERTED_TERMINAL_REASONS:
             raise ValueError('Invalid paired source proof')
         attempt=db.execute('SELECT reason,source_artifact FROM research_context_attempts WHERE pdf=? AND page=?',(pdf,page)).fetchone()
         if not attempt or (attempt['reason'],attempt['source_artifact'])!=(proof['failureReason'],proof['legacyArtifact']):
             return dict(state='pending',reason='source_export_attempt_changed')
         converted=records(archived(db,proof['convertedArtifact']),True)
         legacy=records(archived(db,proof['legacyArtifact']),False)
-        item=legacy.get((pdf,page))
-        if (pdf,page) in converted or not item or item['type']!='legacy_source_unavailable' or item['reason']!=proof['failureReason']:
+        item=legacy.get((pdf,page));converted_item=converted.get((pdf,page))
+        if not converted_item or converted_item['type']!='converted_source_unavailable' or converted_item['reason']!=proof['convertedFailureReason'] or not item or item['type']!='legacy_source_unavailable' or item['reason']!=proof['failureReason']:
             raise ValueError('Source proof no longer supports this failure')
     except (ValueError,OSError,KeyError,TypeError):
         return dict(state='pending',reason='source_export_proof_invalid')
@@ -83,8 +84,8 @@ def finalize_export(db,converted_path,legacy_path,period=None):
     if not suffix or converted_path.parent!=legacy_path.parent or legacy_path.name!='legacy-'+suffix[1]+'.jsonl':
         raise ValueError('Converted and legacy proofs must be matching files from one export run')
     converted,legacy=records(converted_data,True),records(legacy_data,False)
-    if converted.keys() & legacy.keys():raise ValueError('A converted context cannot also be a legacy failure')
-    if len(converted)+len(legacy)>100:raise ValueError('Paired export exceeds the bounded request count')
+    if {i for i,r in converted.items() if r['type']=='seo_context'} & legacy.keys():raise ValueError('A converted context cannot also be a legacy failure')
+    if len(converted.keys() | legacy.keys())>100:raise ValueError('Paired export exceeds the bounded request count')
     if period:
         from archive_catalog import period_status
         period_status(db,period)
@@ -101,12 +102,17 @@ def finalize_export(db,converted_path,legacy_path,period=None):
                 result['pendingReasons'][reason]=result['pendingReasons'].get(reason,0)+1;continue
             if db.execute('SELECT 1 FROM research_content WHERE pdf=? AND page=? LIMIT 1',(pdf,page)).fetchone():
                 result['sourcePresent']+=1;continue
+            converted_item=converted.get((pdf,page))
+            converted_reason=converted_item.get('reason') if converted_item and converted_item['type']=='converted_source_unavailable' else 'failure_unreported'
+            if converted_reason not in CONVERTED_TERMINAL_REASONS:
+                code='converted_'+str(converted_reason)
+                result['pendingReasons'][code]=result['pendingReasons'].get(code,0)+1;continue
             attempt=db.execute('SELECT reason,source_artifact FROM research_context_attempts WHERE pdf=? AND page=?',(pdf,page)).fetchone()
             if not attempt or (attempt['reason'],attempt['source_artifact'])!=(reason,legacy_id):
                 result['pendingReasons']['source_export_attempt_changed']=result['pendingReasons'].get('source_export_attempt_changed',0)+1;continue
-            proof=dict(schemaVersion=1,kind='paired_source_export_unavailable',sourcePdfId=pdf,page=page,
-                convertedArtifact=converted_id,legacyArtifact=legacy_id,failureReason=reason,
-                limitation='The converted export supplied no verified context; the legacy export reported this failure. This does not prove the original PDF is absent.')
+            proof=dict(schemaVersion=2,kind='paired_source_export_unavailable',sourcePdfId=pdf,page=page,
+                convertedArtifact=converted_id,legacyArtifact=legacy_id,failureReason=reason,convertedFailureReason=converted_reason,
+                limitation='Both converted and legacy exports explicitly reported their bound failure reasons. This does not prove the original PDF is absent.')
             ident=key(proof)
             old=db.execute('SELECT proof_id FROM research_source_export_failures WHERE pdf=? AND page=?',(pdf,page)).fetchone()
             if old and old['proof_id']==ident:result['alreadyRecorded']+=1

@@ -17,8 +17,8 @@ class SourceCompletionTests(unittest.TestCase):
         init(self.db);import_page(self.db,fixture.manifest(),'test');self.db.commit()
         self.converted=self.root/'converted-001.jsonl';self.legacy=self.root/'legacy-001.jsonl'
 
-    def pair(self,reason='file_missing'):
-        self.converted.write_text('',encoding='utf-8')
+    def pair(self,reason='file_missing',converted_reason='file_missing'):
+        self.converted.write_text(json.dumps(dict(type='converted_source_unavailable',sourcePdfId=286733,page=69,reason=converted_reason,readOnly=True))+'\n',encoding='utf-8')
         self.legacy.write_text(json.dumps(dict(type='legacy_source_unavailable',sourcePdfId=286733,page=69,reason=reason))+'\n',encoding='utf-8')
         import_contexts(self.db,self.converted);import_contexts(self.db,self.legacy);self.db.commit()
 
@@ -45,6 +45,15 @@ class SourceCompletionTests(unittest.TestCase):
             self.pair(reason);value=finalize_export(self.db,self.converted,self.legacy)
             self.assertEqual(value['recordedPages'],0);self.assertEqual(value['pendingReasons'],{reason:1})
             self.assertEqual(page_outcome(self.db,286733,69)['state'],'pending')
+
+    def test_converted_omission_or_limit_cannot_become_a_terminal_skip(self):
+        for reason in ('file_too_large','ambiguous_catalog_brand','unknown_error'):
+            self.pair(converted_reason=reason);value=finalize_export(self.db,self.converted,self.legacy)
+            self.assertEqual(value['recordedPages'],0);self.assertEqual(value['pendingReasons'],{'converted_'+reason:1})
+            self.assertEqual(page_outcome(self.db,286733,69)['state'],'pending');self.db.commit()
+        self.pair();self.converted.write_text('',encoding='utf-8')
+        value=finalize_export(self.db,self.converted,self.legacy)
+        self.assertEqual(value['recordedPages'],0);self.assertEqual(value['pendingReasons'],{'converted_failure_unreported':1})
 
     def test_importing_real_context_reopens_an_old_skip(self):
         self.pair();finalize_export(self.db,self.converted,self.legacy);self.source()

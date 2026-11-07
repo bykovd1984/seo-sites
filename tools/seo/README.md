@@ -346,9 +346,9 @@ python tools/seo/search_metadata/research.py source-completion --converted RUN/c
 ```
 
 Files must be saved workspace artifacts from the same run. The exact page must
-be absent from the converted output, and the latest imported legacy attempt must
+have an explicit converted failure record, and the latest imported legacy attempt must
 report a missing file, absent catalog entry, or missing storage/out-of-range page.
-The stored reason means no verified context was exported from the approved copies;
+Converted omissions, size limits and catalog-brand ambiguity are insufficient. Version1 proofs reopen for explicit re-export. The stored reason means no verified context was exported from the approved copies;
 it does not establish that the original PDF is absent. Limits, oversized files and
 unknown errors stay pending. Replays do not duplicate failure events. Ranking
 protection runs before skips, and actual source content takes precedence. Importing
