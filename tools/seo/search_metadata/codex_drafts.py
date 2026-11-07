@@ -181,6 +181,15 @@ The previous completed response failed validation. Return a corrected complete r
     return dict(periodId=period,model=GENERATOR[0],effort=GENERATOR[1],queued=[task],held={},providerRequestsMade=0)
 
 
+def prepare_repairs(db,period,directory,requests,revision=1):
+    if not 1<=len(requests)<=25 or len(set(requests))!=len(requests):
+        raise ValueError('Use 1..25 distinct repair requests')
+    tasks=dict(periodId=period,model=GENERATOR[0],effort=GENERATOR[1],queued=[],held={},providerRequestsMade=0)
+    for request in requests:
+        tasks['queued'].extend(prepare_repair(db,period,directory,request,revision)['queued'])
+    return tasks
+
+
 def run_one(db,task,executable):
     directory=Path(task['directory']);source=json.loads((directory/'bundle.json').read_text(encoding='utf-8'))
     if (source['generatorModel'],source['generatorEffort'])!=GENERATOR:raise ValueError('Unexpected generator in frozen input')
@@ -241,7 +250,7 @@ def main():
     parser.add_argument('--period',required=True);parser.add_argument('--limit',type=int,default=10)
     parser.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/full-history/codex-drafts')
     parser.add_argument('--run',action='store_true',help='Invoke Codex with existing ChatGPT sign-in; never publish')
-    parser.add_argument('--repair-request',help='Explicitly revise a completed invalid response in the same run directory')
+    parser.add_argument('--repair-request',action='append',help='Explicit completed-response repair; repeat for up to 25 distinct requests')
     parser.add_argument('--revision',type=int,choices=(1,2,3),default=1)
     args=parser.parse_args()
     from research_hub.worker import worker_lock
@@ -250,7 +259,7 @@ def main():
         if not locked:raise ValueError('Another ManualsDump Codex draft batch is active')
         with connect(args.db) as db:
             init(db);init_catalog(db)
-            tasks=prepare_repair(db,args.period,args.directory,args.repair_request,args.revision) if args.repair_request else prepare(db,args.period,args.directory,args.limit)
+            tasks=prepare_repairs(db,args.period,args.directory,args.repair_request,args.revision) if args.repair_request else prepare(db,args.period,args.directory,args.limit)
             atomic_json(args.directory/'last-batch.json',tasks)
             emit(dict(prepared=len(tasks['queued']),held=tasks['held'],model=GENERATOR[0],effort=GENERATOR[1]))
             if not args.run:return

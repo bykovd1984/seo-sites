@@ -2,7 +2,7 @@ import hashlib,json,unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from codex_drafts import search_history,expand_response,prepare,run_one,emit,prepare_repair
+from codex_drafts import search_history,expand_response,prepare,run_one,emit,prepare_repair,prepare_repairs
 from archive_catalog import init_catalog
 from generate import atomic_json
 from model_stage import set_draft_policy
@@ -165,6 +165,14 @@ class CodexDraftTests(unittest.TestCase):
         (folder/'prompt.txt').write_text('changed',encoding='utf-8')
         with self.assertRaisesRegex(ValueError,'input changed after invocation'):
             run_one(self.db,task,'unused-codex')
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
+
+    def test_repair_batches_reject_duplicates_before_any_model_call(self):
+        task=self.invalid_output()
+        with self.assertRaisesRegex(ValueError,'distinct repair requests'):
+            prepare_repairs(self.db,self.period,self.root/'drafts',[task['requestId']]*2)
+        tasks=prepare_repairs(self.db,self.period,self.root/'drafts',[task['requestId']])
+        self.assertEqual([r['requestId'] for r in tasks['queued']],[task['requestId']])
         self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
 
 if __name__=='__main__':unittest.main()
