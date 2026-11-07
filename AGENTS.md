@@ -6,6 +6,7 @@
 - Preserve manufacturer citations, product-specific conditions, AI illustration labels and honest review status.
 - Never invent SEO metrics or independent test results.
 - Keep secrets, runtime databases and local research out of Git.
+- Shared SEO application source is in tools/seo. Read tools/seo/README.md for MCP/CLI setup and the agent workflow. Validate application changes with its Python suites and MCP handshake. Site validation commands below apply to site changes.
 - Validate with npm test, npm run db:seed, npm run build and npm run typecheck.
 - Main deploys through .github/workflows/deploy.yml to the VPS runner labelled seo-sites.
 - Deploy each site independently: rowna-sciana uses seo-rowna-sciana, /opt/seo-sites/rowna-sciana and loopback port 5005; deviceclue uses seo-deviceclue, /opt/seo-sites/deviceclue and loopback port 5006. Never change or prune unrelated containers.

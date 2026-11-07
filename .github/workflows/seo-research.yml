@@ -1,0 +1,26 @@
+name: Validate SEO research application
+on:
+  push:
+    paths: ['tools/seo/**', '.github/workflows/seo-research.yml']
+  pull_request:
+    paths: ['tools/seo/**', '.github/workflows/seo-research.yml']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install setuptools wheel
+      - run: python -m pip install -e 'tools/seo[browser]'
+      - run: python -m unittest discover -s tools/seo/search_metadata
+      - run: python -m unittest discover -s tools/seo/research_hub/tests
+      - run: python -m pip wheel --no-deps --no-build-isolation --wheel-dir artifacts/wheels tools/seo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seo-research-wheel
+          path: artifacts/wheels/*.whl

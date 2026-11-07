@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seo-research"
+version = "1.1.0"
+description = "Shared search evidence, keyword research and per-page metadata workflow"
+requires-python = ">=3.11"
+dependencies = ["mcp==2.3.0"]
+
+[project.optional-dependencies]
+browser = ["playwright==1.64.1"]
+
+[project.scripts]
+seo-research = "research_hub.cli:entrypoint"
+seo-manualsdump = "search_metadata.launcher:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["research_hub", "search_metadata"]
+
+[tool.setuptools.package-data]
+search_metadata = ["capture_semrush_ui.js"]
+research_hub = ["config.example.json"]

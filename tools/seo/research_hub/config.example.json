@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "projects": {
+    "grammar-example": {
+      "name": "Grammar research example",
+      "hosts": ["example.com"],
+      "languages": ["en", "ru"],
+      "minimumPosition": null,
+      "google": {
+        "property": "sc-domain:example.com",
+        "account": "owner@example.com",
+        "credentialFile": null,
+        "enabled": false
+      }
+    }
+  },
+  "semrush": {
+    "enabled": false,
+    "origin": "https://sktiman.toolspd.com",
+    "dailyLimit": 20,
+    "delaySeconds": 15,
+    "channel": "msedge"
+  }
+}

@@ -7,6 +7,13 @@
 **/.sites-runtime/
 **/npm-debug.log*
 .local/
+artifacts/
+.venv/
+**/__pycache__/
+**/*.pyc
+**/*.egg-info/
+tools/seo/build/
+tools/seo/dist/
 research/
 sites/rowna-sciana/components/connector-error.tsx
 sites/rowna-sciana/lib/utils.ts

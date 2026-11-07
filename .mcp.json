@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "seo-research": {
+      "type": "stdio",
+      "command": "${SEO_RESEARCH_PYTHON:-python}",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/tools/seo/launch.py", "serve"]
+    }
+  }
+}
