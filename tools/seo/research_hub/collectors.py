@@ -19,6 +19,15 @@ from providers import Google, Bing, bing_date
 from toolspd import parse_snapshot, ReportUnavailable, SCRIPT, COUNTRY_LABELS, origin, url as report_url
 
 
+
+def collection_policy(config,project=None):
+    from .provider_policy import effective_policy
+    policy=effective_policy(config,now()[:10])
+    if not policy['enabled']:raise ReportUnavailable(policy['pauseReason'])
+    if policy['allowedProjects'] and project not in policy['allowedProjects']:raise ReportUnavailable('project_not_in_temporary_allowance')
+    return policy
+
+
 def verify_google(provider, config):
     identity = provider.call('https://openidconnect.googleapis.com/v1/userinfo')
     if identity.get('email', '').casefold() != config['account'].casefold() or identity.get('email_verified') is not True:
@@ -202,6 +211,7 @@ class ToolsPDBrowser:
         attempt = getattr(self,'current_attempt',None)
         if not attempt:
             raise ReportUnavailable('dispatch_budget_not_configured')
+        collection_policy(self.config,getattr(self,'current_project',None))
         self.pacer.dispatch(attempt())
 
     def before_retry(self):
@@ -273,19 +283,17 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                 attach_report(service, job, keyword, cached['id'])
                 progress['cacheHits'] = progress.get('cacheHits', 0) + 1
             else:
-                if not config.get('enabled'):
-                    raise ReportUnavailable('semrush_collection_paused_in_configuration')
+                policy=collection_policy(config,job['project'])
                 if request['country'] not in COUNTRY_LABELS:
                     raise ReportUnavailable('country_label_not_yet_verified_by_collector')
                 if request['requestedMonth'] != now()[:7]:
                     raise ReportUnavailable('new_month_requires_a_new_keyword_job')
-                ceiling = config.get('dailyLimit', 20)
-                delay = config.get('delaySeconds', 15)
-                if not 1 <= ceiling <= 100 or delay < 10:
-                    raise ValueError('Invalid ToolsPD daily limit or delay')
+                ceiling=policy['dailyLimit']
+                delay=policy['delaySeconds']
                 db = service.store.db
                 attempts = []
                 def reserve_attempt():
+                    collection_policy(config,job['project'])
                     db.execute('BEGIN IMMEDIATE')
                     try:
                         count = db.execute('SELECT COUNT(*) FROM attempts WHERE started>=?', (now()[:10],)).fetchone()[0]
@@ -307,6 +315,7 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                     browser.acquire()
                 reserve_attempt()
                 try:
+                    browser.current_project=job['project']
                     browser.before_retry = reserve_attempt
                     browser.current_attempt = lambda:attempts[-1]
                     browser.sleeper = sleeper

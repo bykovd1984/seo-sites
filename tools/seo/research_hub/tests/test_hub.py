@@ -335,6 +335,24 @@ class HubTest(unittest.TestCase):
         self.assertEqual(self.service.jobs('grammar',job['id'])['state'],'done')
         self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],0)
 
+    def test_temporary150_preserves100_failed_attempts_and_blocks_other_projects(self):
+        self.service.settings.data['semrush'].update(enabled=True,dailyLimit=150,delaySeconds=15,
+            temporaryAllowanceDay=now()[:10],allowedProjects=['grammar'])
+        for number in range(100):self.service.store.db.execute('INSERT INTO attempts VALUES (?,?,?,?)',
+            ('previous-'+str(number),'old-job',now(),'failed'))
+        self.service.store.db.commit()
+        other=self.subject('manuals');job=self.service.queue_keywords('manuals',other,['present simple'],'US','en',max_age_days=0)
+        class FailureAfterReservation:
+            def __init__(self,settings):pass
+            def capture(self,request):raise ReportUnavailable('fixture_after_reservation')
+            def close(self):pass
+        with self.assertRaises(ReportUnavailable):collect_keywords(self.service,job,FailureAfterReservation)
+        self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],100)
+        topic=self.subject();job=self.service.queue_keywords('grammar',topic,['present simple'],'US','en',max_age_days=0)
+        with self.assertRaises(ReportUnavailable):collect_keywords(self.service,job,FailureAfterReservation)
+        self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],101)
+        self.assertEqual(self.service.store.db.execute("SELECT count(*) FROM attempts WHERE id LIKE 'previous-%'").fetchone()[0],100)
+
     def test_provider_status_is_local_and_does_not_consume_quota(self):
         result=self.service.provider_status()
         self.assertEqual(result['provider'],'toolspd')

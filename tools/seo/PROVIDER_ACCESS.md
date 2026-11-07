@@ -41,3 +41,11 @@ another device. Such access must be coordinated by routing agent research throug
 this broker. Remote clients must connect to the central worker host, rather than
 create a second provider installation for the same account. No public HTTP
 listener, provider credentials or browser cookies are exposed through MCP.
+
+An owner-approved temporary allowance can set `dailyLimit` up to150 locally,
+`temporaryAllowanceDay` to one UTC date and `allowedProjects` to the approved
+project IDs. The worker checks the date and project before reserving an attempt
+and again at actual report dispatch. Outside that day collection stays paused;
+the ledger is never reset. Configuration is cached by the worker, so apply changes
+only with a controlled idle-worker reload. This is an application allowance and
+does not assert or modify a vendor quota. Keep the existing dispatch spacing.
