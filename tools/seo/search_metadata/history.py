@@ -37,6 +37,8 @@ def connect(path):
         CREATE TABLE IF NOT EXISTS api_page_metrics (id TEXT PRIMARY KEY,engine TEXT NOT NULL,site TEXT NOT NULL,
           start TEXT NOT NULL,end TEXT NOT NULL,url TEXT NOT NULL,pdf INTEGER NOT NULL,page INTEGER NOT NULL,
           clicks INTEGER NOT NULL,impressions INTEGER NOT NULL,position REAL,payload TEXT NOT NULL);
+        CREATE INDEX IF NOT EXISTS api_page_metrics_lookup
+          ON api_page_metrics(engine,site,start,end,url);
         CREATE TABLE IF NOT EXISTS proposals (pdf INTEGER, page INTEGER, generated_at TEXT, status TEXT,
           payload TEXT NOT NULL, evidence_rowid INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(pdf,page));
     ''')
