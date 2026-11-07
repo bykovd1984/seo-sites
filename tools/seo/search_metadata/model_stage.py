@@ -127,7 +127,9 @@ def queue(db,directory,limit=25):
         except ValueError as exc:
             reason=str(exc);held[reason]=held.get(reason,0)+1;continue
         state=db.execute('SELECT status FROM research_requests WHERE id=?',(value['requestId'],)).fetchone()[0]
-        if state=='generated': continue
+        if state!='pending':
+            if state!='generated':held[state]=held.get(state,0)+1
+            continue
         path=directory/f'{row["pdf"]}-{row["page"]}-{value["requestId"][:12]}.json'
         if not path.exists(): atomic_json(path,value)
         result.append(dict(sourcePdfId=row['pdf'],page=row['page'],requestId=value['requestId'],bundle=str(path),

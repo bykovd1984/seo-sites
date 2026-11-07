@@ -46,7 +46,8 @@ def page_outcome(db, pdf, page):
         (request['requestId'], *GENERATOR)).fetchone()
     outcome['requestId'] = request['requestId']
     if version is None:
-        return dict(outcome, state='pending', reason='ready_for_generation')
+        status=db.execute('SELECT status FROM research_requests WHERE id=?',(request['requestId'],)).fetchone()[0]
+        return dict(outcome, state='pending', reason=status if status!='pending' else 'ready_for_generation')
     if version['status'] == 'validated_draft':
         return dict(outcome, state='validated_draft', reason=None, versionId=version['id'])
     return dict(outcome, state='pending', reason=version['status'], versionId=version['id'])

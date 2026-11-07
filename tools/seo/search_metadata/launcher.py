@@ -19,3 +19,12 @@ def drafts_main():
         run()
     except (ValueError, RuntimeError) as exc:
         raise SystemExit(str(exc)) from None
+
+
+def groups_main():
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from codex_groups import main as run
+    try:
+        run()
+    except (ValueError, RuntimeError) as exc:
+        raise SystemExit(str(exc)) from None

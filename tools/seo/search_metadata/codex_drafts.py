@@ -112,7 +112,10 @@ def prepare(db,period,directory,limit):
             held[exc.reason]=held.get(exc.reason,0)+1;continue
         except ValueError as exc:
             reason=str(exc);held[reason]=held.get(reason,0)+1;continue
-        if db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()[0]=='generated':continue
+        state=db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()[0]
+        if state!='pending':
+            if state!='generated':held[state]=held.get(state,0)+1
+            continue
         prompt=prompt_for(source)
         if len(prompt)>1500000:
             held['prompt_requires_segmentation']=held.get('prompt_requires_segmentation',0)+1;continue
@@ -140,6 +143,7 @@ def prepare_repair(db,period,directory,request_id,revision=1):
     request=db.execute('SELECT * FROM research_requests WHERE id=?',(request_id,)).fetchone()
     if not request:raise ValueError('Unknown generation request')
     if request['status']=='generated':raise ValueError('Request already has a generated response; use the review workflow')
+    if request['status']!='pending':raise ValueError('Request is reserved by another generation workflow')
     page=db.execute('SELECT eligible,history_imported FROM research_archive_pages WHERE period_id=? AND pdf=? AND page=?',
         (period,request['pdf'],request['page'])).fetchone()
     if not page or not page['eligible'] or not page['history_imported']:
@@ -202,6 +206,8 @@ def run_one(db,task,executable):
     if (source['generatorModel'],source['generatorEffort'])!=GENERATOR:raise ValueError('Unexpected generator in frozen input')
     latest=page_bundle(db,source['sourcePdfId'],source['page']);db.commit()
     if latest['requestId']!=source['requestId']:return dict(task,status='stale_input')
+    state=db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()[0]
+    if state not in ('pending','generated'):return dict(task,status='held',reason='Request is reserved by another generation workflow')
     receipt_path=directory/'invocation.json';receipt=json.loads(receipt_path.read_text(encoding='utf-8')) if receipt_path.exists() else None
     if receipt and receipt['status'] not in ('completed','imported'):
         return dict(task,status='held',reason='Prior invocation needs reconciliation; never retry an uncertain model call automatically')

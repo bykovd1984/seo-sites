@@ -262,3 +262,31 @@ python tools/seo/launch.py check-mcp
 
 Use the installed virtual environment's Python for the MCP tests. Fixtures cover
 imports, page guards, history, keyword decisions, resumability and SDK stdio calls.
+
+## Grouped ManualsDump drafts
+
+`seo-manualsdump-groups` processes a frozen archive period, newest observations
+first, with the same ChatGPT-authenticated `gpt-6.1-sol` / `medium` generator.
+One call handles up to eight independent page cases by default. It retains every
+disclosed query with its provider/URL scope and dates, and saves the full original
+source bundles compressed alongside an immutable prompt and invocation receipt.
+No paid API key, provider collection or publication is involved.
+
+```powershell
+seo-manualsdump-groups --period PERIOD_ID --pages-per-call 8 --limit 64 --run
+seo-manualsdump-groups --resume-group GROUP_ID --run
+seo-manualsdump-groups --repair-group GROUP_ID --run
+```
+
+Omit `--run` to prepare a group without calling the model. Each request is reserved
+atomically before dispatch; both single-page planners and grouped planners skip
+reserved/held work. The shared generation OS lock covers both runners. A completed
+response can be re-imported after a restart without another call; an uncertain
+call remains held. Explicit repairs include only invalid held members from a known
+completed call, preserve the parent evidence, and are limited to three revisions.
+
+Each result must cover the exact page/request identity. Source, ranking, query,
+candidate and metadata checks run per page; one invalid member does not discard
+valid members. Missing/duplicate request coverage holds the entire response.
+Actual token usage is stored once per group, never duplicated for its pages.
+All outputs remain drafts; deferred Semrush coverage remains explicit.
