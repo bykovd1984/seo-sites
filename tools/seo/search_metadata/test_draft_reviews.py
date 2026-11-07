@@ -140,11 +140,22 @@ class DraftReviewTests(unittest.TestCase):
 
     def test_definitive_source_unavailability_is_evidence_but_transient_limits_are_not(self):
         path=self.root/'unavailable.jsonl'
-        for reason,expected in [('batch_byte_limit',False),('file_missing',True)]:
+        for reason,expected in [('batch_byte_limit',False),('file_too_large',False),('file_missing',True)]:
             records=[dict(type='legacy_source_unavailable',sourcePdfId=286733,page=p,reason=reason) for p in (1,2)]
             path.write_text('\n'.join(json.dumps(r) for r in records)+'\n',encoding='utf-8');import_contexts(self.db,path);self.db.commit()
             result=prepare_reviews(self.db,self.period,self.root/'reviews',8)
             self.assertEqual(bool(result['preparedGroup']),expected)
+
+    def test_old_oversized_intro_proof_is_not_a_terminal_unavailability(self):
+        from draft_reviews import evidence_is_current
+        path=self.root/'oversized-intro.jsonl'
+        path.write_text('\n'.join(json.dumps(dict(type='legacy_source_unavailable',sourcePdfId=286733,page=p,reason='file_too_large')) for p in (1,2))+'\n',encoding='utf-8')
+        import_contexts(self.db,path);self.db.commit()
+        evidence=[]
+        for page in (1,2):
+            attempt=self.db.execute('SELECT source_artifact FROM research_context_attempts WHERE pdf=286733 AND page=?',(page,)).fetchone()
+            evidence.append(dict(sourcePdfId=286733,page=page,status='source_unavailable',reason='file_too_large',sourceArtifact=attempt['source_artifact']))
+        self.assertFalse(evidence_is_current(self.db,evidence))
 
     def test_replay_imports_without_a_second_call_or_duplicate_skip(self):
         ident=self.ready();result=run_group(self.db,ident,'codex',self.fixture.executor(self.unresolved));finish_review(self.db,ident,result)

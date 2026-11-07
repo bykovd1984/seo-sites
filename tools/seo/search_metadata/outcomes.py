@@ -40,6 +40,10 @@ def page_outcome(db, pdf, page):
         return dict(outcome,state='skipped',reason=exc.reason,sourceEvidence=exc.proof,
                     followUp='Image/OCR review is required before text-grounded metadata can be generated.')
     except ValueError as exc:
+        if str(exc)=='Exact page context is required':
+            from source_completion import unavailable_outcome
+            missing=unavailable_outcome(db,pdf,page)
+            if missing:return dict(outcome,**missing)
         return dict(outcome, state='pending', reason=str(exc))
     version = db.execute('''SELECT id,status,payload FROM research_metadata_versions
         WHERE request_id=? AND model=? AND effort=? ORDER BY created DESC,rowid DESC LIMIT 1''',

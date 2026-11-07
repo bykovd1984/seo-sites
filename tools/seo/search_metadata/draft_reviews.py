@@ -80,7 +80,7 @@ def manual_evidence(db,source):
                 sourceArtifact=row['source_artifact'],pageText=plain(' '.join(parser.text)),status='saved_context'))
         else:
             attempt=db.execute('SELECT * FROM research_context_attempts WHERE pdf=? AND page=?',(source['sourcePdfId'],page)).fetchone()
-            if not attempt or attempt['reason'] not in ('file_missing','not_in_test_catalog','missing_storage_or_page_out_of_range','file_too_large'):
+            if not attempt or attempt['reason'] not in ('file_missing','not_in_test_catalog','missing_storage_or_page_out_of_range'):
                 raise ValueError('Supplemental source pages are still pending')
             evidence.append(dict(sourcePdfId=source['sourcePdfId'],page=page,status='source_unavailable',
                 reason=attempt['reason'],sourceArtifact=attempt['source_artifact']))
@@ -146,6 +146,7 @@ def evidence_is_current(db,evidence):
             current=manual_context(db,item['sourcePdfId'],item['page'])
             if not current or current['raw_sha256']!=item['contentSha256'] or current['source_artifact']!=item['sourceArtifact']:return False
         else:
+            if item.get('reason') not in ('file_missing','not_in_test_catalog','missing_storage_or_page_out_of_range'):return False
             if manual_context(db,item['sourcePdfId'],item['page']):return False
             attempt=db.execute('SELECT reason,source_artifact FROM research_context_attempts WHERE pdf=? AND page=?',(item['sourcePdfId'],item['page'])).fetchone()
             if not attempt or (attempt['reason'],attempt['source_artifact'])!=(item['reason'],item['sourceArtifact']):return False

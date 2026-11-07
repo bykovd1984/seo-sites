@@ -335,3 +335,22 @@ A newer query-only report cannot replace a page-average report for the same
 provider/URL. Scopes without page measurements and explicit unknown page reports
 remain protected, as do reported page positions below8. Query positions are never
 substituted for page averages, and old measurements are not labelled current ranks.
+
+## Completed source-export failures
+
+After importing matching converted/legacy files from one bounded source-export run,
+record an evidence-bound outcome without provider/model requests:
+
+```sh
+python tools/seo/search_metadata/research.py source-completion --converted RUN/converted-001.jsonl --legacy RUN/legacy-001.jsonl --period PERIOD_ID
+```
+
+Files must be saved workspace artifacts from the same run. The exact page must
+be absent from the converted output, and the latest imported legacy attempt must
+report a missing file, absent catalog entry, or missing storage/out-of-range page.
+The stored reason means no verified context was exported from the approved copies;
+it does not establish that the original PDF is absent. Limits, oversized files and
+unknown errors stay pending. Replays do not duplicate failure events. Ranking
+protection runs before skips, and actual source content takes precedence. Importing
+recovered context and reconciling the period reopens a previously skipped page.
+Changed attempts or damaged proof artifacts also return the page to pending.
