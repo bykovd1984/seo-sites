@@ -12,3 +12,5 @@
 - Deploy each site independently: rowna-sciana uses seo-rowna-sciana, /opt/seo-sites/rowna-sciana and loopback port 5005; deviceclue uses seo-deviceclue, /opt/seo-sites/deviceclue and loopback port 5006. Never change or prune unrelated containers.
 - DeviceClue public deployment and DNS configuration were authorized on 2026-11-01. Preserve its source citations and honest editorial limits; no independent equipment testing is claimed.
 - Public launch and search registration were authorized on 2026-11-01. Index article pages; keep search and API pages out of the index. Preserve consent-before-analytics behavior.
+
+ToolsPD/Semrush access must use the shared SEO MCP/CLI queue only. Read [the provider-access contract](tools/seo/PROVIDER_ACCESS.md); do not open an independent provider browser or bypass a paused/busy queue.

@@ -21,6 +21,20 @@ class Service:
         return dict(projects=self.settings.public_projects(), semrushEnabled=bool(
             self.settings.data.get('semrush', {}).get('enabled')), publicationSupported=False, worker=worker_status(self))
 
+    def provider_status(self):
+        # Importing collectors only exposes the local lock/parser; no browser or provider is opened.
+        from .collectors import ReportUnavailable
+        from toolspd_access import access_status
+        config=self.settings.data.get('semrush',{})
+        day=now()[:10]
+        attempts=self.store.db.execute('SELECT count(*) FROM attempts WHERE started>=?',(day,)).fetchone()[0]
+        jobs=[dict(r) for r in self.store.db.execute("SELECT project,state,count(*) jobs FROM jobs WHERE kind='keywords' GROUP BY project,state ORDER BY project,state")]
+        return dict(provider='toolspd',enabled=bool(config.get('enabled')),dayUtc=day,
+            countedAttempts=attempts,dailyLimit=config.get('dailyLimit',20),
+            minimumDelaySeconds=config.get('delaySeconds',15),access=access_status(),queue=jobs,
+            collectionRoute='Shared MCP/CLI queue and independent worker only',
+            limitation='Cannot control manually opened browsers or clients on other machines.')
+
     def put_subject(self, project, kind, title, language, url=None, text='', topic_key=None,
                     publication_status='published', studied_language=None, sources=None):
         self.settings.project(project)

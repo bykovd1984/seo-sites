@@ -1,6 +1,7 @@
 import datetime as dt
 import os
 import unittest
+from urllib.parse import urlsplit
 from unittest.mock import Mock
 
 from toolspd import ReportUnavailable
@@ -11,6 +12,7 @@ class SessionPolicyTests(unittest.TestCase):
     def session(self):
         session = ToolsPDSession(Mock(), Mock(), 'https://old.toolspd.com')
         session.ready = True
+        session.context.pages=[]
         return session
 
     def test_recovery_tries_visible_options_once_and_counts_report_retries(self):
@@ -140,6 +142,7 @@ class RenderedSessionTests(unittest.TestCase):
         self.assertEqual(self.report_hosts, ['one.toolspd.com', 'two.toolspd.com', 'three.toolspd.com'])
         self.assertEqual(budget.call_count, 2)
         self.assertTrue(self.authenticated)
+        self.assertEqual([urlsplit(p.url).hostname for p in self.context.pages if urlsplit(p.url).hostname in ('one.toolspd.com','two.toolspd.com','three.toolspd.com')],['three.toolspd.com'])
 
     def test_shared_browser_gates_actual_report_navigations_after_login(self):
         import sys,tempfile

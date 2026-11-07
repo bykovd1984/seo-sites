@@ -51,8 +51,9 @@ Other clients can use the same stdio command and argument array.
 Each client starts a small MCP process. They share one SQLite store and an independent
 collector worker. The database serializes writes and the worker uses an OS lock to
 prevent parallel collection against the same data directory. Use one common home
-on this computer. A client on another machine needs its own installation and explicitly
-configured provider access.
+on this computer. Clients on another machine using the same ToolsPD account must
+connect to this central worker host; they must not start an independent browser
+collector for the same account. See [the provider-access contract](PROVIDER_ACCESS.md).
 
 Each installation writes a new release and atomically updates `runtime.json` after
 the handshake passes. Existing clients can finish using their previous release.
@@ -162,6 +163,23 @@ The IIS-specific adapter remains in PdfSite:
 `tools/seo/Export-ResearchContexts.ps1 -ArchivePeriod PERIOD_ID -Limit 100`. It
 fetches exact guarded source HTML for this catalogue, including impression-only
 pages. Continue the normal Semrush/model stages after contexts are imported.
+
+The owner can explicitly defer Semrush enrichment for drafts:
+
+```sh
+python tools/seo/search_metadata/model_stage.py draft-policy --allow-missing-semrush
+python tools/seo/search_metadata/model_stage.py queue --limit 10
+```
+
+This policy persists in the selected research database and applies to period
+reconciliation too. It preserves completed keyword reports, omits unfinished
+results and freezes their IDs/statuses in `researchCoverage`. Missing evidence
+never means zero demand or an explicit no-results finding. Validated metadata is
+stored as a draft with `draftOnly: true`; activation remains blocked. When the
+missing reports arrive, the changed evidence produces a new generation request.
+`draft-policy --require-semrush` restores the strict prerequisite. Source identity,
+HTML hash, ranking protection and exact selected-query checks remain mandatory.
+
 `reconcile` counts only a validated draft matching the current Sol 6.1 medium
 request. Pages waiting for content, evidence or generation remain pending.
 

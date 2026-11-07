@@ -302,6 +302,46 @@ class HubTest(unittest.TestCase):
             with worker_lock(self.home) as second:
                 self.assertTrue(first); self.assertFalse(second)
 
+    def test_busy_provider_does_not_open_browser_or_count_an_attempt(self):
+        from toolspd_access import ToolsPDBusy
+        self.service.settings.data['semrush'].update(enabled=True)
+        topic=self.subject();job=self.service.queue_keywords('grammar',topic,['present simple'],'US','en',max_age_days=0)
+        closed=[]
+        class BusyBrowser:
+            def __init__(self,settings): pass
+            def acquire(self): raise ToolsPDBusy()
+            def capture(self,request): raise AssertionError('Busy provider must not open a report')
+            def close(self): closed.append(True)
+        with self.assertRaises(ToolsPDBusy):collect_keywords(self.service,job,BusyBrowser)
+        self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],0)
+        self.assertEqual(closed,[True])
+
+    def test_worker_waits_for_the_provider_slot_in_the_durable_queue(self):
+        from toolspd_access import ToolsPDBusy
+        from unittest.mock import patch
+        topic=self.subject();job=self.service.queue_keywords('grammar',topic,['present simple'],'US','en')
+        calls=[];waiting=[]
+        def handler(service,current):
+            calls.append(current['id'])
+            if len(calls)==1:raise ToolsPDBusy()
+            service.store.update_job(current['id'],'done',current['progress'])
+        def sleep(seconds):
+            state=self.service.jobs('grammar',job['id'])
+            if state['state']=='queued':waiting.append((state['error'],seconds))
+        with patch('research_hub.worker.time.sleep',sleep):
+            work(self.home,handlers={'keywords':handler})
+        self.assertEqual(calls,[job['id'],job['id']])
+        self.assertEqual(waiting,[('toolspd_access_busy',2)])
+        self.assertEqual(self.service.jobs('grammar',job['id'])['state'],'done')
+        self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],0)
+
+    def test_provider_status_is_local_and_does_not_consume_quota(self):
+        result=self.service.provider_status()
+        self.assertEqual(result['provider'],'toolspd')
+        self.assertFalse(result['enabled'])
+        self.assertEqual(result['countedAttempts'],0)
+        self.assertTrue(result['access']['enforced'])
+
 
 if __name__ == '__main__':
     unittest.main()

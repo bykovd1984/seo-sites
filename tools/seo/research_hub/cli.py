@@ -10,7 +10,7 @@ from .service import Service
 from .store import packed
 
 
-OPERATIONS = ('projects', 'put_subject', 'subjects', 'subject_text', 'import_search', 'search_rows',
+OPERATIONS = ('projects', 'provider_status', 'put_subject', 'subjects', 'subject_text', 'import_search', 'search_rows',
               'datasets', 'queue_search', 'queue_keywords', 'jobs', 'resume_job', 'keywords', 'bundle',
               'save_decision', 'decisions', 'import_keywords')
 
@@ -117,23 +117,19 @@ def main(argv=None):
             browser.close()
     elif args.command == 'toolspd-login':
         from .collectors import ToolsPDBrowser
-        from .worker import worker_lock
         settings = Settings(home)
-        with worker_lock(home) as locked:
-            if not locked:
-                raise ValueError('Worker is active; retry login after it finishes')
-            browser = ToolsPDBrowser(settings)
-            try:
-                browser.open(headless=False)
-                browser.page.goto('https://app.toolspd.com/member', wait_until='domcontentloaded')
-                print('Sign in once in the isolated browser. The collector opens Semrush automatically. Never send passwords or codes to chat.', file=sys.stderr)
-                input('Press Enter after signing in: ')
-            finally:
-                browser.close()
+        browser = ToolsPDBrowser(settings)
+        try:
+            browser.open(headless=False)
+            browser.page.goto('https://app.toolspd.com/member', wait_until='domcontentloaded')
+            print('Sign in once in the isolated browser. The provider slot is held until this window closes. Never send passwords or codes to chat.', file=sys.stderr)
+            input('Press Enter after signing in: ')
+        finally:
+            browser.close()
         result = dict(loginWindowClosed=True, liveReportVerified=False,
                       collectionEnabled=bool(settings.data.get('semrush', {}).get('enabled')))
     else:
-        data = args.input.read_text(encoding='utf-8-sig') if args.input else '{}' if args.operation=='projects' else sys.stdin.read()
+        data = args.input.read_text(encoding='utf-8-sig') if args.input else '{}' if args.operation in ('projects','provider_status') else sys.stdin.read()
         kwargs = json.loads(data) if data.strip() else {}
         if not isinstance(kwargs, dict) or len(data)>12000000:
             raise ValueError('Expected a bounded JSON object')

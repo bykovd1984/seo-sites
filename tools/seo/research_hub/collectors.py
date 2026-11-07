@@ -157,10 +157,17 @@ class ToolsPDBrowser:
         self.settings = settings
         self.config = settings.data.get('semrush', {})
         self.base = origin(self.config.get('origin', 'https://sktiman.toolspd.com'))
-        self.browser = self.api = self.pacer = None
+        self.browser = self.api = self.pacer = self.access = None
         self.sleeper = time.sleep
 
+    def acquire(self):
+        if self.access is None:
+            from toolspd_access import ToolsPDAccess
+            self.access = ToolsPDAccess()
+        self.access.acquire()
+
     def open(self, headless=True):
+        self.acquire()
         # Browser state remains in the isolated owner profile; never copy another browser's cookies.
         try:
             from playwright.sync_api import sync_playwright
@@ -210,8 +217,12 @@ class ToolsPDBrowser:
                 if self.api:
                     self.api.stop()
             finally:
-                if self.pacer:
-                    self.pacer.close()
+                try:
+                    if self.pacer:
+                        self.pacer.close()
+                finally:
+                    if self.access:
+                        self.access.close()
 
 
 def archive_capture_failures(service, job, keyword, browser, progress, attempts):
@@ -287,10 +298,15 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                     except BaseException:
                         db.rollback()
                         raise
+                if db.execute('SELECT COUNT(*) FROM attempts WHERE started>=?', (now()[:10],)).fetchone()[0]>=ceiling:
+                    raise ReportUnavailable('daily_limit_reached')
+                # Acquire the provider slot before reserving a counted attempt or opening a browser.
+                if browser is None:
+                    browser = browser_factory(service.settings)
+                if hasattr(browser,'acquire'):
+                    browser.acquire()
                 reserve_attempt()
                 try:
-                    if browser is None:
-                        browser = browser_factory(service.settings)
                     browser.before_retry = reserve_attempt
                     browser.current_attempt = lambda:attempts[-1]
                     browser.sleeper = sleeper

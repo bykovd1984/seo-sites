@@ -104,5 +104,12 @@ class ToolsPdTests(unittest.TestCase):
         for changes in [dict(headers=['Keyword','Volume']),dict(rows=[[self.request['keyword'],'20','101','0.25','today']])]:
             with self.assertRaises(ValueError): parse_snapshot(self.request,self.snapshot(**changes))
 
+    def test_legacy_browser_entry_cannot_bypass_the_shared_broker(self):
+        from toolspd import run_worker
+        for interactive in (False,True):
+            with self.assertRaisesRegex(ValueError,'shared seo-research MCP queue'):
+                run_worker(self.db,self.root/'profile',self.root/'reports',login=interactive)
+        self.assertEqual(self.db.execute('SELECT count(*) FROM semrush_ui_attempts').fetchone()[0],0)
+
 
 if __name__=='__main__': unittest.main()

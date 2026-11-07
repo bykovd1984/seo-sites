@@ -6,6 +6,7 @@ import json
 import math
 import os
 import sqlite3
+import time
 import uuid
 from pathlib import Path
 
@@ -45,13 +46,28 @@ def finite(value, minimum=0, maximum=None, integer=False, optional=False):
     return int(value) if integer else value
 
 
+def initialize_schema(db,schema):
+    # Concurrent first-use MCP clients can race PRAGMA journal_mode even with
+    # busy_timeout. The schema contains only idempotent CREATE IF NOT EXISTS.
+    deadline=time.monotonic()+30
+    while True:
+        try:
+            db.executescript(schema)
+            return
+        except sqlite3.OperationalError as exc:
+            if getattr(exc,'sqlite_errorcode',0) & 255 not in (sqlite3.SQLITE_BUSY,sqlite3.SQLITE_LOCKED) or time.monotonic()>=deadline:
+                raise
+            db.rollback()
+            time.sleep(.05)
+
+
 class Store:
     def __init__(self, home):
         self.home = Path(home)
         self.home.mkdir(parents=True, exist_ok=True)
         self.db = sqlite3.connect(self.home / 'research.sqlite3', timeout=30)
         self.db.row_factory = sqlite3.Row
-        self.db.executescript('''
+        initialize_schema(self.db,'''
           PRAGMA journal_mode=WAL;
           PRAGMA foreign_keys=ON;
           CREATE TABLE IF NOT EXISTS subjects(

@@ -34,6 +34,11 @@ def create_server(home):
         """List configured sites, enabled sources and ranking rules. Does not verify live access."""
         return call('projects')
 
+    @server.tool(annotations=read)
+    def provider_status() -> dict:
+        """Read ToolsPD pause, counted quota, exclusive browser slot and queue; makes no provider requests."""
+        return call('provider_status')
+
     @server.tool(annotations=write)
     def save_subject(project: str, kind: str, title: str, language: str, url: str | None = None,
                      text: str = '', topic_key: str | None = None, publication_status: str = 'published',

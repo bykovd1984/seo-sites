@@ -110,6 +110,12 @@ def work(home, handlers=None, daemon=False):
                     handler(service, job)
                 except Exception as exc:
                     from .collectors import ReportUnavailable
+                    from toolspd_access import ToolsPDBusy
+                    if isinstance(exc,ToolsPDBusy):
+                        latest=service.store.job(job['project'],job['id'])
+                        service.store.update_job(job['id'],'queued',latest['progress'],latest['result'],exc.reason)
+                        time.sleep(2)
+                        continue
                     # Never expose exception text that may contain credentials, URLs, or browser internals.
                     code = exc.reason if isinstance(exc, ReportUnavailable) else type(exc).__name__
                     latest = service.store.job(job['project'], job['id'])

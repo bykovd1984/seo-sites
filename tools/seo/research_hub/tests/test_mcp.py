@@ -69,13 +69,16 @@ class MCPTest(unittest.TestCase):
                         await client.initialize()
                         tools=await client.list_tools()
                         names={t.name for t in tools.tools}
-                        self.assertTrue({'list_projects','sync_search','research_keywords','prepare_research','save_decision'} <= names)
+                        self.assertTrue({'list_projects','provider_status','sync_search','research_keywords','prepare_research','save_decision'} <= names)
                         self.assertFalse(any('publish' in n for n in names))
                         async def call(name,args):
                             result=await client.call_tool(name,args)
                             self.assertFalse(result.is_error,str(result))
                             return result.structured_content or json.loads(result.content[0].text)
                         projects=await call('list_projects',{})
+                        status=await call('provider_status',{})
+                        self.assertEqual(status['provider'],'toolspd')
+                        self.assertEqual(status['countedAttempts'],0)
                         self.assertEqual(projects['projects'][0]['id'],'grammar')
                         self.assertFalse(projects['semrushEnabled'])
                         subject=await call('save_subject',dict(project='grammar',kind='topic',title='Past tenses',language='en'))

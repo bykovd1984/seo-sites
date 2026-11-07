@@ -199,6 +199,14 @@ class ToolsPDSession:
             self.page.wait_for_timeout(1000)
         raise ReportUnavailable('report_not_ready_or_login_required')
 
+    def close_other_services(self,keep):
+        # Only tabs in this app-owned browser context are touched. Old service
+        # pages may poll in the background even after a failed report.
+        for page in list(self.context.pages):
+            host=urlsplit(page.url).hostname or ''
+            if page!=keep and host.endswith('.toolspd.com') and host not in ('app.toolspd.com','www.toolspd.com'):
+                page.close()
+
     def capture(self, request, before_retry):
         self.last_snapshot = None
         self.failed_reports = []
@@ -219,6 +227,7 @@ class ToolsPDSession:
         catalog_page = self.page
         for label in labels or [None]:
             try:
+                self.close_other_services(catalog_page)
                 if label:
                     self.page = catalog_page
                     controls = list(self.controls(re.compile('^' + re.escape(label) + '$', re.I)))
