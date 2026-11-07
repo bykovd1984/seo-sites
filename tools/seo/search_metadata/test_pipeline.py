@@ -85,6 +85,20 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(len(requests),2)
         self.assertEqual(self.db.execute('select count(*) from observations').fetchone()[0],1)
 
+    def test_malformed_bing_query_is_archived_without_losing_valid_rows(self):
+        bing = Bing('unused')
+        url = row()['url']
+        valid = dict(Query='hp m1005 scanning', Date='2026-11-01', Clicks=3, Impressions=50)
+        invalid = dict(valid, Query='broken'+chr(0)+'query')
+        def api(method, **fields):
+            return [dict(Query=url, Date='2026-11-01', Clicks=3)] if method=='GetPageStats' else [valid, invalid]
+        with patch.object(bing,'call',side_effect=api), patch('providers.time.sleep'):
+            bing.collect(self.db,'https://manualsdump.com/',dt.date(2026,10,1),dt.date(2026,11,1),1)
+        report = self.db.execute('SELECT payload,rejected_rows FROM api_bing_reports').fetchone()
+        self.assertEqual(len(json.loads(report[0])),2)
+        self.assertEqual(json.loads(report[1])[0]['reason'],'Invalid query')
+        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM observations').fetchone()[0],1)
+
     def test_wrong_model_or_impression_only_is_not_activated(self):
         for item in [row(query='hp m9999 scanning'),row(clicks=0),row(query='hp m1005 default password'),row(query='hp m1005 scanner driver download')]:
             self.assertEqual(propose(context(),[item],[])['status'],'needs_content_review')

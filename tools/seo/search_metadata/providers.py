@@ -198,7 +198,19 @@ class Bing:
                     normalized.append(dict(engine='bing', start=date, end=date, url=url, query=row['Query'],
                         clicks=row['Clicks'], impressions=row['Impressions'], position=row.get('AvgImpressionPosition')))
             with db:
-                ingest(db, normalized, 'bing-api-page-query'); checkpoint(db, key, {'rows': len(normalized)})
+                db.execute('''CREATE TABLE IF NOT EXISTS api_bing_reports (
+                    checkpoint_key TEXT PRIMARY KEY, payload TEXT NOT NULL, rejected_rows TEXT NOT NULL)''')
+                rejected = []
+                accepted = 0
+                for index, item in enumerate(normalized):
+                    try:
+                        ingest(db, [item], 'bing-api-page-query')
+                        accepted += 1
+                    except ValueError as exc:
+                        rejected.append(dict(index=index, reason=str(exc), row=item))
+                db.execute('INSERT OR REPLACE INTO api_bing_reports VALUES (?,?,?)',
+                    (key, json.dumps(rows, ensure_ascii=False), json.dumps(rejected, ensure_ascii=False)))
+                checkpoint(db, key, dict(rows=accepted, rejectedRows=len(rejected)))
             done += 1
             print(json.dumps(dict(engine='bing', page=url, rows=len(normalized))), flush=True)
             time.sleep(.5)
