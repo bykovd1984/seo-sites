@@ -34,6 +34,12 @@ Return JSON only, including verbatim contentEvidence and a concise rationale. Se
 '''
 
 
+def emit(value):
+    # Native Windows redirected stdout may use cp1252. Keep logs ASCII JSON;
+    # stored model evidence and metadata remain their original Unicode values.
+    print(json.dumps(value,ensure_ascii=True,sort_keys=True,separators=(',',':'),allow_nan=False),flush=True)
+
+
 def search_history(source):
     """Keep all query strings and dated last observations, without cross-window sums."""
     selectable={q['query'] for w in source['searchWindows'] if w['selectedForGeneration'] for q in w['queries']}
@@ -179,7 +185,7 @@ def main():
             init(db);init_catalog(db)
             tasks=prepare(db,args.period,args.directory,args.limit)
             atomic_json(args.directory/'last-batch.json',tasks)
-            print(packed(dict(prepared=len(tasks['queued']),held=tasks['held'],model=GENERATOR[0],effort=GENERATOR[1])),flush=True)
+            emit(dict(prepared=len(tasks['queued']),held=tasks['held'],model=GENERATOR[0],effort=GENERATOR[1]))
             if not args.run:return
             executable=shutil.which('codex')
             if not executable:raise ValueError('Install Codex CLI and sign in through ChatGPT first')
@@ -191,11 +197,12 @@ def main():
                 try:result=run_one(db,task,executable)
                 except (ValueError,KeyError,TypeError) as exc:
                     db.rollback();result=dict(task,status='held',reason=str(exc) if isinstance(exc,ValueError) else 'Invalid generation structure')
-                results.append(result);print(packed(result),flush=True)
+                results.append(result)
                 atomic_json(args.directory/'last-results.json',dict(periodId=args.period,results=results,productionChanged=False))
+                emit(result)
                 if result.get('reason') in ('model_failed','uncertain_timeout'):break
             result=reconcile_period(db,args.period);db.commit();atomic_json(args.directory/'period-status.json',result)
-            print(packed(dict(historyImportedPages=result['historyImportedPages'],states=result['states'])),flush=True)
+            emit(dict(historyImportedPages=result['historyImportedPages'],states=result['states']))
 
 
 if __name__=='__main__':main()

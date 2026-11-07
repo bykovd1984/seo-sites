@@ -2,7 +2,7 @@ import hashlib,json,unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from codex_drafts import search_history,expand_response,prepare,run_one
+from codex_drafts import search_history,expand_response,prepare,run_one,emit
 from archive_catalog import init_catalog
 from generate import atomic_json
 from model_stage import set_draft_policy
@@ -97,5 +97,12 @@ class CodexDraftTests(unittest.TestCase):
         self.assertEqual([d['candidateId'] for d in result['keywordDecisions']],['first','second'])
         raw['decisionGroups'][0]['numbers']=[1,1]
         with self.assertRaisesRegex(ValueError,'exact frozen candidates once'):expand_response(source,raw)
+
+    def test_unicode_log_is_lossless_even_with_legacy_windows_stdout(self):
+        import io
+        value={'title':'24\u2033 screen: \u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u2192 HDMI'}
+        data=io.BytesIO();stream=io.TextIOWrapper(data,encoding='cp1252',write_through=True)
+        with patch('sys.stdout',stream):emit(value)
+        self.assertEqual(json.loads(data.getvalue().decode('ascii')),value)
 
 if __name__=='__main__':unittest.main()
