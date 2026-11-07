@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import patch
 
 from generate import atomic_json
-from model_stage import page_bundle, queue
+from model_stage import page_bundle, queue, draft_policy, set_draft_policy
 from ranking_policy import record
 from research import historical_queries, import_generation
 from semrush_workflow import collect, plan
@@ -171,6 +171,72 @@ class ModelStageTests(unittest.TestCase):
         keyword=request['semrushCandidates'][0]['metrics']['keyword']
         result=import_generation(self.db,self.response(request,selectedKeywords=[keyword]))
         self.assertEqual(result['status'],'validated_draft')
+
+    def test_deferred_semrush_is_explicit_persisted_draft_only_and_still_validated(self):
+        with self.assertRaisesRegex(ValueError,'not been imported'):
+            page_bundle(self.db,286733,69)
+        set_draft_policy(self.db,True);self.db.commit()
+        self.assertTrue(draft_policy(self.db))
+        request=page_bundle(self.db,286733,69)
+        self.assertEqual(request['researchCoverage']['semrush']['status'],'not_imported')
+        self.assertEqual(request['semrushCandidates'],[])
+        self.assertTrue(request['draftOnly'])
+        path=self.response(request,researchCoverage={'semrush':{'status':'invented complete'}})
+        result=import_generation(self.db,path)
+        self.assertEqual(result['status'],'validated_draft')
+        saved=json.loads(self.db.execute('SELECT payload FROM research_metadata_versions WHERE id=?',(result['version'],)).fetchone()[0])
+        self.assertEqual(saved['researchCoverage'],request['researchCoverage'])
+        with self.assertRaisesRegex(ValueError,'deferred drafts cannot activate'):
+            import_generation(self.db,path,self.root/'runtime')
+        self.assertFalse((self.root/'runtime').exists())
+        self.assertEqual(queue(self.db,self.root/'bundles')['queued'],[])
+        set_draft_policy(self.db,False)
+        with self.assertRaisesRegex(ValueError,'not been imported'):
+            page_bundle(self.db,286733,69)
+
+    def test_deferred_lookup_keeps_completed_proofs_and_enrichment_changes_request(self):
+        plan(self.db,'US','2026-11',1,1,1);self.db.commit()
+        def reports(request,api_key):
+            if request['method']=='related_v3':
+                return 'Keyword;Search Volume;Keyword Difficulty Index;Competition\nhp m1005 scanning;120;17;0.5\n'
+            return self.fixture.metrics(request,api_key)
+        collect(self.db,self.root/'api','fake-key',True,60,transport=reports)
+        jobs=self.db.execute('SELECT id FROM semrush_jobs ORDER BY id').fetchall()
+        self.assertEqual(len(jobs),2)
+        self.db.execute("UPDATE semrush_jobs SET status='queued' WHERE id=?",(jobs[0]['id'],))
+        set_draft_policy(self.db,True)
+        request=page_bundle(self.db,286733,69)
+        self.assertEqual(request['researchCoverage']['semrush']['status'],'partial')
+        self.assertEqual(request['researchCoverage']['semrush']['completedJobs'],1)
+        self.assertEqual(request['researchCoverage']['semrush']['pendingJobs'],[dict(jobId=jobs[0]['id'],status='queued')])
+        self.assertTrue(all(item['jobId']==jobs[1]['id'] for item in request['semrushCandidates']))
+        import_generation(self.db,self.response(request))
+        self.db.execute("UPDATE semrush_jobs SET status='done' WHERE id=?",(jobs[0]['id'],))
+        enriched=page_bundle(self.db,286733,69)
+        self.assertNotEqual(enriched['requestId'],request['requestId'])
+        self.assertNotIn('draftOnly',enriched)
+        self.assertEqual(len(enriched['semrushCandidates']),2)
+        self.assertEqual([item['requestId'] for item in queue(self.db,self.root/'bundles')['queued']],[enriched['requestId']])
+
+    def test_optional_semrush_does_not_relax_query_source_or_rank_validation(self):
+        set_draft_policy(self.db,True)
+        request=page_bundle(self.db,286733,69)
+        with self.assertRaisesRegex(ValueError,'absent from the imported evidence'):
+            import_generation(self.db,self.response(request,selectedKeywords=['made up keyword']))
+        record(self.db,'google','2026-11-04','2026-11-04',self.fixture.url,3,50,'new-rank','test')
+        with self.assertRaisesRegex(ValueError,'Ranking protection'):
+            page_bundle(self.db,286733,69)
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
+
+    def test_reconciliation_accepts_only_the_current_deferred_draft(self):
+        from outcomes import page_outcome
+        set_draft_policy(self.db,True)
+        request=page_bundle(self.db,286733,69)
+        self.assertEqual(page_outcome(self.db,286733,69)['reason'],'ready_for_generation')
+        import_generation(self.db,self.response(request))
+        self.assertEqual(page_outcome(self.db,286733,69)['state'],'validated_draft')
+        plan(self.db,'US','2026-11',1,1);self.db.commit()
+        self.assertEqual(page_outcome(self.db,286733,69)['reason'],'ready_for_generation')
 
 
 if __name__=='__main__': unittest.main()

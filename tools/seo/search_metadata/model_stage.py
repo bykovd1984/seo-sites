@@ -9,11 +9,27 @@ from generate import atomic_json
 from history import connect
 from ranking_policy import eligibility
 from research import (ROOT, GENERATOR, bundle, import_generation, key, packed,
-                      refresh_stage)
+                      refresh_stage, now)
 from semrush_workflow import init
 
 
-def page_bundle(db,pdf,page):
+def draft_policy(db):
+    row=db.execute("SELECT value FROM research_settings WHERE name='allow_missing_semrush'").fetchone()
+    return bool(row and json.loads(row['value']) is True)
+
+
+def set_draft_policy(db,allow_missing_semrush):
+    if not isinstance(allow_missing_semrush,bool): raise ValueError('Draft policy must be boolean')
+    db.execute('INSERT OR REPLACE INTO research_settings VALUES (?,?,?)',
+               ('allow_missing_semrush',packed(allow_missing_semrush),now()))
+    db.execute('INSERT INTO research_events(created,pdf,page,event,payload) VALUES (?,?,?,?,?)',
+               (now(),None,None,'draft_policy_changed',packed(dict(allowMissingSemrush=allow_missing_semrush))))
+    return dict(allowMissingSemrush=allow_missing_semrush,scope='Draft generation only; incomplete Semrush evidence cannot activate metadata')
+
+
+def page_bundle(db,pdf,page,allow_missing_semrush=None):
+    if allow_missing_semrush is None: allow_missing_semrush=draft_policy(db)
+    if not isinstance(allow_missing_semrush,bool): raise ValueError('Draft policy must be boolean')
     refresh_stage(db,pdf,page)
     record=db.execute('''SELECT p.stage,c.raw_sha256 FROM research_pages p
         LEFT JOIN research_content c ON c.id=p.content_id WHERE p.pdf=? AND p.page=?''',(pdf,page)).fetchone()
@@ -23,11 +39,19 @@ def page_bundle(db,pdf,page):
     if not rank['eligible']: raise ValueError('Ranking protection: '+rank['reason'])
     jobs=db.execute('''SELECT DISTINCT j.* FROM semrush_jobs j JOIN semrush_links l ON l.job_id=j.id
         WHERE l.pdf=? AND l.page=? AND l.content_sha256=? AND j.status!='superseded' ORDER BY j.id''',(pdf,page,record['raw_sha256'])).fetchall()
-    # An explicitly requested lookup must finish before this evidence snapshot is frozen.
-    if any(j['status']!='done' for j in jobs): raise ValueError('Semrush collection is not complete for this page context')
-    if not jobs and record['stage']!='ready_for_generation': raise ValueError('Semrush evidence has not been imported')
+    incomplete=[j for j in jobs if j['status']!='done']
+    missing=not jobs and record['stage']!='ready_for_generation'
+    if incomplete and not allow_missing_semrush: raise ValueError('Semrush collection is not complete for this page context')
+    if missing and not allow_missing_semrush: raise ValueError('Semrush evidence has not been imported')
+    coverage=None
+    if incomplete or missing:
+        coverage=dict(semrush=dict(requiredForDraft=False,status='partial' if incomplete else 'not_imported',
+            completedJobs=sum(j['status']=='done' for j in jobs),
+            pendingJobs=[dict(jobId=j['id'],status=j['status']) for j in incomplete],
+            limitation='Missing Semrush reports and metrics are unknown; enrichment is deferred.'))
     candidates=[]
     for job in jobs:
+        if job['status']!='done': continue
         if not job['artifact_id'] or not job['result']: raise ValueError('Semrush request has no saved result proof')
         request=json.loads(job['request'])
         seed_sources=[dict(kind=r['kind'],seed=r['seed'],provenance=json.loads(r['payload'])) for r in db.execute('''
@@ -37,7 +61,7 @@ def page_bundle(db,pdf,page):
             candidates.append(dict(candidateId=key((job['id'],observation['keyword'])),jobId=job['id'],
                                    request=request,metrics=observation,observedAt=job['updated'],
                                    sourceArtifact=job['artifact_id'],seedSources=seed_sources))
-    return bundle(db,pdf,page,imported_candidates=candidates)
+    return bundle(db,pdf,page,imported_candidates=candidates,draft_coverage=coverage)
 
 
 def validate_keyword_decisions(source,response):
@@ -106,11 +130,16 @@ def main():
     commands=parser.add_subparsers(dest='command',required=True)
     queued=commands.add_parser('queue');queued.add_argument('--limit',type=int,default=25)
     queued.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/model-bundles')
+    policy=commands.add_parser('draft-policy',help='Persist the owner-approved draft evidence policy')
+    flags=policy.add_mutually_exclusive_group(required=True)
+    flags.add_argument('--allow-missing-semrush',action='store_true')
+    flags.add_argument('--require-semrush',action='store_true')
     generated=commands.add_parser('generation');generated.add_argument('file',type=Path)
     args=parser.parse_args()
     with connect(args.db) as db:
         init(db)
-        value=queue(db,args.directory,args.limit) if args.command=='queue' else import_generation(db,args.file)
+        if args.command=='draft-policy': value=set_draft_policy(db,args.allow_missing_semrush)
+        else: value=queue(db,args.directory,args.limit) if args.command=='queue' else import_generation(db,args.file)
         print(packed(value))
 
 

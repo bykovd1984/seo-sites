@@ -44,6 +44,7 @@ def request_signature(value):
 def init(db):
     init_rankings(db)
     db.executescript('''
+    CREATE TABLE IF NOT EXISTS research_settings (name TEXT PRIMARY KEY,value TEXT NOT NULL,updated TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS research_runs (id TEXT PRIMARY KEY, created TEXT, collector_model TEXT,
       collector_effort TEXT, generator_model TEXT, generator_effort TEXT, status TEXT);
     CREATE TABLE IF NOT EXISTS research_artifacts (id TEXT PRIMARY KEY, path TEXT NOT NULL, kind TEXT,
@@ -571,7 +572,7 @@ def historical_queries(windows):
     return evidence
 
 
-def bundle(db,pdf,page,allow_partial=False,imported_candidates=None):
+def bundle(db,pdf,page,allow_partial=False,imported_candidates=None,draft_coverage=None):
     record=db.execute('SELECT * FROM research_pages WHERE pdf=? AND page=?',(pdf,page)).fetchone()
     if not record or not record['content_id']: raise ValueError('Exact source context is required')
     if imported_candidates is not None and record['stage']=='identity_review':
@@ -621,6 +622,9 @@ def bundle(db,pdf,page,allow_partial=False,imported_candidates=None):
             result['historicalQueryEvidence'] = historical
             result['rules'].append('Consider historical queries alongside current ones when the present page answers them. A query missing from the latest disclosed report has unknown current rank. Keep the original windows and avoid adding overlapping metrics.')
         result['rules'].append('Review every semrushCandidates entry in keywordDecisions before selecting supported keywords and writing metadata. No separate Terra stage is required.')
+    if draft_coverage is not None:
+        result.update(researchCoverage=draft_coverage,draftOnly=True)
+        result['rules'].append('Semrush is optional for this draft. Missing reports/metrics are unknown, never zero or a no-results finding. Use available completed reports and source-supported historical queries. This draft cannot be activated until enrichment is complete.')
     ident=request_signature(result)
     existing=db.execute("SELECT bundle FROM research_requests WHERE semantic_hash=? ORDER BY (status='generated') DESC,created,id LIMIT 1",(ident,)).fetchone()
     if existing: return json.loads(existing['bundle'])
@@ -667,6 +671,7 @@ def import_generation(db,path,output=None):
     if response.get('contentSha256',source['contentSha256'])!=source['contentSha256']:
         raise ValueError('Generated content hash mismatch')
     if output:
+        if source.get('draftOnly'): raise ValueError('Semrush-deferred drafts cannot activate metadata')
         if source['partialResearch']: raise ValueError('Partial research cannot activate metadata')
         if response['requiresReview']: raise ValueError('Review-required metadata cannot activate automatically')
         refresh_stage(db,request['pdf'],request['page'])
@@ -676,6 +681,8 @@ def import_generation(db,path,output=None):
         else: latest=bundle(db,request['pdf'],request['page'])
         if request_signature(latest)!=request_signature(source):
             raise ValueError('Research changed after generation request; regenerate before activation')
+    if source.get('researchCoverage') is not None:
+        response=dict(response,researchCoverage=source['researchCoverage'],draftOnly=source.get('draftOnly',False))
     ident=key(response)
     status='needs_review' if response['requiresReview'] else 'draft_partial_research' if source['partialResearch'] else 'validated_draft'
     db.execute('INSERT OR IGNORE INTO research_metadata_versions VALUES (?,?,?,?,?,?,?,?,?)',
