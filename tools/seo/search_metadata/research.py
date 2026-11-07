@@ -556,14 +556,24 @@ def context_queue(db,limit,retry_unavailable=False):
     return result
 
 
-def private_address_query(query):
+def address_literals(query):
     # Match address literals inside ordinary queries or URLs, including bracketed IPv6.
+    result=[]
     for token in re.findall(r'(?<![\w:])(?:\d{1,3}\.){3}\d{1,3}(?![\w.])|(?<![\w:])(?:[0-9a-fA-F]{0,4}:){2,}[0-9a-fA-F]{0,4}(?![\w:])', query):
         try:
-            if not ipaddress.ip_address(token).is_global: return True
+            result.append(ipaddress.ip_address(token))
         except ValueError:
             continue
-    return False
+    return result
+
+
+def private_address_query(query):
+    return any(not address.is_global for address in address_literals(query))
+
+
+def source_supported_query(query,source_addresses):
+    # A documented default LAN address is relevant search evidence, not a URL to fetch.
+    return all(address.is_global or address in source_addresses for address in address_literals(query))
 
 
 def historical_queries(windows):
@@ -606,6 +616,7 @@ def bundle(db,pdf,page,allow_partial=False,imported_candidates=None,draft_covera
     mapping=source_mapping_proof(db,pdf,page)
     encoding='utf-8' if context.get('type')=='legacy_seo_example' else 'utf-8-sig'
     raw=base64.b64decode(context.pop('rawHtmlBase64')).decode(encoding); parser=PageText();parser.feed(raw)
+    page_text=plain(' '.join(parser.text));source_addresses=set(address_literals(page_text))
     windows=[]; selected=[]; intervals={}
     for row in db.execute('SELECT * FROM research_windows WHERE pdf=? AND page=? ORDER BY end DESC,start DESC,rowid DESC',(pdf,page)):
         # Keep URL aliases distinct: AMP and regular reports can disclose different real queries.
@@ -616,16 +627,18 @@ def bundle(db,pdf,page,allow_partial=False,imported_candidates=None,draft_covera
         overlap=any(row['start']<=end and row['end']>=start for start,end in used)
         window['selectedForGeneration']=not overlap
         all_queries=[dict(q) for q in db.execute('SELECT query,clicks,impressions,position FROM research_queries WHERE window_id=?',(row['id'],))]
-        window['queries']=[q for q in all_queries if not private_address_query(q['query'])]
+        window['queries']=[q for q in all_queries if source_supported_query(q['query'],source_addresses)]
         window['privateAddressQueriesExcluded']=len(all_queries)-len(window['queries'])
-        payload['verified']['queries']=[q for q in payload['verified']['queries'] if not private_address_query(q['query'])]
+        retained=sum(private_address_query(q['query']) for q in window['queries'])
+        if retained:window['sourceBackedAddressQueriesRetained']=retained
+        payload['verified']['queries']=[q for q in payload['verified']['queries'] if source_supported_query(q['query'],source_addresses)]
         window['payload']=payload; windows.append(window)
         if not overlap: used.append((row['start'],row['end'])); selected.append(row['end'])
     keywords=[{**dict(row),'payload':json.loads(row['payload'])} for row in db.execute('SELECT * FROM research_keywords WHERE pdf=? AND page=? ORDER BY observed_at DESC',(pdf,page))]
     result=dict(schemaVersion=1,sourcePdfId=pdf,page=page,url=record['url'],contentSha256=content['raw_sha256'],
                 collectorModel=COLLECTOR[0],collectorEffort=COLLECTOR[1],generatorModel=GENERATOR[0],generatorEffort=GENERATOR[1],
                 researchStage=record['stage'],partialResearch=record['stage']!='ready_for_generation',
-                evidenceThrough=max(selected,default=''),context=context,pageText=plain(' '.join(parser.text)),
+                evidenceThrough=max(selected,default=''),context=context,pageText=page_text,
                 searchWindows=windows,semrush=keywords,
                 rules=['Use only facts supported by pageText and catalog identity.',
                        'Do not treat country volume as global demand; preserve missing KD and stale/refresh notices.',

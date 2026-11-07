@@ -317,3 +317,8 @@ archive reconciliation after importing corrected source contexts.
 Explicit repairs retain the review baseline and introductory-page proofs. Use the
 review repair command rather than the ordinary group repair route. Unknown calls
 stay held. No source-review operation activates metadata or publishes a site.
+
+Documented default LAN addresses are retained in page-query evidence when the exact
+source page contains the address. Unsupported local-address strings remain filtered;
+raw imported observations are preserved. Address strings are research data, never
+URLs for the collector to open. IPv6 equivalent spellings are compared canonically.
