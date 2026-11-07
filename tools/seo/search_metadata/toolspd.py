@@ -74,7 +74,14 @@ def parse_snapshot(request,value,base=DEFAULT_ORIGIN):
     raw=value.get('rows');headers=value.get('headers')
     if not isinstance(raw,list) or not isinstance(headers,list) or len(raw)>request['limit']: raise ValueError('Invalid visible report row count')
     if not raw:
-        if 'nothing found' not in normalize(value.get('tableText','')): raise ReportUnavailable('report_not_ready_or_login_required')
+        # The current UI can render its empty-state outside the keyword table.
+        # Accept its explicit standalone message only after all report-scope
+        # and provider-error checks above. Missing rows alone remain unknown.
+        empty_lines={normalize(line).replace('\u2019', "'").rstrip('.')
+                     for line in value.get('pageText','').splitlines()}
+        explicit_empty="we couldn't find any data related to your request" in empty_lines
+        if not explicit_empty and 'nothing found' not in normalize(value.get('tableText','')):
+            raise ReportUnavailable('report_not_ready_or_login_required')
         return [dict(keyword=request['keyword'],volume=None,kd=None,status='nothing found',snapshot=None,
                      scope='country',country=request['country'],limitation='Explicit UI no-results report; not proof of zero search demand.')]
     normalized=[normalize(h) for h in headers]

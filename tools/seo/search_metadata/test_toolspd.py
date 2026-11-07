@@ -56,6 +56,27 @@ class ToolsPdTests(unittest.TestCase):
             with self.assertRaises(ReportUnavailable): parse_snapshot(self.request,{**value,'pageText':text})
         with self.assertRaises(ReportUnavailable): parse_snapshot(self.request,self.snapshot(rows=[],tableText='Loading'))
 
+    def test_explicit_empty_state_outside_table_preserves_unknown_metrics(self):
+        for message in ("We couldn't find any data related to your request",
+                        "We couldn\u2019t find any data related to your request."):
+            value=self.snapshot(rows=[],headers=[],tableText='',pageText='Keyword Magic Tool\n'+message+'\nTry another keyword')
+            row=parse_snapshot(self.request,value)[0]
+            self.assertEqual(row['status'],'nothing found')
+            self.assertIsNone(row['volume']);self.assertIsNone(row['kd'])
+
+    def test_empty_message_cannot_bypass_scope_challenge_or_loading_checks(self):
+        message="We couldn't find any data related to your request"
+        value=self.snapshot(rows=[],headers=[],tableText='',pageText=message)
+        for changes in (dict(heading='Sign in'),dict(countryLabel='United Kingdom'),
+                        dict(sourceUrl=url({**self.request,'keyword':'another seed'})),
+                        dict(observedAt='2025-01-01T00:00:00+00:00'),
+                        dict(pageText=message+'\nVerify you are human'),
+                        dict(pageText=message+'\nDaily limit reached')):
+            with self.subTest(changes=changes):
+                with self.assertRaises(ValueError):parse_snapshot(self.request,{**value,**changes})
+        for page_text in ('Loading', 'Example text: '+message):
+            with self.assertRaises(ReportUnavailable):parse_snapshot(self.request,{**value,'pageText':page_text})
+
     def test_import_is_idempotent_and_reaches_sol_without_paid_api(self):
         path=self.save('ui.json',self.snapshot())
         self.assertTrue(ingest_snapshot(self.db,self.job['jobId'],path)['imported'])
