@@ -36,8 +36,11 @@ def eligibility(db,pdf,page):
     for row in db.execute('SELECT * FROM research_page_rankings WHERE pdf=? AND page=? ORDER BY rowid',(pdf,page)):
         item=dict(row)
         metrics[(row['engine'],row['start'],row['end'],row['url'])]=item
+    # A query-only report does not replace a measured page average for this scope.
+    reported_scopes={(item['engine'],item['url']) for item in metrics.values()}
     for row in db.execute('SELECT * FROM research_windows WHERE pdf=? AND page=? ORDER BY rowid',(pdf,page)):
         url=json.loads(row['payload'])['verified']['url']
+        if (row['engine'],url) in reported_scopes:continue
         metrics.setdefault((row['engine'],row['start'],row['end'],url),
             dict(engine=row['engine'],start=row['start'],end=row['end'],url=url,position=None,
                  impressions=row['page_impressions'],raw_artifact=row['raw_artifact'],source='Page position not reported'))

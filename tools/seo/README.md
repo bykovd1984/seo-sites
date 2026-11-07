@@ -322,3 +322,9 @@ Documented default LAN addresses are retained in page-query evidence when the ex
 source page contains the address. Unsupported local-address strings remain filtered;
 raw imported observations are preserved. Address strings are research data, never
 URLs for the collector to open. IPv6 equivalent spellings are compared canonically.
+
+Ranking eligibility uses reported page averages, with their actual report dates.
+A newer query-only report cannot replace a page-average report for the same
+provider/URL. Scopes without page measurements and explicit unknown page reports
+remain protected, as do reported page positions below8. Query positions are never
+substituted for page averages, and old measurements are not labelled current ranks.

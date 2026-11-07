@@ -54,6 +54,41 @@ class RankingPolicyTests(unittest.TestCase):
         self.rank(2,url=self.fixture.url.replace('/en/','/amp/en/'))
         self.assertFalse(eligibility(self.db,286733,69)['eligible'])
 
+    def query_only_window(self,engine='bing',url=None):
+        import json
+        row=dict(self.db.execute('SELECT * FROM research_windows LIMIT 1').fetchone())
+        row.update(id='query-only-'+engine+str(url),engine=engine,start='2026-11-04',end='2026-11-04')
+        payload=json.loads(row['payload']);payload['verified']['url']=url or self.fixture.url
+        row['payload']=json.dumps(payload)
+        columns=list(row)
+        self.db.execute('INSERT INTO research_windows ('+','.join(columns)+') VALUES ('+','.join('?' for _ in columns)+')',tuple(row[c] for c in columns))
+
+    def test_new_query_report_does_not_erase_a_reported_page_average(self):
+        self.rank(8,engine='bing',start='2026-09-18',end='2026-09-18')
+        self.query_only_window()
+        result=eligibility(self.db,286733,69)
+        self.assertTrue(result['eligible'])
+        bing=next(r for r in result['observations'] if r['engine']=='bing')
+        self.assertEqual((bing['position'],bing['end']),(8,'2026-09-18'))
+
+    def test_new_query_report_cannot_hide_a_protected_page_position(self):
+        self.rank(3,engine='bing',start='2026-09-18',end='2026-09-18')
+        self.query_only_window()
+        self.assertEqual(eligibility(self.db,286733,69)['reason'],'protected_top_positions')
+
+    def test_query_only_scopes_without_page_measurements_stay_unknown(self):
+        self.query_only_window()
+        self.assertEqual(eligibility(self.db,286733,69)['reason'],'page_position_unknown')
+        self.rank(8,engine='bing')
+        self.query_only_window(engine='google',url=self.fixture.url.replace('/en/','/amp/en/'))
+        self.assertEqual(eligibility(self.db,286733,69)['reason'],'page_position_unknown')
+
+    def test_explicit_new_unknown_page_report_still_blocks_generation(self):
+        self.rank(8,engine='bing',start='2026-09-18',end='2026-09-18')
+        self.rank(None,engine='bing',start='2026-11-04',end='2026-11-04')
+        self.query_only_window()
+        self.assertEqual(eligibility(self.db,286733,69)['reason'],'page_position_unknown')
+
     def test_preexisting_draft_and_paid_job_rechecked_before_use(self):
         plan(self.db,'US','2026-11',1,1);self.db.commit()
         import_generation(self.db,self.fixture.response(self.request))
