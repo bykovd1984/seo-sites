@@ -1472,16 +1472,17 @@
     "slug": "oven-door-glass-removal",
     "title": "How to remove oven door glass for cleaning",
     "shortTitle": "Cleaning between oven door panes?",
-    "description": "Check your oven model before removing door glass and learn the limits of a Zanussi example.",
+    "description": "See how the inner pane comes out on an AEG Electrolux D4101-4, how a Zanussi retaining strip differs, and which way the glass goes back in.",
     "category": "ovens",
     "brand": "Oven care",
     "type": "Cleaning",
     "diagram": "symbols",
     "answer": "Some conventional oven door panes can be removed after the appliance cools, but the retainers and pane order vary. Follow the instructions for the exact model and never operate the oven with a pane removed.",
-    "scope": "The removable-strip example is limited to the Zanussi door shown by the manufacturer. Microwave and combination microwave doors require authorised service.",
+    "scope": "The removable-strip example covers the pictured Zanussi door, and the slide-out pane instructions cover the AEG Electrolux COMPETENCE D4101-4. Microwave and combination microwave doors require authorised service.",
     "tags": [
       "how to remove oven door glass",
       "oven door glass cleaning",
+      "Electrolux D4101-4 inner glass removal",
       "glass panels",
       "oven door"
     ],
@@ -1505,10 +1506,15 @@
         "title": "Zanussi: oven glass shattered",
         "url": "https://support.zanussi.co.uk/support-articles/article/oven-glass-shattered",
         "note": "Glass handling and avoidance of sudden temperature changes."
+      },
+      {
+        "title": "AEG Electrolux COMPETENCE D4101-4 inner glass instructions",
+        "url": "https://manualsdump.com/en/manuals/electrolux-d4101-4/86354/33",
+        "note": "Manufacturer instructions archived by ManualsDump. Page 33 identifies the two ends of the pane, the door support and the orientation marking."
       }
     ],
     "publishAt": "2026-11-27T07:00:00.000Z",
-    "checkedDate": "2026-11-02"
+    "checkedDate": "2026-11-07"
   },
   {
     "slug": "hoshizaki-ice-machine-reset-button",
@@ -2527,5 +2533,85 @@
     ],
     "checkedDate": "2026-11-07",
     "publishAt": "2026-12-24T07:00:00.000Z"
+  },
+  {
+    "slug": "mtd-e640f-e660g-snowblower-belt-diagram",
+    "title": "MTD snowblower belt diagram for E600E, E610E, E640F and E660G",
+    "shortTitle": "Which MTD snowblower belt goes where?",
+    "description": "Identify the auger and wheel-drive belts on four MTD snow throwers. Compare the pulley diagrams, belt count and original part numbers before replacement.",
+    "brand": "MTD / Yard Machines",
+    "category": "small-engines",
+    "type": "Belt routing",
+    "diagram": "belt",
+    "tags": [
+      "mtd snowblower belt diagram",
+      "mtd snow blower belt diagram",
+      "E640F belt replacement",
+      "E660G auger belts",
+      "MTD snowblower drive belt"
+    ],
+    "answer": "An E640F or E660G uses two matched auger belts and a separate traction belt. An E600E or E610E uses one auger belt and one traction belt. Figure 26 identifies the upper routes, and Figures 27 and 28 show the lower pulley and drive disc.",
+    "scope": "For the four walk-behind Yard Machines models in MTD form 770-8782A. Check the full number on the rear frame before selecting parts or applying these diagrams.",
+    "related": [],
+    "takeaway": "Read the rear frame plate, match the belt count and use the drawing for the affected drive. The same auger belt reference appears in different quantities for these models.",
+    "sources": [
+      {
+        "title": "MTD Yard Machines operator’s guide, form 770-8782A",
+        "url": "https://c.searspartsdirect.com/doc/L0403353#page=16",
+        "note": "Original MTD document hosted by Sears PartsDirect. Pages 16–17 show the service diagrams and pages 26–27 give separate parts drawings."
+      },
+      {
+        "title": "MTD auger and drive belt page, archived text and drawing",
+        "url": "https://manualsdump.com/en/manuals/mtd-e660g-e640f-e610e/107932/16",
+        "note": "Alternate rendering of page 16 of the same edition, including the single-auger-belt exception."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-25T07:00:00.000Z"
+  },
+  {
+    "slug": "heat-glo-sl-750tr-log-placement",
+    "title": "Heat & Glo SL-750TR log placement by model and log set",
+    "shortTitle": "Which Heat & Glo log arrangement matches?",
+    "description": "Match the SL-750TR or SL-750TR-D to the correct five- or six-log drawing, identify the upper pieces, and compare the SL-550TR-D and SL-950TR-D layouts.",
+    "brand": "Heat & Glo",
+    "category": "home-systems",
+    "type": "Component placement",
+    "diagram": "fireplace",
+    "tags": [
+      "heat n glo sl 750tr log placement",
+      "SL-750TR-D log positions",
+      "SL-550TR-D log placement",
+      "SL-950TR-D log set",
+      "LOGS-SL750-D"
+    ],
+    "answer": "The SL-750TR-D and SL-950TR-D use six logs. The large rear log supports the upper pieces, with two shorter logs at the front. The older unsuffixed SL-750TR has a different five-log set. Use the full model number and fuel type to choose the drawing.",
+    "scope": "Detailed positions apply to LOGS-SL750-D on the named D-series fireplaces. Separate manufacturer drawings identify the older SL-750TR assembly and the smaller SL-550TR-D layout.",
+    "related": [],
+    "takeaway": "Use the rating plate to select the log-set drawing. If a log has moved or does not seat at its original locating points, leave the fireplace off for a qualified service check.",
+    "sources": [
+      {
+        "title": "Heat & Glo LOGS-SL750-D placement photographs",
+        "url": "https://downloads.hearthnhome.com/logs/2045_936.PDF",
+        "note": "Three-page manufacturer photo sheet, 2045-936C. Numbers all six pieces and shows the natural-gas and propane locations for log 1."
+      },
+      {
+        "title": "Heat & Glo SL-750TR-D service parts",
+        "url": "https://downloads.hearthnhome.com/serviceParts/SL-750TR-D.pdf",
+        "note": "Matches the D-series rating-plate model to LOGS-SL750-D and the six original individual part numbers."
+      },
+      {
+        "title": "Heat & Glo SL-750TR and SL-750TR-DSI service parts",
+        "url": "https://downloads.hearthnhome.com/serviceParts/SL-750TR.pdf",
+        "note": "The first-page drawing shows the earlier LOGS-750 five-piece assembly."
+      },
+      {
+        "title": "Heat & Glo D-series installation and operating guide",
+        "url": "https://downloads.hearthnhome.com/installManuals/2044_985.PDF",
+        "note": "Section 12 shows the separate SL-550TR-D layout. The operating section specifies a secured glass assembly and a technician check before operation."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-26T07:00:00.000Z"
   }
 ]

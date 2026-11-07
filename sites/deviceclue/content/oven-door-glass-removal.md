@@ -19,6 +19,12 @@ Zanussi describes an example of a conventional single oven with a plastic strip 
 
 This is a **panel-specific example**, not a universal method for every Zanussi oven or other brand. Some doors use other retainers or cannot be dismantled by the owner. Check the manufacturer's illustrations against the actual door before acting.
 
+## AEG Electrolux COMPETENCE D4101-4: removing the inner pane
+
+On this double oven the inner pane slides out while the door stays on its hinges. Allow the door to cool fully. Open it all the way, hold the edge of the inner pane nearest the hinges with both hands and slide it toward you until it clears the two rear locating points. Keep one hand on the outer door while lifting the glass free from under the handle. The lighter door can spring shut as the pane comes out.
+
+Use a soft cloth with warm water and a little washing-up liquid. Rinse and dry the pane. To refit it, open and support the door, engage the glass under the handle first, then lower it and slide it under the rear locating points. With the door fully open, the words **“This way up”** should face you at the top edge. If the glass is chipped, deeply scratched or fails to seat at both ends, leave the oven off and arrange service. [D4101-4 illustrated removal and refitting sequence, page 33](https://manualsdump.com/en/manuals/electrolux-d4101-4/86354/33).
+
 ## What should I use to clean the glass?
 
 For the Zanussi example, the manufacturer suggests starting with a wet cloth and using non-abrasive products. Follow the glass and cleaner instructions for your appliance. Avoid hard scrapers, abrasive pads, sudden temperature changes and impacts, particularly on the edges of the glass. Dry the panes before reassembly as specified by the manufacturer.

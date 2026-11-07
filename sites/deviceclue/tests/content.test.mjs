@@ -10,8 +10,8 @@ import { openRepository } from '../db/repository.ts';
 import { parseMarkdown, safeHref } from '../lib/content.ts';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const rows=loadContent(root);
-test('sixty-three complete answer-focused articles have valid cross-links and model scopes',()=>{
- assert.equal(rows.length,63);
+test('sixty-five complete answer-focused articles have valid cross-links and model scopes',()=>{
+ assert.equal(rows.length,65);
  const slugs=new Set(rows.map(r=>r.slug));
  const titles=new Set();
  for(const row of rows){

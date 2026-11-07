@@ -14,5 +14,10 @@ export function Diagram({ kind, compact = false }: { kind: string; compact?: boo
     {(kind === 'sul' || kind === 'battery') && <><rect x="82" y="61" width="156" height="79" rx="7"/><path d="M103 61V49h24v12m66 0V49h24v12"/><path d="M101 82h16m-8-8v16m85-8h16" stroke="#efad42" strokeWidth="2"/>{kind==='sul'?<text x="160" y="120" textAnchor="middle" fill="#efad42" stroke="none" fontFamily="monospace" fontSize="30">SUL</text>:<>{[135,155,175].map((x,i)=><g key={x}><path d={`M${x} 78v48`} strokeWidth="5" opacity=".6"/>{[86,101,115].map((y,j)=><rect key={y} x={x-5+(j%2)*5} y={y} width="7" height="7" fill="#efad42" stroke="none" transform={`rotate(${20+i*12} ${x} ${y})`}/>)}</g>)}</>}</>}
     {kind === 'belt' && <><circle cx="101" cy="102" r="23"/><circle cx="214" cy="76" r="32"/><circle cx="101" cy="102" r="5"/><circle cx="214" cy="76" r="7"/><path d="M94 76 204 41a36 36 0 1 1 17 70l-113 19a28 28 0 1 1-14-54Z" stroke="#efad42" strokeWidth="2"/></>}
     {kind === 'dimensions' && <><rect x="103" y="50" width="114" height="75" rx="5"/><path d="M103 134v13m114-13v13m-114-7h114m-107-4-7 4 7 4m100-8 7 4-7 4M84 50h12m-12 75h12m-6-75v75m-4-68 4-7 4 7m-8 61 4 7 4-7" stroke="#efad42"/></>}
+    {kind === 'fireplace' && <g>
+      <rect x="71" y="32" width="178" height="115" rx="4"/>
+      <rect x="82" y="44" width="156" height="77" rx="2"/>
+      <path d="M91 134h138M108 99v10h104V99m-79 0v10m25-10v10m26-10v10" stroke="#efad42"/>
+    </g>}
   </svg></div>;
 }
