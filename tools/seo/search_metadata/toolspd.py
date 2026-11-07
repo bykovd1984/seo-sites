@@ -10,6 +10,7 @@ import sys
 import getpass
 import time
 import unicodedata
+import uuid
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlsplit
 
@@ -137,7 +138,7 @@ def reserve(db,job_id,daily_limit,followup=False):
         if count>=daily_limit: db.rollback();return None
         changed=db.execute("UPDATE semrush_jobs SET status='ui_reserved',updated=? WHERE id=? AND status=?",(now(),job_id,'ui_reserved' if followup else 'planned')).rowcount
         if not changed: db.rollback();return None
-        ident=key((job_id,now()));db.execute('INSERT INTO semrush_ui_attempts VALUES (?,?,?,\'reserved\',NULL,NULL)',(ident,job_id,now()))
+        ident=key((job_id,uuid.uuid4().hex));db.execute('INSERT INTO semrush_ui_attempts VALUES (?,?,?,\'reserved\',NULL,NULL)',(ident,job_id,now()))
         db.commit();return ident
     except Exception: db.rollback();raise
 
@@ -177,10 +178,12 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
     if not directory.is_relative_to(ROOT/'artifacts'): raise ValueError('Reports must remain under workspace artifacts')
     directory.mkdir(parents=True,exist_ok=True);completed=0;blocked=None
     from toolspd_session import ToolsPDSession
+    from toolspd_pacing import ReportPacer
     options_path=profile.parent/'config.private.json'
     options=json.loads(options_path.read_text(encoding='utf-8-sig')).get('semrush',{}) if options_path.exists() else {}
     with sync_playwright() as browser_api:
         browser=browser_api.chromium.launch_persistent_context(str(profile),channel=channel,headless=not login,accept_downloads=False)
+        pacer=ReportPacer(profile,delay)
         try:
             page=browser.pages[0] if browser.pages else browser.new_page()
             if login:
@@ -199,7 +202,7 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
                     extra=reserve(db,item['jobId'],daily_limit,followup=True)
                     if not extra: raise ReportUnavailable('daily_limit_reached')
                     attempts.append(extra)
-                    time.sleep(delay)
+                session.before_report=lambda:pacer.dispatch(attempts[-1])
                 try:
                     capture=session.capture(item['request'],before_retry)
                     path=directory/(item['jobId']+'-'+attempts[-1][:12]+'.json');atomic_json(path,capture)
@@ -212,7 +215,11 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
                     state='login_required' if 'login' in reason else 'ui_blocked'
                     proof=None
                     capture=capture or session.last_snapshot
-                    if capture:
+                    if session.failed_reports:
+                        path=directory/(item['jobId']+'-'+attempt[:12]+'-failures.json')
+                        atomic_json(path,dict(kind='toolspd_failed_captures',request=item['request'],reports=session.failed_reports,events=session.events))
+                        proof=artifact(db,path,'semrush_toolspd_ui_failure_batch','')
+                    elif capture:
                         path=directory/(item['jobId']+'-'+attempt[:12]+'-failed.json');atomic_json(path,capture)
                         proof=artifact(db,path,'semrush_toolspd_ui_failure',capture.get('sourceUrl',''))
                     db.execute('UPDATE semrush_jobs SET status=?,error=?,updated=? WHERE id=?',(state,reason,now(),item['jobId']))
@@ -220,5 +227,7 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
                         db.execute('UPDATE semrush_ui_attempts SET status=?,artifact_id=?,error=? WHERE id=?',(state,proof,reason,current))
                     db.commit()
                     blocked=reason;break
-        finally: browser.close()
+        finally:
+            browser.close()
+            pacer.close()
     return dict(completed=completed,blocked=blocked,apiUnitsSpent=0,sessionOrigin=session.base,sessionEvents=session.events,**status(db))

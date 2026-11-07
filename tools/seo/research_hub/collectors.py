@@ -157,7 +157,8 @@ class ToolsPDBrowser:
         self.settings = settings
         self.config = settings.data.get('semrush', {})
         self.base = origin(self.config.get('origin', 'https://sktiman.toolspd.com'))
-        self.browser = self.api = None
+        self.browser = self.api = self.pacer = None
+        self.sleeper = time.sleep
 
     def open(self, headless=True):
         # Browser state remains in the isolated owner profile; never copy another browser's cookies.
@@ -171,6 +172,8 @@ class ToolsPDBrowser:
                 raise ValueError('Install the optional browser requirements before using ToolsPD') from None
         from toolspd import protect_profile
         profile = protect_profile(self.settings.home / 'toolspd-profile', home=self.settings.home)
+        from toolspd_pacing import ReportPacer
+        self.pacer = ReportPacer(profile, self.config.get('delaySeconds',15), self.sleeper)
         self.api = sync_playwright().start()
         self.browser = self.api.chromium.launch_persistent_context(str(profile), channel=self.config.get('channel', 'msedge'),
                                                                     headless=headless, accept_downloads=False)
@@ -182,21 +185,64 @@ class ToolsPDBrowser:
         from toolspd_session import ToolsPDSession
         if not getattr(self, 'session', None):
             self.session = ToolsPDSession(self.browser, self.page, self.base,
-                account=self.config.get('account'), member_user=self.config.get('memberUser'))
+                account=self.config.get('account'), member_user=self.config.get('memberUser'),before_report=self.before_report)
         session = self.session
         snapshot = session.capture(request, self.before_retry)
         self.page, self.base = session.page, session.base
         return snapshot
+
+    def before_report(self):
+        attempt = getattr(self,'current_attempt',None)
+        if not attempt:
+            raise ReportUnavailable('dispatch_budget_not_configured')
+        self.pacer.dispatch(attempt())
 
     def before_retry(self):
         # Live collectors install a budget callback before any failover lookup.
         raise ReportUnavailable('retry_budget_not_configured')
 
     def close(self):
-        if self.browser:
-            self.browser.close()
-        if self.api:
-            self.api.stop()
+        try:
+            if self.browser:
+                self.browser.close()
+        finally:
+            try:
+                if self.api:
+                    self.api.stop()
+            finally:
+                if self.pacer:
+                    self.pacer.close()
+
+
+def archive_capture_failures(service, job, keyword, browser, progress, attempts):
+    session = getattr(browser,'session',None)
+    if not session or not getattr(session,'failed_reports',None):
+        return
+    failures = []
+    for failure in session.failed_reports:
+        item = dict(failure)
+        snapshot = item.get('snapshot')
+        if snapshot:
+            source = urlsplit(snapshot.get('sourceUrl',''))
+            # Authentication screens are not research evidence.
+            if source.hostname != urlsplit(item['origin']).hostname or source.path != '/analytics/keywordmagic/':
+                item['snapshot'] = None
+            else:
+                from urllib.parse import parse_qsl, urlencode, urlunsplit
+                import re
+                query = [(k,v) for k,v in parse_qsl(source.query,keep_blank_values=True)
+                         if not re.search(r'token|session|auth|signature|secret|api.?key',k,re.I)]
+                clean=urlunsplit((source.scheme,source.netloc,source.path,urlencode(query),''))
+                item['snapshot'] = dict(snapshot,sourceUrl=clean,sourceUrlRedacted=clean!=snapshot.get('sourceUrl'))
+        failures.append(item)
+    proof = service.store.artifact(dict(kind='toolspd_failed_captures',jobId=job['id'],keyword=keyword,
+        country=job['request']['country'],month=job['request']['requestedMonth'],attempts=list(attempts),
+        reports=failures,events=getattr(session,'events',[]),observedAt=now(),
+        limitation='Failure evidence only; strict request/report validation is required before reuse.'))
+    progress.setdefault('failureEvidence',[])
+    if proof not in progress['failureEvidence']:
+        progress['failureEvidence'].append(proof)
+    service.store.update_job(job['id'],'running',progress)
 
 
 def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.sleep):
@@ -234,7 +280,6 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                         count = db.execute('SELECT COUNT(*) FROM attempts WHERE started>=?', (now()[:10],)).fetchone()[0]
                         if count >= ceiling:
                             raise ReportUnavailable('daily_limit_reached')
-                        last = db.execute('SELECT started FROM attempts ORDER BY started DESC LIMIT 1').fetchone()
                         attempt = uuid.uuid4().hex
                         db.execute('INSERT INTO attempts VALUES (?,?,?,?)', (attempt, job['id'], now(), 'reserved'))
                         db.commit()  # Failover, retries and crashes never refund attempts.
@@ -242,16 +287,16 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                     except BaseException:
                         db.rollback()
                         raise
-                    if last:
-                        elapsed = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(last['started'])).total_seconds()
-                        sleeper(max(0, delay-elapsed))
                 reserve_attempt()
                 try:
                     if browser is None:
                         browser = browser_factory(service.settings)
                     browser.before_retry = reserve_attempt
+                    browser.current_attempt = lambda:attempts[-1]
+                    browser.sleeper = sleeper
                     snapshot = browser.capture(dict(request, keyword=keyword, month=request['requestedMonth']))
                     save_keyword_snapshot(service, job, keyword, snapshot, base=getattr(browser, 'base', None))
+                    archive_capture_failures(service,job,keyword,browser,progress,attempts)
                     with db:
                         for attempt in attempts:
                             db.execute("UPDATE attempts SET status=? WHERE id=?", ('done' if attempt == attempts[-1] else 'failed', attempt))
@@ -259,6 +304,8 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                     with db:
                         for attempt in attempts:
                             db.execute("UPDATE attempts SET status='failed' WHERE id=?", (attempt,))
+                    if browser:
+                        archive_capture_failures(service,job,keyword,browser,progress,attempts)
                     raise
             progress['completedSeeds'].append(keyword)
             service.store.update_job(job['id'], 'running', progress)

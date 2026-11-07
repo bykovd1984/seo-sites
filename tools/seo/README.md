@@ -88,6 +88,14 @@ the application stops with a specific reason instead of repeating login attempts
 advertised service origins without requesting a keyword report. `catalogReady`
 does not prove report availability. Close any owner login window before collection;
 clients must share the same data directory and avoid concurrent profile use.
+A separate `toolspd-dispatches.sqlite3` beside the profile records the actual
+report-navigation boundary. The delay is enforced there across jobs and clients,
+after authentication; reservation timestamps are not dispatch timestamps. Failed
+attempts stay in the budget. Future terminal capture snapshots and session events
+are archived under the job progress field `failureEvidence`, including failures
+before successful failover. Reuse requires strict query/country/month validation;
+missing reports and unauthenticated screens never become invented keyword data.
+
 The ManualsDump CLI defaults to the same shared profile. No cookies or passwords
 are copied from another browser profile.
 

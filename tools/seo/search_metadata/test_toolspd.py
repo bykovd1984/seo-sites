@@ -1,7 +1,7 @@
 import datetime as dt
 import json
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 import test_semrush_workflow as fixtures
 from model_stage import page_bundle
@@ -80,9 +80,10 @@ class ToolsPdTests(unittest.TestCase):
         self.assertEqual(self.db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0],1)
 
     def test_service_failover_reservations_are_not_free(self):
-        self.assertIsNotNone(reserve(self.db,self.job['jobId'],2))
-        self.assertIsNotNone(reserve(self.db,self.job['jobId'],2,followup=True))
-        self.assertIsNone(reserve(self.db,self.job['jobId'],2,followup=True))
+        with patch('toolspd.now',return_value='2026-11-07T00:00:00+00:00'):
+            self.assertIsNotNone(reserve(self.db,self.job['jobId'],2))
+            self.assertIsNotNone(reserve(self.db,self.job['jobId'],2,followup=True))
+            self.assertIsNone(reserve(self.db,self.job['jobId'],2,followup=True))
         self.assertEqual(self.db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0],2)
 
     def test_api_collector_never_dispatches_ui_jobs(self):

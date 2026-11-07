@@ -25,7 +25,7 @@ def service_origin(value):
 
 
 class ToolsPDSession:
-    def __init__(self, context, page, base, account=None, member_user=None, timeout=90):
+    def __init__(self, context, page, base, account=None, member_user=None, timeout=90, before_report=None):
         self.context, self.page, self.base = context, page, origin(base)
         if account and not re.fullmatch(r'[A-Za-z0-9._+@-]+', account):
             raise ValueError('Invalid Google account setting')
@@ -34,6 +34,8 @@ class ToolsPDSession:
         self.events = []
         self.last_snapshot = None
         self.ready = False
+        self.before_report = before_report
+        self.failed_reports = []
 
     def check_block(self):
         text = self.page.locator('body').inner_text(timeout=10000).casefold()
@@ -159,6 +161,17 @@ class ToolsPDSession:
         raise ReportUnavailable('semrush_access_not_available')
 
     def report(self, request, base):
+        self.last_snapshot = None
+        try:
+            if self.before_report:
+                self.before_report()
+            return self.read_report(request, base)
+        except Exception as error:
+            self.failed_reports.append(dict(origin=base,reason=getattr(error,'reason',type(error).__name__),
+                                            snapshot=self.last_snapshot))
+            raise
+
+    def read_report(self, request, base):
         response = self.navigate(url(request, base))
         if response and response.status >= 400:
             self.events.append(dict(stage='report_http_error', host=urlsplit(base).hostname, status=response.status))
@@ -188,6 +201,7 @@ class ToolsPDSession:
 
     def capture(self, request, before_retry):
         self.last_snapshot = None
+        self.failed_reports = []
         # A new browser activates a visible service before its first lookup.
         # Within the same context, reuse a verified report session directly.
         attempted = False

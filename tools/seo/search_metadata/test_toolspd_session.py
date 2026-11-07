@@ -130,12 +130,47 @@ class RenderedSessionTests(unittest.TestCase):
     def test_google_account_reuse_popup_variants_and_rendered_report(self):
         session = self.session()
         budget = Mock()
+        dispatched=Mock()
+        session.before_report=dispatched
         snapshot = session.capture(self.request, budget)
+        self.assertEqual(dispatched.call_count,3)
+        self.assertEqual(len(session.failed_reports),2)
         self.assertEqual(session.base, 'https://three.toolspd.com')
         self.assertEqual(snapshot['rows'], [['printer manual', '100', 'n/a']])
         self.assertEqual(self.report_hosts, ['one.toolspd.com', 'two.toolspd.com', 'three.toolspd.com'])
         self.assertEqual(budget.call_count, 2)
         self.assertTrue(self.authenticated)
+
+    def test_shared_browser_gates_actual_report_navigations_after_login(self):
+        import sys,tempfile
+        from pathlib import Path
+        from types import SimpleNamespace
+        from research import ROOT
+        sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+        from research_hub.collectors import ToolsPDBrowser
+        from toolspd_pacing import ReportPacer
+        with tempfile.TemporaryDirectory(dir=ROOT/'artifacts/search-metadata-tests') as directory:
+            stamp=[dt.datetime.now(dt.timezone.utc)]
+            def sleep(seconds): stamp[0]+=dt.timedelta(seconds=seconds)
+            pacer=ReportPacer(Path(directory)/'toolspd-profile',15,sleep,lambda:stamp[0])
+            try:
+                browser=ToolsPDBrowser(SimpleNamespace(data={'semrush':{'origin':'https://old.toolspd.com',
+                    'account':'owner@example.com','memberUser':'owner'}},home=Path(directory)))
+                browser.browser,browser.page,browser.pacer=self.context,self.page,pacer
+                attempt=[0]
+                browser.current_attempt=lambda:'fixture-'+str(attempt[0])
+                def retry(): attempt[0]+=1
+                browser.before_retry=retry
+                navigation_times=[]
+                def observed(request):
+                    if '/analytics/keywordmagic/' in request.url:
+                        navigation_times.append(stamp[0])
+                self.context.on('request',observed)
+                browser.capture(self.request)
+                browser.capture(self.request)
+                self.assertEqual(len(navigation_times),4)
+                self.assertEqual([(b-a).total_seconds() for a,b in zip(navigation_times,navigation_times[1:])],[15,15,15])
+            finally:pacer.close()
 
     def test_google_security_refusal_is_reported_without_retries(self):
         self.google_block = True

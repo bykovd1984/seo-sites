@@ -240,6 +240,27 @@ class HubTest(unittest.TestCase):
         self.assertEqual(self.service.store.db.execute('SELECT COUNT(*) FROM attempts').fetchone()[0], 1)
         self.assertEqual(self.service.keywords('grammar', topic)['total'], 0)
 
+    def test_failed_snapshots_are_saved_without_refunding_attempts(self):
+        from types import SimpleNamespace
+        self.service.settings.data['semrush'].update(enabled=True,dailyLimit=2)
+        topic=self.subject();job=self.service.queue_keywords('grammar',topic,['present simple'],'US','en',max_age_days=0)
+        snapshot=self.snapshot()
+        snapshot['sourceUrl']+='&auth_token=fixture-secret-not-real'
+        class FailedBrowser:
+            def __init__(self,settings):
+                self.session=SimpleNamespace(failed_reports=[dict(origin='https://sktiman.toolspd.com',reason='report_not_ready_or_login_required',snapshot=snapshot)],events=[])
+            def capture(self,request): raise ReportUnavailable('provider_unavailable')
+            def close(self): pass
+        with self.assertRaisesRegex(ReportUnavailable,'provider_unavailable'):
+            collect_keywords(self.service,job,FailedBrowser)
+        updated=self.service.jobs('grammar',job['id'])
+        proof=self.service.store.read_artifact(updated['progress']['failureEvidence'][0])
+        self.assertEqual(proof['keyword'],'present simple')
+        self.assertEqual(proof['reports'][0]['snapshot']['heading'],snapshot['heading'])
+        self.assertNotIn('fixture-secret-not-real',json.dumps(proof))
+        self.assertEqual(self.service.store.db.execute("SELECT COUNT(*) FROM attempts WHERE status='failed'").fetchone()[0],1)
+        self.assertEqual(self.service.store.db.execute('SELECT COUNT(*) FROM keyword_reports').fetchone()[0],0)
+
     def test_legacy_attempt_import_preserves_real_records_and_is_idempotent(self):
         import sqlite3
         from contextlib import closing
