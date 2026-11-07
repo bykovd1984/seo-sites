@@ -187,6 +187,37 @@ Do not restart the shared Semrush collector during another project's reserved
 batch. Legacy and shared ledgers must be reconciled before moving collection
 between them; archive/context preparation can continue independently.
 
+## Codex draft batches
+
+`seo-manualsdump-drafts` prepares source-bound requests from a complete saved
+archive period. Set `MANUALSDUMP_WORKSPACE` to the existing PdfSite data root.
+Only eligible, pending catalogue rows with their full page history already
+imported are selected, newest first. The default prepares ten pages without a
+model call; `--run` explicitly invokes Codex Sol 6.1 medium through the existing
+ChatGPT sign-in, without an OpenAI API key. It never contacts ToolsPD or publishes.
+
+```sh
+seo-manualsdump-drafts --period PERIOD_ID --limit 10
+seo-manualsdump-drafts --period PERIOD_ID --limit 100 --run
+```
+
+The source equivalent is `python tools/seo/search_metadata/codex_drafts.py` with
+the same arguments. Each page gets an ephemeral Codex session, with user config,
+project documents and memories disabled. All disclosed query strings remain in
+the prompt, with provider/URL scope, first/last dates and dated last observations;
+no overlapping metrics are summed. Original full windows remain in the immutable
+bundle. Completed Semrush evidence is retained and missing enrichment is labelled.
+
+A shared OS file lock prevents overlapping ManualsDump generation batches. The
+runner saves the frozen bundle, prompt, strict response schema, actual invocation,
+response hash and Codex events before importing a draft. Restart reuses completed
+outputs and excludes already generated requests. Interrupted/failed model calls
+are held for reconciliation rather than automatically charged again. Responses
+with tool use, missing candidate decisions, stale inputs, wrong model/effort or
+unsupported source facts cannot enter the validated draft store. Review-required
+outputs remain separate. Missing source context or uncertain calls stay pending;
+they do not silently count as completed pages.
+
 ## Worker and verification
 
 For a foreground collector, run `python tools/seo/launch.py daemon` in a separate
