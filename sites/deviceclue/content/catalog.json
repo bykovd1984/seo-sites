@@ -2380,5 +2380,152 @@
     ],
     "publishAt": "2026-12-20T07:00:00.000Z",
     "checkedDate": "2026-11-07"
+  },
+  {
+    "slug": "omron-hbp-1300-e1-e2-errors",
+    "title": "Omron HBP-1300 E1 and E2 errors: cuff leak or interrupted reading?",
+    "shortTitle": "What caused E1 or E2 on the HBP-1300?",
+    "description": "Distinguish a cuff connection or leak warning from an interrupted measurement on the Omron HBP-1300. Check what E9 and E40 mean on the same display.",
+    "brand": "Omron",
+    "category": "devices",
+    "type": "Fault signals",
+    "diagram": "beeps",
+    "tags": [
+      "omron e2 error",
+      "omron error e2",
+      "omron e1 error",
+      "Omron HBP-1300 E1 E2",
+      "Omron HBP-1300 E9",
+      "Omron HBP-1300 E40"
+    ],
+    "answer": "E1 on the HBP-1300 points to a disconnected cuff tube or leaking cuff. E2 means the monitor could not complete the measurement correctly. Movement, talking, cuff placement or an overly long inflation cycle can cause it.",
+    "scope": "For trained operators of the professional Omron HBP-1300 upper-arm monitor. The display describes a problem taking a reading. It cannot be used to interpret a patient’s blood pressure.",
+    "related": [
+      "omron-hem-907xl-error-codes"
+    ],
+    "takeaway": "Check the tube and cuff for E1. For E2, note how the attempt failed before repeating it. Refer a recurring alarm to the facility’s usual clinical and equipment procedures.",
+    "sources": [
+      {
+        "title": "Omron HBP-1300 professional monitor instructions, English edition",
+        "url": "https://device.report/m/71e639df8818fa3e38723fa36a416a1c9cab0ee983b78099df1c144e000ab516_optim.pdf",
+        "note": "Omron-authored document, printed pages 28–29. Equipment alarms, operator checks and battery errors."
+      },
+      {
+        "title": "Omron Healthcare clinical validation",
+        "url": "https://omronhealthcare.com/clinical-validation",
+        "note": "Identifies the HBP-1300 upper-arm instrument and its use in a clinical setting."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-21T07:00:00.000Z"
+  },
+  {
+    "slug": "husqvarna-yth18542-deck-belt-routing",
+    "title": "Husqvarna YTH18542 belt routing: deck belt or motion drive belt?",
+    "shortTitle": "Choose the right YTH18542 belt diagram",
+    "description": "Find the deck belt route, original belt number and motion-drive diagram for Husqvarna YTH18542 model 917.279060, product 960 13 00-02.",
+    "brand": "Husqvarna",
+    "category": "small-engines",
+    "type": "Maintenance",
+    "diagram": "belt",
+    "tags": [
+      "husqvarna yth18542 belt replacement",
+      "husqvarna yth 18542 belt diagram",
+      "Husqvarna 18542 deck belt replacement",
+      "917.279060 belt routing",
+      "960 13 00-02 deck belt",
+      "532 17 48-83"
+    ],
+    "answer": "On YTH18542 model 917.279060, Figure 20 shows the mower deck belt around the blade-spindle and idler pulleys. Figure 22 shows the separate belt that drives the tractor. The original parts list identifies the 42-inch deck belt as 532 17 48-83.",
+    "scope": "Applies to the March 2005 YTH18542 documentation for product 960 13 00-02 (917.279060). Husqvarna sold other tractors under the same YTH18542 name; verify the plate before selecting a diagram or belt.",
+    "related": [],
+    "takeaway": "Match product 960 13 00-02 first. Use Figure 20 for the blades, Figure 22 for tractor travel, and the matching illustrated parts list for the original belt number.",
+    "sources": [
+      {
+        "title": "Husqvarna YTH18542 owner's manual, 917.279060",
+        "url": "https://content.tdr.dss.husqvarnagroup.net/pub000027523/doc000054528",
+        "note": "March 2005 model-specific guide. Printed pages 18–21 cover safe preparation, deck removal and the separate belt diagrams."
+      },
+      {
+        "title": "Husqvarna illustrated parts list, 960130002",
+        "url": "https://www-static-nw.husqvarna.com/hbd/tdrdownload/v2/pub000027219/doc000053365/IPL/3psNkmFSEqFZUJdKAMhgKBKbEug?httproute=True",
+        "note": "Matches 917.279060 and identifies item 68 in the 42-inch mower deck assembly."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-22T07:00:00.000Z"
+  },
+  {
+    "slug": "american-standard-washbrook-urinal-dimensions",
+    "title": "American Standard Washbrook urinal dimensions and rough-in connections",
+    "shortTitle": "Washbrook dimensions and top vs. back spud",
+    "description": "Check width, projection, inlet and outlet for the Washbrook FloWise Universal urinal, and identify which drawing applies to the 6590.001US or 6515.001US.",
+    "brand": "American Standard",
+    "category": "home-systems",
+    "type": "Specifications",
+    "diagram": "dimensions",
+    "tags": [
+      "american standard washbrook urinal specs",
+      "washbrook urinal specs",
+      "american standard urinal rough in specs",
+      "6590.001US",
+      "6515.001US",
+      "Washbrook width and depth"
+    ],
+    "answer": "The Washbrook FloWise Universal drawing gives an overall width of 18⅞ inches and a projection of 14⅛ inches from the finished wall. The 6590.001US has a top inlet; the 6515.001US has a rear inlet. Both drawings specify a ¾-inch spud.",
+    "scope": "For the US-suffix 6590.001US and 6515.001US shown in the American Standard USA13 sheet. Dimensions are nominal. Confirm the fixture, valve and current job drawing before setting pipework.",
+    "related": [],
+    "takeaway": "Use the overall dimensions to check space. For the plumbing rough-in, select the drawing for the inlet location and measure from the finished surfaces.",
+    "sources": [
+      {
+        "title": "American Standard Washbrook FloWise Universal USA13 specification sheet",
+        "url": "https://manualsdump.com/en/manuals/american_standard-washbrook_flowise_universal_urinal-usa13/54900/1",
+        "note": "Manufacturer sheet archived by ManualsDump. Identifies the US-suffix models, fixture size, spud, outlet and flush range; the reverse shows both rough-ins."
+      },
+      {
+        "title": "American Standard Washbrook 6590.001 / 6515.001 dimensioned sheet",
+        "url": "https://www.webstaurantstore.com/documents/specsheets/167744_as_us_bath_spec__6515__6590_6627__original.pdf",
+        "note": "Manufacturer drawing, revision November 2018, hosted by a distributor. Corroborates nominal dimensions and shows the separate inlet diagrams."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-23T07:00:00.000Z"
+  },
+  {
+    "slug": "miele-g643-g663-g843-dishwasher-dimensions",
+    "title": "Miele G 643, G 663 and G 843 dishwasher dimensions and cutout sizes",
+    "shortTitle": "Will a G 643, G 663 or G 843 fit the opening?",
+    "description": "Compare the cabinet opening and dishwasher width, depth and height for older fully integrated Miele models, including the separate leg-height limits.",
+    "brand": "Miele",
+    "category": "dishwashers",
+    "type": "Specifications",
+    "diagram": "dishwasher",
+    "tags": [
+      "miele dishwasher measurements",
+      "miele dishwasher dimensions",
+      "dimensions of miele dishwasher",
+      "miele dishwasher height",
+      "G 643 cutout",
+      "G 663 dimensions",
+      "G 843 cutout width"
+    ],
+    "answer": "Both US drawings show a 23 5/8-inch cabinet opening and a 23 9/16-inch appliance width. The opening height is 32 5/16–34 1/4 inches for G 643–G 663 and 33 1/16–35 1/16 inches for G 843–G 863. Check the separate leg limits before deciding it fits.",
+    "scope": "For the archived US fully integrated G 600 and G 800 installation drawings identified by model range below. Other Miele dishwashers and door-panel arrangements have their own drawings.",
+    "related": [],
+    "takeaway": "Match the series, measure the smallest clear cabinet opening and check the leg configuration as well as the height range on the drawing.",
+    "sources": [
+      {
+        "title": "Miele USA fully integrated dishwasher installation instructions",
+        "url": "https://us.mieleusa.com/MieleMedia/docs/operatinginstructions/dishwashers/retired%20models%20manuals/installation%20instructions/Full_Integrated_install.pdf",
+        "note": "Printed pages 9 and 10 show separate product and cutout drawings and the notes on leg configurations."
+      },
+      {
+        "title": "Miele USA Incognito G 643 SCVi and G 843 Vi operating instructions",
+        "url": "https://us.mieleusa.com/MieleMedia/docs/operatinginstructions/Dishwashers/Retired%20models%20manuals/Operating%20Instructions/Dishwasher%20G643_843_us.pdf",
+        "note": "Identifies specific model designations in the US Incognito family. The installation drawings supply the measurements."
+      }
+    ],
+    "checkedDate": "2026-11-07",
+    "publishAt": "2026-12-24T07:00:00.000Z"
   }
 ]

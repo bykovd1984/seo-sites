@@ -31,3 +31,5 @@ Omron identifies Er9 as a main-unit malfunction. Take the unit out of measuremen
 ## If your display says A1, E5 or something else
 
 Read the model number from the unit itself. **HEM-907XL** is the professional monitor covered here. Its table labels the errors **Er1** through **Er9**. If your unit shows **A1** or **E5**, copying the row for Er1 or Er5 can send you to the wrong check. Look up the exact model and display together. [Omron’s model identification page](https://omronhealthcare.com/products/intellisense-professional-digital-blood-pressure-monitor-hem-907xl)
+
+If the nameplate says **HBP-1300** and the display reads **E2**, use the [HBP-1300 cuff and measurement checks](/guides/omron-hbp-1300-e1-e2-errors). That model uses a different code table.
