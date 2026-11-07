@@ -41,6 +41,10 @@ def main(argv=None):
     commands.add_parser('daemon', help='Independent persistent worker; install at user sign-in on Windows')
     commands.add_parser('serve', help='Run the local stdio MCP interface')
     commands.add_parser('check-mcp', help='Read-only SDK handshake and project listing; no provider requests')
+    attempts = commands.add_parser('import-toolspd-attempts', help='Reconcile actual legacy report attempts into the shared daily budget')
+    attempts.add_argument('--database', type=Path, required=True)
+    attempts.add_argument('--day', required=True)
+    commands.add_parser('toolspd-session', help='Verify saved Google/ToolsPD login and list service options without a keyword report')
     commands.add_parser('toolspd-login', help='Interactive owner login in an isolated browser, no credentials in chat')
     args = parser.parse_args(argv)
     home = args.home.resolve()
@@ -80,6 +84,37 @@ def main(argv=None):
     elif args.command == 'check-mcp':
         from .check_connection import run
         result = run(home)
+    elif args.command == 'import-toolspd-attempts':
+        from .import_attempts import import_legacy_attempts
+        service = Service(home)
+        try:
+            result = import_legacy_attempts(service.store, args.database, args.day)
+        finally:
+            service.close()
+    elif args.command == 'toolspd-session':
+        from .collectors import ToolsPDBrowser
+        from toolspd_session import ToolsPDSession, service_origin
+        settings = Settings(home)
+        browser = ToolsPDBrowser(settings)
+        try:
+            browser.open()
+            session = ToolsPDSession(browser.browser, browser.page, browser.base,
+                account=browser.config.get('account'), member_user=browser.config.get('memberUser'))
+            _, labels = session.catalog()
+            options = []
+            import re
+            for label in labels:
+                controls = list(session.controls(re.compile('^' + re.escape(label) + '$', re.I)))
+                if controls:
+                    try:
+                        base = service_origin(controls[0].get_attribute('href') or '')
+                    except ValueError:
+                        continue
+                    options.append(dict(option=label, origin=base))
+            result = dict(catalogReady=True, reportVerified=False, options=options,
+                          memberIdentityChecked=bool(browser.config.get('memberUser')), apiUnitsSpent=0)
+        finally:
+            browser.close()
     elif args.command == 'toolspd-login':
         from .collectors import ToolsPDBrowser
         from .worker import worker_lock
@@ -91,7 +126,7 @@ def main(argv=None):
             try:
                 browser.open(headless=False)
                 browser.page.goto('https://app.toolspd.com/member', wait_until='domcontentloaded')
-                print('Sign in and open Access Semrush 1 in the isolated browser. Never send passwords or codes to chat.', file=sys.stderr)
+                print('Sign in once in the isolated browser. The collector opens Semrush automatically. Never send passwords or codes to chat.', file=sys.stderr)
                 input('Press Enter after signing in: ')
             finally:
                 browser.close()

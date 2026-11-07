@@ -207,6 +207,66 @@ class HubTest(unittest.TestCase):
             collect_keywords(self.service,job,FailingBrowser,sleeper=lambda n:None)
         self.assertEqual(self.service.store.db.execute('SELECT COUNT(*) FROM attempts').fetchone()[0],1)
 
+    def test_failover_consumes_budget_and_validates_discovered_origin(self):
+        self.service.settings.data['semrush'].update(enabled=True, dailyLimit=2)
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en', max_age_days=0)
+        snapshot = self.snapshot()
+        snapshot['sourceUrl'] = snapshot['sourceUrl'].replace('sktiman.toolspd.com', 'two.toolspd.com')
+        class FailoverBrowser:
+            base = 'https://two.toolspd.com'
+            def __init__(self, settings): pass
+            def capture(self, request):
+                self.before_retry()
+                return snapshot
+            def close(self): pass
+        collect_keywords(self.service, job, FailoverBrowser, sleeper=lambda n: None)
+        self.assertEqual(self.service.jobs('grammar', job['id'])['state'], 'done')
+        self.assertEqual([r[0] for r in self.service.store.db.execute('SELECT status FROM attempts ORDER BY started')], ['failed', 'done'])
+        self.assertEqual(self.service.keywords('grammar', topic)['total'], 1)
+
+    def test_failover_stops_when_shared_daily_budget_is_exhausted(self):
+        self.service.settings.data['semrush'].update(enabled=True, dailyLimit=1)
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en', max_age_days=0)
+        class FailoverBrowser:
+            def __init__(self, settings): pass
+            def capture(self, request):
+                self.before_retry()
+                raise AssertionError('No report may follow a rejected reservation')
+            def close(self): pass
+        with self.assertRaisesRegex(ReportUnavailable, 'daily_limit_reached'):
+            collect_keywords(self.service, job, FailoverBrowser, sleeper=lambda n: None)
+        self.assertEqual(self.service.store.db.execute('SELECT COUNT(*) FROM attempts').fetchone()[0], 1)
+        self.assertEqual(self.service.keywords('grammar', topic)['total'], 0)
+
+    def test_legacy_attempt_import_preserves_real_records_and_is_idempotent(self):
+        import sqlite3
+        from contextlib import closing
+        from research_hub.import_attempts import import_legacy_attempts
+        source = self.home / 'legacy.sqlite3'
+        day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        stamp = day + 'T01:00:00+00:00'
+        with closing(sqlite3.connect(source)) as legacy:
+            legacy.execute('CREATE TABLE semrush_ui_attempts(id TEXT,job_id TEXT,started TEXT,status TEXT)')
+            legacy.execute('INSERT INTO semrush_ui_attempts VALUES (?,?,?,?)', ('original-id','original-job',stamp,'ui_blocked'))
+            legacy.commit()
+        first = import_legacy_attempts(self.service.store, source, day)
+        second = import_legacy_attempts(self.service.store, source, day)
+        self.assertEqual((first['imported'], second['imported'], second['totalAttempts']), (1, 0, 1))
+        row = self.service.store.db.execute('SELECT * FROM attempts').fetchone()
+        self.assertEqual((row['started'], row['status']), (stamp, 'ui_blocked'))
+        self.assertTrue(row['job'].startswith('external:' + first['sourceEvidence']))
+        proof = self.service.store.read_artifact(first['sourceEvidence'])
+        self.assertEqual(proof['rows'][0]['id'], 'original-id')
+        with closing(sqlite3.connect(source)) as legacy:
+            self.assertEqual(legacy.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0], 1)
+        self.service.settings.data['semrush'].update(enabled=True, dailyLimit=1)
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en', max_age_days=0)
+        with self.assertRaisesRegex(ReportUnavailable, 'daily_limit_reached'):
+            collect_keywords(self.service, job, browser_factory=lambda settings: self.fail('No browser may open'))
+
     def test_worker_recovers_search_but_holds_interrupted_browser(self):
         search=self.service.queue_search('grammar','google',self.day,self.day)
         topic=self.subject(); browser=self.service.queue_keywords('grammar',topic,['present simple'],'US','en')

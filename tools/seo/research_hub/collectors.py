@@ -139,9 +139,9 @@ def attach_report(service, job, keyword, report):
                                 (job['project'], job['request']['subject'], report, keyword))
 
 
-def save_keyword_snapshot(service, job, keyword, snapshot):
+def save_keyword_snapshot(service, job, keyword, snapshot, base=None):
     request = dict(job['request'], keyword=keyword, month=job['request']['requestedMonth'])
-    base = service.settings.data.get('semrush', {}).get('origin', 'https://sktiman.toolspd.com')
+    base = base or service.settings.data.get('semrush', {}).get('origin', 'https://sktiman.toolspd.com')
     candidates = parse_snapshot(request, snapshot, base)
     artifact = service.store.artifact(snapshot)
     ident = digest((cache_key(request, keyword), artifact))
@@ -170,7 +170,7 @@ class ToolsPDBrowser:
             except ImportError:
                 raise ValueError('Install the optional browser requirements before using ToolsPD') from None
         from toolspd import protect_profile
-        profile = protect_profile(self.settings.home / 'toolspd-profile')
+        profile = protect_profile(self.settings.home / 'toolspd-profile', home=self.settings.home)
         self.api = sync_playwright().start()
         self.browser = self.api.chromium.launch_persistent_context(str(profile), channel=self.config.get('channel', 'msedge'),
                                                                     headless=headless, accept_downloads=False)
@@ -179,22 +179,18 @@ class ToolsPDBrowser:
     def capture(self, request):
         if self.browser is None:
             self.open()
-        response = self.page.goto(report_url(request, self.base), wait_until='domcontentloaded', timeout=45000)
-        if response and response.status >= 400:
-            raise ReportUnavailable('provider_unavailable')
-        if urlsplit(self.page.url).hostname != urlsplit(self.base).hostname:
-            raise ReportUnavailable('login_required')
-        deadline = time.monotonic() + 40
-        while time.monotonic() < deadline:
-            snapshot = self.page.evaluate(SCRIPT, request['limit'])
-            try:
-                parse_snapshot(request, snapshot, self.base)
-                return snapshot
-            except ReportUnavailable as exc:
-                if exc.reason != 'report_not_ready_or_login_required':
-                    raise
-            self.page.wait_for_timeout(1000)
-        raise ReportUnavailable('report_not_ready_or_login_required')
+        from toolspd_session import ToolsPDSession
+        if not getattr(self, 'session', None):
+            self.session = ToolsPDSession(self.browser, self.page, self.base,
+                account=self.config.get('account'), member_user=self.config.get('memberUser'))
+        session = self.session
+        snapshot = session.capture(request, self.before_retry)
+        self.page, self.base = session.page, session.base
+        return snapshot
+
+    def before_retry(self):
+        # Live collectors install a budget callback before any failover lookup.
+        raise ReportUnavailable('retry_budget_not_configured')
 
     def close(self):
         if self.browser:
@@ -231,31 +227,38 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                 if not 1 <= ceiling <= 100 or delay < 10:
                     raise ValueError('Invalid ToolsPD daily limit or delay')
                 db = service.store.db
-                db.execute('BEGIN IMMEDIATE')
-                try:
-                    attempts = db.execute('SELECT COUNT(*) FROM attempts WHERE started>=?', (now()[:10],)).fetchone()[0]
-                    if attempts >= ceiling:
-                        raise ReportUnavailable('daily_limit_reached')
-                    last = db.execute('SELECT started FROM attempts ORDER BY started DESC LIMIT 1').fetchone()
-                    attempt = uuid.uuid4().hex
-                    db.execute('INSERT INTO attempts VALUES (?,?,?,?)', (attempt, job['id'], now(), 'reserved'))
-                    db.commit()  # Count before navigation; retries and crashes never refund attempts.
-                except BaseException:
-                    db.rollback()
-                    raise
-                if last:
-                    elapsed = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(last['started'])).total_seconds()
-                    sleeper(max(0, delay-elapsed))
+                attempts = []
+                def reserve_attempt():
+                    db.execute('BEGIN IMMEDIATE')
+                    try:
+                        count = db.execute('SELECT COUNT(*) FROM attempts WHERE started>=?', (now()[:10],)).fetchone()[0]
+                        if count >= ceiling:
+                            raise ReportUnavailable('daily_limit_reached')
+                        last = db.execute('SELECT started FROM attempts ORDER BY started DESC LIMIT 1').fetchone()
+                        attempt = uuid.uuid4().hex
+                        db.execute('INSERT INTO attempts VALUES (?,?,?,?)', (attempt, job['id'], now(), 'reserved'))
+                        db.commit()  # Failover, retries and crashes never refund attempts.
+                        attempts.append(attempt)
+                    except BaseException:
+                        db.rollback()
+                        raise
+                    if last:
+                        elapsed = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(last['started'])).total_seconds()
+                        sleeper(max(0, delay-elapsed))
+                reserve_attempt()
                 try:
                     if browser is None:
                         browser = browser_factory(service.settings)
+                    browser.before_retry = reserve_attempt
                     snapshot = browser.capture(dict(request, keyword=keyword, month=request['requestedMonth']))
-                    save_keyword_snapshot(service, job, keyword, snapshot)
+                    save_keyword_snapshot(service, job, keyword, snapshot, base=getattr(browser, 'base', None))
                     with db:
-                        db.execute("UPDATE attempts SET status='done' WHERE id=?", (attempt,))
+                        for attempt in attempts:
+                            db.execute("UPDATE attempts SET status=? WHERE id=?", ('done' if attempt == attempts[-1] else 'failed', attempt))
                 except BaseException:
                     with db:
-                        db.execute("UPDATE attempts SET status='failed' WHERE id=?", (attempt,))
+                        for attempt in attempts:
+                            db.execute("UPDATE attempts SET status='failed' WHERE id=?", (attempt,))
                     raise
             progress['completedSeeds'].append(keyword)
             service.store.update_job(job['id'], 'running', progress)

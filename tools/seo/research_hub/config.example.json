@@ -3,8 +3,13 @@
   "projects": {
     "grammar-example": {
       "name": "Grammar research example",
-      "hosts": ["example.com"],
-      "languages": ["en", "ru"],
+      "hosts": [
+        "example.com"
+      ],
+      "languages": [
+        "en",
+        "ru"
+      ],
       "minimumPosition": null,
       "google": {
         "property": "sc-domain:example.com",
@@ -19,6 +24,8 @@
     "origin": "https://sktiman.toolspd.com",
     "dailyLimit": 20,
     "delaySeconds": 15,
-    "channel": "msedge"
+    "channel": "msedge",
+    "account": "owner@example.com",
+    "memberUser": "owner"
   }
 }

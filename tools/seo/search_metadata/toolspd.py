@@ -59,7 +59,7 @@ def parse_snapshot(request,value,base=DEFAULT_ORIGIN):
     if value.get('kind')!='toolspd_keywordmagic_ui' or value.get('schemaVersion')!=1: raise ValueError('Unexpected ToolsPD evidence schema')
     source=urlsplit(value.get('sourceUrl',''));params=parse_qs(source.query)
     if source.scheme+'://'+source.netloc!=origin(base) or source.path!='/analytics/keywordmagic/': raise ValueError('ToolsPD report source mismatch')
-    if params.get('q')!=[request['keyword']] or params.get('db')!=[request['country'].lower()] or params.get('type')!=['all'] or params.get('mode')!=['1']:
+    if params.get('q')!=[request['keyword']] or params.get('db')!=[request['country'].lower()] or params.get('type')!=['all'] or params.get('mode',['1'])!=['1']:
         raise ValueError('ToolsPD report query or database mismatch')
     text=normalize(value.get('pageText',''))
     if any(s in text for s in ('captcha','verify you are human','unusual traffic','access denied')): raise ReportUnavailable('challenge')
@@ -129,13 +129,13 @@ def ingest_snapshot(db,job_id,path,base=DEFAULT_ORIGIN,attempt=None):
     return dict(imported=True,jobId=job_id,candidates=len(result),sourceArtifact=proof,coverage=value.get('coverage'))
 
 
-def reserve(db,job_id,daily_limit):
+def reserve(db,job_id,daily_limit,followup=False):
     if not 1<=daily_limit<=100: raise ValueError('Daily limit must be 1..100')
     db.execute('BEGIN IMMEDIATE')
     try:
         count=db.execute('SELECT COUNT(*) FROM semrush_ui_attempts WHERE substr(started,1,10)=?',(now()[:10],)).fetchone()[0]
         if count>=daily_limit: db.rollback();return None
-        changed=db.execute("UPDATE semrush_jobs SET status='ui_reserved',updated=? WHERE id=? AND status='planned'",(now(),job_id)).rowcount
+        changed=db.execute("UPDATE semrush_jobs SET status='ui_reserved',updated=? WHERE id=? AND status=?",(now(),job_id,'ui_reserved' if followup else 'planned')).rowcount
         if not changed: db.rollback();return None
         ident=key((job_id,now()));db.execute('INSERT INTO semrush_ui_attempts VALUES (?,?,?,\'reserved\',NULL,NULL)',(ident,job_id,now()))
         db.commit();return ident
@@ -150,9 +150,12 @@ def retry(db,job_id):
     return dict(requeued=job_id,limitation='Earlier attempts remain counted against the daily ceiling.')
 
 
-def protect_profile(path):
+def protect_profile(path,home=None):
     path=Path(path).resolve()
-    if not path.is_relative_to(ROOT/'artifacts'): raise ValueError('Browser profile must be in ignored workspace artifacts')
+    if home is None:
+        if not path.is_relative_to(ROOT/'artifacts'): raise ValueError('Browser profile must be in ignored workspace artifacts')
+    elif path != Path(home).resolve()/'toolspd-profile':
+        raise ValueError('Browser profile must belong to the configured shared data directory')
     path.mkdir(parents=True,exist_ok=True)
     if os.name=='nt':
         result=subprocess.run(['icacls.exe',str(path),'/inheritance:r','/grant:r',getpass.getuser()+':(OI)(CI)F','*S-1-5-18:(OI)(CI)F'],capture_output=True)
@@ -173,6 +176,9 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
     profile=protect_profile(profile);directory=Path(directory).resolve()
     if not directory.is_relative_to(ROOT/'artifacts'): raise ValueError('Reports must remain under workspace artifacts')
     directory.mkdir(parents=True,exist_ok=True);completed=0;blocked=None
+    from toolspd_session import ToolsPDSession
+    options_path=profile.parent/'config.private.json'
+    options=json.loads(options_path.read_text(encoding='utf-8-sig')).get('semrush',{}) if options_path.exists() else {}
     with sync_playwright() as browser_api:
         browser=browser_api.chromium.launch_persistent_context(str(profile),channel=channel,headless=not login,accept_downloads=False)
         try:
@@ -182,36 +188,37 @@ def run_worker(db,profile,directory,limit=5,daily_limit=20,delay=15,base=DEFAULT
                 print('Sign in to ToolsPD in this separate window and open Access Semrush 1. Do not enter credentials in the console.',flush=True)
                 input('Press Enter after the report service is open: ')
                 return dict(loginWindowClosed=True,limitation='A report lookup must still verify the session.')
+            session=ToolsPDSession(browser,page,base,account=options.get('account'),member_user=options.get('memberUser'))
             for index,item in enumerate(jobs):
                 if index: time.sleep(delay)
                 if not eligible_links(db,item['jobId']): continue
                 attempt=reserve(db,item['jobId'],daily_limit)
                 if not attempt: blocked='daily_ceiling_or_concurrent_claim';break
-                state=None;capture=None
+                state=None;capture=None;attempts=[attempt]
+                def before_retry():
+                    extra=reserve(db,item['jobId'],daily_limit,followup=True)
+                    if not extra: raise ReportUnavailable('daily_limit_reached')
+                    attempts.append(extra)
+                    time.sleep(delay)
                 try:
-                    response=page.goto(item['url'],wait_until='domcontentloaded',timeout=45000)
-                    if response and response.status>=400: raise ReportUnavailable('provider_unavailable')
-                    if urlsplit(page.url).hostname!=urlsplit(base).hostname: raise ReportUnavailable('login_required')
-                    # Wait for the rendered report, never for an intercepted/private API response.
-                    deadline=time.monotonic()+40
-                    while time.monotonic()<deadline:
-                        capture=page.evaluate(SCRIPT,100)
-                        try: parse_snapshot(item['request'],capture,base);break
-                        except ReportUnavailable as error:
-                            if error.reason!='report_not_ready_or_login_required': raise
-                            page.wait_for_timeout(1000)
-                    else: raise ReportUnavailable('report_not_ready_or_login_required')
-                    path=directory/(item['jobId']+'-'+attempt[:12]+'.json');atomic_json(path,capture)
-                    ingest_snapshot(db,item['jobId'],path,base,attempt);completed+=1
+                    capture=session.capture(item['request'],before_retry)
+                    path=directory/(item['jobId']+'-'+attempts[-1][:12]+'.json');atomic_json(path,capture)
+                    ingest_snapshot(db,item['jobId'],path,session.base,attempts[-1]);completed+=1
+                    for prior in attempts[:-1]:
+                        db.execute("UPDATE semrush_ui_attempts SET status='failed',error='session_or_service_recovery' WHERE id=?",(prior,))
+                    db.commit()
                 except (ReportUnavailable,BrowserTimeout,ValueError) as error:
                     reason=error.reason if isinstance(error,ReportUnavailable) else type(error).__name__
                     state='login_required' if 'login' in reason else 'ui_blocked'
                     proof=None
+                    capture=capture or session.last_snapshot
                     if capture:
                         path=directory/(item['jobId']+'-'+attempt[:12]+'-failed.json');atomic_json(path,capture)
                         proof=artifact(db,path,'semrush_toolspd_ui_failure',capture.get('sourceUrl',''))
                     db.execute('UPDATE semrush_jobs SET status=?,error=?,updated=? WHERE id=?',(state,reason,now(),item['jobId']))
-                    db.execute('UPDATE semrush_ui_attempts SET status=?,artifact_id=?,error=? WHERE id=?',(state,proof,reason,attempt));db.commit()
+                    for current in attempts:
+                        db.execute('UPDATE semrush_ui_attempts SET status=?,artifact_id=?,error=? WHERE id=?',(state,proof,reason,current))
+                    db.commit()
                     blocked=reason;break
         finally: browser.close()
-    return dict(completed=completed,blocked=blocked,apiUnitsSpent=0,**status(db))
+    return dict(completed=completed,blocked=blocked,apiUnitsSpent=0,sessionOrigin=session.base,sessionEvents=session.events,**status(db))

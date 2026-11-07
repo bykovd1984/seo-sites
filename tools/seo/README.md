@@ -74,6 +74,30 @@ available with `python tools/seo/launch.py toolspd-login`. Existing approval and
 provider bindings apply to their configured sites. Check them before initiating
 collection for another site.
 
+ToolsPD uses one private `toolspd-profile` under the configured data directory.
+Set `semrush.account` to the authorized Google email and `semrush.memberUser` to
+its ToolsPD UserID in `config.private.json`. If the report session expires, both
+collectors use the saved Google session, verify the member identity, discover the
+three visible Semrush access options and try them in order. Each additional report
+lookup consumes another daily attempt and observes the configured delay. Report
+query, country, month, columns and final ToolsPD origin are validated before saving.
+Google password/2FA prompts, security refusals and CAPTCHA require owner action;
+the application stops with a specific reason instead of repeating login attempts.
+
+`python tools/seo/launch.py toolspd-session` verifies member login and lists the
+advertised service origins without requesting a keyword report. `catalogReady`
+does not prove report availability. Close any owner login window before collection;
+clients must share the same data directory and avoid concurrent profile use.
+The ManualsDump CLI defaults to the same shared profile. No cookies or passwords
+are copied from another browser profile.
+
+When moving a running legacy batch to the shared collector, reconcile its real
+attempts with `python tools/seo/launch.py import-toolspd-attempts --database PATH
+--day YYYY-MM-DD`. This reads the legacy database without modifying it, preserves
+provenance in compressed evidence, and idempotently counts those attempts against
+the shared limit. Continue provider collection through the shared worker afterward;
+the legacy CLI retains a separate ledger and must not collect concurrently.
+
 Console operations accept JSON files and match the MCP operations.
 
 ```sh

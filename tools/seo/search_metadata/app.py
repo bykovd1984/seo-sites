@@ -181,7 +181,7 @@ def main():
     sem.add_argument('--country',default='US');sem.add_argument('--seeds',type=int,default=2)
     sem.add_argument('--limit',type=int,default=5);sem.add_argument('--daily-limit',type=int,default=20)
     sem.add_argument('--delay',type=float,default=15);sem.add_argument('--channel',choices=('msedge','chrome'),default='msedge')
-    sem.add_argument('--profile',type=Path,default=ROOT/'artifacts/search-metadata/toolspd-profile')
+    sem.add_argument('--profile',type=Path,default=ROOT/'artifacts/seo-research/toolspd-profile')
     sem.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/toolspd')
     sem.add_argument('--snapshot',type=Path);sem.add_argument('--job')
     sem.add_argument('--approved-browser-use',action='store_true')

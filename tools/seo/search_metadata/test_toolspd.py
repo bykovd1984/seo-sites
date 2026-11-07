@@ -42,6 +42,12 @@ class ToolsPdTests(unittest.TestCase):
             with self.subTest(value=value):
                 with self.assertRaises(ValueError): parse_snapshot(self.request,value)
 
+    def test_current_ui_canonical_url_may_omit_default_mode(self):
+        value=self.snapshot(sourceUrl=url(self.request).replace('&mode=1',''))
+        self.assertEqual(parse_snapshot(self.request,value)[0]['volume'],1200)
+        with self.assertRaises(ValueError):
+            parse_snapshot(self.request,self.snapshot(sourceUrl=url(self.request).replace('mode=1','mode=2')))
+
     def test_explicit_no_results_is_not_zero_demand_or_provider_error(self):
         value=self.snapshot(rows=[],tableText='Nothing found')
         row=parse_snapshot(self.request,value)[0]
@@ -72,6 +78,12 @@ class ToolsPdTests(unittest.TestCase):
         retry(self.db,self.job['jobId'])
         self.assertIsNone(reserve(self.db,self.job['jobId'],1))
         self.assertEqual(self.db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0],1)
+
+    def test_service_failover_reservations_are_not_free(self):
+        self.assertIsNotNone(reserve(self.db,self.job['jobId'],2))
+        self.assertIsNotNone(reserve(self.db,self.job['jobId'],2,followup=True))
+        self.assertIsNone(reserve(self.db,self.job['jobId'],2,followup=True))
+        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0],2)
 
     def test_api_collector_never_dispatches_ui_jobs(self):
         transport=Mock()
