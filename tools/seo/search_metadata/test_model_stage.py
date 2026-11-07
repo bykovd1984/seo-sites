@@ -87,6 +87,13 @@ class ModelStageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Ranking protection'): import_generation(self.db,path,self.root/'runtime')
         self.assertFalse((self.root/'runtime').exists())
 
+    def test_changed_ranking_also_blocks_a_draft_without_publication(self):
+        request=self.imported();path=self.response(request)
+        record(self.db,'google','2026-11-01','2026-11-03',self.fixture.url,4,50,'new-rank','test')
+        with self.assertRaisesRegex(ValueError,'Ranking protection'):
+            import_generation(self.db,path)
+        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM research_metadata_versions').fetchone()[0],0)
+
     def test_new_provider_data_changes_frozen_model_request(self):
         request=self.imported();import_generation(self.db,self.response(request))
         row=self.db.execute('SELECT id,payload FROM research_windows').fetchone()

@@ -120,6 +120,47 @@ The code and tests live here. IIS context-export and publication adapters remain
 with the PdfSite website, where their deployment-specific settings belong.
 See [the workflow guide](../../docs/search-metadata.md).
 
+## Complete saved-history periods
+
+The ManualsDump source console can freeze and index the entire requested provider
+period without emitting a separate JSON file for each daily page observation.
+Use `MANUALSDUMP_WORKSPACE` to select the existing PdfSite data directory. These
+commands make no provider requests and do not invoke a model.
+
+```sh
+python tools/seo/search_metadata/app.py archive index --start 2009-01-01 --end 2026-11-07
+python tools/seo/search_metadata/app.py archive status --period PERIOD_ID
+python tools/seo/search_metadata/app.py archive hydrate --period PERIOD_ID --limit 100
+python tools/seo/search_metadata/app.py archive context-queue --period PERIOD_ID --limit 100
+python tools/seo/search_metadata/app.py archive reconcile --period PERIOD_ID
+```
+
+Indexing makes a coherent content-addressed SQLite snapshot and a manifest. The
+catalogue covers every discovered manual page, including older and zero-click
+observations. It retains each provider/URL's latest page average within the period,
+protects any top-ranking alias, and labels missing page averages explicitly.
+Historical ranks keep their dates. The processing queue is newest first and does
+not shrink to the last week or to pages with clicks.
+
+`hydrate` transfers every archived metric and disclosed query window for selected
+pages into the existing research pipeline. One compressed proof batch covers many
+pages/windows; original dates, providers and URL aliases remain distinct. Each
+page commits atomically and retries leave completed pages out of the queue. The
+frozen database hash and query-collection checkpoints are checked before import.
+A batch reaching its evidence-size bound continues with the remaining pages on
+the next invocation, without truncating a selected page's history.
+
+The IIS-specific adapter remains in PdfSite:
+`tools/seo/Export-ResearchContexts.ps1 -ArchivePeriod PERIOD_ID -Limit 100`. It
+fetches exact guarded source HTML for this catalogue, including impression-only
+pages. Continue the normal Semrush/model stages after contexts are imported.
+`reconcile` counts only a validated draft matching the current Sol 6.1 medium
+request. Pages waiting for content, evidence or generation remain pending.
+
+Do not restart the shared Semrush collector during another project's reserved
+batch. Legacy and shared ledgers must be reconciled before moving collection
+between them; archive/context preparation can continue independently.
+
 ## Worker and verification
 
 For a foreground collector, run `python tools/seo/launch.py daemon` in a separate

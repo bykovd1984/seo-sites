@@ -175,6 +175,16 @@ def main():
     outcomes=commands.add_parser('outcomes',help='Save a per-page assessment of the imported inventory and drafts')
     outcomes.add_argument('--start',type=dt.date.fromisoformat,required=True)
     outcomes.add_argument('--end',type=dt.date.fromisoformat,required=True)
+    archive=commands.add_parser('archive',help='Index and process the complete saved provider period without API calls')
+    archive.add_argument('action',choices=('index','status','queue','hydrate','context-queue','reconcile'))
+    archive.add_argument('--history',type=Path,default=ROOT/'artifacts/search-metadata/history.sqlite3')
+    archive.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/full-history/catalog')
+    archive.add_argument('--start',type=dt.date.fromisoformat)
+    archive.add_argument('--end',type=dt.date.fromisoformat)
+    archive.add_argument('--site',default='https://manualsdump.com/')
+    archive.add_argument('--period')
+    archive.add_argument('--limit',type=int,default=100)
+    archive.add_argument('--retry-unavailable',action='store_true')
     sem=commands.add_parser('semrush',help='ToolsPD browser workflow; no Semrush API key is used')
     sem.add_argument('action',choices=('plan','queue','login','run','import','retry','status'))
     sem.add_argument('--origin',default='https://sktiman.toolspd.com')
@@ -206,6 +216,19 @@ def main():
         elif args.command=='outcomes':
             from outcomes import reconcile
             result=reconcile(db,args.start,args.end)
+        elif args.command=='archive':
+            from archive_catalog import init_catalog,prepare_period,period_status,archive_queue,hydrate_pages,archive_context_queue,reconcile_period
+            init_catalog(db)
+            if args.action=='index':
+                if not args.start or not args.end: raise ValueError('Archive indexing requires --start and --end')
+                result=prepare_period(db,args.history,args.directory,args.start,args.end,args.site)
+            else:
+                if not args.period: raise ValueError('Select the indexed --period')
+                if args.action=='status': result=period_status(db,args.period)
+                elif args.action=='reconcile': result=reconcile_period(db,args.period)
+                elif args.action=='hydrate': result=hydrate_pages(db,args.period,args.directory/'page-batches',args.limit)
+                elif args.action=='context-queue': result=archive_context_queue(db,args.period,args.limit,args.retry_unavailable)
+                else: result=archive_queue(db,args.period,args.limit)
         elif args.command=='semrush':
             from toolspd import init_ui, pending, ingest_snapshot, retry, run_worker
             init_ui(db);db.commit()

@@ -68,7 +68,7 @@ def backfill(db):
     imported=0
     for inventory in db.execute('''SELECT i.*,a.path,a.kind FROM research_inventory i
             JOIN research_artifacts a ON a.id=i.raw_artifact ORDER BY i.rowid'''):
-        if inventory['kind']=='api_page_metrics': continue
+        if inventory['kind'] in ('api_page_metrics','saved_api_page_batch'): continue
         path=Path(inventory['path'])
         if inventory['engine']=='google':
             tables=gsc_tables(path,inventory['start'],inventory['end'])

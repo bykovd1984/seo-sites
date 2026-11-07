@@ -11,16 +11,21 @@ from ranking_policy import record as record_ranking
 from research import ROOT, artifact, attach_context, init, key, now, packed, refresh_stage, start_run
 
 
-def store_window(db,evidence_dir,engine,site,start,end,url,provenance,state,rows,page_metrics):
+def store_window(db,evidence_dir,engine,site,start,end,url,provenance,state,rows,page_metrics,raw_artifact=None,commit=True,refresh=True):
     pdf,page=page_key(url)
     evidence=dict(kind='saved_api_observations',engine=engine,site=site,start=start,end=end,url=url,
         source=provenance,checkpoint=state,queries=rows,pageMetrics=dict(page_metrics) if page_metrics else None,
         limitation='Disclosed page-query rows only; missing page totals and omitted queries remain unknown.')
     evidence_id=key(evidence);window_id=key(('api_history',evidence_id))
     if db.execute('SELECT 1 FROM research_windows WHERE id=?',(window_id,)).fetchone(): return 0
-    path=evidence_dir/(evidence_id+'.json')
-    if not path.exists(): atomic_json(path,evidence)
-    raw_id=artifact(db,path,'saved_api_observations',url)
+    if raw_artifact:
+        if not db.execute('SELECT 1 FROM research_artifacts WHERE id=?',(raw_artifact,)).fetchone():
+            raise ValueError('Compact window requires a saved batch artifact')
+        raw_id=raw_artifact
+    else:
+        path=evidence_dir/(evidence_id+'.json')
+        if not path.exists(): atomic_json(path,evidence)
+        raw_id=artifact(db,path,'saved_api_observations',url)
     verified=False
     current=db.execute('SELECT stage FROM research_pages WHERE pdf=? AND page=?',(pdf,page)).fetchone()
     for previous in db.execute('SELECT payload FROM research_windows WHERE pdf=? AND page=?',(pdf,page)):
@@ -43,7 +48,8 @@ def store_window(db,evidence_dir,engine,site,start,end,url,provenance,state,rows
          'Disclosed queries only; page totals use a separate aggregate when available',packed(data)))
     db.executemany('INSERT INTO research_queries VALUES (?,?,?,?,?)',
         [(window_id,r['query'],r['clicks'],r['impressions'],r['position']) for r in rows])
-    refresh_stage(db,pdf,page);db.commit()
+    if refresh: refresh_stage(db,pdf,page)
+    if commit: db.commit()
     return 1
 
 

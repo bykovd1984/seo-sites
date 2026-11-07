@@ -637,6 +637,8 @@ def import_generation(db,path,output=None):
     requested_generator=(request['model'],request['effort'])
     if (response.get('model'),response.get('effort'))!=requested_generator:
         raise ValueError('Unexpected generating model/effort for this frozen request')
+    rank=eligibility(db,request['pdf'],request['page'])
+    if not rank['eligible']: raise ValueError('Ranking protection: '+rank['reason'])
     source=json.loads(request['bundle'])
     if source.get('pipeline')=='import_then_sol':
         from model_stage import validate_keyword_decisions
