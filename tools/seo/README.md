@@ -218,6 +218,19 @@ unsupported source facts cannot enter the validated draft store. Review-required
 outputs remain separate. Missing source context or uncertain calls stay pending;
 they do not silently count as completed pages.
 
+A known completed response that fails validation can be explicitly repaired:
+
+```sh
+seo-manualsdump-drafts --period PERIOD_ID --directory ORIGINAL_RUN_DIRECTORY --repair-request REQUEST_ID --revision 1 --run
+```
+
+The command rechecks the exact eligible period, current source/evidence and parent
+response hash. Uncertain calls, already generated requests and valid saved
+responses are refused. Revisions 1..3 have separate immutable inputs, receipts and
+outputs; the original response is preserved. Validation feedback emphasizes
+contiguous source quotes, unchanged numeric spellings and plain metadata. New
+receipts also bind the prompt and bundle hashes. No repair activates metadata.
+
 ## Worker and verification
 
 For a foreground collector, run `python tools/seo/launch.py daemon` in a separate

@@ -2,7 +2,7 @@ import hashlib,json,unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from codex_drafts import search_history,expand_response,prepare,run_one,emit
+from codex_drafts import search_history,expand_response,prepare,run_one,emit,prepare_repair
 from archive_catalog import init_catalog
 from generate import atomic_json
 from model_stage import set_draft_policy
@@ -104,5 +104,67 @@ class CodexDraftTests(unittest.TestCase):
         data=io.BytesIO();stream=io.TextIOWrapper(data,encoding='cp1252',write_through=True)
         with patch('sys.stdout',stream):emit(value)
         self.assertEqual(json.loads(data.getvalue().decode('ascii')),value)
+
+    def invalid_output(self):
+        task=self.task();source=self.saved_output(task);folder=Path(task['directory'])
+        raw=json.loads((folder/'model-output.json').read_text(encoding='utf-8'))
+        raw['contentEvidence']=['This quotation is absent from the page']
+        atomic_json(folder/'model-output.json',raw)
+        receipt=json.loads((folder/'invocation.json').read_text(encoding='utf-8'))
+        receipt['responseSha256']=hashlib.sha256((folder/'model-output.json').read_bytes()).hexdigest()
+        atomic_json(folder/'invocation.json',receipt)
+        atomic_json(folder/'response.json',expand_response(source,raw))
+        return task
+
+    def test_explicit_repair_preserves_original_and_freezes_validation_feedback(self):
+        task=self.invalid_output();folder=Path(task['directory'])
+        original=(folder/'model-output.json').read_bytes()
+        batch=prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+        repair=batch['queued'][0];destination=Path(repair['directory'])
+        self.assertEqual(destination,folder/'revisions/001')
+        self.assertIn('Content evidence is missing',(destination/'prompt.txt').read_text(encoding='utf-8'))
+        self.assertEqual((folder/'model-output.json').read_bytes(),original)
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
+        (destination/'prompt.txt').write_text('changed',encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'immutable repair prompt'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+
+    def test_repair_refuses_uncertain_calls_and_generated_requests(self):
+        task=self.task();self.saved_output(task,status='running')
+        with self.assertRaisesRegex(ValueError,'uncertain calls stay held'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+        self.saved_output(task);run_one(self.db,task,'unused-codex')
+        with self.assertRaisesRegex(ValueError,'already has a generated response'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+
+    def test_valid_completed_response_needs_import_not_a_new_model_call(self):
+        task=self.task();source=self.saved_output(task);folder=Path(task['directory'])
+        raw=json.loads((folder/'model-output.json').read_text(encoding='utf-8'))
+        atomic_json(folder/'response.json',expand_response(source,raw))
+        with self.assertRaisesRegex(ValueError,'import it without another model call'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
+        self.assertEqual(self.db.execute('SELECT status FROM research_requests WHERE id=?',(task['requestId'],)).fetchone()[0],'pending')
+
+    def test_repair_rechecks_parent_hash_and_period_scope(self):
+        task=self.invalid_output();folder=Path(task['directory'])
+        self.db.execute('UPDATE research_archive_pages SET history_imported=0')
+        with self.assertRaisesRegex(ValueError,'outside the fully imported'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+        self.db.execute('UPDATE research_archive_pages SET history_imported=1')
+        (folder/'model-output.json').write_text('{}',encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'Parent model response changed'):
+            prepare_repair(self.db,self.period,self.root/'drafts',task['requestId'])
+
+    def test_new_receipt_hashes_prevent_mutating_a_completed_model_input(self):
+        task=self.task();self.saved_output(task);folder=Path(task['directory'])
+        receipt=json.loads((folder/'invocation.json').read_text(encoding='utf-8'))
+        receipt['promptSha256']=hashlib.sha256((folder/'prompt.txt').read_bytes()).hexdigest()
+        receipt['bundleSha256']=hashlib.sha256((folder/'bundle.json').read_bytes()).hexdigest()
+        atomic_json(folder/'invocation.json',receipt)
+        (folder/'prompt.txt').write_text('changed',encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'input changed after invocation'):
+            run_one(self.db,task,'unused-codex')
+        self.assertEqual(self.db.execute('SELECT count(*) FROM research_metadata_versions').fetchone()[0],0)
 
 if __name__=='__main__':unittest.main()
