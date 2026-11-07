@@ -277,6 +277,46 @@ def repair_sources(db,parent,allow_review=False):
     return manifest['periodId'],selected,manifest['attempt']+1,dict(errors=held,previousResponse=json.loads((folder/'model-output.json').read_text(encoding='utf-8-sig')))
 
 
+
+def repair_queue(db,period,limit=25):
+    """List only current held requests with verified, completed parent calls."""
+    if not 1<=limit<=100:raise ValueError('Repair queue limit must be 1..100')
+    period_status(db,period)
+    rows=db.execute("""SELECT r.id request_id,p.detail,p.pdf,p.page FROM research_archive_pages p
+      JOIN research_requests r ON r.pdf=p.pdf AND r.page=p.page
+      WHERE p.period_id=? AND p.eligible=1 AND p.history_imported=1 AND p.state='pending'
+      AND r.status='group_held' ORDER BY p.last_seen DESC,p.priority_clicks DESC,p.pdf,p.page""",(period,)).fetchall()
+    planned=[];seen=set();held={}
+    for item in rows:
+        if json.loads(item['detail']).get('processing',{}).get('requestId')!=item['request_id']:
+            continue  # Historical held requests are not the current outcome.
+        row=db.execute("""SELECT g.id FROM research_codex_group_members m JOIN research_codex_groups g
+          ON g.id=m.group_id WHERE m.request_id=? AND g.period_id=?
+          ORDER BY g.created DESC,g.rowid DESC LIMIT 1""",(item['request_id'],period)).fetchone()
+        if not row:
+            held['held_request_has_no_group']=held.get('held_request_has_no_group',0)+1;continue
+        parent=row['id']
+        if parent in seen:continue
+        seen.add(parent)
+        try:
+            _,_,manifest,_=load_group(db,parent)
+            _,sources,attempt,_=repair_sources(db,parent,allow_review=True)
+            for source in sources:
+                current=db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()
+                outcome=db.execute('SELECT detail FROM research_archive_pages WHERE period_id=? AND pdf=? AND page=?',
+                    (period,source['sourcePdfId'],source['page'])).fetchone()
+                if not current or current['status']!='group_held' or not outcome or \
+                    json.loads(outcome['detail']).get('processing',{}).get('requestId')!=source['requestId']:
+                    raise ValueError('Parent includes a resolved or obsolete held request')
+        except (ValueError,OSError) as exc:
+            reason=str(exc) if isinstance(exc,ValueError) else 'repair_evidence_unavailable'
+            held[reason]=held.get(reason,0)+1;continue
+        planned.append(dict(groupId=parent,kind='review' if manifest.get('reviewVersions') else 'normal',
+            nextAttempt=attempt,pages=[dict(requestId=s['requestId'],sourcePdfId=s['sourcePdfId'],page=s['page']) for s in sources]))
+        if len(planned)>=limit:break
+    return dict(periodId=period,repairs=planned,held=held,providerRequestsMade=0,modelCallsMade=0)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--db',type=Path,default=ROOT/'artifacts/search-metadata/research.sqlite3')
@@ -284,9 +324,15 @@ def main():
     parser.add_argument('--pages-per-call',type=int,default=8);parser.add_argument('--limit',type=int,default=8)
     parser.add_argument('--max-prompt-chars',type=int,default=200000);parser.add_argument('--run',action='store_true')
     parser.add_argument('--resume-group');parser.add_argument('--repair-group')
+    parser.add_argument('--repair-queue',action='store_true',help='List verified completed repairs without a model call')
     args=parser.parse_args()
     if not 1<=args.limit<=1000:raise ValueError('Group batch limit must be 1..1000')
     if sum(bool(v) for v in (args.period,args.resume_group,args.repair_group))!=1:raise ValueError('Select one period, resume group or repair group')
+    if args.repair_queue:
+        if not args.period or args.run:raise ValueError('Repair queue requires --period without --run')
+        with connect(args.db) as db:
+            init_groups(db);emit(repair_queue(db,args.period,args.limit))
+        return
     from research_hub.worker import worker_lock
     lock=ROOT/'artifacts/search-metadata/codex-generation';lock.mkdir(parents=True,exist_ok=True)
     with worker_lock(lock) as acquired:

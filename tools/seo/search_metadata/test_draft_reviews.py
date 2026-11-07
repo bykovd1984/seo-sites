@@ -114,7 +114,9 @@ class DraftReviewTests(unittest.TestCase):
         def badquote(raw):raw['results'][0]['contentEvidence']=['A quote not found in the target page']
         result=run_group(self.db,ident,'codex',self.fixture.executor(badquote))
         self.assertEqual(result['pages'][0]['status'],'held')
-        from codex_groups import repair_sources
+        from codex_groups import repair_sources,repair_queue
+        planned=repair_queue(self.db,self.period)
+        self.assertEqual([(p['groupId'],p['kind']) for p in planned['repairs']],[(ident,'review')])
         with self.assertRaisesRegex(ValueError,'source-review repair'):repair_sources(self.db,ident)
         child=prepare_review_repair(self.db,ident,self.root/'reviews')
         manifest=load_group(self.db,child)[2]

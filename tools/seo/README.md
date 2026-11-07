@@ -276,6 +276,7 @@ No paid API key, provider collection or publication is involved.
 seo-manualsdump-groups --period PERIOD_ID --pages-per-call 8 --limit 64 --run
 seo-manualsdump-groups --resume-group GROUP_ID --run
 seo-manualsdump-groups --repair-group GROUP_ID --run
+seo-manualsdump-groups --period PERIOD_ID --repair-queue --limit 25
 ```
 
 Omit `--run` to prepare a group without calling the model. Each request is reserved
@@ -284,6 +285,12 @@ reserved/held work. The shared generation OS lock covers both runners. A complet
 response can be re-imported after a restart without another call; an uncertain
 call remains held. Explicit repairs include only invalid held members from a known
 completed call, preserve the parent evidence, and are limited to three revisions.
+
+`--repair-queue` lists current held requests whose parent call completed and
+whose immutable outputs still verify. It makes no model/provider call and excludes
+resolved or obsolete requests. The returned `kind` selects the normal or source-review
+repair command. Each completed invalid revision can be reconsidered up to the existing
+three-revision limit; uncertain calls and exhausted repairs remain held for inspection.
 
 Each result must cover the exact page/request identity. Source, ranking, query,
 candidate and metadata checks run per page; one invalid member does not discard

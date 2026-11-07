@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import test_codex_drafts
 import test_research
-from codex_groups import init_groups,select_sources,prepare_group,load_group,claim_group,run_group,repair_sources,case_evidence
+from codex_groups import init_groups,select_sources,prepare_group,load_group,claim_group,run_group,repair_sources,case_evidence,repair_queue
 from codex_drafts import prepare,run_one
 from generate import atomic_json
 from model_stage import page_bundle,queue
@@ -127,6 +127,49 @@ class GroupDraftTests(unittest.TestCase):
         again=run_group(self.db,ident,'codex',lambda *a:self.fail('Completed invalid output must not repeat'))
         self.assertEqual(again['state'],'held')
         self.assertEqual(len(self.calls),1)
+
+    def test_repair_queue_lists_completed_invalid_current_members_only(self):
+        ident=self.group()
+        def wrong(raw):raw['results'][1]['contentEvidence']=['This quote is absent from the exact page.']
+        run_group(self.db,ident,'codex',self.executor(wrong))
+        calls=len(self.calls);value=repair_queue(self.db,self.period,25)
+        self.assertEqual(len(self.calls),calls)
+        self.assertEqual(value['modelCallsMade'],0);self.assertEqual(value['providerRequestsMade'],0)
+        self.assertEqual([(r['groupId'],r['kind'],r['nextAttempt']) for r in value['repairs']],[(ident,'normal',1)])
+        self.assertEqual([p['sourcePdfId'] for p in value['repairs'][0]['pages']],[1234])
+        period,sources,attempt,feedback=repair_sources(self.db,ident)
+        child=prepare_group(self.db,period,self.root/'groups',sources,ident,attempt,feedback)
+        run_group(self.db,child,'codex',self.executor())
+        self.assertEqual(repair_queue(self.db,self.period)['repairs'],[])
+
+    def test_repair_queue_never_repeats_uncertain_or_changed_parent_output(self):
+        ident=self.group();claim_group(self.db,ident,*load_group(self.db,ident)[2:])
+        from codex_groups import hold_group
+        hold_group(self.db,ident,'uncertain_group_call_requires_reconciliation')
+        value=repair_queue(self.db,self.period)
+        self.assertEqual(value['repairs'],[]);self.assertEqual(value['held'],{'repair_evidence_unavailable':1})
+        _,folder,_,_=load_group(self.db,ident)
+        atomic_json(folder/'invocation.json',dict(status='uncertain_call'))
+        value=repair_queue(self.db,self.period)
+        self.assertEqual(value['repairs'],[]);self.assertIn('Uncertain groups cannot be automatically repaired',value['held'])
+        self.assertEqual(self.calls,[])
+
+    def test_repair_queue_checks_parent_response_hash_and_attempt_limit(self):
+        ident=self.group()
+        def wrong(raw):raw['results'][1]['contentEvidence']=['This quote is absent from the exact page.']
+        run_group(self.db,ident,'codex',self.executor(wrong))
+        _,folder,_,_=load_group(self.db,ident);original=(folder/'model-output.json').read_bytes()
+        (folder/'model-output.json').write_bytes(b'{}')
+        value=repair_queue(self.db,self.period)
+        self.assertEqual(value['repairs'],[]);self.assertIn('Parent group output changed',value['held'])
+        (folder/'model-output.json').write_bytes(original)
+        for _ in range(3):
+            period,sources,attempt,feedback=repair_sources(self.db,ident)
+            ident=prepare_group(self.db,period,self.root/'groups',sources,ident,attempt,feedback)
+            def invalid(raw):raw['results'][0]['contentEvidence']=['This quote is still absent from the source.']
+            run_group(self.db,ident,'codex',self.executor(invalid))
+        value=repair_queue(self.db,self.period)
+        self.assertEqual(value['repairs'],[]);self.assertIn('Group repair limit reached',value['held'])
 
     def test_input_mutation_is_rejected_before_call_and_event_mutation_before_import(self):
         ident=self.group();_,folder,_,_=load_group(self.db,ident)
