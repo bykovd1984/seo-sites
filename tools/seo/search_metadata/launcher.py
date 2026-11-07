@@ -28,3 +28,12 @@ def groups_main():
         run()
     except (ValueError, RuntimeError) as exc:
         raise SystemExit(str(exc)) from None
+
+
+def reviews_main():
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from draft_reviews import main as run
+    try:
+        run()
+    except (ValueError, RuntimeError) as exc:
+        raise SystemExit(str(exc)) from None

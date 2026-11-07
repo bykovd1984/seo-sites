@@ -290,3 +290,30 @@ candidate and metadata checks run per page; one invalid member does not discard
 valid members. Missing/duplicate request coverage holds the entire response.
 Actual token usage is stored once per group, never duplicated for its pages.
 All outputs remain drafts; deferred Semrush coverage remains explicit.
+
+## Source review of flagged drafts
+
+`seo-manualsdump-reviews` revisits `needs_review` pages using the saved introductory
+pages (1 and 2, when present) of that same source manual. Supply missing source
+contexts first. Review preparation makes no model/provider requests and may run
+while a normal generation batch is active. Execution shares the generation lock
+and the same ChatGPT-authenticated `gpt-6.1-sol` / `medium` settings.
+
+```powershell
+seo-manualsdump-reviews --period PERIOD_ID --limit 8
+seo-manualsdump-reviews --resume-group GROUP_ID --run
+seo-manualsdump-reviews --repair-group GROUP_ID --run
+```
+
+The second pass preserves the original draft. Introductory pages establish identity
+and language; page topics, quotes, numeric claims and selected queries still have
+to pass the exact target-page checks. Missing/transient source data remains pending.
+A completed review that still cannot resolve the source saves a specific model
+rationale and source-bound skip evidence. A skip is never inferred from the first
+review flag or missing Semrush alone. Approved reviews and skips become pending
+again when their target/search evidence or supporting manual pages change; run
+archive reconciliation after importing corrected source contexts.
+
+Explicit repairs retain the review baseline and introductory-page proofs. Use the
+review repair command rather than the ordinary group repair route. Unknown calls
+stay held. No source-review operation activates metadata or publishes a site.

@@ -41,15 +41,24 @@ def page_outcome(db, pdf, page):
                     followUp='Image/OCR review is required before text-grounded metadata can be generated.')
     except ValueError as exc:
         return dict(outcome, state='pending', reason=str(exc))
-    version = db.execute('''SELECT id,status FROM research_metadata_versions
+    version = db.execute('''SELECT id,status,payload FROM research_metadata_versions
         WHERE request_id=? AND model=? AND effort=? ORDER BY created DESC,rowid DESC LIMIT 1''',
         (request['requestId'], *GENERATOR)).fetchone()
     outcome['requestId'] = request['requestId']
     if version is None:
         status=db.execute('SELECT status FROM research_requests WHERE id=?',(request['requestId'],)).fetchone()[0]
         return dict(outcome, state='pending', reason=status if status!='pending' else 'ready_for_generation')
+    response=json.loads(version['payload'])
+    if 'sourceReviewEvidence' in response:
+        from draft_reviews import evidence_is_current
+        if not evidence_is_current(db,response['sourceReviewEvidence']):
+            return dict(outcome,state='pending',reason='supplemental_source_changed',versionId=version['id'])
     if version['status'] == 'validated_draft':
         return dict(outcome, state='validated_draft', reason=None, versionId=version['id'])
+    if version['status']=='needs_review':
+        from draft_reviews import skip_for_version
+        reviewed=skip_for_version(db,request['requestId'],version['id'])
+        if reviewed:return dict(outcome,state='skipped',versionId=version['id'],**reviewed)
     return dict(outcome, state='pending', reason=version['status'], versionId=version['id'])
 
 

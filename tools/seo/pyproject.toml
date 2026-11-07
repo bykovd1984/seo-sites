@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "seo-research"
-version = "1.2.0"
+version = "1.3.0"
 description = "Shared search evidence, keyword research and per-page metadata workflow"
 requires-python = ">=3.11"
 dependencies = ["mcp==2.3.0"]
@@ -17,6 +17,7 @@ seo-research = "research_hub.cli:entrypoint"
 seo-manualsdump = "search_metadata.launcher:main"
 seo-manualsdump-drafts = "search_metadata.launcher:drafts_main"
 seo-manualsdump-groups = "search_metadata.launcher:groups_main"
+seo-manualsdump-reviews = "search_metadata.launcher:reviews_main"
 
 [tool.setuptools.packages.find]
 where = ["."]

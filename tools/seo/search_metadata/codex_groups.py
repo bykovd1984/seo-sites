@@ -91,7 +91,7 @@ def select_sources(db,period,size,max_chars):
     return sources,held
 
 
-def prepare_group(db,period,directory,sources,parent=None,attempt=0,feedback=None):
+def prepare_group(db,period,directory,sources,parent=None,attempt=0,feedback=None,review_versions=None,review_evidence=None,extra_instructions=""):
     if not sources:return None
     if len({s['requestId'] for s in sources})!=len(sources):raise ValueError('Duplicate source request in group')
     directory=Path(directory).resolve()
@@ -101,11 +101,12 @@ def prepare_group(db,period,directory,sources,parent=None,attempt=0,feedback=Non
     schema['required']+=['requestId','sourcePdfId','page']
     response_schema=dict(type='object',properties={'results':dict(type='array',items=schema)},required=['results'],additionalProperties=False)
     instructions=INSTRUCTIONS+'''\nProcess every case independently. Return one results entry per exact requestId/sourcePdfId/page. Never borrow facts, model numbers, keywords or quotes from another case. searchHistory rows use queryColumns; all supplied queries are retained, filtered-observation counts are explicit, and original full windows are saved separately. Source quotes must be CONTIGUOUS spans of at least five characters, preserving interleaved languages and OCR punctuation. Copy numeric spellings exactly; metadata must be plain text without angle brackets or control characters. Title <=160, H1 <=180, description <=320 characters. Keep uncertain identity/applicability marked requiresReview.\n'''
-    prompt=instructions+packed(dict(cases=[case_evidence(s) for s in sources],repairFeedback=feedback))
+    prompt=instructions+extra_instructions+packed(dict(cases=[case_evidence(s) for s in sources],repairFeedback=feedback))
     payload=gzip.compress(packed(sources).encode('utf-8'),mtime=0)
     manifest=dict(schemaVersion=1,periodId=period,model=GENERATOR[0],effort=GENERATOR[1],
         requests=[dict(requestId=s['requestId'],sourcePdfId=s['sourcePdfId'],page=s['page'],bundleSha256=key(s)) for s in sources],
         inputsSha256=hashlib.sha256(payload).hexdigest(),promptSha256=hashlib.sha256(prompt.encode('utf-8')).hexdigest(),schemaSha256=key(response_schema),parentGroup=parent,attempt=attempt)
+    if review_versions is not None:manifest.update(reviewVersions=review_versions,reviewEvidence=review_evidence)
     ident=key(manifest);folder=directory/ident
     existing=db.execute('SELECT directory FROM research_codex_groups WHERE id=?',(ident,)).fetchone()
     if existing:folder=Path(existing['directory'])
@@ -150,7 +151,10 @@ def claim_group(db,ident,manifest,sources):
         if state!='prepared':raise ValueError('Group was already reserved; do not repeat an uncertain model call')
         for source in sources:
             if page_bundle(db,source['sourcePdfId'],source['page'])['requestId']!=source['requestId']:raise ValueError('Group source or evidence changed before dispatch')
-            expected='group_held' if manifest['parentGroup'] else 'pending'
+            if manifest.get('reviewVersions'):
+                from draft_reviews import validate_baseline
+                validate_baseline(db,manifest,source)
+            expected='group_held' if manifest['parentGroup'] else 'generated' if manifest.get('reviewVersions') else 'pending'
             status=db.execute('SELECT status FROM research_requests WHERE id=?',(source['requestId'],)).fetchone()[0]
             if status!=expected:raise ValueError('A group member is already generated or reserved')
             db.execute("UPDATE research_requests SET status='group_reserved' WHERE id=?",(source['requestId'],))
@@ -229,6 +233,7 @@ def run_group(db,ident,executable,execute=invoke):
             if type(item.get('sourcePdfId'))!=int or type(item.get('page'))!=int or (item['sourcePdfId'],item['page'])!=(source['sourcePdfId'],source['page']):raise ValueError('Group page identity mismatch')
             response=expand_response(source,{k:v for k,v in item.items() if k not in ('requestId','sourcePdfId','page')})
             response['generationGroupId']=ident
+            if manifest.get('reviewVersions'):response['sourceReviewEvidence']=manifest['reviewEvidence'][request_id]
             member_dir=folder/'members'/request_id;member_dir.mkdir(parents=True,exist_ok=True)
             path=member_dir/'response.json';atomic_json(path,response)
             with db:
@@ -236,6 +241,9 @@ def run_group(db,ident,executable,execute=invoke):
                 if page_bundle(db,source['sourcePdfId'],source['page'])['requestId']!=request_id:raise ValueError('Group source or evidence changed before import')
                 current=db.execute('SELECT status FROM research_requests WHERE id=?',(request_id,)).fetchone()[0]
                 if current not in ('group_reserved','group_held'):raise ValueError('Member request was generated outside this group')
+                if manifest.get('reviewVersions'):
+                    from draft_reviews import verify_manual_evidence
+                    verify_manual_evidence(db,[source],manifest['reviewEvidence'])
                 result=import_generation(db,path)
                 db.execute('UPDATE research_codex_group_members SET state=?,error=NULL,version_id=? WHERE group_id=? AND request_id=?',(result['status'],result['version'],ident,request_id))
                 db.execute('INSERT INTO research_events(created,pdf,page,event,payload) VALUES (?,?,?,?,?)',
@@ -255,8 +263,9 @@ def run_group(db,ident,executable,execute=invoke):
     return result
 
 
-def repair_sources(db,parent):
+def repair_sources(db,parent,allow_review=False):
     row,folder,manifest,sources=load_group(db,parent)
+    if manifest.get('reviewVersions') and not allow_review:raise ValueError('Use the explicit source-review repair workflow')
     receipt=json.loads((folder/'invocation.json').read_text(encoding='utf-8'))
     if receipt.get('status')!='completed' or row['usage'] is None:raise ValueError('Uncertain groups cannot be automatically repaired')
     if hashlib.sha256((folder/'model-output.json').read_bytes()).hexdigest()!=receipt['responseSha256']:raise ValueError('Parent group output changed')

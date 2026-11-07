@@ -662,6 +662,9 @@ def import_generation(db,path,output=None):
     rank=eligibility(db,request['pdf'],request['page'])
     if not rank['eligible']: raise ValueError('Ranking protection: '+rank['reason'])
     source=json.loads(request['bundle'])
+    if 'sourceReviewEvidence' in response:
+        from draft_reviews import evidence_is_current
+        if not evidence_is_current(db,response['sourceReviewEvidence']):raise ValueError('Supplemental manual source changed')
     if source.get('pipeline')=='import_then_sol':
         from model_stage import validate_keyword_decisions
         validate_keyword_decisions(source,response)
