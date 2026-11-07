@@ -183,6 +183,16 @@ class Bing:
                     with db:
                         ingest_page_metrics(db,'bing',site,date,date,row['Query'],row['Clicks'],row['Impressions'],
                                             row.get('AvgImpressionPosition'),dict(method='GetPageStats',site=site,row=row))
+        # Retained provider inventories can change between batches. Keep URLs
+        # discovered by earlier batches in this same bound archive, even if the
+        # newest GetPageStats response no longer includes them.
+        for row in db.execute("""SELECT url,MAX(end) recent,MAX(clicks) clicks FROM (
+                SELECT url,end,clicks FROM api_page_metrics WHERE engine='bing' AND site=? AND start>=? AND end<=?
+                UNION ALL SELECT url,end,clicks FROM observations WHERE engine='bing'
+                    AND source='bing-api-page-query' AND start>=? AND end<=?
+            ) GROUP BY url""",(site,str(start),str(end),str(start),str(end))):
+            rank=(row['recent'],row['clicks'])
+            pages[row['url']]=max(pages.get(row['url'],rank),rank)
         done = 0
         for url in sorted(pages, key=lambda url: pages[url], reverse=True):
             # Different requested ranges on the same day must not share a checkpoint.

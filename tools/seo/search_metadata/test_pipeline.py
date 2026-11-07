@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from generate import propose, generate
-from history import bind_scope, checkpoint, connect, evidence, ingest, page_key, queue
+from history import bind_scope, checkpoint, connect, evidence, ingest, ingest_page_metrics, page_key, queue
 from providers import Bing, Google
 
 
@@ -84,6 +84,23 @@ class PipelineTests(unittest.TestCase):
             bing.collect(self.db,'https://manualsdump.com/',dt.date(2026,10,2),dt.date(2026,11,1),1)
         self.assertEqual(len(requests),2)
         self.assertEqual(self.db.execute('select count(*) from observations').fetchone()[0],1)
+
+    def test_bing_resume_keeps_urls_that_disappeared_from_latest_inventory(self):
+        site='https://manualsdump.com/';url=row()['url'];bing=Bing('unused')
+        bind_scope(self.db,'bing',site)
+        ingest_page_metrics(self.db,'bing',site,'2026-10-15','2026-10-15',url,3,50,12,{'fixture':True})
+        self.db.commit()
+        calls=[]
+        def api(method,**fields):
+            calls.append((method,fields))
+            if method=='GetPageStats': return []
+            self.assertEqual(fields['page'],url)
+            return [dict(Query='historical scanning query',Date='2026-10-15',Clicks=1,Impressions=20)]
+        with patch.object(bing,'call',side_effect=api),patch('providers.time.sleep'):
+            bing.collect(self.db,site,dt.date(2026,10,1),dt.date(2026,11,1),1)
+            bing.collect(self.db,site,dt.date(2026,10,1),dt.date(2026,11,1),1)
+        self.assertEqual(sum(method=='GetPageQueryStats' for method,_ in calls),1)
+        self.assertEqual(self.db.execute('SELECT query FROM observations').fetchone()[0],'historical scanning query')
 
     def test_malformed_bing_query_is_archived_without_losing_valid_rows(self):
         bing = Bing('unused')
