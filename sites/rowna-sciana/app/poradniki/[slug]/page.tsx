@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import type { Metadata } from "@/lib/metadata";
+import { notFound } from "@/lib/http";
 import { ArrowLeft, Clock3, BookOpen, ArrowUpRight } from "lucide-react";
 import { allArticles, findArticle, polishDate } from "@/lib/articles";
 import catalog from "@/content/catalog.json";
@@ -8,7 +8,6 @@ import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { imageAttributes } from "@/lib/images";
 import { Markdown } from "@/components/markdown";
 import { Checklist, ReaderTools } from "@/components/reader-tools";
-export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const a = await findArticle((await params).slug);

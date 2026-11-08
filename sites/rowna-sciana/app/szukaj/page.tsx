@@ -2,7 +2,6 @@ import { Search, ArrowRight } from "lucide-react";
 import { searchArticles } from "@/lib/articles";
 import { normalizeQuery } from "@/lib/content";
 import { ArticleCard } from "@/components/article-card";
-export const dynamic = "force-dynamic";
 export const metadata = { title: "Znajdź poradnik", robots: {index:false,follow:true}, alternates:{canonical:"/szukaj"} };
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string | string[] }> }) {
   const q = normalizeQuery((await searchParams).q);

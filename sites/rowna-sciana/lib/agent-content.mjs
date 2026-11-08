@@ -55,34 +55,3 @@ export function htmlToMarkdown(html, pageUrl) {
   const frontmatter = Object.entries(metadata).filter(([, value]) => value).map(([name, value]) => `${name}: ${JSON.stringify(value)}`).join('\n');
   return `---\n${frontmatter}\n---\n\n${body}\n` + schemas.map(schema => `\n\`\`\`json\n${schema}\n\`\`\`\n`).join('');
 }
-
-// Fetch the existing public page locally as HTML, so publication gates and source notes stay identical.
-export async function pageResponse(request, origin, asMarkdown, fetchPage = fetch) {
-  const source = new URL(request.url);
-  const pageUrl = new URL(source.pathname + source.search, origin).href;
-  const headers = new Headers(request.headers);
-  headers.set('Accept', 'text/html');
-  headers.set('Accept-Encoding', 'identity');
-  for (const name of ['host', 'connection', 'content-length', 'rsc', 'next-router-state-tree', 'next-router-prefetch', 'next-router-segment-prefetch', 'next-url']) headers.delete(name);
-  if (asMarkdown) for (const name of ['if-none-match', 'if-modified-since', 'if-match', 'if-unmodified-since', 'range', 'if-range']) headers.delete(name);
-  source.protocol = 'http:';
-  source.hostname = '127.0.0.1';
-  source.port = process.env.PORT || source.port || '3000';
-  // A query marker keeps internal renders separate from publicly cacheable URLs.
-  source.searchParams.set('__agent_html', '1');
-  const response = await fetchPage(source, { method: 'GET', headers, redirect: 'manual', cache: 'no-store', signal: AbortSignal.timeout(15000) });
-  const outputHeaders = new Headers(response.headers);
-  varyOnAccept(outputHeaders);
-  outputHeaders.set('Content-Signal', contentSignals);
-  for (const name of ['content-length', 'content-encoding', 'transfer-encoding']) outputHeaders.delete(name);
-  for (const name of [...outputHeaders.keys()]) if (name.startsWith('x-middleware-') || name.startsWith('x-nextjs-')) outputHeaders.delete(name);
-  if (!asMarkdown || response.status !== 200 || !response.headers.get('content-type')?.startsWith('text/html')) {
-    return new Response(request.method === 'HEAD' ? null : response.body, { status: response.status, headers: outputHeaders });
-  }
-  const markdown = htmlToMarkdown(await response.text(), pageUrl);
-  outputHeaders.set('Content-Type', 'text/markdown; charset=utf-8');
-  // Content can be released on a schedule; never reuse an HTML validator or cache this representation past a release.
-  outputHeaders.set('Cache-Control', 'no-store');
-  for (const name of ['etag', 'last-modified', 'content-range', 'accept-ranges']) outputHeaders.delete(name);
-  return new Response(request.method === 'HEAD' ? null : markdown, { status: 200, headers: outputHeaders });
-}

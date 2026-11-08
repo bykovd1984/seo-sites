@@ -2,7 +2,6 @@ import { ArrowDown, ArrowUpRight, ScanSearch, Layers3, BookOpen, ArrowRight } fr
 import { imageAttributes } from "@/lib/images";
 import { allArticles } from "@/lib/articles";
 import { ArticleCard } from "@/components/article-card";
-export const dynamic = "force-dynamic";
 export default async function Home() {
   const articles = await allArticles();
   return <main id="main"><section className="home-hero container"><div className="hero-copy"><p className="eyebrow"><span className="dot" />Domowe naprawy, spokojnie</p><h1>Mały remont.<br /><em>Dobra decyzja.</em></h1><p className="hero-description">Zanim sięgniesz po wałek, sprawdź, co naprawdę wymaga naprawy. Praktyczne poradniki o ścianach, farbach i drobnych błędach.</p><a className="button" href="#poradniki">Znajdź rozwiązanie <ArrowDown size={18} /></a><div className="hero-footnote"><span className="line" /><span>Najpierw rozpoznanie. Potem działanie.</span></div></div><div className="hero-art"><span className="art-corner">NOTATNIK DOMOWYCH NAPRAW / 01</span><img {...imageAttributes("/images/tape-paint-illustration.png","hero")} alt="Ilustracja odklejającej się taśmy i fragmentu niebieskiej farby" width="1536" height="1024" fetchPriority="high" /><div className="art-caption"><span>Farba schodzi razem z taśmą?</span><a href="/poradniki/farba-odchodzi-z-tasma" aria-label="Przeczytaj, co zrobić, gdy farba schodzi z taśmą"><ArrowUpRight size={26} /></a></div><span className="art-disclosure">Ilustracja poglądowa · AI</span></div></section>

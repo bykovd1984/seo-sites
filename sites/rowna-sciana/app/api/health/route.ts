@@ -1,7 +1,5 @@
 import { articleCount } from "@/lib/articles";
 import catalog from "@/content/catalog.json";
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 export async function GET() {
   try {
     const count = articleCount();

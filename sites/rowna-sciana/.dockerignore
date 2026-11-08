@@ -12,3 +12,6 @@ content/**/editorial-review.ru.md
 content/**/semrush-evidence.md
 *.tsbuildinfo
 .env*
+
+dist
+graphify-out

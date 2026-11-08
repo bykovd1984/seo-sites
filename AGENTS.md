@@ -1,7 +1,7 @@
 # SEO sites
 
 - Work in this repository only. Article text and illustrations were migrated from the earlier prototype.
-- Site: sites/rowna-sciana; Node 24, Next.js, read-only SQLite content snapshot.
+- Site: sites/rowna-sciana; Node 24, server-only React templates, plain browser JavaScript, read-only SQLite content snapshot.
 - Content source: content/catalog.json and Markdown. Run npm run db:seed after editing.
 - Preserve manufacturer citations, product-specific conditions, AI illustration labels and honest review status.
 - Never invent SEO metrics or independent test results.

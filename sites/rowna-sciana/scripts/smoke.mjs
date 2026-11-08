@@ -13,6 +13,7 @@ if(process.env.EXPECTED_DEPLOY_COMMIT)assert.equal(health.commit,process.env.EXP
 const homeResponse=await get('/');
 assert(!homeResponse.headers.get('x-robots-tag')?.includes('noindex'));
 const home=await homeResponse.text();
+const publicDocuments=[home];
 assert(home.includes('rel="canonical" href="'+canonical+'"'));
 assert(/srcset=/i.test(home));
 assert(!home.includes('<script async="" src="https://www.googletagmanager.com'));
@@ -20,6 +21,7 @@ for(const entry of catalog){
  const route='/poradniki/'+entry.slug;
  assert(home.includes(route));
  const page=await get(route);const html=await page.text();
+ publicDocuments.push(html);
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,route);
  assert(html.includes('checklist'));
  assert(!page.headers.get('x-robots-tag')?.includes('noindex'));
@@ -32,7 +34,23 @@ for(const entry of catalog){
  assert(html.includes(image.src));
  const ir=await fetch(new URL(image.src,base),{method:'HEAD'});
  assert.equal(ir.status,200);assert(ir.headers.get('content-type')?.includes('webp'));
+ assert.match(ir.headers.get('cache-control')||'',/immutable/);
 }
+for(const route of ['/o-poradniku','/prywatnosc'])publicDocuments.push(await(await get(route)).text());
+for(const html of publicDocuments){
+ assert.doesNotMatch(html,/\/_next\/|__next_f|__NEXT_DATA__/,'Framework runtime leaked into HTML');
+ const scripts=[...html.matchAll(/<script\b([^>]*)>/g)];
+ assert.equal(scripts.filter(([,attributes])=>/src=/.test(attributes)).length,1);
+ for(const [,attributes]of scripts)assert.ok(/type="application\/ld\+json"/.test(attributes)||/src="\/assets\/site\.[a-f0-9]{12}\.js"/.test(attributes),'Unexpected executable script');
+}
+const clientUrl=/<script[^>]+src="([^"]+)"/.exec(home)[1];
+const client=await get(clientUrl);
+assert.match(client.headers.get('content-type')||'',/javascript/);
+assert.match(client.headers.get('cache-control')||'',/immutable/);
+assert.ok((await client.arrayBuffer()).byteLength<10_000,'Browser controller exceeds its size budget');
+assert.equal((await fetch(new URL(clientUrl,base),{headers:{'If-None-Match':client.headers.get('etag')}})).status,304);
+for(const route of ['/package.json','/data/content.sqlite','/content/catalog.json','/.env','/..%2fdata/content.sqlite'])assert.equal((await fetch(new URL(route,base))).status,404,route);
+const post=await fetch(base,{method:'POST'});assert.equal(post.status,405);assert.equal(post.headers.get('allow'),'GET, HEAD');
 const search=await(await get('/szukaj?q=ile+schnie+farba+na+scianie')).text();
 assert(search.includes('/poradniki/ile-schnie-farba-na-scianie'));
 assert(/<meta name="robots" content="[^"]*noindex/.test(search));
