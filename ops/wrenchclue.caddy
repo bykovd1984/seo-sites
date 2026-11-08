@@ -1,0 +1,8 @@
+wrenchclue.site {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:5010
+}
+
+www.wrenchclue.site {
+    redir https://wrenchclue.site{uri} permanent
+}

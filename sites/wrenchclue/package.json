@@ -1,0 +1,23 @@
+{
+  "name": "wrenchclue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=24 <25"},
+  "scripts": {
+    "dev": "npm run db:seed && npm run build && npm start",
+    "db:seed": "node scripts/seed.ts",
+    "build": "node scripts/build.ts",
+    "start": "node runtime/server.ts",
+    "test": "node --test tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "images:optimize": "node scripts/images.ts",
+    "smoke": "node scripts/smoke.ts"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "marked": "17.0.5",
+    "sharp": "0.35.5",
+    "typescript": "5.9.3"
+  }
+}

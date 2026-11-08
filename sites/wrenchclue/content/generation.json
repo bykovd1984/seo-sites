@@ -1,0 +1,71 @@
+{
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "articleCount": 20,
+  "totalWords": 21211,
+  "originalArticleBodiesPreserved": true,
+  "independentMechanicReview": false,
+  "independentVehicleTesting": false,
+  "runs": [
+    {
+      "batch": 1,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "articleIds": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05"
+      ],
+      "startedAt": "2026-11-08T20:28:45.046073+00:00",
+      "finishedAt": "2026-11-08T20:32:59.309392+00:00",
+      "modelOutputSha256": "fdcb72e069ab5ff52d2e4c242c4da534203d14896105662e84b6d3980ff1641a"
+    },
+    {
+      "batch": 2,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "articleIds": [
+        "06",
+        "07",
+        "08",
+        "09",
+        "10"
+      ],
+      "startedAt": "2026-11-08T20:33:50.188461+00:00",
+      "finishedAt": "2026-11-08T20:38:05.450656+00:00",
+      "modelOutputSha256": "72fa11e3d0d07fa3268ff54fd0cde91622e901cb06ce6a8842da57ecd76548b1"
+    },
+    {
+      "batch": 3,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "articleIds": [
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "startedAt": "2026-11-08T20:38:44.822511+00:00",
+      "finishedAt": "2026-11-08T20:43:14.751153+00:00",
+      "modelOutputSha256": "52a271e78b735f0fae65ef93da2f16edffe9bf1740921afd5d15d662a36018b3"
+    },
+    {
+      "batch": 4,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "articleIds": [
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "startedAt": "2026-11-08T20:44:50.204509+00:00",
+      "finishedAt": "2026-11-08T20:49:33.496365+00:00",
+      "modelOutputSha256": "b371e212a55854ddfca854a9e384accf6bc3054f2b8bc0095f8e5a9241308456"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+name: Validate and deploy WrenchClue
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sites/wrenchclue/**'
+      - 'ops/deploy-wrenchclue.sh'
+      - 'ops/docker-compose.wrenchclue.yml'
+      - 'ops/wrenchclue.caddy'
+      - 'ops/provision-wrenchclue.py'
+      - '.github/workflows/deploy-wrenchclue.yml'
+  pull_request:
+    paths:
+      - 'sites/wrenchclue/**'
+      - 'ops/deploy-wrenchclue.sh'
+      - 'ops/docker-compose.wrenchclue.yml'
+      - 'ops/wrenchclue.caddy'
+      - 'ops/provision-wrenchclue.py'
+      - '.github/workflows/deploy-wrenchclue.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: seo-wrenchclue-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: sites/wrenchclue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: sites/wrenchclue/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run db:seed
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Check deployment script syntax
+        run: bash -n ../../ops/deploy-wrenchclue.sh
+  deploy:
+    needs: validate
+    if: github.repository == 'bykovd1984/seo-sites' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: [self-hosted, Linux, X64, seo-sites]
+    timeout-minutes: 30
+    env:
+      SITE_IMAGE: seo-wrenchclue:${{ github.sha }}
+      EXPECTED_DEPLOY_COMMIT: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build and validate release image
+        run: docker build --build-arg DEPLOY_COMMIT="$EXPECTED_DEPLOY_COMMIT" -t "$SITE_IMAGE" sites/wrenchclue
+      - name: Check candidate and deploy with rollback
+        run: bash ops/deploy-wrenchclue.sh
+      - name: Show WrenchClue status
+        if: always()
+        run: docker ps -a --filter name=seo-wrenchclue --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'

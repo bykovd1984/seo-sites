@@ -1,0 +1,769 @@
+{
+  "version": 1,
+  "site": {
+    "name": "WrenchClue",
+    "origin": "https://wrenchclue.site",
+    "publishedAt": "2026-11-08T21:53:24+00:00"
+  },
+  "categories": [
+    {
+      "slug": "warning-lights",
+      "title": "Warning lights & codes",
+      "description": "Understand the warning before choosing a repair."
+    },
+    {
+      "slug": "engine-and-cooling",
+      "title": "Engine & cooling",
+      "description": "Follow the clues behind heat, leaks and rough running."
+    },
+    {
+      "slug": "starting-and-electrical",
+      "title": "Starting & electrical",
+      "description": "Separate a flat battery from the rest of the starting system."
+    },
+    {
+      "slug": "brakes-and-suspension",
+      "title": "Brakes & suspension",
+      "description": "Make sense of wear, noises and changes in handling."
+    },
+    {
+      "slug": "repair-costs",
+      "title": "Repair costs",
+      "description": "Know what an estimate includes before comparing the total."
+    }
+  ],
+  "articles": [
+    {
+      "id": "01",
+      "slug": "p0420-code",
+      "title": "P0420 Code: What Bank 1 Means and When to Replace the Converter",
+      "shortTitle": "P0420: catalyst efficiency",
+      "description": "P0420 means the Bank 1 catalyst failed an efficiency check. Learn how exhaust leaks, sensor response, and engine problems affect the repair decision.",
+      "category": "warning-lights",
+      "intent": "diagnosis",
+      "markdown": "articles/p0420-code.md",
+      "sourceIds": [
+        "ford-obd",
+        "walker-cat-faq",
+        "innova-p0420"
+      ],
+      "relatedSlugs": [
+        "catalytic-converter-replacement-cost",
+        "flashing-check-engine-light"
+      ],
+      "wordCount": 1022,
+      "readMinutes": 5,
+      "imageAlt": "Cutaway illustration of a catalytic converter and two oxygen sensors.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "24b807b384efdf59a6cdb53a59a3713b8709692dff0a3df512fde25f8f758627"
+    },
+    {
+      "id": "02",
+      "slug": "p0300-code",
+      "title": "P0300 Code: How to Diagnose a Random or Multiple-Cylinder Misfire",
+      "shortTitle": "P0300: random misfire",
+      "description": "P0300 means the engine detected a misfire pattern. Learn what to do if the light flashes and how cylinder data and driving conditions narrow the cause.",
+      "category": "warning-lights",
+      "intent": "diagnosis",
+      "markdown": "articles/p0300-code.md",
+      "sourceIds": [
+        "ford-obd",
+        "ngk-coils",
+        "innova-coil-testing"
+      ],
+      "relatedSlugs": [
+        "flashing-check-engine-light",
+        "p0171-code"
+      ],
+      "wordCount": 1046,
+      "readMinutes": 5,
+      "imageAlt": "Ignition coil, spark plug and protective rubber boot arranged together.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "725c8658ce072db1a38eaa7fbf02acf8df9fb5b6eb29ab61535818efa22c271a"
+    },
+    {
+      "id": "03",
+      "slug": "p0171-code",
+      "title": "P0171 Code: What System Too Lean on Bank 1 Means",
+      "shortTitle": "P0171: a lean-running engine",
+      "description": "Understand P0171, how fuel trims reveal a lean pattern, and why checking for unmetered air can be more useful than replacing an oxygen sensor.",
+      "category": "warning-lights",
+      "intent": "diagnosis",
+      "markdown": "articles/p0171-code.md",
+      "sourceIds": [
+        "ford-obd",
+        "ford-lean-tsb",
+        "denso-lean-return"
+      ],
+      "relatedSlugs": [
+        "p0300-code",
+        "flashing-check-engine-light"
+      ],
+      "wordCount": 1031,
+      "readMinutes": 5,
+      "imageAlt": "Illustration of a split intake hose beside a throttle body.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "68d3a8b0ec18ebfb489b94a9ed04b438f91320927a4680440af525a7b7d3a4eb"
+    },
+    {
+      "id": "04",
+      "slug": "flashing-check-engine-light",
+      "title": "Flashing Check Engine Light: When to Pull Over and What to Report",
+      "shortTitle": "A flashing check engine light",
+      "description": "A flashing check engine light while driving can signal a damaging misfire. Know what to do if the car shakes, loses power, or the flashing stops.",
+      "category": "warning-lights",
+      "intent": "diagnosis",
+      "markdown": "articles/flashing-check-engine-light.md",
+      "sourceIds": [
+        "aaa-obd",
+        "innova-flashing"
+      ],
+      "relatedSlugs": [
+        "p0300-code",
+        "p0420-code"
+      ],
+      "wordCount": 1000,
+      "readMinutes": 5,
+      "imageAlt": "Amber check engine symbol illuminated in a generic dashboard.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "48a6cffcc0b9b11eea835c47b28e0dd37bb5a7c368a5ff28ff0f22830c723bec"
+    },
+    {
+      "id": "05",
+      "slug": "car-wont-crank",
+      "title": "Car Won't Crank: What Working Lights, Clicks, and Silence Tell You",
+      "shortTitle": "When your car won’t crank",
+      "description": "If the lights come on but the engine won't turn over, use the sound, dash behavior, and jump-start result to narrow down the next check.",
+      "category": "starting-and-electrical",
+      "intent": "diagnosis",
+      "markdown": "articles/car-wont-crank.md",
+      "sourceIds": [
+        "denso-starter",
+        "interstate-nostart"
+      ],
+      "relatedSlugs": [
+        "starter-replacement-cost",
+        "car-battery-drains-overnight",
+        "alternator-replacement-cost"
+      ],
+      "wordCount": 1143,
+      "readMinutes": 5,
+      "imageAlt": "Starter motor, solenoid and disconnected battery cable terminal.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "428b8fa70068c2a0639d04a56f70efceeffbaa886b95741ee2224f9263cfb3be"
+    },
+    {
+      "id": "06",
+      "slug": "car-ac-not-blowing-cold",
+      "title": "Car AC Not Blowing Cold? What Airflow, Idle, and Vent Temperature Tell You",
+      "shortTitle": "AC blowing warm air",
+      "description": "Narrow down a car AC problem by comparing airflow, cooling at idle, and driver versus passenger vents. Learn what to check before paying for a recharge.",
+      "category": "engine-and-cooling",
+      "intent": "diagnosis",
+      "markdown": "articles/car-ac-not-blowing-cold.md",
+      "sourceIds": [
+        "toyota-ac",
+        "denso-ac-service",
+        "epa-mvac"
+      ],
+      "relatedSlugs": [
+        "car-overheating"
+      ],
+      "wordCount": 1066,
+      "readMinutes": 5,
+      "imageAlt": "Car air vent beside an air-conditioning compressor.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "dd2ba987257d76967e02ab01c5ef501d0250cc8ad54aa5b38098fbdf29def5fa"
+    },
+    {
+      "id": "07",
+      "slug": "car-overheating",
+      "title": "Car Overheating at Idle or While Driving, Even With Full Coolant",
+      "shortTitle": "Why your car is overheating",
+      "description": "What to do when your engine overheats, why a full coolant reservoir can be misleading, and how traffic, highway driving, and AC use guide diagnosis.",
+      "category": "engine-and-cooling",
+      "intent": "diagnosis",
+      "markdown": "articles/car-overheating.md",
+      "sourceIds": [
+        "gates-cooling",
+        "ford-coolant"
+      ],
+      "relatedSlugs": [
+        "blown-head-gasket-symptoms",
+        "car-ac-not-blowing-cold"
+      ],
+      "wordCount": 1018,
+      "readMinutes": 5,
+      "imageAlt": "Radiator, cooling fan and closed coolant reservoir.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "2b6776370d80e85ed7790f01c51a5f45e3477ee977a8000fbdf4ec91ffdf152c"
+    },
+    {
+      "id": "08",
+      "slug": "car-oil-leak",
+      "title": "Car Leaking Oil: How to Find the Source and Judge a Repair Estimate",
+      "shortTitle": "Tracing an engine oil leak",
+      "description": "Learn what an oil spot under a parked car can tell you, what to do after an oil change, and why the source of the leak matters more than the puddle size.",
+      "category": "engine-and-cooling",
+      "intent": "diagnosis",
+      "markdown": "articles/car-oil-leak.md",
+      "sourceIds": [
+        "felpro-leaks",
+        "ford-oil-check"
+      ],
+      "relatedSlugs": [
+        "blown-head-gasket-symptoms"
+      ],
+      "wordCount": 1090,
+      "readMinutes": 5,
+      "imageAlt": "A small oil leak along the edge of an engine oil pan.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "843fccb983ec817902ed071c62f7fd25f8edcc30ee2c11b738aa8850cdf1b6e5"
+    },
+    {
+      "id": "09",
+      "slug": "alternator-replacement-cost",
+      "title": "Alternator Replacement Cost: Parts, Labor, and Time at the Shop",
+      "shortTitle": "Alternator replacement cost",
+      "description": "RepairPal puts US alternator replacement at $809–$1,088. See the parts and labor breakdown, what the estimate excludes, and how to compare local quotes.",
+      "category": "starting-and-electrical",
+      "intent": "cost",
+      "markdown": "articles/alternator-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-alternator",
+        "denso-charging"
+      ],
+      "relatedSlugs": [
+        "car-battery-drains-overnight",
+        "car-wont-crank"
+      ],
+      "wordCount": 1039,
+      "readMinutes": 5,
+      "imageAlt": "Automotive alternator with its pulley and exposed stator.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "118360023819055c165a0af94abc1c8c8386a38353e46bef1ff760b5387de567"
+    },
+    {
+      "id": "10",
+      "slug": "starter-replacement-cost",
+      "title": "Starter Replacement Cost: Parts, Labor, and How Long It Takes",
+      "shortTitle": "Starter replacement cost",
+      "description": "US starter replacement averages $565–$796 in RepairPal's estimate. Learn how vehicle access, starter fit, diagnosis, and scheduling affect your quote.",
+      "category": "starting-and-electrical",
+      "intent": "cost",
+      "markdown": "articles/starter-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-starter",
+        "hella-starter-us"
+      ],
+      "relatedSlugs": [
+        "car-wont-crank"
+      ],
+      "wordCount": 1098,
+      "readMinutes": 5,
+      "imageAlt": "Starter motor with the drive gear and solenoid visible.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "895787574d7226073cf23a93e8cc2d0d605d0d96d00e3f7f81dcb31303b26cee"
+    },
+    {
+      "id": "11",
+      "slug": "brake-pads-rotors-replacement-cost",
+      "title": "Brake Pad and Rotor Replacement Costs for One Axle or All Four Wheels",
+      "shortTitle": "Brake pad & rotor replacement cost",
+      "description": "Compare US brake pad and rotor cost estimates, see what changes the price for each axle, and learn which measurements justify replacing the rotors.",
+      "category": "brakes-and-suspension",
+      "intent": "cost",
+      "markdown": "articles/brake-pads-rotors-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-pads",
+        "repairpal-rotors",
+        "brembo-disc-thickness"
+      ],
+      "relatedSlugs": [
+        "suspension-clunk-squeak",
+        "wheel-bearing-noise"
+      ],
+      "wordCount": 992,
+      "readMinutes": 5,
+      "imageAlt": "Brake rotor, caliper and matching pair of brake pads.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "099ca5207bbb799d847ceeb4f8d1ad216cac357f0011640e7555e6e3b0d5a3e0"
+    },
+    {
+      "id": "12",
+      "slug": "transmission-replacement-cost",
+      "title": "How Much Does It Cost to Repair, Rebuild, or Replace a Transmission?",
+      "shortTitle": "Transmission repair & replacement",
+      "description": "Compare a US transmission replacement estimate with the work covered by a repair, rebuild, or exchange unit. See how labor, downtime, and terms affect the choice.",
+      "category": "repair-costs",
+      "intent": "cost",
+      "markdown": "articles/transmission-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-transmission",
+        "zf-reman"
+      ],
+      "relatedSlugs": [],
+      "wordCount": 1068,
+      "readMinutes": 5,
+      "imageAlt": "Cutaway illustration of an automatic transmission assembly.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "602d13009c2469d389a79f93662acd6a97a5f173b5bc3df63e2c0fe9b81e3a45"
+    },
+    {
+      "id": "13",
+      "slug": "suspension-clunk-squeak",
+      "title": "Why Your Suspension Clunks, Squeaks, or Creaks Over Bumps",
+      "shortTitle": "Suspension clunks & squeaks",
+      "description": "Use the location, timing, and feel of a suspension noise to narrow the inspection. Learn which steering changes make a clunk or squeak urgent.",
+      "category": "brakes-and-suspension",
+      "intent": "diagnosis",
+      "markdown": "articles/suspension-clunk-squeak.md",
+      "sourceIds": [
+        "moog-noise",
+        "moog-balljoints"
+      ],
+      "relatedSlugs": [
+        "wheel-bearing-noise",
+        "brake-pads-rotors-replacement-cost"
+      ],
+      "wordCount": 1049,
+      "readMinutes": 5,
+      "imageAlt": "Suspension strut, control arm and sway-bar link.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "101625a091e654f73e9e30ed0f5b49a7703f4c24a17ff06b225ac735e1d052d6"
+    },
+    {
+      "id": "14",
+      "slug": "blown-head-gasket-symptoms",
+      "title": "Blown Head Gasket Symptoms and the Tests That Explain Them",
+      "shortTitle": "Blown head gasket symptoms",
+      "description": "Learn which combinations of coolant loss, white exhaust, and rough running suggest a head gasket leak, what can mimic it, and when to stop driving.",
+      "category": "engine-and-cooling",
+      "intent": "diagnosis",
+      "markdown": "articles/blown-head-gasket-symptoms.md",
+      "sourceIds": [
+        "felpro-head-vs-gasket",
+        "felpro-head-driving"
+      ],
+      "relatedSlugs": [
+        "car-overheating",
+        "car-oil-leak"
+      ],
+      "wordCount": 1093,
+      "readMinutes": 5,
+      "imageAlt": "Engine block and cylinder head separated by a head gasket.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "50fcc785b489d9e8e9b815bc6226fe0c1875e38cc81480e944c2aa361a7b5925"
+    },
+    {
+      "id": "15",
+      "slug": "car-battery-drains-overnight",
+      "title": "Why Your Car Battery Dies Overnight and How a Parasitic Draw Test Works",
+      "shortTitle": "A battery that drains overnight",
+      "description": "Tell parked battery drain from weak battery capacity, poor connections, or undercharging. Learn how shops measure key-off current and trace intermittent loads.",
+      "category": "starting-and-electrical",
+      "intent": "diagnosis",
+      "markdown": "articles/car-battery-drains-overnight.md",
+      "sourceIds": [
+        "midtronics-intermittent",
+        "midtronics-diodes"
+      ],
+      "relatedSlugs": [
+        "alternator-replacement-cost",
+        "car-wont-crank"
+      ],
+      "wordCount": 1121,
+      "readMinutes": 5,
+      "imageAlt": "Car battery beside a non-contact electrical current clamp.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "c263b7b024b9582ab45965bf718be489049a6ba9f68f9e16cb8935caac29654e"
+    },
+    {
+      "id": "16",
+      "slug": "bad-spark-plug-symptoms",
+      "title": "Bad Spark Plug Symptoms and When to Replace the Plugs",
+      "shortTitle": "Bad spark plug symptoms",
+      "description": "Learn how worn or fouled spark plugs affect starting, idle, and acceleration, what the firing end can reveal, and how a shop separates plug and coil faults.",
+      "category": "engine-and-cooling",
+      "intent": "diagnosis",
+      "markdown": "articles/bad-spark-plug-symptoms.md",
+      "sourceIds": [
+        "ngk-read-plug",
+        "denso-plug-diagnosis"
+      ],
+      "relatedSlugs": [
+        "p0300-code",
+        "flashing-check-engine-light"
+      ],
+      "wordCount": 1098,
+      "readMinutes": 5,
+      "imageAlt": "Two spark plugs with different electrode wear and deposits.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "e3ca4059ae9713d622ec5160ecfebc1ae16ae8d0527df58278254f7e43b9d16c"
+    },
+    {
+      "id": "17",
+      "slug": "wheel-bearing-noise",
+      "title": "Wheel Bearing Noise or Tire Noise? What the Hum Can Tell You",
+      "shortTitle": "Wheel bearing or tire noise?",
+      "description": "A hum that builds with road speed can come from a wheel bearing or a tire. Learn what turns, pavement changes, and a wheel inspection can reveal.",
+      "category": "brakes-and-suspension",
+      "intent": "diagnosis",
+      "markdown": "articles/wheel-bearing-noise.md",
+      "sourceIds": [
+        "timken-bearing-symptoms",
+        "moog-wheel-bearing"
+      ],
+      "relatedSlugs": [
+        "suspension-clunk-squeak",
+        "brake-pads-rotors-replacement-cost"
+      ],
+      "wordCount": 1057,
+      "readMinutes": 5,
+      "imageAlt": "Wheel hub and bearing beside a car tire.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "7021264f0199cd421be6a29ec1d6dbd37a06623788daaa3372308f22e089c679"
+    },
+    {
+      "id": "18",
+      "slug": "fuel-pump-replacement-cost",
+      "title": "Fuel Pump Replacement Cost, Labor, and Repair Time",
+      "shortTitle": "Fuel pump replacement cost",
+      "description": "Compare the US fuel pump replacement estimate of $1,344–$1,513 with an itemized shop quote, including pump type, tank access, diagnosis, and pickup time.",
+      "category": "repair-costs",
+      "intent": "cost",
+      "markdown": "articles/fuel-pump-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-fuel-pump",
+        "delphi-pump-voltage"
+      ],
+      "relatedSlugs": [
+        "car-wont-crank"
+      ],
+      "wordCount": 1017,
+      "readMinutes": 5,
+      "imageAlt": "In-tank fuel pump module with its strainer and connector.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "dadc2d6ace41e016ba2c001dd1314c4e2958cf26a5b0182d11eff24c0822fb4e"
+    },
+    {
+      "id": "19",
+      "slug": "catalytic-converter-replacement-cost",
+      "title": "Catalytic Converter Replacement Cost and How to Compare Quotes",
+      "shortTitle": "Catalytic converter replacement cost",
+      "description": "See the $2,280–$2,480 US catalytic converter replacement estimate and how the assembly, labor, emissions approval, and possible warranty coverage affect your bill.",
+      "category": "repair-costs",
+      "intent": "cost",
+      "markdown": "articles/catalytic-converter-replacement-cost.md",
+      "sourceIds": [
+        "repairpal-converter",
+        "walker-cat-faq",
+        "carb-converters",
+        "epa-emissions-warranty"
+      ],
+      "relatedSlugs": [
+        "p0420-code"
+      ],
+      "wordCount": 1056,
+      "readMinutes": 5,
+      "imageAlt": "A catalytic-converter pipe assembly resting beside its fasteners.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "3b7b94641325b7ad7812211e4c43ef84c02cfa6efeca47185280b49205ba2859"
+    },
+    {
+      "id": "20",
+      "slug": "how-long-do-brake-pads-last",
+      "title": "How Long Do Brake Pads Last? Mileage, Materials, and Signs of Wear",
+      "shortTitle": "How long do brake pads last?",
+      "description": "Learn why brake pad mileage varies, how to use front and rear pad measurements, and which changes in noise, pedal feel, or stopping power need attention.",
+      "category": "brakes-and-suspension",
+      "intent": "maintenance",
+      "markdown": "articles/how-long-do-brake-pads-last.md",
+      "sourceIds": [
+        "brembo-pad-wear",
+        "toyota-pad-life",
+        "akebono-service"
+      ],
+      "relatedSlugs": [
+        "brake-pads-rotors-replacement-cost"
+      ],
+      "wordCount": 1107,
+      "readMinutes": 5,
+      "imageAlt": "New and worn brake pads beside the edge of a brake rotor.",
+      "sourceCheckedAt": "2026-11-08",
+      "markdownSha256": "c1f60cc689d652f761340c6c438c600f7967aaf1c4df925a4d2447613dfe0d61"
+    }
+  ],
+  "sources": [
+    {
+      "id": "ford-obd",
+      "title": "Ford 2024–2025 MY OBD System Operation Summary for Gasoline Engines",
+      "url": "https://www.fordservicecontent.com/Ford_Content/catalog/motorcraft/OBD_Operation_Summary_to_Gasoline_MY_2024_2025.pdf",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "walker-cat-faq",
+      "title": "Walker Catalytic Converter FAQ",
+      "url": "https://www.walkerexhaust.com/support/tech-tips/common-catalytic-converter-q-and-a.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "innova-p0420",
+      "title": "Innova P0420 Code Guide",
+      "url": "https://guides.innova.com/codes/p0420",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "ngk-coils",
+      "title": "NGK Ignition Coils Technical Resources",
+      "url": "https://ngksparkplugs.com/en/products/ignition-parts/ignition-coils",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "innova-coil-testing",
+      "title": "Innova How To Test a Vehicle’s Ignition Coil",
+      "url": "https://www.innova.com/blogs/diagnostics-101/how-to-test-a-vehicle-s-ignition-coil",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "ford-lean-tsb",
+      "title": "Ford TSB 04-17-4 System Lean Diagnostic Service Tips",
+      "url": "https://www.fordservicecontent.com/Ford_Content/pubs/content/~WT/~MUS~LEN/3602/tsb04-17-04.htm",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "denso-lean-return",
+      "title": "DENSO DTC P0171 Returns After A/F Sensor Replacement",
+      "url": "https://www.densoautoparts.com/reference-dtc-p0171-returns-after-af-sensor-replacement/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "aaa-obd",
+      "title": "AAA Onboard Diagnostics and Code Translator",
+      "url": "https://www.aaa.com/autorepair/codetranslator",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "innova-flashing",
+      "title": "Innova Check Engine Light Flashing",
+      "url": "https://www.innova.com/pages/check-engine-light-flashing-2",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "denso-starter",
+      "title": "DENSO Starter Troubleshooting",
+      "url": "https://www.densoautoparts.com/reference-starter-troubleshooting/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "interstate-nostart",
+      "title": "Interstate Batteries Why My Car Won’t Start If the Battery’s Still Good",
+      "url": "https://www.interstatebatteries.com/blog/car-wont-start",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "toyota-ac",
+      "title": "Toyota Troubleshooting Common Car AC Issues",
+      "url": "https://www.toyota.com/knowledge-center/car-maintenance/common-car-ac-issues",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "denso-ac-service",
+      "title": "DENSO Seven Basic Steps of Car A/C Service",
+      "url": "https://www.denso-am.eu/news/june-2017-newsletter-drive-to-maintain-denso-ac-satisfaction-this-summer",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "epa-mvac",
+      "title": "EPA Regulatory Requirements for MVAC System Servicing",
+      "url": "https://www.epa.gov/mvac/regulatory-requirements-mvac-system-servicing",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "gates-cooling",
+      "title": "Gates Diagnosing Car Cooling System Related Problems",
+      "url": "https://www.gatestechzone.com/gb/en/technical-section/cooling-guide.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "ford-coolant",
+      "title": "Ford/Lincoln Owner Manual Engine Coolant Check and Fail-Safe Cooling",
+      "url": "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2079099&Uid=G2079097&buildType=web&countryCode=USA&div=l&languageCode=EN&userMarket=USA&vCode=&vFilteringEnabled=False&variantid=7105",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "felpro-leaks",
+      "title": "Fel-Pro Leak Inspection Checklist",
+      "url": "https://www.felpro.com/content/dam/marketing/North-America/felpro/pdfs/felpro-leak-inspection-checklist.pdf",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "ford-oil-check",
+      "title": "Ford Owner Manual Engine Oil Check and Pressure Warning",
+      "url": "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2116791&Uid=G2206193&buildtype=web&countryCode=USA&div=f&languageCode=en&userMarket=USA&vFilteringEnabled=False&variantid=10397",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-alternator",
+      "title": "RepairPal Alternator Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/alternator-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "denso-charging",
+      "title": "DENSO Charging System Troubleshooting",
+      "url": "https://www.densoautoparts.com/reference-charging-system-troubleshooting/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-starter",
+      "title": "RepairPal Starter Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/starter-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "hella-starter-us",
+      "title": "HELLA Troubleshooting Starters and Alternators",
+      "url": "https://www.hella.com/techworld/us/lounge/starter_generatoren_fehlersuche/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-pads",
+      "title": "RepairPal Brake Pad Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/brake-pad-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-rotors",
+      "title": "RepairPal Brake Rotor Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/brake-rotor-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "brembo-disc-thickness",
+      "title": "Brembo Minimum Brake Disc Thickness",
+      "url": "https://asia.bremboparts.com/europe/en/support/car/maintenance/minimum-brake-disc-thickness-212337",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-transmission",
+      "title": "RepairPal Transmission Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/transmission-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "zf-reman",
+      "title": "ZF Genuine Remanufactured Transmissions, 2018 US Catalog",
+      "url": "https://aftermarket.zf.com/media/us/aapex/zf-parts/full_zf_remantrans_2018catalog_2.pdf",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "moog-noise",
+      "title": "MOOG How to Isolate Suspension Noises",
+      "url": "https://www.moogparts.com/technical/bulletins/tech-tips/How-to-Isolate-Suspension-Noises.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "moog-balljoints",
+      "title": "MOOG Worn Ball Joints: How to Check",
+      "url": "https://www.moogparts.com/en-eu/support/the-problem-solver/technical-support/educational-articles/check-worn-ball-joints.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "felpro-head-vs-gasket",
+      "title": "Fel-Pro Cracked Head vs. Blown Head Gasket",
+      "url": "https://www.felpro.com/technical/tecblogs/Cracked-Head-vs-Blown-Head-Gasket.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "felpro-head-driving",
+      "title": "Fel-Pro Can You Drive with a Blown Head Gasket?",
+      "url": "https://www.felpro.com/gaskets-101/can-you-drive-your-vehicle-with-a-blown-head-gasket.html",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "midtronics-intermittent",
+      "title": "Midtronics Diagnosing a Battery Concern that Won’t Replicate",
+      "url": "https://www.midtronics.com/blog/diagnosing-a-battery-concern-that-wont-replicate/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "midtronics-diodes",
+      "title": "Midtronics What Are Diodes and Why Are They Important?",
+      "url": "https://www.midtronics.com/blog/what-are-diodes-and-why-are-they-important/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "ngk-read-plug",
+      "title": "NGK How Do I Read a Spark Plug?",
+      "url": "https://ngksparkplugs.com/en/resources/read-spark-plug",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "denso-plug-diagnosis",
+      "title": "DENSO Spark Plug Troubleshooting",
+      "url": "https://www.denso.com/global/en/products-and-services/automotive-service-parts-and-accessories/plug/basic/diagnosis/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "timken-bearing-symptoms",
+      "title": "Timken TechTips LV5 Symptoms of a Worn Wheel Hub Bearing",
+      "url": "https://www.timken.com/resources/techtips-lv5-symptoms-of-a-worn-wheel-hub-bearing/",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "moog-wheel-bearing",
+      "title": "MOOG Technical Bulletin TB-003 Wheel-End Bearing Diagnosis",
+      "url": "https://www.moogparts.com/content/dam/marketing/apac/china/moog/pdf/MOOG_Tech_Bulletin_Wheel_End_Bearing_Diagnosis%20TB-003.pdf/subassets/page1.pdf",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-fuel-pump",
+      "title": "RepairPal Fuel Pump Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/fuel-pump-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "delphi-pump-voltage",
+      "title": "Delphi How to Perform a Fuel-Pump Voltage Drop Test",
+      "url": "https://www.delphiautoparts.com/products-technologies/gasoline-fuel-systems/fuel-management-system/fuel-modules-and-pumps/how-to-perform-a-voltage-drop-test",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "repairpal-converter",
+      "title": "RepairPal Catalytic Converter Replacement Cost Estimate",
+      "url": "https://repairpal.com/estimator/catalytic-converter-replacement-cost",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "carb-converters",
+      "title": "CARB Aftermarket Catalytic Converters",
+      "url": "https://ww2.arb.ca.gov/aftermarket-catalytic-converters",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "epa-emissions-warranty",
+      "title": "EPA Emissions Warranties for 1995 and Newer Cars and Trucks",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100AU05.TXT",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "brembo-pad-wear",
+      "title": "Brembo How Can I Tell If My Brake Pads Are Worn?",
+      "url": "https://www.bremboparts.com/america/en/support/car/maintenance/how-can-i-tell-if-my-brake-pads-are-worn-335458",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "toyota-pad-life",
+      "title": "Toyota Signs You May Need New Brake Pads",
+      "url": "https://www.toyota.com/knowledge-center/car-maintenance/signs-new-brake-pads",
+      "checkedAt": "2026-11-08"
+    },
+    {
+      "id": "akebono-service",
+      "title": "Akebono Disc Pad Brake Service Recommendations",
+      "url": "https://www.akebonobrakes.com/warranty",
+      "checkedAt": "2026-11-08"
+    }
+  ]
+}
