@@ -305,17 +305,60 @@ def hydrate_pages(db, period_id, directory, limit=50):
                 batchArtifact=proof,compressedBytes=path.stat().st_size,providerRequestsMade=0)
 
 
+def review_context_candidates(db,period_id,limit,retry_unavailable=False):
+    """Missing cover/intro pages for current source reviews, on the same queue."""
+    import zlib
+    from draft_reviews import manual_context
+    from ranking_policy import eligibility
+    rows=db.execute('''SELECT p.pdf,p.page,p.last_seen,p.priority_clicks FROM research_archive_pages p
+        JOIN research_pages r ON r.pdf=p.pdf AND r.page=p.page
+        WHERE p.period_id=? AND p.eligible=1 AND p.state='pending' AND p.history_imported=1
+        AND p.reason IN ('needs_review','supplemental_source_changed') AND r.content_id IS NOT NULL
+        ORDER BY p.last_seen DESC,p.priority_clicks DESC,p.pdf,p.page''',(period_id,)).fetchall()
+    candidates=[];seen=set()
+    for row in rows:
+        if not eligibility(db,row['pdf'],row['page'])['eligible']:continue
+        target=manual_context(db,row['pdf'],row['page'])
+        if target is None:continue
+        context=json.loads(zlib.decompress(target['context_zlib']))
+        if context.get('readOnly') is not True or (context.get('sourcePdfId'),context.get('page'))!=(row['pdf'],row['page']):continue
+        count=context.get('pageCount')
+        pages=range(1,min(count,2)+1) if type(count)==int and count>0 else (1,2)
+        for page in pages:
+            identity=(row['pdf'],page)
+            if identity in seen:continue
+            seen.add(identity)
+            if manual_context(db,*identity) is not None:continue
+            attempt=db.execute('SELECT reason FROM research_context_attempts WHERE pdf=? AND page=?',identity).fetchone()
+            if attempt and not retry_unavailable and attempt['reason']!='batch_byte_limit':continue
+            candidates.append(dict(pdf=row['pdf'],page=page,last_seen=row['last_seen'],priority_clicks=row['priority_clicks'],review_context=True))
+        if len(candidates)>=limit:break
+    return candidates
+
+
 def archive_context_queue(db,period_id,limit=100,retry_unavailable=False):
     if not 1 <= limit <= 1000:
         raise ValueError('Archive context queue limit must be 1..1000')
     period_status(db,period_id)
-    rows = db.execute('''SELECT p.pdf,p.page FROM research_archive_pages p
+    rows = db.execute('''SELECT p.pdf,p.page,p.last_seen,p.priority_clicks FROM research_archive_pages p
         LEFT JOIN research_pages r ON r.pdf=p.pdf AND r.page=p.page
         LEFT JOIN research_context_attempts a ON a.pdf=p.pdf AND a.page=p.page
         WHERE p.period_id=? AND p.eligible=1 AND p.state='pending' AND p.history_imported=1 AND r.content_id IS NULL
         AND (? OR a.pdf IS NULL OR a.reason='batch_byte_limit')
-        ORDER BY p.last_seen DESC,p.priority_clicks DESC,p.pdf,p.page LIMIT ?''',(period_id,retry_unavailable,limit))
-    return dict(periodId=period_id,pages=[dict(sourcePdfId=r['pdf'],page=r['page']) for r in rows])
+        ORDER BY p.last_seen DESC,p.priority_clicks DESC,p.pdf,p.page LIMIT ?''',(period_id,retry_unavailable,limit)).fetchall()
+    candidates=review_context_candidates(db,period_id,limit,retry_unavailable)+[dict(row,review_context=False) for row in rows]
+    # Reviews inherit their target page's observation date. Covers have no need
+    # for their own search traffic. At equal date/clicks, finish existing reviews
+    # before collecting further targets. Never open another exporter.
+    candidates.sort(key=lambda row:(row['last_seen'],row['priority_clicks']),reverse=True)
+    selected=[];seen=set()
+    for row in candidates:
+        identity=(row['pdf'],row['page'])
+        if identity in seen:continue
+        seen.add(identity);selected.append(row)
+        if len(selected)>=limit:break
+    return dict(periodId=period_id,pages=[dict(sourcePdfId=row['pdf'],page=row['page']) for row in selected],
+                reviewContextPages=sum(row['review_context'] for row in selected))
 
 
 def reconcile_period(db,period_id):

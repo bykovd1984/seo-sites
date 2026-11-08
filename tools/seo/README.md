@@ -370,3 +370,12 @@ Use `provider_status` before collection. `pause_provider` can stop further repor
 requests, and an explicit simultaneous-session warning automatically persists the
 same stop. No domain failover follows that warning. Clearing an incident is an
 explicit local owner action; see [provider safety recovery](PROVIDER_ACCESS.md#shared-safety-pause).
+
+
+The archive source queue automatically includes missing cover/intro pages1..2 for
+pending source reviews. They inherit their target's newest observation and click
+priority, share the same export batch limit, and are deduplicated across reviews
+and target pages. No search traffic on a cover is required. Existing source text,
+known source failures and the live ranking guard are respected; only the explicit
+retry flag requeues a known non-transient failure. The collector/profile and
+provider safety state are unchanged.
