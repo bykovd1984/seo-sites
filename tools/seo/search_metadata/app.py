@@ -4,6 +4,7 @@ import contextlib
 import datetime as dt
 import json
 import os
+import sqlite3
 from dataclasses import dataclass
 from contextlib import closing
 from pathlib import Path
@@ -177,7 +178,7 @@ def main():
     outcomes.add_argument('--start',type=dt.date.fromisoformat,required=True)
     outcomes.add_argument('--end',type=dt.date.fromisoformat,required=True)
     archive=commands.add_parser('archive',help='Index and process the complete saved provider period without API calls')
-    archive.add_argument('action',choices=('index','status','queue','hydrate','context-queue','reconcile'))
+    archive.add_argument('action',choices=('index','status','queue','hydrate','context-queue','reconcile','stage-update'))
     archive.add_argument('--history',type=Path,default=ROOT/'artifacts/search-metadata/history.sqlite3')
     archive.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/full-history/catalog')
     archive.add_argument('--start',type=dt.date.fromisoformat)
@@ -186,6 +187,7 @@ def main():
     archive.add_argument('--period')
     archive.add_argument('--limit',type=int,default=100)
     archive.add_argument('--retry-unavailable',action='store_true')
+    archive.add_argument('--expected-delta-sha256',help='Hash of a frozen delta for offline stage-update')
     sem=commands.add_parser('semrush',help='ToolsPD browser workflow; no Semrush API key is used')
     sem.add_argument('action',choices=('plan','queue','login','run','import','retry','status'))
     sem.add_argument('--origin',default='https://sktiman.toolspd.com')
@@ -208,6 +210,18 @@ def main():
                 expectedGoogleAccount=settings.google_account,archiveOnly=settings.archive_only,maximumSemrushUnits=settings.semrush_units,apiRequestsMade=0,
                 limitation='Configuration preview only; access and historical availability are unverified.')))
             return
+    if args.command=='archive' and args.action=='stage-update':
+        if not args.period or not args.expected_delta_sha256:
+            raise ValueError('Offline stage-update requires --period and --expected-delta-sha256')
+        from archive_updates import stage_history_update
+        with closing(sqlite3.connect(args.db.resolve().as_uri()+'?mode=ro',uri=True)) as source:
+            source.row_factory=sqlite3.Row
+            period=source.execute('SELECT * FROM research_archive_periods WHERE id=?',(args.period,)).fetchone()
+            if not period or period['status']!='indexed':raise ValueError('Select an indexed parent archive period')
+            result=stage_history_update(period['snapshot_path'],period['snapshot_sha256'],args.history,
+                args.expected_delta_sha256,args.directory/'updates',period['start'],period['end'],period['site'],8*1024**3)
+        print(json.dumps(result,ensure_ascii=True,separators=(',',':')))
+        return
     args.db.parent.mkdir(parents=True,exist_ok=True)
     reconciliation=args.command=='outcomes' or (args.command=='archive' and args.action=='reconcile')
     lock=contextlib.nullcontext(True)

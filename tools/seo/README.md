@@ -392,3 +392,28 @@ Availability-only/API mapping flags cannot become terminal skips by this route.
 The original quarantine stays set; no metadata is generated, activated or corrected.
 Changed bound evidence reopens processing. A catalogue-only correction must include
 a fresh identity-resolution manifest; replaying unchanged HTML is not that action.
+
+## Stage later provider captures without changing active inputs
+
+A running ManualsDump generation batch uses a frozen archive. A later verified
+history delta must not rewrite that snapshot or mutate its active model inputs.
+Use the offline command below to copy the complete parent history and upsert only
+semantic page/query differences. Keep the delta's raw provider evidence and scope.
+
+```powershell
+seo-manualsdump archive stage-update --period PARENT_PERIOD_ID --history PATH_TO_FROZEN_DELTA.sqlite3 --expected-delta-sha256 DELTA_SHA256 --directory artifacts/search-metadata/full-history/catalog
+```
+
+The command checks both input hashes, property bindings, dates, exact page IDs,
+Google query checkpoints, disk space and SQLite integrity. It retains old query
+rows and earlier dates, does not duplicate identical metrics just because capture
+provenance changed, and lists every affected page in a content-addressed update
+manifest. Repeating it verifies and reuses the saved snapshot. It performs no
+provider/model calls and opens the research database read-only.
+
+This prepares an updated snapshot only. Adopting it requires a controlled boundary
+with the generation lock: reassess all provider/URL aliases, preserve unchanged
+page histories, import complete changed-page windows, protect page averages below8,
+and reconcile affected drafts before using the new period. Empty final reports
+must not create completed zero-traffic history. Staging is not activation or proof
+that the selected period has finished processing.
