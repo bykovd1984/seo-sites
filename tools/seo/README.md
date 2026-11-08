@@ -379,3 +379,16 @@ and target pages. No search traffic on a cover is required. Existing source text
 known source failures and the live ranking guard are respected; only the explicit
 retry flag requeues a known non-transient failure. The collector/profile and
 provider safety state are unchanged.
+
+
+An explicit existing catalogue/source identity quarantine can receive a bound skip
+reason with `search_metadata/research.py identity-skip DECISION.json --period PERIOD`.
+This is an operator source-review action, not a model call or a generic skip API.
+The decision must name distinct catalogue/source labels, bind the current read-only
+target and a separate cover, quote the conflicting identity on the target, and
+identify a shared catalogue model on both pages. Original verified-source quarantine
+manifests, provider exports, raw contexts and decision artifacts are hash-checked.
+Availability-only/API mapping flags cannot become terminal skips by this route.
+The original quarantine stays set; no metadata is generated, activated or corrected.
+Changed bound evidence reopens processing. A catalogue-only correction must include
+a fresh identity-resolution manifest; replaying unchanged HTML is not that action.

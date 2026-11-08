@@ -40,6 +40,10 @@ def page_outcome(db, pdf, page):
         return dict(outcome,state='skipped',reason=exc.reason,sourceEvidence=exc.proof,
                     followUp='Image/OCR review is required before text-grounded metadata can be generated.')
     except ValueError as exc:
+        if str(exc)=='Source identity requires review':
+            from identity_completion import identity_outcome
+            conflict=identity_outcome(db,pdf,page)
+            if conflict:return dict(outcome,**conflict)
         if str(exc)=='Exact page context is required':
             from source_completion import unavailable_outcome
             missing=unavailable_outcome(db,pdf,page)

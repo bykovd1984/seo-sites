@@ -778,6 +778,7 @@ def main():
     context=commands.add_parser('contexts');context.add_argument('file',type=Path)
     completion=commands.add_parser('source-completion');completion.add_argument('--converted',type=Path,required=True)
     completion.add_argument('--legacy',type=Path,required=True);completion.add_argument('--period')
+    identity=commands.add_parser('identity-skip');identity.add_argument('file',type=Path);identity.add_argument('--period')
     export=commands.add_parser('bundle');export.add_argument('--pdf',type=int,required=True);export.add_argument('--page',type=int,required=True)
     export.add_argument('--output',type=Path,required=True);export.add_argument('--allow-partial',action='store_true')
     generated=commands.add_parser('generation');generated.add_argument('file',type=Path);generated.add_argument('--activate-directory',type=Path)
@@ -802,6 +803,10 @@ def main():
             from source_completion import finalize_export
             db.commit()
             print(packed(finalize_export(db,args.converted,args.legacy,args.period)))
+        elif args.command=='identity-skip':
+            from identity_completion import record_identity_skip
+            db.commit()
+            print(packed(record_identity_skip(db,args.file,args.period)))
         elif args.command=='bundle':
             value=bundle(db,args.pdf,args.page,args.allow_partial);atomic_json(args.output,value);print(packed({'requestId':value['requestId'],'partial':value['partialResearch']}))
         elif args.command=='generation': print(packed(import_generation(db,args.file,args.activate_directory)))
