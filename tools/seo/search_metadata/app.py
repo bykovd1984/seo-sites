@@ -1,5 +1,6 @@
 """ManualsDump console: import a date range, prepare Sol batches, import model results."""
 import argparse
+import contextlib
 import datetime as dt
 import json
 import os
@@ -208,45 +209,54 @@ def main():
                 limitation='Configuration preview only; access and historical availability are unverified.')))
             return
     args.db.parent.mkdir(parents=True,exist_ok=True)
-    with connect(args.db) as db:
-        init(db)
-        if args.command=='import': result=import_data(db,args.history,args.directory,settings)
-        elif args.command=='prepare': result=model_queue(db,args.directory,args.limit)
-        elif args.command=='generation': result=import_generation(db,args.file)
-        elif args.command=='outcomes':
-            from outcomes import reconcile
-            result=reconcile(db,args.start,args.end)
-        elif args.command=='archive':
-            from archive_catalog import init_catalog,prepare_period,period_status,archive_queue,hydrate_pages,archive_context_queue,reconcile_period
-            init_catalog(db)
-            if args.action=='index':
-                if not args.start or not args.end: raise ValueError('Archive indexing requires --start and --end')
-                result=prepare_period(db,args.history,args.directory,args.start,args.end,args.site)
-            else:
-                if not args.period: raise ValueError('Select the indexed --period')
-                if args.action=='status': result=period_status(db,args.period)
-                elif args.action=='reconcile': result=reconcile_period(db,args.period)
-                elif args.action=='hydrate': result=hydrate_pages(db,args.period,args.directory/'page-batches',args.limit)
-                elif args.action=='context-queue': result=archive_context_queue(db,args.period,args.limit,args.retry_unavailable)
-                else: result=archive_queue(db,args.period,args.limit)
-        elif args.command=='semrush':
-            from toolspd import init_ui, pending, ingest_snapshot, retry, run_worker
-            init_ui(db);db.commit()
-            if args.action=='plan': result=plan(db,args.country,dt.date.today().strftime('%Y-%m'),page_limit=args.limit,seeds=args.seeds,transport='toolspd')
-            elif args.action=='queue': result=dict(jobs=pending(db,args.limit,args.origin))
-            elif args.action in ('run','login'):
-                if not args.approved_browser_use: raise ValueError('Explicit --approved-browser-use is required')
-                result=run_worker(db,args.profile,args.directory,args.limit,args.daily_limit,args.delay,args.origin,args.channel,args.action=='login')
-            elif args.action=='import':
-                if not args.job or not args.snapshot: raise ValueError('--job and --snapshot are required')
-                result=ingest_snapshot(db,args.job,args.snapshot,args.origin)
-            elif args.action=='retry':
-                if not args.job: raise ValueError('--job is required')
-                result=retry(db,args.job)
-            else: result=dict(**semrush_status(db),uiAttempts=db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0])
-        else: result=dict(research=research_status(db),semrush=semrush_status(db),apiConfiguration=credential_configuration())
-        # Console code pages on Windows may not represent all collected keywords.
-        print(json.dumps(result,ensure_ascii=True,sort_keys=True,separators=(',',':')))
+    reconciliation=args.command=='outcomes' or (args.command=='archive' and args.action=='reconcile')
+    lock=contextlib.nullcontext(True)
+    if reconciliation:
+        from research_hub.worker import worker_lock
+        directory=ROOT/'artifacts/search-metadata/codex-generation'
+        directory.mkdir(parents=True,exist_ok=True)
+        lock=worker_lock(directory)
+    with lock as acquired:
+        if not acquired:raise ValueError('Another ManualsDump generation or reconciliation is active; reconcile between generation batches')
+        with connect(args.db) as db:
+            init(db)
+            if args.command=='import': result=import_data(db,args.history,args.directory,settings)
+            elif args.command=='prepare': result=model_queue(db,args.directory,args.limit)
+            elif args.command=='generation': result=import_generation(db,args.file)
+            elif args.command=='outcomes':
+                from outcomes import reconcile
+                result=reconcile(db,args.start,args.end)
+            elif args.command=='archive':
+                from archive_catalog import init_catalog,prepare_period,period_status,archive_queue,hydrate_pages,archive_context_queue,reconcile_period
+                init_catalog(db)
+                if args.action=='index':
+                    if not args.start or not args.end: raise ValueError('Archive indexing requires --start and --end')
+                    result=prepare_period(db,args.history,args.directory,args.start,args.end,args.site)
+                else:
+                    if not args.period: raise ValueError('Select the indexed --period')
+                    if args.action=='status': result=period_status(db,args.period)
+                    elif args.action=='reconcile': result=reconcile_period(db,args.period)
+                    elif args.action=='hydrate': result=hydrate_pages(db,args.period,args.directory/'page-batches',args.limit)
+                    elif args.action=='context-queue': result=archive_context_queue(db,args.period,args.limit,args.retry_unavailable)
+                    else: result=archive_queue(db,args.period,args.limit)
+            elif args.command=='semrush':
+                from toolspd import init_ui, pending, ingest_snapshot, retry, run_worker
+                init_ui(db);db.commit()
+                if args.action=='plan': result=plan(db,args.country,dt.date.today().strftime('%Y-%m'),page_limit=args.limit,seeds=args.seeds,transport='toolspd')
+                elif args.action=='queue': result=dict(jobs=pending(db,args.limit,args.origin))
+                elif args.action in ('run','login'):
+                    if not args.approved_browser_use: raise ValueError('Explicit --approved-browser-use is required')
+                    result=run_worker(db,args.profile,args.directory,args.limit,args.daily_limit,args.delay,args.origin,args.channel,args.action=='login')
+                elif args.action=='import':
+                    if not args.job or not args.snapshot: raise ValueError('--job and --snapshot are required')
+                    result=ingest_snapshot(db,args.job,args.snapshot,args.origin)
+                elif args.action=='retry':
+                    if not args.job: raise ValueError('--job is required')
+                    result=retry(db,args.job)
+                else: result=dict(**semrush_status(db),uiAttempts=db.execute('SELECT COUNT(*) FROM semrush_ui_attempts').fetchone()[0])
+            else: result=dict(research=research_status(db),semrush=semrush_status(db),apiConfiguration=credential_configuration())
+            # Console code pages on Windows may not represent all collected keywords.
+            print(json.dumps(result,ensure_ascii=True,sort_keys=True,separators=(',',':')))
 
 
 if __name__=='__main__':

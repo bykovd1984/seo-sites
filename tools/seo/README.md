@@ -354,3 +354,11 @@ unknown errors stay pending. Replays do not duplicate failure events. Ranking
 protection runs before skips, and actual source content takes precedence. Importing
 recovered context and reconciling the period reopens a previously skipped page.
 Changed attempts or damaged proof artifacts also return the page to pending.
+
+Full outcome reconciliation shares the ManualsDump generation OS lock. Run
+`archive reconcile` or `outcomes` between generation batches; a busy generation
+slot rejects reconciliation before opening its research database. This prevents
+a long derived-status refresh from starving the import of a completed model
+response. Read-only status/coverage queries remain available while generation runs.
+Saved completed group responses can be replayed with `--resume-group` without a
+second model call; verify their receipt and output/event hashes first.
