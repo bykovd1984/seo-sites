@@ -353,6 +353,91 @@ class HubTest(unittest.TestCase):
         self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],101)
         self.assertEqual(self.service.store.db.execute("SELECT count(*) FROM attempts WHERE id LIKE 'previous-%'").fetchone()[0],100)
 
+    def test_warning_persists_across_clients_and_blocks_other_projects_without_attempts(self):
+        from research_hub.provider_safety import status
+        self.service.settings.data['semrush']['enabled'] = True
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en', max_age_days=0)
+        closed = []
+        class WarnedBrowser:
+            def __init__(self, settings): pass
+            def capture(self, request): raise ReportUnavailable('concurrent_access_detected')
+            def close(self): closed.append(True)
+        with self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+            collect_keywords(self.service, job, WarnedBrowser)
+        incident = status(self.service.store)
+        self.assertTrue(incident['paused'])
+        self.assertEqual(incident['reason'], 'concurrent_access_detected')
+        self.assertEqual(closed, [True])
+        self.assertEqual(self.service.store.db.execute("SELECT count(*) FROM attempts WHERE status='failed'").fetchone()[0], 1)
+        other = Service(self.home)
+        try:
+            other.settings.data['semrush']['enabled'] = True
+            self.assertEqual(other.provider_status()['safety'], incident)
+            self.assertFalse(other.provider_status()['enabled'])
+            self.assertFalse(other.projects()['semrushEnabled'])
+            other_topic = self.subject('manuals')
+            queued = other.queue_keywords('manuals', other_topic, ['another query'], 'US', 'en', max_age_days=0)
+            with self.assertRaisesRegex(ReportUnavailable, 'toolspd_safety_pause'):
+                collect_keywords(other, queued, lambda settings: self.fail('No browser during safety pause'))
+            self.assertEqual(other.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0], 1)
+        finally:
+            other.close()
+
+    def test_owner_clear_requires_current_incident_and_preserves_jobs_and_ledger(self):
+        from research_hub.provider_safety import clear
+        first = self.service.pause_provider('owner_reported_parallel_access')
+        again = self.service.pause_provider()
+        self.assertEqual(first, again)
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en')
+        self.service.store.update_job(job['id'], 'blocked', {}, error='toolspd_safety_pause')
+        with self.service.store.db:
+            self.service.store.db.execute('INSERT INTO attempts VALUES (?,?,?,?)', ('kept',job['id'],now(),'failed'))
+        with self.assertRaises(ValueError): clear(self.service.store, '0'*32)
+        self.assertTrue(self.service.provider_status()['safety']['paused'])
+        result = clear(self.service.store, first['incident'])
+        self.assertFalse(result['jobsResumed'])
+        self.assertFalse(self.service.provider_status()['safety']['paused'])
+        self.assertEqual(self.service.jobs('grammar', job['id'])['state'], 'blocked')
+        self.assertEqual(self.service.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0], 1)
+        newer = self.service.pause_provider()
+        self.assertNotEqual(newer['incident'], first['incident'])
+        with self.assertRaises(ValueError): clear(self.service.store, first['incident'])
+        self.assertEqual(self.service.provider_status()['safety']['incident'], newer['incident'])
+
+    def test_owner_pause_prevents_browser_launch_and_releases_provider_slot(self):
+        from research_hub.collectors import ToolsPDBrowser
+        from toolspd_access import ToolsPDAccess
+        self.service.pause_provider()
+        browser = ToolsPDBrowser(self.service.settings)
+        try:
+            with self.assertRaisesRegex(ReportUnavailable, 'toolspd_safety_pause'):
+                browser.open()
+            self.assertIsNone(browser.api)
+            with ToolsPDAccess(): pass
+        finally:
+            browser.close()
+
+    def test_pause_during_dispatch_wait_prevents_report_navigation(self):
+        from research_hub.collectors import ToolsPDBrowser
+        from types import SimpleNamespace
+        self.service.settings.data['semrush']['enabled'] = True
+        browser = ToolsPDBrowser(self.service.settings)
+        browser.current_attempt = lambda: 'already-reserved'
+        browser.pacer = SimpleNamespace(dispatch=lambda attempt: self.service.pause_provider())
+        with self.assertRaisesRegex(ReportUnavailable, 'toolspd_safety_pause'):
+            browser.before_report()
+
+    def test_snapshot_warning_is_never_imported_as_keyword_evidence(self):
+        topic = self.subject()
+        job = self.service.queue_keywords('grammar', topic, ['present simple'], 'US', 'en')
+        snapshot = self.snapshot()
+        snapshot['pageText'] = 'Simultaneous access detected'
+        with self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+            save_keyword_snapshot(self.service, job, 'present simple', snapshot)
+        self.assertEqual(self.service.keywords('grammar',topic)['total'], 0)
+
     def test_provider_status_is_local_and_does_not_consume_quota(self):
         result=self.service.provider_status()
         self.assertEqual(result['provider'],'toolspd')

@@ -69,7 +69,7 @@ class MCPTest(unittest.TestCase):
                         await client.initialize()
                         tools=await client.list_tools()
                         names={t.name for t in tools.tools}
-                        self.assertTrue({'list_projects','provider_status','sync_search','research_keywords','prepare_research','save_decision'} <= names)
+                        self.assertTrue({'list_projects','provider_status','pause_provider','sync_search','research_keywords','prepare_research','save_decision'} <= names)
                         self.assertFalse(any('publish' in n for n in names))
                         async def call(name,args):
                             result=await client.call_tool(name,args)

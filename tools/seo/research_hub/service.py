@@ -20,7 +20,8 @@ class Service:
         from .worker import worker_status
         from .provider_policy import effective_policy
         policy=effective_policy(self.settings.data.get('semrush',{}),now()[:10])
-        return dict(projects=self.settings.public_projects(), semrushEnabled=policy['enabled'], publicationSupported=False, worker=worker_status(self))
+        from .provider_safety import status
+        return dict(projects=self.settings.public_projects(), semrushEnabled=policy['enabled'] and not status(self.store)['paused'], publicationSupported=False, worker=worker_status(self))
 
     def provider_status(self):
         # Importing collectors only exposes the local lock/parser; no browser or provider is opened.
@@ -30,16 +31,23 @@ class Service:
         day=now()[:10]
         from .provider_policy import effective_policy,MAX_DAILY_LIMIT
         policy=effective_policy(config,day)
+        from .provider_safety import status
+        safety=status(self.store)
         attempts=self.store.db.execute('SELECT count(*) FROM attempts WHERE started>=?',(day,)).fetchone()[0]
         jobs=[dict(r) for r in self.store.db.execute("SELECT project,state,count(*) jobs FROM jobs WHERE kind='keywords' GROUP BY project,state ORDER BY project,state")]
-        return dict(provider='toolspd',enabled=policy['enabled'],dayUtc=day,
+        return dict(provider='toolspd',enabled=policy['enabled'] and not safety['paused'],dayUtc=day,
+            safety=safety,
             allowedProjects=policy['allowedProjects'],temporaryAllowanceDay=policy['temporaryAllowanceDay'],
             allowanceExpired=policy['allowanceExpired'],applicationDailyLimitMaximum=MAX_DAILY_LIMIT,
-            remainingAttempts=max(0,policy['dailyLimit']-attempts) if policy['enabled'] else 0,
+            remainingAttempts=max(0,policy['dailyLimit']-attempts) if policy['enabled'] and not safety['paused'] else 0,
             countedAttempts=attempts,dailyLimit=config.get('dailyLimit',20),
             minimumDelaySeconds=config.get('delaySeconds',15),access=access_status(),queue=jobs,
             collectionRoute='Shared MCP/CLI queue and independent worker only',
             limitation='Cannot control manually opened browsers or clients on other machines.')
+
+    def pause_provider(self, reason='owner_requested'):
+        from .provider_safety import pause
+        return pause(self.store, reason)
 
     def put_subject(self, project, kind, title, language, url=None, text='', topic_key=None,
                     publication_status='published', studied_language=None, sources=None):

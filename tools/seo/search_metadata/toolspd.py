@@ -34,6 +34,21 @@ def normalize(value):
     return re.sub(r'\s+',' ',unicodedata.normalize('NFKC',str(value)).replace('\u200b','')).strip().casefold()
 
 
+def check_concurrent_access(value):
+    # Explicit warning phrases only: ordinary keywords about concurrency must
+    # not stop collection. This is deliberately separate from missing reports.
+    text = normalize(value)
+    patterns = (
+        r'\b(?:concurrent|simultaneous|parallel) (?:access|sessions?|logins?|connections?) (?:detected|(?:is |are )?not allowed)',
+        r'\bmultiple (?:active )?(?:sessions|logins|devices|ip addresses) (?:detected|(?:are )?not allowed)',
+        r'\byou are logged in (?:on|from) (?:another|multiple) (?:device|browser|location)',
+        r'\byour account is (?:being used|active) (?:on|from) another (?:device|browser|location)',
+        r'обнаружен[а-я]* (?:параллельн[а-я]*|одновременн[а-я]*) (?:доступ|вход|сесси)',
+    )
+    if any(re.search(pattern, text) for pattern in patterns):
+        raise ReportUnavailable('concurrent_access_detected')
+
+
 def origin(value):
     parsed=urlsplit(value)
     if parsed.scheme!='https' or not parsed.hostname or not parsed.hostname.endswith('.toolspd.com') or parsed.username or parsed.password or parsed.port is not None:
@@ -63,6 +78,7 @@ def parse_snapshot(request,value,base=DEFAULT_ORIGIN):
     if params.get('q')!=[request['keyword']] or params.get('db')!=[request['country'].lower()] or params.get('type')!=['all'] or params.get('mode',['1'])!=['1']:
         raise ValueError('ToolsPD report query or database mismatch')
     text=normalize(value.get('pageText',''))
+    check_concurrent_access(text)
     if any(s in text for s in ('captcha','verify you are human','unusual traffic','access denied')): raise ReportUnavailable('challenge')
     if any(s in text for s in ('daily limit reached','limit exceeded','something went wrong','a timeout occurred','error 524')): raise ReportUnavailable('provider_unavailable')
     if normalize(value.get('heading',''))!='keyword magic tool: '+normalize(request['keyword']): raise ReportUnavailable('report_not_ready_or_login_required')

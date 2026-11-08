@@ -174,6 +174,26 @@ class ToolsPDBrowser:
             from toolspd_access import ToolsPDAccess
             self.access = ToolsPDAccess()
         self.access.acquire()
+        from .store import Store
+        from .provider_safety import require_available
+        guard = Store(self.settings.home)
+        try:
+            require_available(guard)
+        except BaseException:
+            self.access.close()
+            raise
+        finally:
+            guard.close()
+
+    def record_safety_error(self, error):
+        if getattr(error, 'reason', None) == 'concurrent_access_detected':
+            from .store import Store
+            from .provider_safety import pause
+            guard = Store(self.settings.home)
+            try:
+                pause(guard, 'concurrent_access_detected')
+            finally:
+                guard.close()
 
     def open(self, headless=True):
         self.acquire()
@@ -203,7 +223,11 @@ class ToolsPDBrowser:
             self.session = ToolsPDSession(self.browser, self.page, self.base,
                 account=self.config.get('account'), member_user=self.config.get('memberUser'),before_report=self.before_report)
         session = self.session
-        snapshot = session.capture(request, self.before_retry)
+        try:
+            snapshot = session.capture(request, self.before_retry)
+        except Exception as error:
+            self.record_safety_error(error)
+            raise
         self.page, self.base = session.page, session.base
         return snapshot
 
@@ -212,7 +236,21 @@ class ToolsPDBrowser:
         if not attempt:
             raise ReportUnavailable('dispatch_budget_not_configured')
         collection_policy(self.config,getattr(self,'current_project',None))
+        from .store import Store
+        from .provider_safety import require_available
+        guard = Store(self.settings.home)
+        try:
+            require_available(guard)
+        finally:
+            guard.close()
         self.pacer.dispatch(attempt())
+        # A client can pause while pacing sleeps. Recheck before navigation.
+        collection_policy(self.config,getattr(self,'current_project',None))
+        guard = Store(self.settings.home)
+        try:
+            require_available(guard)
+        finally:
+            guard.close()
 
     def before_retry(self):
         # Live collectors install a budget callback before any failover lookup.
@@ -283,6 +321,8 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                 attach_report(service, job, keyword, cached['id'])
                 progress['cacheHits'] = progress.get('cacheHits', 0) + 1
             else:
+                from .provider_safety import require_available, pause
+                require_available(service.store)
                 policy=collection_policy(config,job['project'])
                 if request['country'] not in COUNTRY_LABELS:
                     raise ReportUnavailable('country_label_not_yet_verified_by_collector')
@@ -293,6 +333,7 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                 db = service.store.db
                 attempts = []
                 def reserve_attempt():
+                    require_available(service.store)
                     collection_policy(config,job['project'])
                     db.execute('BEGIN IMMEDIATE')
                     try:
@@ -325,7 +366,9 @@ def collect_keywords(service, job, browser_factory=ToolsPDBrowser, sleeper=time.
                     with db:
                         for attempt in attempts:
                             db.execute("UPDATE attempts SET status=? WHERE id=?", ('done' if attempt == attempts[-1] else 'failed', attempt))
-                except BaseException:
+                except BaseException as error:
+                    if getattr(error, 'reason', None) == 'concurrent_access_detected':
+                        pause(service.store, 'concurrent_access_detected')
                     with db:
                         for attempt in attempts:
                             db.execute("UPDATE attempts SET status='failed' WHERE id=?", (attempt,))

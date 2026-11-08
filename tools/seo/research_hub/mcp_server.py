@@ -40,6 +40,11 @@ def create_server(home):
         return call('provider_status')
 
     @server.tool(annotations=write)
+    def pause_provider(reason: str = 'owner_requested') -> dict:
+        """Stop ToolsPD collection across shared clients; only an explicit local owner acknowledgement can clear it."""
+        return call('pause_provider', reason=reason)
+
+    @server.tool(annotations=write)
     def save_subject(project: str, kind: str, title: str, language: str, url: str | None = None,
                      text: str = '', topic_key: str | None = None, publication_status: str = 'published',
                      studied_language: str | None = None, sources: list[str] | None = None) -> dict:

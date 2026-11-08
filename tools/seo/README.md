@@ -50,7 +50,8 @@ Other clients can use the same stdio command and argument array.
 
 Each client starts a small MCP process. They share one SQLite store and an independent
 collector worker. The database serializes writes and the worker uses an OS lock to
-prevent parallel collection against the same data directory. Use one common home
+prevent parallel collection against the same data directory. A separate machine-wide
+provider lock also covers different data directories on this host. Use one common home
 on this computer. Clients on another machine using the same ToolsPD account must
 connect to this central worker host; they must not start an independent browser
 collector for the same account. See [the provider-access contract](PROVIDER_ACCESS.md).
@@ -362,3 +363,10 @@ a long derived-status refresh from starving the import of a completed model
 response. Read-only status/coverage queries remain available while generation runs.
 Saved completed group responses can be replayed with `--resume-group` without a
 second model call; verify their receipt and output/event hashes first.
+
+
+ToolsPD safety incidents are shared by all clients using the configured home.
+Use `provider_status` before collection. `pause_provider` can stop further report
+requests, and an explicit simultaneous-session warning automatically persists the
+same stop. No domain failover follows that warning. Clearing an incident is an
+explicit local owner action; see [provider safety recovery](PROVIDER_ACCESS.md#shared-safety-pause).

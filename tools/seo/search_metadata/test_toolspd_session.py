@@ -53,6 +53,50 @@ class SessionPolicyTests(unittest.TestCase):
             session.capture({}, Mock())
         session.catalog.assert_not_called()
 
+    def test_concurrent_warning_stops_reuse_and_never_opens_catalog(self):
+        session = self.session()
+        session.report = Mock(side_effect=ReportUnavailable('concurrent_access_detected'))
+        session.catalog = Mock()
+        retry = Mock()
+        with self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+            session.capture({}, retry)
+        session.catalog.assert_not_called()
+        retry.assert_not_called()
+
+    def test_concurrent_warning_on_first_service_never_tries_another_domain(self):
+        session = self.session()
+        session.ready = False
+        session.catalog = Mock(return_value=('https://app.toolspd.com/page/semrushnew', ['Access Semrush 1', 'Access Semrush 2']))
+        session.controls = Mock(side_effect=lambda pattern: iter([Mock()]))
+        session.follow = Mock()
+        session.page.url = 'https://one.toolspd.com/'
+        session.check_block = Mock(side_effect=ReportUnavailable('concurrent_access_detected'))
+        session.report = Mock()
+        retry = Mock()
+        with self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+            session.capture({}, retry)
+        self.assertEqual(session.follow.call_count, 1)
+        session.report.assert_not_called()
+        retry.assert_not_called()
+
+    def test_warning_on_redirect_is_checked_before_login_recovery(self):
+        session = self.session()
+        session.page.url = 'https://one.toolspd.com/session-error'
+        session.navigate = Mock(return_value=Mock(status=403))
+        session.page.locator.return_value.inner_text.return_value = 'Simultaneous access detected'
+        with self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+            session.read_report(dict(keyword='test',country='US'), 'https://one.toolspd.com')
+
+    def test_explicit_warnings_are_distinct_from_concurrency_keywords(self):
+        from toolspd import check_concurrent_access
+        for text in ('Simultaneous access detected', 'Multiple active sessions detected',
+                     'You are logged in on another device', 'Concurrent sessions are not allowed',
+                     'Обнаружен параллельный доступ'):
+            with self.subTest(text=text), self.assertRaisesRegex(ReportUnavailable, 'concurrent_access_detected'):
+                check_concurrent_access(text)
+        for text in ('Keyword Magic Tool: concurrent sessions', 'parallel connection manual', 'multiple devices', ''):
+            check_concurrent_access(text)
+
     def test_member_or_unrelated_host_is_never_accepted_as_report_origin(self):
         for url in ('https://app.toolspd.com/member', 'https://one.toolspd.com.attacker.example/',
                     'http://one.toolspd.com/', 'https://owner:secret@one.toolspd.com/'):

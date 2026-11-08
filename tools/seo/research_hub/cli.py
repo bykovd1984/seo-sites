@@ -10,7 +10,7 @@ from .service import Service
 from .store import packed
 
 
-OPERATIONS = ('projects', 'provider_status', 'put_subject', 'subjects', 'subject_text', 'import_search', 'search_rows',
+OPERATIONS = ('projects', 'provider_status', 'pause_provider', 'put_subject', 'subjects', 'subject_text', 'import_search', 'search_rows',
               'datasets', 'queue_search', 'queue_keywords', 'jobs', 'resume_job', 'keywords', 'bundle',
               'save_decision', 'decisions', 'import_keywords')
 
@@ -45,6 +45,9 @@ def main(argv=None):
     attempts.add_argument('--database', type=Path, required=True)
     attempts.add_argument('--day', required=True)
     commands.add_parser('toolspd-session', help='Verify saved Google/ToolsPD login and list service options without a keyword report')
+    resume = commands.add_parser('toolspd-clear-safety-pause', help='Owner acknowledgement only; does not enable collection or resume jobs')
+    resume.add_argument('--incident', required=True)
+    resume.add_argument('--acknowledge-no-other-sessions', action='store_true', required=True)
     commands.add_parser('toolspd-login', help='Interactive owner login in an isolated browser, no credentials in chat')
     args = parser.parse_args(argv)
     home = args.home.resolve()
@@ -91,6 +94,16 @@ def main(argv=None):
             result = import_legacy_attempts(service.store, args.database, args.day)
         finally:
             service.close()
+    elif args.command == 'toolspd-clear-safety-pause':
+        from .provider_safety import clear
+        from .collectors import ToolsPDBrowser  # Initializes the legacy module path.
+        from toolspd_access import ToolsPDAccess
+        with ToolsPDAccess():
+            service = Service(home)
+            try:
+                result = clear(service.store, args.incident)
+            finally:
+                service.close()
     elif args.command == 'toolspd-session':
         from .collectors import ToolsPDBrowser
         from toolspd_session import ToolsPDSession, service_origin
@@ -113,6 +126,9 @@ def main(argv=None):
                     options.append(dict(option=label, origin=base))
             result = dict(catalogReady=True, reportVerified=False, options=options,
                           memberIdentityChecked=bool(browser.config.get('memberUser')), apiUnitsSpent=0)
+        except Exception as error:
+            browser.record_safety_error(error)
+            raise
         finally:
             browser.close()
     elif args.command == 'toolspd-login':

@@ -7,7 +7,7 @@ import re
 import time
 from urllib.parse import urlsplit, urljoin
 
-from toolspd import ReportUnavailable, SCRIPT, origin, parse_snapshot, url
+from toolspd import ReportUnavailable, SCRIPT, origin, parse_snapshot, url, check_concurrent_access
 
 MEMBER = 'https://app.toolspd.com/member'
 ACCESS = re.compile(r'\bAccess\s+Semrush(?:\s*[123])?\s*$', re.I)
@@ -39,6 +39,7 @@ class ToolsPDSession:
 
     def check_block(self):
         text = self.page.locator('body').inner_text(timeout=10000).casefold()
+        check_concurrent_access(text)
         if any(s in text for s in ('verify you are human', 'unusual traffic', 'captcha')):
             raise ReportUnavailable('challenge')
         if any(s in text for s in ('this browser or app may not be secure', "couldn\u2019t sign you in", "couldn't sign you in")):
@@ -173,6 +174,7 @@ class ToolsPDSession:
 
     def read_report(self, request, base):
         response = self.navigate(url(request, base))
+        self.check_block()  # Warnings can be rendered on a redirect or HTTP error page.
         if response and response.status >= 400:
             self.events.append(dict(stage='report_http_error', host=urlsplit(base).hostname, status=response.status))
             raise ReportUnavailable('provider_unavailable')
@@ -218,7 +220,7 @@ class ToolsPDSession:
             try:
                 return self.report(request, self.base)
             except ReportUnavailable as error:
-                if error.reason in ('challenge', 'report_validation_failed'):
+                if error.reason in ('challenge', 'report_validation_failed', 'concurrent_access_detected', 'toolspd_safety_pause'):
                     raise
                 self.events.append(dict(stage='session_recovery', reason=error.reason))
                 self.ready = False
@@ -243,7 +245,7 @@ class ToolsPDSession:
                 attempted = True
                 return self.report(request, base)
             except ReportUnavailable as error:
-                if error.reason in ('challenge', 'daily_limit_reached', 'google_reauthentication_required', 'report_validation_failed'):
+                if error.reason in ('challenge', 'daily_limit_reached', 'google_reauthentication_required', 'report_validation_failed', 'concurrent_access_detected', 'toolspd_safety_pause'):
                     raise
                 last = error.reason
                 self.events.append(dict(stage='service_unavailable', option=label, reason=last))

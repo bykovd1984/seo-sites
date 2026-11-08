@@ -49,3 +49,30 @@ and again at actual report dispatch. Outside that day collection stays paused;
 the ledger is never reset. Configuration is cached by the worker, so apply changes
 only with a controlled idle-worker reload. This is an application allowance and
 does not assert or modify a vendor quota. Keep the existing dispatch spacing.
+
+## Shared safety pause
+
+`pause_provider` stops new ToolsPD collection across all clients using the shared
+home. It is available through MCP and `call pause_provider` (an empty JSON object
+uses the owner-requested reason). Existing captured evidence remains readable.
+A request already in flight may finish; no subsequent report should be dispatched.
+
+Explicit simultaneous-session warnings raise `concurrent_access_detected`. They
+stop service failover immediately, close the application browser, retain counted
+attempts and persist a safety incident in the shared store. The pause survives a
+worker/client restart and UTC day changes. `provider_status.safety` exposes its
+incident ID, fixed reason and time without contacting ToolsPD. There is no
+automatic retry, unpause, quota reset, or job resume.
+
+After the owner has closed other sessions and resolved the warning, the local
+operator can explicitly acknowledge the exact current incident:
+
+```powershell
+python C:\Dev\seo-sites\tools\seo\launch.py toolspd-clear-safety-pause --incident INCIDENT_ID --acknowledge-no-other-sessions
+```
+
+This command holds the same machine-wide provider slot. It clears only that
+incident; the configuration, limits, ledger and blocked jobs remain unchanged.
+Do not run it automatically or in response to a paused/busy queue. Remote agents
+must submit work on this central host (for example, an MCP client over SSH), not
+start another local worker using the same vendor account.

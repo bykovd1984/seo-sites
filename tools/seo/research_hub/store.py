@@ -103,6 +103,10 @@ class Store:
             id TEXT PRIMARY KEY, project TEXT NOT NULL, bundle TEXT NOT NULL REFERENCES bundles(id),
             payload TEXT NOT NULL, created TEXT NOT NULL);
           CREATE TABLE IF NOT EXISTS worker_state(id INTEGER PRIMARY KEY CHECK(id=1),pid INTEGER NOT NULL,heartbeat TEXT NOT NULL);
+          CREATE TABLE IF NOT EXISTS provider_safety(
+            provider TEXT PRIMARY KEY, incident TEXT NOT NULL, reason TEXT NOT NULL, created TEXT NOT NULL);
+          CREATE TABLE IF NOT EXISTS provider_safety_events(
+            id TEXT PRIMARY KEY, incident TEXT NOT NULL, action TEXT NOT NULL, reason TEXT NOT NULL, created TEXT NOT NULL);
         ''')
 
     def close(self):
