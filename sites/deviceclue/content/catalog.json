@@ -840,7 +840,7 @@
         "note": "Example showing that another keypad may require its own preliminary setup."
       }
     ],
-    "publishAt": "2026-11-10T07:00:00.000Z",
+    "publishAt": "2026-11-09T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -883,7 +883,7 @@
         "note": "Example of high-temperature self-clean and automatic door lock."
       }
     ],
-    "publishAt": "2026-11-11T07:00:00.000Z",
+    "publishAt": "2026-11-10T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -922,7 +922,7 @@
         "note": "Manufacturer training and KM alarm information."
       }
     ],
-    "publishAt": "2026-11-12T07:00:00.000Z",
+    "publishAt": "2026-11-10T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -960,7 +960,7 @@
         "note": "Terminology for sulfation and desulfation."
       }
     ],
-    "publishAt": "2026-11-13T07:00:00.000Z",
+    "publishAt": "2026-11-11T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -997,7 +997,7 @@
         "note": "WWVB reception and manual-setting overview."
       }
     ],
-    "publishAt": "2026-11-14T07:00:00.000Z",
+    "publishAt": "2026-11-11T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1033,7 +1033,7 @@
         "note": "BE365 battery and product details."
       }
     ],
-    "publishAt": "2026-11-15T07:00:00.000Z",
+    "publishAt": "2026-11-12T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1070,7 +1070,7 @@
         "note": "Advanced menu and factory reset location."
       }
     ],
-    "publishAt": "2026-11-16T07:00:00.000Z",
+    "publishAt": "2026-11-12T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1111,7 +1111,7 @@
         "note": "Model-specific panel and web credentials may differ."
       }
     ],
-    "publishAt": "2026-11-17T07:00:00.000Z",
+    "publishAt": "2026-11-13T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1150,7 +1150,7 @@
         "note": "Model-specific function charts and fan operation after use."
       }
     ],
-    "publishAt": "2026-11-18T07:00:00.000Z",
+    "publishAt": "2026-11-13T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1189,7 +1189,7 @@
         "note": "Finding the model and product number code."
       }
     ],
-    "publishAt": "2026-11-19T07:00:00.000Z",
+    "publishAt": "2026-11-14T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1226,7 +1226,7 @@
         "note": "Safety precautions and distinction between conventional and M-Tronic starting."
       }
     ],
-    "publishAt": "2026-11-20T07:00:00.000Z",
+    "publishAt": "2026-11-14T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1269,7 +1269,7 @@
         "note": "Manufacturer guidance to compare the particular control panel."
       }
     ],
-    "publishAt": "2026-11-21T07:00:00.000Z",
+    "publishAt": "2026-11-15T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1310,7 +1310,7 @@
         "note": "Temperature and thermometer guidance."
       }
     ],
-    "publishAt": "2026-11-22T07:00:00.000Z",
+    "publishAt": "2026-11-15T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1347,7 +1347,7 @@
         "note": "Manufacturer instruction copy: opening, polarity and battery warning."
       }
     ],
-    "publishAt": "2026-11-23T07:00:00.000Z",
+    "publishAt": "2026-11-16T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1384,7 +1384,7 @@
         "note": "Manufacturer-authored later configuration and rail-specific assembled dimensions; hosted copy."
       }
     ],
-    "publishAt": "2026-11-24T07:00:00.000Z",
+    "publishAt": "2026-11-16T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1426,7 +1426,7 @@
         "note": "Manufacturer-authored MIG chart and horizontal T fillet limitation; hosted copy."
       }
     ],
-    "publishAt": "2026-11-25T07:00:00.000Z",
+    "publishAt": "2026-11-17T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1465,7 +1465,7 @@
         "note": "Potential causes of reduced range; system-specific troubleshooting."
       }
     ],
-    "publishAt": "2026-11-26T07:00:00.000Z",
+    "publishAt": "2026-11-17T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1513,7 +1513,7 @@
         "note": "Manufacturer instructions archived by ManualsDump. Page 33 identifies the two ends of the pane, the door support and the orientation marking."
       }
     ],
-    "publishAt": "2026-11-27T07:00:00.000Z",
+    "publishAt": "2026-11-18T07:00:00.000Z",
     "checkedDate": "2026-11-07"
   },
   {
@@ -1551,7 +1551,7 @@
         "note": "A specific H control board distinguishes alarm reset from output test."
       }
     ],
-    "publishAt": "2026-11-28T07:00:00.000Z",
+    "publishAt": "2026-11-18T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1589,7 +1589,7 @@
         "note": "Material, wire, gas and joint conditions affect the appropriate welding parameters."
       }
     ],
-    "publishAt": "2026-11-29T07:00:00.000Z",
+    "publishAt": "2026-11-19T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1636,7 +1636,7 @@
         "note": "Different front-panel errors require different responses."
       }
     ],
-    "publishAt": "2026-11-30T07:00:00.000Z",
+    "publishAt": "2026-11-19T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1674,7 +1674,7 @@
         "note": "Time-zone, DST and radio-signal settings vary by product."
       }
     ],
-    "publishAt": "2026-12-01T07:00:00.000Z",
+    "publishAt": "2026-11-20T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1712,7 +1712,7 @@
         "note": "Examples of grill options and controls on different ovens."
       }
     ],
-    "publishAt": "2026-12-02T07:00:00.000Z",
+    "publishAt": "2026-11-20T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1754,7 +1754,7 @@
         "note": "Replacement, flushing and indicator guidance."
       }
     ],
-    "publishAt": "2026-12-03T07:00:00.000Z",
+    "publishAt": "2026-11-21T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1788,7 +1788,7 @@
         "note": "General advice on correct bobbin type and winding tension."
       }
     ],
-    "publishAt": "2026-12-04T07:00:00.000Z",
+    "publishAt": "2026-11-21T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1822,7 +1822,7 @@
         "note": "Model-specific channel lockout, keypad lock and scanning controls."
       }
     ],
-    "publishAt": "2026-12-05T07:00:00.000Z",
+    "publishAt": "2026-11-22T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1856,7 +1856,7 @@
         "note": "Documents operating indicators and defrost behaviour for specified equipment."
       }
     ],
-    "publishAt": "2026-12-06T07:00:00.000Z",
+    "publishAt": "2026-11-22T16:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1890,7 +1890,7 @@
         "note": "CH530 diagnostic view distinguishes description, target, severity and persistence; reset can cause a restart."
       }
     ],
-    "publishAt": "2026-12-07T07:00:00.000Z",
+    "publishAt": "2026-11-23T07:00:00.000Z",
     "checkedDate": "2026-11-02"
   },
   {
@@ -1928,7 +1928,7 @@
       }
     ],
     "title": "VTech phone ringer volume: turn the ring up, down or on",
-    "publishAt": "2026-12-08T07:00:00.000Z",
+    "publishAt": "2026-11-23T16:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -1963,7 +1963,7 @@
       }
     ],
     "title": "AT&T phone says out of range or no power at base",
-    "publishAt": "2026-12-09T07:00:00.000Z",
+    "publishAt": "2026-11-24T07:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2007,7 +2007,7 @@
       }
     ],
     "title": "How to turn off Do Not Disturb on an Avaya phone",
-    "publishAt": "2026-12-10T07:00:00.000Z",
+    "publishAt": "2026-11-24T16:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2049,7 +2049,7 @@
       }
     ],
     "title": "How to transfer a call on a Mitel 5330 or 5330e phone",
-    "publishAt": "2026-12-11T07:00:00.000Z",
+    "publishAt": "2026-11-25T07:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2092,7 +2092,7 @@
       }
     ],
     "title": "Mitel phone call forwarding: set a destination and turn it off",
-    "publishAt": "2026-12-12T07:00:00.000Z",
+    "publishAt": "2026-11-25T16:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2126,7 +2126,7 @@
       }
     ],
     "title": "How to replace ink cartridges in an HP Officejet 6500",
-    "publishAt": "2026-12-13T07:00:00.000Z",
+    "publishAt": "2026-11-26T07:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2163,7 +2163,7 @@
       }
     ],
     "title": "Kenmore washer not filling with water: safe first checks",
-    "publishAt": "2026-12-14T07:00:00.000Z",
+    "publishAt": "2026-11-26T16:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2200,7 +2200,7 @@
       }
     ],
     "title": "Hitachi washing machine C1 and C2 errors: supply or drainage",
-    "publishAt": "2026-12-15T07:00:00.000Z",
+    "publishAt": "2026-11-27T07:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2233,7 +2233,7 @@
       }
     ],
     "title": "Samsung POWERbot not charging: dock and battery checks",
-    "publishAt": "2026-12-16T07:00:00.000Z",
+    "publishAt": "2026-11-27T16:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2271,7 +2271,7 @@
       }
     ],
     "title": "Samsung POWERbot C03 and C05 errors: wheel and bumper checks",
-    "publishAt": "2026-12-17T07:00:00.000Z",
+    "publishAt": "2026-11-28T07:00:00.000Z",
     "checkedDate": "2026-11-06"
   },
   {
@@ -2312,7 +2312,7 @@
         "note": "Identifies the HEM-907XL and its intended professional use."
       }
     ],
-    "publishAt": "2026-12-18T07:00:00.000Z",
+    "publishAt": "2026-11-28T16:00:00.000Z",
     "checkedDate": "2026-11-07"
   },
   {
@@ -2349,7 +2349,7 @@
         "note": "Configure your phone confirms the idle handset/base procedure and date entry order."
       }
     ],
-    "publishAt": "2026-12-19T07:00:00.000Z",
+    "publishAt": "2026-11-29T07:00:00.000Z",
     "checkedDate": "2026-11-07"
   },
   {
@@ -2384,7 +2384,7 @@
         "note": "Printed pages 8–9 identify the keys and distinguish time entry from the 12/24-hour format menu."
       }
     ],
-    "publishAt": "2026-12-20T07:00:00.000Z",
+    "publishAt": "2026-11-29T16:00:00.000Z",
     "checkedDate": "2026-11-07"
   },
   {
@@ -2423,7 +2423,7 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-21T07:00:00.000Z"
+    "publishAt": "2026-11-30T07:00:00.000Z"
   },
   {
     "slug": "husqvarna-yth18542-deck-belt-routing",
@@ -2459,7 +2459,7 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-22T07:00:00.000Z"
+    "publishAt": "2026-11-30T16:00:00.000Z"
   },
   {
     "slug": "american-standard-washbrook-urinal-dimensions",
@@ -2495,7 +2495,7 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-23T07:00:00.000Z"
+    "publishAt": "2026-12-01T07:00:00.000Z"
   },
   {
     "slug": "miele-g643-g663-g843-dishwasher-dimensions",
@@ -2532,7 +2532,7 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-24T07:00:00.000Z"
+    "publishAt": "2026-12-01T16:00:00.000Z"
   },
   {
     "slug": "mtd-e640f-e660g-snowblower-belt-diagram",
@@ -2567,7 +2567,7 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-25T07:00:00.000Z"
+    "publishAt": "2026-12-02T07:00:00.000Z"
   },
   {
     "slug": "heat-glo-sl-750tr-log-placement",
@@ -2612,6 +2612,6 @@
       }
     ],
     "checkedDate": "2026-11-07",
-    "publishAt": "2026-12-26T07:00:00.000Z"
+    "publishAt": "2026-12-02T16:00:00.000Z"
   }
 ]

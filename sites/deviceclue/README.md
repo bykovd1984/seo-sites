@@ -88,7 +88,7 @@ Delivery uses batches of up to 50, a 1.5-second timeout and bounded retries, wit
 
 ## Daily publication
 
-`content/catalog.json` uses optional `publishAt` timestamps in canonical UTC (`YYYY-MM-DDTHH:mm:ss.sssZ`). Entries without it remain immediately public. The six-article schedule is documented in `PUBLICATION.md`: 2–7 November 2026 at 09:00 Europe/Kyiv (07:00 UTC).
+`content/catalog.json` contains the current publication schedule. Entries without a `publishAt` timestamp are public immediately. From 2 to 8 November 2026, one guide went live each day at 09:00 Europe/Kyiv. From 9 November, the queue releases two guides per day at 09:00 and 18:00 Europe/Kyiv. Store each timestamp in canonical UTC (`YYYY-MM-DDTHH:mm:ss.sssZ`).
 
 The read-only repository evaluates the current clock for every lookup, count and search. Home, topics, guides and sitemap are dynamic, so a release needs no rebuild, cron or manual deployment. Before release the guide returns 404 and is excluded from listings, search, structured data and sitemap. Contextual links are plain text until their target is available. Browser tabs already open need a reload; search-engine discovery is not instantaneous.
 

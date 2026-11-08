@@ -14,14 +14,27 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rows = loadContent(root);
 const scheduled = rows.filter(row => row.metadata.publishAt).sort((a, b) => a.metadata.publishAt.localeCompare(b.metadata.publishAt));
 
-test('fifty-five consecutive releases are at 09:00 Kyiv, starting 2 November', () => {
-  assert.equal(scheduled.length, 55);
-  const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
-  for (let i = 0; i < scheduled.length; i++) {
-    const date = new Date(scheduled[i].metadata.publishAt);
-    assert.equal(date.getTime(), Date.parse('2026-11-02T07:00:00.000Z') + i * 86_400_000);
-    assert.ok(formatter.format(date).endsWith(', 09:00'));
-    if (i) assert.equal(date - new Date(scheduled[i - 1].metadata.publishAt), 86_400_000);
+test('Kyiv releases are daily from 2 November and twice daily from 9 November', () => {
+  const clock = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+  });
+  assert.equal(rows.length - scheduled.length, 10);
+  assert.ok(scheduled.length >= 7 + 14, 'The first twice-daily week needs fourteen articles');
+  let day = new Date('2026-11-02T00:00:00.000Z');
+  let expectedHour = '09';
+  for (const row of scheduled) {
+    const timestamp = new Date(row.metadata.publishAt);
+    const local = Object.fromEntries(clock.formatToParts(timestamp).map(part => [part.type, part.value]));
+    const expectedDay = day.toISOString().slice(0, 10);
+    assert.equal([local.year, local.month, local.day].join('-'), expectedDay, row.slug);
+    assert.deepEqual([local.hour, local.minute, local.second, timestamp.getUTCMilliseconds()], [expectedHour, '00', '00', 0], row.slug);
+    if (expectedDay >= '2026-11-09' && expectedHour === '09') {
+      expectedHour = '18';
+    } else {
+      day.setUTCDate(day.getUTCDate() + 1);
+      expectedHour = '09';
+    }
   }
 });
 
