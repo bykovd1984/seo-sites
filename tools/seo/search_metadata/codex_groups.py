@@ -10,7 +10,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from archive_catalog import init_catalog,period_status
+from archive_catalog import init_catalog,period_status,processing_period
 from codex_drafts import SCHEMA,INSTRUCTIONS,emit,expand_response,search_history
 from generate import atomic_json
 from history import connect
@@ -63,7 +63,7 @@ def prior_single_receipt(request_id):
 
 def select_sources(db,period,size,max_chars):
     if not 1<=size<=25 or not 10000<=max_chars<=1500000:raise ValueError('Invalid group bounds')
-    period_status(db,period)
+    processing_period(db,period)
     rows=db.execute('''SELECT p.pdf,p.page FROM research_archive_pages p JOIN research_pages r
       ON r.pdf=p.pdf AND r.page=p.page WHERE p.period_id=? AND p.eligible=1 AND p.history_imported=1
       AND p.state='pending' AND r.content_id IS NOT NULL ORDER BY p.last_seen DESC,p.priority_clicks DESC,p.pdf,p.page''',(period,)).fetchall()
@@ -145,6 +145,7 @@ def load_group(db,ident):
 
 
 def claim_group(db,ident,manifest,sources):
+    processing_period(db,manifest["periodId"])
     with db:
         if not db.in_transaction:db.execute('BEGIN IMMEDIATE')
         state=db.execute('SELECT state FROM research_codex_groups WHERE id=?',(ident,)).fetchone()[0]

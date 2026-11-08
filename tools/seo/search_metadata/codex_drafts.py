@@ -8,7 +8,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from archive_catalog import init_catalog, period_status, reconcile_period
+from archive_catalog import init_catalog, period_status, reconcile_period, processing_period, ensure_no_adoption
 from generate import atomic_json
 from history import connect
 from model_stage import page_bundle, SourceTextUnavailable
@@ -94,7 +94,7 @@ def expand_response(source,raw):
 
 def prepare(db,period,directory,limit):
     if not 1<=limit<=1000:raise ValueError('Draft batch limit must be 1..1000')
-    if period_status(db,period)['status']!='indexed':raise ValueError('Finish archive indexing first')
+    processing_period(db,period)
     directory=Path(directory).resolve()
     if not directory.is_relative_to(ROOT/'artifacts'):raise ValueError('Model runs must remain in workspace artifacts')
     directory.mkdir(parents=True,exist_ok=True)
@@ -202,6 +202,7 @@ def prepare_repairs(db,period,directory,requests,revision=1):
 
 
 def run_one(db,task,executable):
+    ensure_no_adoption(db)
     directory=Path(task['directory']);source=json.loads((directory/'bundle.json').read_text(encoding='utf-8'))
     if (source['generatorModel'],source['generatorEffort'])!=GENERATOR:raise ValueError('Unexpected generator in frozen input')
     latest=page_bundle(db,source['sourcePdfId'],source['page']);db.commit()
@@ -218,6 +219,7 @@ def run_one(db,task,executable):
             raise ValueError('Model input changed after invocation receipt')
     raw_path=directory/'model-output.json';events_path=directory/'generation-events.jsonl'
     if receipt is None:
+        ensure_no_adoption(db)
         receipt=dict(model=GENERATOR[0],effort=GENERATOR[1],requestId=source['requestId'],auth='ChatGPT',ephemeral=True,status='running',startedAt=now())
         command=[executable,'exec','--ignore-user-config','--ephemeral','--sandbox','read-only','--cd',str(directory),
             '--model',GENERATOR[0],'-c','model_reasoning_effort="'+GENERATOR[1]+'"','-c','project_doc_max_bytes=0',

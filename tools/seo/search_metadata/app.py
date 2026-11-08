@@ -178,7 +178,7 @@ def main():
     outcomes.add_argument('--start',type=dt.date.fromisoformat,required=True)
     outcomes.add_argument('--end',type=dt.date.fromisoformat,required=True)
     archive=commands.add_parser('archive',help='Index and process the complete saved provider period without API calls')
-    archive.add_argument('action',choices=('index','status','queue','hydrate','context-queue','reconcile','stage-update'))
+    archive.add_argument('action',choices=('index','status','queue','hydrate','context-queue','reconcile','stage-update','adopt-update','verify-update'))
     archive.add_argument('--history',type=Path,default=ROOT/'artifacts/search-metadata/history.sqlite3')
     archive.add_argument('--directory',type=Path,default=ROOT/'artifacts/search-metadata/full-history/catalog')
     archive.add_argument('--start',type=dt.date.fromisoformat)
@@ -188,6 +188,8 @@ def main():
     archive.add_argument('--limit',type=int,default=100)
     archive.add_argument('--retry-unavailable',action='store_true')
     archive.add_argument('--expected-delta-sha256',help='Hash of a frozen delta for offline stage-update')
+    archive.add_argument('--update-manifest',type=Path,help='Saved stage-update manifest for guarded adoption')
+    archive.add_argument('--adoption-batches',type=int,default=1,help='Run1..100 bounded adoption steps under one generation lock')
     sem=commands.add_parser('semrush',help='ToolsPD browser workflow; no Semrush API key is used')
     sem.add_argument('action',choices=('plan','queue','login','run','import','retry','status'))
     sem.add_argument('--origin',default='https://sktiman.toolspd.com')
@@ -210,6 +212,15 @@ def main():
                 expectedGoogleAccount=settings.google_account,archiveOnly=settings.archive_only,maximumSemrushUnits=settings.semrush_units,apiRequestsMade=0,
                 limitation='Configuration preview only; access and historical availability are unverified.')))
             return
+    if args.command=='archive' and args.action=='verify-update':
+        if not args.period or not args.update_manifest:
+            raise ValueError('Verification requires --period and --update-manifest')
+        from archive_adoption import verify_history_update
+        with closing(sqlite3.connect(args.db.resolve().as_uri()+'?mode=ro',uri=True)) as source:
+            source.row_factory=sqlite3.Row
+            result=verify_history_update(source,args.period,args.update_manifest,args.history)
+        print(json.dumps(result,ensure_ascii=True,separators=(',',':')))
+        return
     if args.command=='archive' and args.action=='stage-update':
         if not args.period or not args.expected_delta_sha256:
             raise ValueError('Offline stage-update requires --period and --expected-delta-sha256')
@@ -223,7 +234,7 @@ def main():
         print(json.dumps(result,ensure_ascii=True,separators=(',',':')))
         return
     args.db.parent.mkdir(parents=True,exist_ok=True)
-    reconciliation=args.command=='outcomes' or (args.command=='archive' and args.action=='reconcile')
+    reconciliation=args.command=='outcomes' or (args.command=='archive' and args.action in ('reconcile','adopt-update'))
     lock=contextlib.nullcontext(True)
     if reconciliation:
         from research_hub.worker import worker_lock
@@ -243,7 +254,14 @@ def main():
             elif args.command=='archive':
                 from archive_catalog import init_catalog,prepare_period,period_status,archive_queue,hydrate_pages,archive_context_queue,reconcile_period
                 init_catalog(db)
-                if args.action=='index':
+                if args.action=='adopt-update':
+                    if not args.period or not args.update_manifest:raise ValueError('Adoption requires --period and --update-manifest')
+                    from archive_adoption import adopt_history_update
+                    if not 1<=args.adoption_batches<=100:raise ValueError('Adoption steps must be1..100')
+                    for _ in range(args.adoption_batches):
+                        result=adopt_history_update(db,args.period,args.update_manifest,args.history,args.directory,args.limit,8*1024**3)
+                        if result['state']=='ready':break
+                elif args.action=='index':
                     if not args.start or not args.end: raise ValueError('Archive indexing requires --start and --end')
                     result=prepare_period(db,args.history,args.directory,args.start,args.end,args.site)
                 else:

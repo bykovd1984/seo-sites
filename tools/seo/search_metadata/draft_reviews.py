@@ -103,6 +103,8 @@ def validate_baseline(db,manifest,source):
 
 
 def prepare_reviews(db,period,directory,limit=8):
+    from archive_catalog import processing_period
+    processing_period(db,period)
     if not 1<=limit<=25:raise ValueError('Review group limit must be 1..25')
     rows=db.execute('''SELECT pdf,page FROM research_archive_pages WHERE period_id=? AND eligible=1
       AND history_imported=1 AND state='pending' AND reason IN ('needs_review','supplemental_source_changed')

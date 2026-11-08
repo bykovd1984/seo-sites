@@ -116,6 +116,8 @@ def validate_keyword_decisions(source,response):
 
 
 def queue(db,directory,limit=25):
+    from archive_catalog import ensure_no_adoption
+    ensure_no_adoption(db)
     if not 1<=limit<=1000: raise ValueError('Model queue limit must be 1..1000')
     directory=Path(directory).resolve()
     if not directory.is_relative_to(ROOT/'artifacts'): raise ValueError('Model bundles must be workspace artifacts')

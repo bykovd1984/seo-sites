@@ -417,3 +417,42 @@ page histories, import complete changed-page windows, protect page averages belo
 and reconcile affected drafts before using the new period. Empty final reports
 must not create completed zero-traffic history. Staging is not activation or proof
 that the selected period has finished processing.
+
+## Adopt a staged ManualsDump history update
+
+After the current generation controller and source exporters finish, run adoption
+through the console. It takes the same global generation lock as model runners
+before opening the research database; a busy lock stops it without changing inputs.
+
+```powershell
+seo-manualsdump archive adopt-update --period PARENT_PERIOD_ID --update-manifest PATH_TO_STAGE_UPDATE_MANIFEST.json --history PATH_TO_FROZEN_DELTA.sqlite3 --directory artifacts/search-metadata/full-history/catalog --limit 1000
+```
+
+Use the same arguments to resume bounded phases until `state` is `ready`. The first
+call verifies the full semantic merge and indexes the new frozen period. Unchanged
+materialized histories are inherited; their terminal draft/skip outcomes are
+rechecked against current source/request hashes. Changed eligible pages receive
+complete histories, not just the newly disclosed rows. Fresh protected-page ranking
+proof is recorded even when those pages need no model work. Existing non-API rank
+proof is retained unless an actual changed API capture replaces that exact scope.
+
+An interrupted adoption leaves a durable dispatch stop. Resume it with the same
+manifest, parent, delta and directory; no model/provider request is retried. Once
+ready, the new period is indexed, the parent is superseded, and
+`research_settings.archive_active_period` identifies the new queue. Model/source
+preparation rejects superseded periods. Update the caller's explicit period ID
+before continuing. No metadata is activated by adoption.
+
+Incomplete query checkpoints stay pending with their evidence and
+`history_imported=0`; they cannot enter archive generation. Such holds do not mean
+zero traffic, complete provider history, or finished period processing. Resolve
+remaining coverage/source/review holds before claiming goal completion. Keep the
+ToolsPD pause, attempt ledger and missing-Semrush draft guard unchanged.
+
+`--adoption-batches 100 --limit 1000` runs up to100 bounded checks/hydration steps
+under one uninterrupted generation lock. A `ready` result stops the loop early.
+
+For a read-only preflight while the existing generator is still working, use
+`archive verify-update` with the same parent, update-manifest and history arguments.
+It checks every retained/revised row and latest metric ordering without acquiring
+the generation slot or opening the research database for writes.

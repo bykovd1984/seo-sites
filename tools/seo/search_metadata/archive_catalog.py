@@ -166,10 +166,23 @@ def prepare_period(db, history_path, directory, start, end, site='https://manual
     return period_status(db, ident)
 
 
+def ensure_no_adoption(db):
+    row=db.execute("SELECT value FROM research_settings WHERE name='archive_adoption_in_progress'").fetchone()
+    if row: raise ValueError('Resume the pending archive adoption before dispatching model or source work')
+
+
+def processing_period(db, period_id):
+    ensure_no_adoption(db)
+    result=period_status(db,period_id)
+    if result['status']!='indexed':
+        raise ValueError('Select an indexed, non-superseded archive period before processing pages')
+    return result
+
+
 def archive_queue(db, period_id, limit=100):
     if not 1 <= limit <= 1000:
         raise ValueError('Archive queue limit must be 1..1000')
-    status = period_status(db, period_id)
+    status = processing_period(db, period_id)
     if status['status'] != 'indexed':
         raise ValueError('Finish indexing the archive period before processing pages')
     rows = db.execute('''SELECT pdf,page,url,last_seen,priority_clicks,reason FROM research_archive_pages
@@ -178,7 +191,7 @@ def archive_queue(db, period_id, limit=100):
     return dict(periodId=period_id, pages=[dict(r) for r in rows], model='gpt-6.1-sol', effort='medium')
 
 
-def hydrate_pages(db, period_id, directory, limit=50):
+def hydrate_pages(db, period_id, directory, limit=50, selected_pages=None):
     """Import whole page histories in a compressed batch, preserving all dates."""
     import gzip
     from import_api_history import store_window
@@ -188,7 +201,24 @@ def hydrate_pages(db, period_id, directory, limit=50):
     if not directory.is_relative_to(ROOT/'artifacts'):
         raise ValueError('Page-history evidence must remain in workspace artifacts')
     period = db.execute('SELECT * FROM research_archive_periods WHERE id=?', (period_id,)).fetchone()
-    queue = archive_queue(db, period_id, limit)['pages']
+    if selected_pages is None:
+        queue = archive_queue(db, period_id, limit)['pages']
+    else:
+        if period['status']!='adopting':
+            raise ValueError('Explicit page hydration requires an active archive adoption')
+        pending=db.execute("SELECT value FROM research_settings WHERE name='archive_adoption_in_progress'").fetchone()
+        owner=db.execute("SELECT new_period FROM research_archive_adoptions WHERE id=? AND state='checking'",
+                         (json.loads(pending[0]),)).fetchone() if pending else None
+        if not owner or owner['new_period']!=period_id:
+            raise ValueError('Explicit page hydration does not match the active adoption')
+        if not 1<=limit<=1000 or not selected_pages or len(selected_pages)>limit or len(set(selected_pages))!=len(selected_pages):
+            raise ValueError('Select a bounded set of distinct archive pages')
+        queue=[]
+        for pdf,page in selected_pages:
+            row=db.execute('''SELECT pdf,page FROM research_archive_pages WHERE period_id=? AND pdf=? AND page=?
+                AND eligible=1 AND history_imported=0 AND state='pending' ''',(period_id,pdf,page)).fetchone()
+            if not row:raise ValueError('Selected page does not match the unmaterialized eligible archive queue')
+            queue.append(dict(row))
     if not queue:
         return dict(periodId=period_id, importedPages=0, importedWindows=0, held=[])
     if file_hash(period['snapshot_path']) != period['snapshot_sha256']:
@@ -339,7 +369,7 @@ def review_context_candidates(db,period_id,limit,retry_unavailable=False):
 def archive_context_queue(db,period_id,limit=100,retry_unavailable=False):
     if not 1 <= limit <= 1000:
         raise ValueError('Archive context queue limit must be 1..1000')
-    period_status(db,period_id)
+    processing_period(db,period_id)
     rows = db.execute('''SELECT p.pdf,p.page,p.last_seen,p.priority_clicks FROM research_archive_pages p
         LEFT JOIN research_pages r ON r.pdf=p.pdf AND r.page=p.page
         LEFT JOIN research_context_attempts a ON a.pdf=p.pdf AND a.page=p.page
@@ -364,7 +394,7 @@ def archive_context_queue(db,period_id,limit=100,retry_unavailable=False):
 def reconcile_period(db,period_id):
     """Assess imported pages against the exact current generation request."""
     from outcomes import page_outcome
-    period_status(db,period_id)
+    processing_period(db,period_id)
     rows=db.execute('''SELECT pdf,page,detail FROM research_archive_pages
         WHERE period_id=? AND eligible=1 AND history_imported=1
         ORDER BY last_seen DESC,priority_clicks DESC,pdf,page''',(period_id,)).fetchall()
