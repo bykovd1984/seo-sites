@@ -58,7 +58,7 @@ test('a real preloaded HTTP server reports status/duration/errors without reques
   try {
     const [data] = await once(child.stdout, 'data');
     const base = 'http://127.0.0.1:' + String(data).trim();
-    for (const route of ['/about?__agent_html=1', '/search?q=private@example.com&token=secret', '/unknown/private@example.com', '/privacy', '/api/health', '/_next/static/test.js']) await fetch(base + route, { headers: { Cookie: 'private=secret', Authorization: 'Bearer secret' } });
+    for (const route of ['/about?__agent_html=1', '/search?q=private@example.com&token=secret', '/unknown/private@example.com', '/privacy', '/api/health', '/_next/static/test.js', '/assets/site.test.js', '/diagrams/clock.svg']) await fetch(base + route, { headers: { Cookie: 'private=secret', Authorization: 'Bearer secret' } });
     const deadline = Date.now() + 8000;
     while (received.filter(r => r.event.action === 'http_request').length < 3 && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 50));
     const requests = received.filter(r => r.event.action === 'http_request');

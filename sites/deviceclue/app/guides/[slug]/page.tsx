@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from '@/lib/metadata';
+import { notFound } from '@/lib/http';
 import { ArrowRight, Clock3, CalendarDays, ShieldCheck, CheckCircle2, BookOpen } from 'lucide-react';
 import { findArticle, allArticles, summarize, displayDate } from '@/lib/articles';
 import { parseMarkdown } from '@/lib/content';
@@ -7,7 +7,6 @@ import { categories, site } from '@/lib/site';
 import { Diagram } from '@/components/diagram';
 import { Markdown } from '@/components/markdown';
 import { ArticleCard } from '@/components/article-card';
-export const dynamic='force-dynamic';
 type Props={params:Promise<{slug:string}>};
 export async function generateMetadata({params}:Props):Promise<Metadata>{const a=findArticle((await params).slug);return a?{title:a.title,description:a.description,alternates:{canonical:`/guides/${a.slug}`},openGraph:{type:'article',title:a.title,description:a.description,url:`${site.url}/guides/${a.slug}`,...(a.publishAt?{publishedTime:a.publishAt}:{})}}:{title:'Guide not found'};}
 export default async function Guide({params}:Props){

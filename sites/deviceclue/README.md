@@ -24,7 +24,7 @@ npm start
 npm run smoke
 ```
 
-`npm start -- --port 3016` serves the standalone build. `npm run smoke -- --url http://127.0.0.1:3016` checks another running instance.
+`npm start -- --port 3016` serves the built Node server. `npm run smoke -- --url http://127.0.0.1:3016` checks another running instance.
 
 ## Structure
 
@@ -32,11 +32,16 @@ npm run smoke
 - `content/*.md`: sixteen full English articles; six use the daily release schedule in `PUBLICATION.md`.
 - `scripts/seed.mjs`: validates content and creates an atomic SQLite snapshot. Re-run after editing content.
 - `db/repository.ts`: read-only SQLite queries. No account or user database.
-- `app/`: home, six topic pages, date-filtered article pages, search, about, privacy, 404, robots, sitemap and health.
+- `app/`: server-only templates for home, topics, date-filtered guides, search, about, privacy, 404, robots, sitemap and health. React renders these templates on the server; no React runtime or hydration data is sent to browsers.
+- `server/index.tsx`: a small Node HTTP server for routing, safe static files, HTML/Markdown negotiation, headers and release gates. Next.js is not a dependency.
+- `browser/site.ts`: plain JavaScript for consent and optional Google Analytics, bundled independently with no framework imports. Native document links, search forms and CSS topic filters need no application JavaScript.
+- `scripts/build.mjs`: builds a self-contained server bundle and hashed CSS/JavaScript assets in `dist/`. The build rejects framework dependencies in the browser bundle.
 - `components/diagram.tsx`: original conceptual SVG diagrams. They do not document actual hardware geometry or certify a model.
+- `scripts/diagrams.mjs`: generates `public/diagrams/*.svg` from that artwork during the build. Guide cards load these shared SVGs lazily; the featured and article illustrations stay inline. `npm run diagrams:generate` refreshes the assets separately.
+- `components/explorer.tsx` renders cards and native radio filters on the server. CSS filters the list without JavaScript; off-screen cards defer layout. The complete published list remains in the initial HTML. The consent banner is server-rendered HTML controlled by the small plain-JavaScript entry.
 - `app/globals.css`: responsive graphite / warm-white / amber visual system; no external fonts.
 
-The reference was the sibling Równa ściana site’s Next.js 16 / React 19 / Node 24 / SQLite architecture. Its article text, illustrations, operator information, analytics identity and deployment configuration were not copied. The DeviceClue components, branding, visual system and article body are separate.
+The initial reference was the sibling Równa ściana site’s Next.js 16 / React 19 / Node 24 / SQLite architecture; DeviceClue now serves HTML from its own Node server. Its article text, illustrations, operator information, analytics identity and deployment configuration were not copied. The DeviceClue components, branding, visual system and article body are separate.
 
 ## Editorial and launch status
 
@@ -62,7 +67,7 @@ Service registration evidence is saved locally under the chat's `deviceclue-serv
 
 ## Deployment
 
-`.github/workflows/deploy-deviceclue.yml` validates DeviceClue changes on Node 24. A successful push to `main` builds a standalone Docker image on the existing `seo-sites` VPS runner, checks a temporary candidate, then updates only this site's service with rollback on failure.
+`.github/workflows/deploy-deviceclue.yml` validates DeviceClue changes on Node 24. A successful push to `main` builds a Docker image containing the bundled Node server on the existing `seo-sites` VPS runner, checks a temporary candidate, then updates only this site's service with rollback on failure.
 
 - Service/container: `seo-deviceclue`.
 - Host binding: `127.0.0.1:5006` → container port 3000.
@@ -78,7 +83,7 @@ The Polish workflow is path-filtered so DeviceClue-only changes do not redeploy 
 
 ## Operational logging
 
-The production Node 24 process preloads `runtime/logging.cjs`. Node HTTP diagnostic channels record completed application requests (status and duration), startup and application errors. Health checks, Next static assets, favicon and social images are excluded. Only published article/topic paths and fixed public routes are admitted; other paths become `/[unmatched]`. Query strings, search terms, cookies, headers, IP addresses and raw error messages are not sent. Error objects retain built-in error type and code-frame locations under `/app`; full local container diagnostics remain separate.
+The production Node 24 process preloads `runtime/logging.cjs`. Node HTTP diagnostic channels record completed application requests (status and duration), startup and application errors. Health checks, built CSS/JavaScript, card diagrams, favicon and social images are excluded. Only published article/topic paths and fixed public routes are admitted; other paths become `/[unmatched]`. Query strings, search terms, cookies, headers, IP addresses and raw error messages are not sent. Error objects retain built-in error type and code-frame locations under `/app`; full local container diagnostics remain separate.
 
 Logs are sent in ECS-shaped batches to data stream `logs-deviceclue-prod`, shown in Kibana as **DeviceClue — server logs** (data-view ID `deviceclue-logs`). Filter by `service.name: deviceclue`, `event.action`, `http.response.status_code`, `url.path` or `service.version`. The stream has a 30-day data-retention policy; actual deletion follows Elasticsearch's lifecycle schedule.
 

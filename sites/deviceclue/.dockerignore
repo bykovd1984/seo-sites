@@ -1,5 +1,7 @@
 node_modules
 .next
+dist
+graphify-out
 .git
 screenshots
 verification.json

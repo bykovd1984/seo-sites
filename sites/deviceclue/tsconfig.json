@@ -17,11 +17,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/*": [
         "./*"
@@ -33,11 +28,8 @@
     "allowImportingTsExtensions": true
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
   "exclude": [
@@ -50,6 +42,7 @@
     "outputs",
     "work",
     "components/connector-error.tsx",
-    "lib/utils.ts"
+    "lib/utils.ts",
+    ".next"
   ]
 }

@@ -3,7 +3,6 @@ import { allArticles, summarize } from '@/lib/articles';
 import { categories } from '@/lib/site';
 import { Diagram } from '@/components/diagram';
 import { Explorer } from '@/components/explorer';
-export const dynamic = 'force-dynamic';
 export const metadata = { alternates: { canonical: '/' } };
 const topicIcons = [CookingPot,Snowflake,House,BatteryCharging,Settings2,WashingMachine,House];
 export default function Home() {

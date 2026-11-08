@@ -27,7 +27,7 @@ function install() {
   const transport = createTransport({ endpoint, apiKey, version: process.env.DEPLOY_COMMIT });
   const starts = new WeakMap();
   dc.channel('http.server.request.start').subscribe(({ request, response }) => {
-    if (/^\/(?:_next\/|api\/health(?:[?#]|$)|favicon\.|opengraph-image\.)/.test(request.url || '')) return;
+    if (/^\/(?:_next\/|assets\/|diagrams\/|api\/health(?:[?#]|$)|favicon\.|opengraph-image\.)/.test(request.url || '')) return;
     if (/[?&]__agent_html=1(?:&|$)/.test(request.url || '')) return;
     starts.set(response, { at: process.hrtime.bigint(), path: publicPath(request.url), method: /^(GET|HEAD|POST|PUT|DELETE|PATCH|OPTIONS)$/.test(request.method) ? request.method : 'OTHER' });
   });

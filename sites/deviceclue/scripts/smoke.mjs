@@ -26,6 +26,9 @@ assert.equal(health.site, 'deviceclue');
 assert.equal(health.publication, 'public');
 if (process.env.EXPECTED_DEPLOY_COMMIT) assert.equal(health.commit, process.env.EXPECTED_DEPLOY_COMMIT, 'Deployed commit mismatch');
 const home = await read('/');
+for (const diagram of new Set(published.map(article => article.diagram))) {
+  assert.match(await read('/diagrams/' + diagram + '.svg'), /<svg\b/);
+}
 assert.match(home, /Less guesswork/);
 assert.match(home, /deviceclue\.site/);
 assert.match(home, /<meta name="robots" content="index, follow"/);
@@ -53,7 +56,27 @@ for (const category of pendingCategories) {
   await read('/topics/' + category.id, 404);
   assert.ok(!home.includes('href="/topics/' + category.id + '"'));
 }
-for (const route of ['/about', '/privacy', '/search', '/favicon.svg', '/opengraph-image.png']) await read(route);
+for (const route of ['/about', '/privacy', '/search', '/favicon.svg', '/favicon.ico', '/opengraph-image.png']) await read(route);
+for (const html of [...publicDocuments, await read('/about'), await read('/privacy'), await read('/search'), await read('/guides/missing-guide', 404)]) {
+  assert.match(html, /name="twitter:card" content="summary_large_image"/);
+  assert.match(html, /property="og:image"/);
+  assert.doesNotMatch(html, /\/_next\/|__next_f|__NEXT_DATA__/, 'Framework bootstrap must not reach the browser');
+  const scripts = [...html.matchAll(/<script\b([^>]*)>/g)];
+  assert.equal(scripts.filter(match => /\bsrc=/.test(match[1])).length, 1, 'Exactly one plain browser script');
+  for (const [, attributes] of scripts) assert.ok(/type="application\/ld\+json"/.test(attributes) || /src="\/assets\/site\.[a-f0-9]{12}\.js"/.test(attributes), 'Unexpected executable script');
+}
+const clientUrl = /<script[^>]+src="([^"]+)"/.exec(home)?.[1];
+assert.ok(clientUrl);
+const client = await fetch(base + clientUrl);
+assert.match(client.headers.get('content-type') || '', /javascript/);
+assert.match(client.headers.get('cache-control') || '', /immutable/);
+assert.ok((await client.arrayBuffer()).byteLength < 10_000, 'Plain browser controller exceeds its size budget');
+const cachedClient = await fetch(base + clientUrl, { headers: { 'If-None-Match': client.headers.get('etag') } });
+assert.equal(cachedClient.status, 304);
+for (const route of ['/package.json', '/data/content.sqlite', '/content/catalog.json', '/.env', '/..%2fdata/content.sqlite']) await read(route, 404);
+const post = await fetch(base + '/', { method: 'POST' });
+assert.equal(post.status, 405);
+assert.equal(post.headers.get('allow'), 'GET, HEAD');
 const search = await read('/search?q=Honeywell%20battery');
 assert.match(search, /honeywell-thermostat-battery-replacement/);
 assert.match(search, /<meta name="robots" content="noindex, follow"/);
