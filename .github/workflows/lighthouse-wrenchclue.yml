@@ -1,0 +1,42 @@
+name: Lighthouse WrenchClue
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Full commit SHA currently deployed on wrenchclue.site
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: wrenchclue-lighthouse
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      EXPECTED_DEPLOY_COMMIT: ${{ inputs.expected_commit }}
+      LIGHTHOUSE_PACKAGE_DIR: ${{ runner.temp }}/wrenchclue-lighthouse-tools
+      LIGHTHOUSE_OUTPUT_DIR: ${{ runner.temp }}/wrenchclue-lighthouse-reports
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify Chrome and install isolated audit tools
+        run: |
+          google-chrome --version
+          npm install --prefix "$LIGHTHOUSE_PACKAGE_DIR" --no-audit --no-fund lighthouse@13.6.0
+      - name: Audit every public page and compare sibling sites
+        run: node ops/lighthouse-wrenchclue.mjs
+      - name: Save all Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wrenchclue-lighthouse-${{ inputs.expected_commit }}
+          path: ${{ env.LIGHTHOUSE_OUTPUT_DIR }}
+          if-no-files-found: warn
+          retention-days: 30
