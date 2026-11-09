@@ -6,6 +6,11 @@ on:
         description: Full commit SHA currently deployed on wrenchclue.site
         type: string
         required: true
+      mode:
+        description: Full inventory or bounded browser startup comparison
+        type: choice
+        default: full
+        options: [full, startup]
 permissions:
   contents: read
 concurrency:
@@ -34,12 +39,18 @@ jobs:
         env:
           LIGHTHOUSE_PACKAGE_DIR: ${{ runner.temp }}/wrenchclue-lighthouse-tools
           LIGHTHOUSE_OUTPUT_DIR: ${{ runner.temp }}/wrenchclue-lighthouse-reports
-        run: node ops/lighthouse-wrenchclue.mjs
+          AUDIT_MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$AUDIT_MODE" = startup ]; then
+            node ops/lighthouse-wrenchclue-startup.mjs
+          else
+            node ops/lighthouse-wrenchclue.mjs
+          fi
       - name: Save all Lighthouse reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: wrenchclue-lighthouse-${{ inputs.expected_commit }}
+          name: wrenchclue-lighthouse-${{ inputs.mode }}-${{ inputs.expected_commit }}
           path: ${{ runner.temp }}/wrenchclue-lighthouse-reports
           if-no-files-found: warn
           retention-days: 30
