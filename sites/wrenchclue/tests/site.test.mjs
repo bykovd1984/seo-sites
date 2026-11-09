@@ -69,3 +69,10 @@ test('tables are keyboard-accessible scrolling regions and article links point t
   assert.equal(result.headings[0].id,'compare-options');assert.ok(result.html.includes('tabindex="0"'));
   assert.ok(result.html.includes('href="/guides/car-overheating/"'));assert.ok(!result.html.includes('<h1>'));
 });
+
+test('guide listings preserve sequential headings for screen-reader navigation',()=>{
+  const html=pages.listing('/guides/','The guidebook.','Find a guide.',catalog.articles);
+  assert.equal((html.match(/<h1>/g)||[]).length,1);
+  assert.equal((html.match(/<h2>/g)||[]).length,21);
+  assert.ok(!html.includes('<h3>'));
+});
