@@ -7,7 +7,7 @@ import {Pages} from '../src/pages.ts';
 const catalog=readCatalog();validateContent(catalog);
 const pictures=readPictures();
 if(pictures.length!==20||new Set(pictures.map(p=>p.id)).size!==20)throw Error('All twenty article illustrations are required');
-for(const p of pictures){for(const asset of [p.large,p.small])if(!fs.existsSync(path.join(ROOT,'public',asset)))throw Error('Missing illustration '+asset);}
+for(const p of pictures){for(const asset of [p.large,p.small,p.medium,p.thumbnail])if(!asset||!fs.existsSync(path.join(ROOT,'public',asset)))throw Error('Missing illustration '+asset);}
 const db=new DatabaseSync(path.resolve(ROOT,'data/content.sqlite'),{readOnly:true});
 const saved=JSON.parse((db.prepare("SELECT value FROM metadata WHERE key='catalog'").get() as {value:string}).value) as Catalog;
 if(JSON.stringify(saved)!==JSON.stringify(catalog))throw Error('Content snapshot is stale; run npm run db:seed');

@@ -1,8 +1,8 @@
 # WrenchClue
 
-US automotive repair guidebook at https://wrenchclue.site. Twenty original articles were written with `gpt-6-astra`, reasoning effort `xhigh`. Their frozen bodies, primary-source registry and generation receipts are in `content/`. Each article has a distinct AI-generated illustration, visibly labelled, with responsive WebP versions. No independent vehicle testing or certified mechanic review is claimed.
+US automotive repair guidebook at https://wrenchclue.site. Twenty original articles were written with `gpt-6-astra`, reasoning effort `xhigh`. Their frozen bodies, primary-source registry and generation receipts are in `content/`. Each article has a distinct AI-generated illustration, visibly labelled, with responsive 400, 640, 800 and 1200 pixel WebP versions. No independent vehicle testing or certified mechanic review is claimed.
 
-The design uses warm off-white, charcoal, a restrained orange accent and serif headlines. Pages are rendered at build time; the browser receives a small plain-JavaScript search enhancement. No analytics, advertising trackers or account forms are installed.
+The design uses warm off-white, charcoal, a restrained orange accent and serif headlines. Pages are rendered at build time; only the search page receives a small plain-JavaScript search enhancement. Article and information pages load no browser JavaScript or framework runtime. No analytics, advertising trackers or account forms are installed.
 
 ## Local checks
 

@@ -19,14 +19,36 @@ test('the complete Astra xhigh publication preserves all twenty article bodies a
   const modified=structuredClone(catalog);modified.articles[0].markdownSha256='altered';
   assert.throws(()=>validateContent(modified),/body changed/);
 });
-test('every article has a distinct optimized cover in both responsive sizes',async()=>{
+test('every article has a distinct optimized cover in all four responsive sizes',async()=>{
   assert.equal(pictures.length,20);assert.equal(new Set(pictures.map(p=>p.sha256)).size,20);
   for(const p of pictures){
     const large=await sharp(path.join(ROOT,'public',p.large)).metadata();
     const small=await sharp(path.join(ROOT,'public',p.small)).metadata();
     assert.equal(large.width,1200);assert.equal(large.height,800);assert.equal(large.format,'webp');
     assert.equal(small.width,640);assert.equal(small.height,427);
+    const medium=await sharp(path.join(ROOT,'public',p.medium)).metadata();
+    const thumbnail=await sharp(path.join(ROOT,'public',p.thumbnail)).metadata();
+    assert.equal(medium.width,800);assert.equal(medium.height,533);assert.equal(medium.format,'webp');
+    assert.equal(thumbnail.width,400);assert.equal(thumbnail.height,267);assert.equal(thumbnail.format,'webp');
   }
+});
+
+test('article covers and cards select responsive images for their actual layout slots',()=>{
+  const article=catalog.articles[0];
+  const cover=pages.picture(article,true,'cover');
+  assert.ok(cover.includes('400w, '));assert.ok(cover.includes('800w, '));
+  assert.ok(cover.includes('calc(100vw - 38px)'));assert.ok(cover.includes('1000px'));
+  assert.ok(pages.picture(article).includes('calc((100vw - 58px) / 2)'));
+});
+
+test('only the search page loads the plain browser script',()=>{
+  const article=catalog.articles[0];
+  for(const html of [pages.home(),pages.article(article,renderBody(articleMarkdown(article))),pages.about(),pages.privacy()]){
+    assert.ok(!/<script[^>]+src=/.test(html));
+    assert.ok(!/\/_next\/|hydrateRoot|__NEXT_DATA__/.test(html));
+  }
+  const search=pages.listing('/search/','Search','Find a guide',catalog.articles,'search');
+  assert.equal((search.match(/<script[^>]+src=/g)||[]).length,1);
 });
 test('published article pages have one H1, valid navigation, sources, AI labels and Article metadata',()=>{
   const allSlugs=new Set(catalog.articles.map(a=>a.slug));

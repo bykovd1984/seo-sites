@@ -13,7 +13,13 @@
       "smallSha256": "cd27e2cf0e42ee81b0b47a15e6b1132d8e41a15b438c7a955e6c80814c6a2d6c",
       "largeBytes": 61396,
       "smallBytes": 19862,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/p0420-code.1ef3cb3eb0cf.400.webp",
+      "thumbnailSha256": "1ef3cb3eb0cf4fc7bceca6b5626e8059e3715a824ee355b1bf288f84d6677731",
+      "thumbnailBytes": 8874,
+      "medium": "/images/p0420-code.fc2294d64a31.800.webp",
+      "mediumSha256": "fc2294d64a310cb36470c6c500b951ba979b86afed4fcbae9b91480a8aacbea5",
+      "mediumBytes": 28444
     },
     {
       "articleId": "02",
@@ -27,7 +33,13 @@
       "smallSha256": "dbacecf54e15129ddb2a1da0bbc9f824daa5900099571fcc2383d7b44a5fa0a9",
       "largeBytes": 34504,
       "smallBytes": 10776,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/p0300-code.2dce83ddf5bf.400.webp",
+      "thumbnailSha256": "2dce83ddf5bf7b401f8735b000638423c6c7b5408bdfea25230133d67c44a4f4",
+      "thumbnailBytes": 5220,
+      "medium": "/images/p0300-code.a8fbf33d14eb.800.webp",
+      "mediumSha256": "a8fbf33d14ebb7b5a2d6b3c05f95348d7869478920d09178f557b2728a7bc98c",
+      "mediumBytes": 14832
     },
     {
       "articleId": "03",
@@ -41,7 +53,13 @@
       "smallSha256": "967ff5d7e6834d06deb983900bd3d8ed6ed07046e23ffc911043da9740d4ef67",
       "largeBytes": 55354,
       "smallBytes": 16648,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/p0171-code.29cc662c990b.400.webp",
+      "thumbnailSha256": "29cc662c990ba60f91a574f3e2dc877638de1920b2eac90a1a3e0b42db9c7018",
+      "thumbnailBytes": 7768,
+      "medium": "/images/p0171-code.19ff2596ae2f.800.webp",
+      "mediumSha256": "19ff2596ae2fd616abb0050c70176af20c2cd5fb86e7322e926f8637d421403d",
+      "mediumBytes": 23714
     },
     {
       "articleId": "04",
@@ -55,7 +73,13 @@
       "smallSha256": "9486b3fa34bff02d352c79170c9c25a9bbd8ceeb78da0d9f67e780555b640daa",
       "largeBytes": 36136,
       "smallBytes": 12782,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/flashing-check-engine-light.1966e882ff65.400.webp",
+      "thumbnailSha256": "1966e882ff65e19a62f364d0e7d12565a8c33baa0fd076954511b168acdebafc",
+      "thumbnailBytes": 6270,
+      "medium": "/images/flashing-check-engine-light.94e0526178ad.800.webp",
+      "mediumSha256": "94e0526178adf465940d3ca6b4bfa1cc8ffc5e6a70dc6018d9659d7c206564aa",
+      "mediumBytes": 17520
     },
     {
       "articleId": "05",
@@ -69,7 +93,13 @@
       "smallSha256": "aab0e23e78f9d3471236bc26998902880b35c457c32bacbacacbbe2c3c5281cc",
       "largeBytes": 68108,
       "smallBytes": 19932,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/car-wont-crank.cc6c995da8b8.400.webp",
+      "thumbnailSha256": "cc6c995da8b8b50b946d673d2ed0c838860f399a267b8597f75e6e2e3036d9fc",
+      "thumbnailBytes": 9358,
+      "medium": "/images/car-wont-crank.987df24cdebc.800.webp",
+      "mediumSha256": "987df24cdebcc7621dfe863d1109f993a72168e8f31b48a78e513a7476cbeb70",
+      "mediumBytes": 27904
     },
     {
       "articleId": "06",
@@ -83,7 +113,13 @@
       "smallSha256": "7c90e9a9e723ae273570a2d3efe26e7e69c5c121bf6251037cbce03318ce7695",
       "largeBytes": 89848,
       "smallBytes": 28096,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/car-ac-not-blowing-cold.da12707742cf.400.webp",
+      "thumbnailSha256": "da12707742cf217226840c5644e54546471088fcd12c5c8240985bca3f939227",
+      "thumbnailBytes": 12700,
+      "medium": "/images/car-ac-not-blowing-cold.be9457190f55.800.webp",
+      "mediumSha256": "be9457190f55642dd37d88bfa88fe38a98769360ac18a04b768e6563d3766085",
+      "mediumBytes": 40060
     },
     {
       "articleId": "07",
@@ -97,7 +133,13 @@
       "smallSha256": "fd1166d8d480f2fa87ece10984946c3736f9ef223777f28cd2fb6af1b22f1d7e",
       "largeBytes": 107596,
       "smallBytes": 34226,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/car-overheating.3a8b935166ce.400.webp",
+      "thumbnailSha256": "3a8b935166ce8117f6f62ce2fc0280c7d60e4c1ef8d84da1c40deb72c5638177",
+      "thumbnailBytes": 14006,
+      "medium": "/images/car-overheating.4927682a2d76.800.webp",
+      "mediumSha256": "4927682a2d768b3b07c73f2c523294c29390def9057cf8849601eab7b4fe74e8",
+      "mediumBytes": 50024
     },
     {
       "articleId": "08",
@@ -111,7 +153,13 @@
       "smallSha256": "308446ac1ecadac7388238d06d391639f4d77edf028cf3f9636b7fa428d67797",
       "largeBytes": 78282,
       "smallBytes": 20518,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/car-oil-leak.59663b32030d.400.webp",
+      "thumbnailSha256": "59663b32030d8bbceece300d3be8edca8a0481d685c5a20a66193f4a62b6a6e7",
+      "thumbnailBytes": 8162,
+      "medium": "/images/car-oil-leak.cea43b18ab05.800.webp",
+      "mediumSha256": "cea43b18ab05642cea35dc20b5e7c47d7ae24aac2d3a5890d00e4e563486765c",
+      "mediumBytes": 31096
     },
     {
       "articleId": "09",
@@ -125,7 +173,13 @@
       "smallSha256": "854bf7e3fc5c56d861c79c4b4cb1545bb854ddf9544ae3fb1a64ee7e361e539d",
       "largeBytes": 96440,
       "smallBytes": 28528,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/alternator-replacement-cost.972fba6961be.400.webp",
+      "thumbnailSha256": "972fba6961be4f9a25feabb11eeb1d8d5a41000c6865b752f0fb039b0d477e32",
+      "thumbnailBytes": 12962,
+      "medium": "/images/alternator-replacement-cost.f047babbaa8a.800.webp",
+      "mediumSha256": "f047babbaa8ab20fbbff15318ce2b1566780de4284d37779d3fa8466f348d993",
+      "mediumBytes": 40018
     },
     {
       "articleId": "10",
@@ -139,7 +193,13 @@
       "smallSha256": "5e7f9533fedb99fc2d2c18e29858d43fdcbb95706ccfc7a261d351891b4a545e",
       "largeBytes": 81686,
       "smallBytes": 21252,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/starter-replacement-cost.09a52e24a8d6.400.webp",
+      "thumbnailSha256": "09a52e24a8d6d0fbf78d62caab0f4dc8a133cd59361b741ce2fbac10cd1809e5",
+      "thumbnailBytes": 9406,
+      "medium": "/images/starter-replacement-cost.12b968516a50.800.webp",
+      "mediumSha256": "12b968516a502a3e295e5f77e5c36d18c8ce51ae464fe6535f83c7865d6327dd",
+      "mediumBytes": 31918
     },
     {
       "articleId": "11",
@@ -153,7 +213,13 @@
       "smallSha256": "b4b33bf8d3be391198d49572cb48d47295ce3c01f44e3063f1f515d4dbffbdd2",
       "largeBytes": 75670,
       "smallBytes": 20310,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/brake-pads-rotors-replacement-cost.845652c0fbed.400.webp",
+      "thumbnailSha256": "845652c0fbed5ff7562bad5e18f59ab5073ab098a8be3cf787d5d59a52d70af4",
+      "thumbnailBytes": 8748,
+      "medium": "/images/brake-pads-rotors-replacement-cost.85aa5f5f6a25.800.webp",
+      "mediumSha256": "85aa5f5f6a25e8a51124aae077c54b4ea85ca71bffe82643533efb5959fe4594",
+      "mediumBytes": 28968
     },
     {
       "articleId": "12",
@@ -167,7 +233,13 @@
       "smallSha256": "48ffef608b9ac506ae98c83bc772411d986771963a7ae2cfb5cb6956fa407c46",
       "largeBytes": 112160,
       "smallBytes": 36090,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/transmission-replacement-cost.3ede5112f8a9.400.webp",
+      "thumbnailSha256": "3ede5112f8a974220897b80534f59a7646516b4beae7b1eeeb94601cda560130",
+      "thumbnailBytes": 16430,
+      "medium": "/images/transmission-replacement-cost.1bdd0660a519.800.webp",
+      "mediumSha256": "1bdd0660a5194f2a2797388676481b96d8a6e2a55a41f4673c09ea29fa2d4fa5",
+      "mediumBytes": 50848
     },
     {
       "articleId": "13",
@@ -181,7 +253,13 @@
       "smallSha256": "51d1a932f7e1394a05f09932a862364d6525cc49aa7e59dcc6d8129a7610474c",
       "largeBytes": 72774,
       "smallBytes": 26462,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/suspension-clunk-squeak.9cce8032c485.400.webp",
+      "thumbnailSha256": "9cce8032c485c41fc68da6640d90b01035265a73e95d44ef15f1cdb18b51795f",
+      "thumbnailBytes": 13042,
+      "medium": "/images/suspension-clunk-squeak.6e635ab5cf70.800.webp",
+      "mediumSha256": "6e635ab5cf7039a4068b87a0c271865c3727ba8d1fea264d9c871ef846836774",
+      "mediumBytes": 35406
     },
     {
       "articleId": "14",
@@ -195,7 +273,13 @@
       "smallSha256": "2fd83514efa8a66ec61bf87f832b8ff6a08e200a6fa20a2b6884a07b0a94ddbc",
       "largeBytes": 89724,
       "smallBytes": 30954,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/blown-head-gasket-symptoms.d38d1a390ebc.400.webp",
+      "thumbnailSha256": "d38d1a390ebc906eba93ef0779f97ed585da37071b098db854db35034c129444",
+      "thumbnailBytes": 14560,
+      "medium": "/images/blown-head-gasket-symptoms.8e893cbd4558.800.webp",
+      "mediumSha256": "8e893cbd455807e42c41b3b3f2135e7640a40fb97981533da158d78299c4978c",
+      "mediumBytes": 42734
     },
     {
       "articleId": "15",
@@ -209,7 +293,13 @@
       "smallSha256": "367d2f3322bc711f942f8538f70191f9a5dc6fd4c81258dce293af0396ebe5ce",
       "largeBytes": 53112,
       "smallBytes": 17094,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/car-battery-drains-overnight.d5fe5947c443.400.webp",
+      "thumbnailSha256": "d5fe5947c4432cdb79e76ba4bfb39ffd9830ca465cd4a8f03700e7348b9566ea",
+      "thumbnailBytes": 8216,
+      "medium": "/images/car-battery-drains-overnight.11f97cfeb7dc.800.webp",
+      "mediumSha256": "11f97cfeb7dc5e7adab2773bdaeed7e88dd91327a9fbafbe8d782bcc63191166",
+      "mediumBytes": 23416
     },
     {
       "articleId": "16",
@@ -223,7 +313,13 @@
       "smallSha256": "26849f779175d9bda4080446182991a4e9c77c96f3c99a38528a5b03cbe582eb",
       "largeBytes": 71624,
       "smallBytes": 22790,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/bad-spark-plug-symptoms.6bcdec75c861.400.webp",
+      "thumbnailSha256": "6bcdec75c86169fcf1abd8355ef33e9d2f312033babab69bfc2a8d04400bc295",
+      "thumbnailBytes": 10558,
+      "medium": "/images/bad-spark-plug-symptoms.626b9677fd3e.800.webp",
+      "mediumSha256": "626b9677fd3efef7fe4ec05ac9e30c0430300e504fee405e1410dd7f6d62ea77",
+      "mediumBytes": 32544
     },
     {
       "articleId": "17",
@@ -237,7 +333,13 @@
       "smallSha256": "9b8c66994d313e3667d08031aa2516760cda5133e59f3917e8dac8dbf9c20b38",
       "largeBytes": 91174,
       "smallBytes": 29106,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/wheel-bearing-noise.92544ffad514.400.webp",
+      "thumbnailSha256": "92544ffad514f23a375452eb1c7c86ccabbc9198d8ec33e119edde0ae60ec4f6",
+      "thumbnailBytes": 13322,
+      "medium": "/images/wheel-bearing-noise.bed64071b4c4.800.webp",
+      "mediumSha256": "bed64071b4c43f40ccbcb2a0fa74fcf4f211779f162f261c40a7c3a4348643f5",
+      "mediumBytes": 40666
     },
     {
       "articleId": "18",
@@ -251,7 +353,13 @@
       "smallSha256": "32683ef7542785b76aeab3294853c2826ab05316a21a44a32eb51daad892a838",
       "largeBytes": 35766,
       "smallBytes": 12032,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/fuel-pump-replacement-cost.363d2f74313a.400.webp",
+      "thumbnailSha256": "363d2f74313afc5ea5fffba3c678ed14f0bc15b136be28bf5006b04983dfb364",
+      "thumbnailBytes": 5996,
+      "medium": "/images/fuel-pump-replacement-cost.d0f437013b3e.800.webp",
+      "mediumSha256": "d0f437013b3e633863639fa58b5a65459815b31075dd848167fe67a6818dfafb",
+      "mediumBytes": 16986
     },
     {
       "articleId": "19",
@@ -265,7 +373,13 @@
       "smallSha256": "b836ec046077e2ce8b23156972c2c48c5a4c7564a7103e5d907e31aa99eca941",
       "largeBytes": 52998,
       "smallBytes": 16948,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/catalytic-converter-replacement-cost.4b2b2e6fd563.400.webp",
+      "thumbnailSha256": "4b2b2e6fd56304796a02d0177647efa8449372abc5ad2871f92b7eac8c77f4b6",
+      "thumbnailBytes": 8124,
+      "medium": "/images/catalytic-converter-replacement-cost.66c8b5a6f42d.800.webp",
+      "mediumSha256": "66c8b5a6f42dc894ffe7ae37acccb0a8c75c42e21f57b3a84cfa0a9f5bb6a090",
+      "mediumBytes": 23864
     },
     {
       "articleId": "20",
@@ -279,7 +393,13 @@
       "smallSha256": "df9cc7b0b1319dbd152607dc3a3972315125ffa171b109b7059e6527caa3db5c",
       "largeBytes": 90800,
       "smallBytes": 24640,
-      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram."
+      "caption": "AI-generated illustration. Generic components; not a vehicle-specific repair diagram.",
+      "thumbnail": "/images/how-long-do-brake-pads-last.b7e7ac5a239e.400.webp",
+      "thumbnailSha256": "b7e7ac5a239ec1074b12c143512e468a79ce90df0040fbe3495bae25342ae9c4",
+      "thumbnailBytes": 9686,
+      "medium": "/images/how-long-do-brake-pads-last.ee852d4ef358.800.webp",
+      "mediumSha256": "ee852d4ef358f775233b71e9de8417d8858a21bfd918c34d64b0a2087676c4d5",
+      "mediumBytes": 37594
     }
   ]
 }

@@ -22,14 +22,20 @@ for(const a of catalog.articles){
   fs.writeFileSync(path.join(originalDir,`${a.id}-${a.slug}.png`),png);
   const large=await sharp(png).resize({width:1200,height:800,fit:'cover'}).webp({quality:83,effort:6}).toBuffer();
   const small=await sharp(png).resize({width:640,height:427,fit:'cover'}).webp({quality:80,effort:6}).toBuffer();
+  const medium=await sharp(png).resize({width:800,height:533,fit:'cover'}).webp({quality:80,effort:6}).toBuffer();
+  const thumbnail=await sharp(png).resize({width:400,height:267,fit:'cover'}).webp({quality:78,effort:6}).toBuffer();
   const hash=sha(large).slice(0,12);
   const largePath=`/images/${a.slug}.${hash}.1200.webp`;
   const smallPath=`/images/${a.slug}.${hash}.640.webp`;
+  const mediumPath=`/images/${a.slug}.${sha(medium).slice(0,12)}.800.webp`;
+  const thumbnailPath=`/images/${a.slug}.${sha(thumbnail).slice(0,12)}.400.webp`;
   fs.writeFileSync(path.join(ROOT,'public',largePath),large);
   fs.writeFileSync(path.join(ROOT,'public',smallPath),small);
-  pictures.push({id:a.id,slug:a.slug,large:largePath,small:smallPath,width:1200,height:800,sha256:sha(large)});
-  provenance.push({articleId:a.id,slug:a.slug,method:r.method,prompt:r.prompt,sourceSha256:sourceSha,large:largePath,small:smallPath,largeSha256:sha(large),smallSha256:sha(small),largeBytes:large.length,smallBytes:small.length,caption:'AI-generated illustration. Generic components; not a vehicle-specific repair diagram.'});
+  fs.writeFileSync(path.join(ROOT,'public',mediumPath),medium);
+  fs.writeFileSync(path.join(ROOT,'public',thumbnailPath),thumbnail);
+  pictures.push({id:a.id,slug:a.slug,large:largePath,small:smallPath,medium:mediumPath,thumbnail:thumbnailPath,width:1200,height:800,sha256:sha(large)});
+  provenance.push({articleId:a.id,slug:a.slug,method:r.method,prompt:r.prompt,sourceSha256:sourceSha,large:largePath,small:smallPath,medium:mediumPath,thumbnail:thumbnailPath,largeSha256:sha(large),smallSha256:sha(small),mediumSha256:sha(medium),thumbnailSha256:sha(thumbnail),largeBytes:large.length,smallBytes:small.length,mediumBytes:medium.length,thumbnailBytes:thumbnail.length,caption:'AI-generated illustration. Generic components; not a vehicle-specific repair diagram.'});
 }
 fs.writeFileSync(path.resolve(ROOT,'content/images.json'),JSON.stringify(pictures,null,2)+'\n');
 fs.writeFileSync(path.resolve(ROOT,'content/image-provenance.json'),JSON.stringify({method:'built-in image_gen',images:provenance},null,2)+'\n');
-console.log(JSON.stringify({images:pictures.length,totalWebpBytes:provenance.reduce((n,p)=>n+p.largeBytes+p.smallBytes,0)}));
+console.log(JSON.stringify({images:pictures.length,totalWebpBytes:provenance.reduce((n,p)=>n+p.largeBytes+p.smallBytes+p.mediumBytes+p.thumbnailBytes,0)}));

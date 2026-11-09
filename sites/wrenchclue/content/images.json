@@ -6,7 +6,9 @@
     "small": "/images/p0420-code.1104748b755c.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "1104748b755cb6af87e2081af04e3e52e4338f7209a1ffd7610b85440101e25b"
+    "sha256": "1104748b755cb6af87e2081af04e3e52e4338f7209a1ffd7610b85440101e25b",
+    "thumbnail": "/images/p0420-code.1ef3cb3eb0cf.400.webp",
+    "medium": "/images/p0420-code.fc2294d64a31.800.webp"
   },
   {
     "id": "02",
@@ -15,7 +17,9 @@
     "small": "/images/p0300-code.15afd43dc409.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "15afd43dc4091f06466d805b0010d2518dc0e5bfa8e7603165a6fcaf7a84d125"
+    "sha256": "15afd43dc4091f06466d805b0010d2518dc0e5bfa8e7603165a6fcaf7a84d125",
+    "thumbnail": "/images/p0300-code.2dce83ddf5bf.400.webp",
+    "medium": "/images/p0300-code.a8fbf33d14eb.800.webp"
   },
   {
     "id": "03",
@@ -24,7 +28,9 @@
     "small": "/images/p0171-code.64e4c58aac90.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "64e4c58aac9036adbdfcfa422fbae87734b2e520fee5d9a538a8be141ec31408"
+    "sha256": "64e4c58aac9036adbdfcfa422fbae87734b2e520fee5d9a538a8be141ec31408",
+    "thumbnail": "/images/p0171-code.29cc662c990b.400.webp",
+    "medium": "/images/p0171-code.19ff2596ae2f.800.webp"
   },
   {
     "id": "04",
@@ -33,7 +39,9 @@
     "small": "/images/flashing-check-engine-light.224c35cf5057.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "224c35cf50576c094cf546db76cf5df6c277d01516182bd07a64deb76f117f36"
+    "sha256": "224c35cf50576c094cf546db76cf5df6c277d01516182bd07a64deb76f117f36",
+    "thumbnail": "/images/flashing-check-engine-light.1966e882ff65.400.webp",
+    "medium": "/images/flashing-check-engine-light.94e0526178ad.800.webp"
   },
   {
     "id": "05",
@@ -42,7 +50,9 @@
     "small": "/images/car-wont-crank.01c9d72ef5dc.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "01c9d72ef5dce09b53ae9fd27053c6b59384451276c0436c021c00820df3f994"
+    "sha256": "01c9d72ef5dce09b53ae9fd27053c6b59384451276c0436c021c00820df3f994",
+    "thumbnail": "/images/car-wont-crank.cc6c995da8b8.400.webp",
+    "medium": "/images/car-wont-crank.987df24cdebc.800.webp"
   },
   {
     "id": "06",
@@ -51,7 +61,9 @@
     "small": "/images/car-ac-not-blowing-cold.40fa61d6daf0.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "40fa61d6daf0324be52518849a98ce86f183ca3379d24f4fe026dda8528e0171"
+    "sha256": "40fa61d6daf0324be52518849a98ce86f183ca3379d24f4fe026dda8528e0171",
+    "thumbnail": "/images/car-ac-not-blowing-cold.da12707742cf.400.webp",
+    "medium": "/images/car-ac-not-blowing-cold.be9457190f55.800.webp"
   },
   {
     "id": "07",
@@ -60,7 +72,9 @@
     "small": "/images/car-overheating.4d84d3a9fadb.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "4d84d3a9fadb204146e64ef8464d4b079a0674c5ffdc7ad45e11d37a232ec80c"
+    "sha256": "4d84d3a9fadb204146e64ef8464d4b079a0674c5ffdc7ad45e11d37a232ec80c",
+    "thumbnail": "/images/car-overheating.3a8b935166ce.400.webp",
+    "medium": "/images/car-overheating.4927682a2d76.800.webp"
   },
   {
     "id": "08",
@@ -69,7 +83,9 @@
     "small": "/images/car-oil-leak.d0a3b668977f.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "d0a3b668977f547f4d5c06a5a80f93fa8a9114dad1588a19a670379cccb76462"
+    "sha256": "d0a3b668977f547f4d5c06a5a80f93fa8a9114dad1588a19a670379cccb76462",
+    "thumbnail": "/images/car-oil-leak.59663b32030d.400.webp",
+    "medium": "/images/car-oil-leak.cea43b18ab05.800.webp"
   },
   {
     "id": "09",
@@ -78,7 +94,9 @@
     "small": "/images/alternator-replacement-cost.992ff2dd0e79.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "992ff2dd0e7961ff488c7d981dcf9e3621666e2c639a669e4cd1caf0203cda2c"
+    "sha256": "992ff2dd0e7961ff488c7d981dcf9e3621666e2c639a669e4cd1caf0203cda2c",
+    "thumbnail": "/images/alternator-replacement-cost.972fba6961be.400.webp",
+    "medium": "/images/alternator-replacement-cost.f047babbaa8a.800.webp"
   },
   {
     "id": "10",
@@ -87,7 +105,9 @@
     "small": "/images/starter-replacement-cost.08bd21f8a733.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "08bd21f8a7335482aa110c35eccc3e61bab7732120025cf52667098a8bc914e5"
+    "sha256": "08bd21f8a7335482aa110c35eccc3e61bab7732120025cf52667098a8bc914e5",
+    "thumbnail": "/images/starter-replacement-cost.09a52e24a8d6.400.webp",
+    "medium": "/images/starter-replacement-cost.12b968516a50.800.webp"
   },
   {
     "id": "11",
@@ -96,7 +116,9 @@
     "small": "/images/brake-pads-rotors-replacement-cost.fca58751fbe3.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "fca58751fbe3b4425eb7fda18d81fab1d7056a203d28cb58f2628e3f38fcd138"
+    "sha256": "fca58751fbe3b4425eb7fda18d81fab1d7056a203d28cb58f2628e3f38fcd138",
+    "thumbnail": "/images/brake-pads-rotors-replacement-cost.845652c0fbed.400.webp",
+    "medium": "/images/brake-pads-rotors-replacement-cost.85aa5f5f6a25.800.webp"
   },
   {
     "id": "12",
@@ -105,7 +127,9 @@
     "small": "/images/transmission-replacement-cost.255e68835807.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "255e688358075ab8970d81cf9804c024610cfd8e6cc5c5ef3a3260a17566292c"
+    "sha256": "255e688358075ab8970d81cf9804c024610cfd8e6cc5c5ef3a3260a17566292c",
+    "thumbnail": "/images/transmission-replacement-cost.3ede5112f8a9.400.webp",
+    "medium": "/images/transmission-replacement-cost.1bdd0660a519.800.webp"
   },
   {
     "id": "13",
@@ -114,7 +138,9 @@
     "small": "/images/suspension-clunk-squeak.656cc26080cf.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "656cc26080cf24008d043af8f8b1353fb8e80bbb5531f10b9f0c3c7203bcb556"
+    "sha256": "656cc26080cf24008d043af8f8b1353fb8e80bbb5531f10b9f0c3c7203bcb556",
+    "thumbnail": "/images/suspension-clunk-squeak.9cce8032c485.400.webp",
+    "medium": "/images/suspension-clunk-squeak.6e635ab5cf70.800.webp"
   },
   {
     "id": "14",
@@ -123,7 +149,9 @@
     "small": "/images/blown-head-gasket-symptoms.76c844ae44d1.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "76c844ae44d1eaaea0d802c5bef2135a5d5d92ed83fb5904b88f3bad1e53aa58"
+    "sha256": "76c844ae44d1eaaea0d802c5bef2135a5d5d92ed83fb5904b88f3bad1e53aa58",
+    "thumbnail": "/images/blown-head-gasket-symptoms.d38d1a390ebc.400.webp",
+    "medium": "/images/blown-head-gasket-symptoms.8e893cbd4558.800.webp"
   },
   {
     "id": "15",
@@ -132,7 +160,9 @@
     "small": "/images/car-battery-drains-overnight.868b8f52874b.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "868b8f52874b655510f68776f68e6148042309c906f094833e0d0fb001dd8e9e"
+    "sha256": "868b8f52874b655510f68776f68e6148042309c906f094833e0d0fb001dd8e9e",
+    "thumbnail": "/images/car-battery-drains-overnight.d5fe5947c443.400.webp",
+    "medium": "/images/car-battery-drains-overnight.11f97cfeb7dc.800.webp"
   },
   {
     "id": "16",
@@ -141,7 +171,9 @@
     "small": "/images/bad-spark-plug-symptoms.b567b82d2da6.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "b567b82d2da6cb26f5460964c9854feafc499b836493eec81e5f29113fb2abb0"
+    "sha256": "b567b82d2da6cb26f5460964c9854feafc499b836493eec81e5f29113fb2abb0",
+    "thumbnail": "/images/bad-spark-plug-symptoms.6bcdec75c861.400.webp",
+    "medium": "/images/bad-spark-plug-symptoms.626b9677fd3e.800.webp"
   },
   {
     "id": "17",
@@ -150,7 +182,9 @@
     "small": "/images/wheel-bearing-noise.490424b0a1f6.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "490424b0a1f624f8412a3e79e81e53d262fbc226cb1a99ed5bd4e388f6dab123"
+    "sha256": "490424b0a1f624f8412a3e79e81e53d262fbc226cb1a99ed5bd4e388f6dab123",
+    "thumbnail": "/images/wheel-bearing-noise.92544ffad514.400.webp",
+    "medium": "/images/wheel-bearing-noise.bed64071b4c4.800.webp"
   },
   {
     "id": "18",
@@ -159,7 +193,9 @@
     "small": "/images/fuel-pump-replacement-cost.4a47fbbeec1e.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "4a47fbbeec1e252bd913938ef45d9af445fa16529947ebe25213eaf027e85258"
+    "sha256": "4a47fbbeec1e252bd913938ef45d9af445fa16529947ebe25213eaf027e85258",
+    "thumbnail": "/images/fuel-pump-replacement-cost.363d2f74313a.400.webp",
+    "medium": "/images/fuel-pump-replacement-cost.d0f437013b3e.800.webp"
   },
   {
     "id": "19",
@@ -168,7 +204,9 @@
     "small": "/images/catalytic-converter-replacement-cost.3c7d56c53989.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "3c7d56c53989e9848f1daf046286dda77af6c2142384767bc6c3fbeea6ea5bef"
+    "sha256": "3c7d56c53989e9848f1daf046286dda77af6c2142384767bc6c3fbeea6ea5bef",
+    "thumbnail": "/images/catalytic-converter-replacement-cost.4b2b2e6fd563.400.webp",
+    "medium": "/images/catalytic-converter-replacement-cost.66c8b5a6f42d.800.webp"
   },
   {
     "id": "20",
@@ -177,6 +215,8 @@
     "small": "/images/how-long-do-brake-pads-last.d69ddf9473d1.640.webp",
     "width": 1200,
     "height": 800,
-    "sha256": "d69ddf9473d1615ca0304c5864811483ceef7f960d491b4e5b90a1a8212c66ca"
+    "sha256": "d69ddf9473d1615ca0304c5864811483ceef7f960d491b4e5b90a1a8212c66ca",
+    "thumbnail": "/images/how-long-do-brake-pads-last.b7e7ac5a239e.400.webp",
+    "medium": "/images/how-long-do-brake-pads-last.ee852d4ef358.800.webp"
   }
 ]

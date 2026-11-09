@@ -9,7 +9,7 @@ export interface Source {id:string;title:string;url:string;checkedAt:string}
 export interface Category {slug:string;title:string;description:string}
 export interface Article {id:string;slug:string;title:string;shortTitle:string;description:string;category:string;intent:string;markdown:string;sourceIds:string[];relatedSlugs:string[];wordCount:number;readMinutes:number;imageAlt:string;sourceCheckedAt:string;markdownSha256:string}
 export interface Catalog {version:number;site:{name:string;origin:string;publishedAt:string};categories:Category[];articles:Article[];sources:Source[]}
-export interface Picture {id:string;slug:string;large:string;small:string;width:number;height:number;sha256:string}
+export interface Picture {id:string;slug:string;large:string;small:string;medium:string;thumbnail:string;width:number;height:number;sha256:string}
 export interface Body {html:string;headings:{id:string;title:string}[]}
 export const sha=(value:string|Buffer)=>createHash('sha256').update(value).digest('hex');
 export const escape=(value:unknown)=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));

@@ -20,15 +20,24 @@ for(const route of routes){
   ensure(html.includes(`rel="canonical" href="https://wrenchclue.site${route}"`),`Canonical: ${route}`);
   ensure(!html.includes('content="noindex'),`Accidental noindex: ${route}`);
   ensure(!html.includes('\uFFFD'),`Encoding: ${route}`);
+  ensure(!/<script[^>]+src=/.test(html),`Unexpected browser script on an indexed page: ${route}`);
   if(/^\/guides\/[^/]+\/$/.test(route)){
     ensure(html.includes('AI-generated illustration.'),`Image label: ${route}`);
     ensure(html.includes('id="sources"'),`Sources: ${route}`);
     ensure(html.includes('"@type":"Article"'),`Structured data: ${route}`);
   }
   for(const m of html.matchAll(/(?:src|href)="(\/(?:images|assets)\/[^\"]+|\/favicon\.svg)"/g))resources.add(m[1]);
+  for(const m of html.matchAll(/srcset="([^\"]+)"/g))for(const candidate of m[1].split(',')){
+    const resource=candidate.trim().split(/\s+/)[0];
+    ensure(/^\/images\/[a-z0-9.-]+\.webp$/.test(resource),`Unexpected responsive image: ${route}`);
+    resources.add(resource);
+  }
 }
-for(const resource of resources){const r=await get(resource);ensure(r.status===200,`Resource: ${resource}`);if(/\.[a-f0-9]{12}\./.test(resource))ensure(r.headers.get('cache-control')?.includes('immutable'),`Cache header: ${resource}`);}
-const search=await get('/search/?q=P0420');ensure(search.status===200,'Search route');ensure((await search.text()).includes('noindex,follow'),'Search indexing');
+const search=await get('/search/?q=P0420');ensure(search.status===200,'Search route');
+const searchHtml=await search.text();ensure(searchHtml.includes('noindex,follow'),'Search indexing');
+const searchScript=searchHtml.match(/<script type="module" src="(\/assets\/[^\"]+\.js)"><\/script>/);
+ensure(searchScript,'Missing search enhancement');resources.add(searchScript[1]);
+for(const resource of resources){const r=await get(resource);ensure(r.status===200,`Resource: ${resource}`);ensure((await r.arrayBuffer()).byteLength>0,`Empty resource: ${resource}`);if(/\.[a-f0-9]{12}\./.test(resource))ensure(r.headers.get('cache-control')?.includes('immutable'),`Cache header: ${resource}`);}
 const missing=await get('/this-guide-does-not-exist/');ensure(missing.status===404,'Missing page must be 404');
 const privateFile=await get('/manifest.json');ensure(privateFile.status===404,'Build manifest must not be public');
 const redirect=await get('/guides');ensure(redirect.status===308&&redirect.headers.get('location')==='/guides/','Canonical trailing slash');
