@@ -2613,5 +2613,680 @@
     ],
     "checkedDate": "2026-11-07",
     "publishAt": "2026-12-02T16:00:00.000Z"
+  },
+  {
+    "slug": "canon-ir3300-error-codes",
+    "title": "Canon iR3300 error codes and what to check first",
+    "shortTitle": "What does that iR3300 code mean?",
+    "description": "Read Canon iR3300 service codes E000–E003, E007 and E010, distinguish job-log end codes, and follow the copier’s guidance for a service call.",
+    "brand": "Canon",
+    "category": "devices",
+    "type": "Fault codes",
+    "diagram": "controls",
+    "tags": [
+      "Canon iR 3300 error code list",
+      "imageRUNNER 3300",
+      "E000",
+      "E001",
+      "E002",
+      "E003",
+      "E007",
+      "E010",
+      "job end code"
+    ],
+    "answer": "On an imageRUNNER 3300, E000 through E003 describe fixing-temperature faults. E007 concerns fixing-film rotation and E010 concerns the main motor. A number preceded by # in the job log explains the outcome of one job. Record the entire code and where it appeared.",
+    "scope": "Canon’s original imageRUNNER iR2200/2800/3300 family has its own service and job-code tables. The steps here apply to this family, including the iR3300 named on the front of the copier.",
+    "related": [],
+    "takeaway": "Give service the complete E-code and the point at which copying stopped. For a # end code, check the affected job in System Monitor before restarting the machine.",
+    "sources": [
+      {
+        "title": "Canon imageRUNNER iR3300/iR2800/iR2200 Reference Guide",
+        "url": "https://files.canon-europe.com/files/soft03-48735/Manual/iR2200_2800_3300_Reference_Guide_EN.pdf",
+        "note": "Canon’s operator guide distinguishes the job log, paper-jam prompts and service-call screen. Its safety section covers smoke, unusual odours and abnormal noise."
+      },
+      {
+        "title": "Canon iR2200/iR2800/iR3300 Service Handbook, chapter 6",
+        "url": "https://www.manualslib.com/manual/834914/Canon-Ir2200.html?page=234#manual",
+        "note": "An archived copy of Canon’s handbook. The self-diagnosis table identifies the six E-codes discussed here."
+      },
+      {
+        "title": "Canon Reference Guide, printed page 6-33",
+        "url": "https://www.manualslib.com/manual/1063919/Canon-Ir-3300.html?page=245",
+        "note": "The archived operator instructions show the main power switch, the three-second wait, the loss of reserved print jobs and when to contact service."
+      },
+      {
+        "title": "Canon Reference Guide, printed page 6-30",
+        "url": "https://www.manualslib.com/manual/1063919/Canon-Ir-3300.html?page=242",
+        "note": "The archived end-code table gives the meanings and operator responses for #99, #816 and #852."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-03T07:00:00.000Z"
+  },
+  {
+    "slug": "omron-calibration",
+    "title": "Can you calibrate an OMRON blood pressure monitor at home?",
+    "shortTitle": "Can you calibrate an OMRON monitor at home?",
+    "description": "Check a difference between home and office readings, find the service route for an M3 or X3 Comfort, and see what resetting a US BP7250 does.",
+    "brand": "OMRON",
+    "category": "devices",
+    "type": "Accuracy checks",
+    "diagram": "controls",
+    "tags": [
+      "OMRON blood pressure monitor calibration",
+      "M3 Comfort",
+      "X3 Comfort",
+      "HEM-7155-E",
+      "HEM-7155-EO",
+      "BP7250",
+      "cuff accuracy"
+    ],
+    "answer": "The OMRON M3 Comfort HEM-7155-E and X3 Comfort HEM-7155-EO have no owner calibration setting. OMRON recommends periodic inspection through an authorized dealer or customer service. Bring the monitor, its cuff and dated readings to your clinician for a comparison.",
+    "scope": "The inspection interval comes from the named European M3 and X3 instructions. UK service contacts and the factory-reset example for the US BP7250 are identified separately.",
+    "related": [
+      "omron-symbols"
+    ],
+    "takeaway": "Keep the readings that prompted your question. A clinician can assess the technique and comparison, and the service provider for your model can arrange an instrument inspection.",
+    "sources": [
+      {
+        "title": "OMRON M3 Comfort and X3 Comfort instructions, section 5.4",
+        "url": "https://www.omron-healthcare.co.uk/storage/im-hem-7155-eo-en-05-01-2022.pdf#page=8",
+        "note": "Lists the recommended inspection interval and directs owners to an authorized dealer or customer service."
+      },
+      {
+        "title": "American Heart Association guidance on home blood pressure monitoring",
+        "url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/monitoring-your-blood-pressure-at-home",
+        "note": "Explains cuff fit, rest, arm position and bringing a home monitor to a clinical appointment for comparison."
+      },
+      {
+        "title": "OMRON UK M3 Comfort product support",
+        "url": "https://www.omron-healthcare.co.uk/products/m3-comfort",
+        "note": "Identifies the UK service route for calibration enquiries about the M3 Comfort."
+      },
+      {
+        "title": "OMRON UK customer service",
+        "url": "https://www.omron-healthcare.co.uk/contact",
+        "note": "The contact form includes Servicing and Warranty Support. Owners elsewhere should use the service route for their country."
+      },
+      {
+        "title": "OMRON US BP7250 instruction manual, section 6.2",
+        "url": "https://omronhealthcare.com/storage/pdfs/5-series-wireless-upper-arm-blood-pressure-monitor-bp7250-im-en_3608778-6j.pdf#page=34",
+        "note": "The restore-defaults section identifies which stored information is cleared on this US 5 Series device."
+      },
+      {
+        "title": "American Heart Association guidance on very high blood pressure",
+        "url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/when-to-call-911-for-high-blood-pressure",
+        "note": "Describes the response to a very high reading with symptoms and to a repeated high reading without symptoms in adults who are not pregnant."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-03T16:00:00.000Z"
+  },
+  {
+    "slug": "omron-symbols",
+    "title": "What do the symbols on an OMRON blood pressure monitor mean?",
+    "shortTitle": "Which heart or OK symbol is on your OMRON?",
+    "description": "Match heart, cuff-fit, movement, HIGH and AVG indicators to the US BP7250 or European M3 Comfort. The same word can appear beside different pictures.",
+    "brand": "OMRON",
+    "category": "devices",
+    "type": "Display symbols",
+    "diagram": "controls",
+    "tags": [
+      "symbols on OMRON blood pressure monitor",
+      "BP7250",
+      "M3 Comfort",
+      "HEM-7155-E",
+      "irregular heartbeat",
+      "cuff OK",
+      "AVG",
+      "HIGH"
+    ],
+    "answer": "On the US BP7250 a flashing plain heart follows the pulse during measurement. A heart with a small 2 or 3 beside a completed reading counts irregular-rhythm detections. On the European M3 Comfort, a cuff picture marked OK means the cuff was wrapped tightly enough.",
+    "scope": "The display keys and thresholds refer to the US BP7250 and European M3 Comfort HEM-7155-E. A symbol’s shape, the model code and the stage of measurement determine which explanation applies.",
+    "related": [
+      "omron-calibration",
+      "omron-hbp-1300-e1-e2-errors"
+    ],
+    "takeaway": "Match the whole symbol to the illustrated key for your model. Keep the individual dated readings if an irregular-heartbeat indicator recurs or if you plan to discuss a pattern with your clinician.",
+    "sources": [
+      {
+        "title": "OMRON US BP7250 display and symbol key",
+        "url": "https://omronhealthcare.com/storage/pdfs/5-series-wireless-upper-arm-blood-pressure-monitor-bp7250-im-en_3608778-6j.pdf#page=14",
+        "note": "Identifies the pulse, connection, memory and other indicators in the US 5 Series manual. The following pages explain repeated detections and the HIGH threshold."
+      },
+      {
+        "title": "OMRON M3 Comfort instructions and illustrated display key",
+        "url": "https://www.omron-healthcare.co.uk/storage/im-hem-7155-eo-en-05-01-2022.pdf#page=20",
+        "note": "The European guide identifies cuff tightness and its high-reading indicator. The article uses the HEM-7155-E model example."
+      },
+      {
+        "title": "OMRON US product support and model lookup",
+        "url": "https://omronhealthcare.com/support",
+        "note": "Provides access to instructions by model code for US monitors, including other 5 Series models."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-04T07:00:00.000Z"
+  },
+  {
+    "slug": "samsung-washing-machine-display-symbols",
+    "title": "What do the symbols on a Samsung washing machine display mean?",
+    "shortTitle": "What does the symbol on your Samsung washer mean?",
+    "description": "Tell Door Lock from Child Lock, read the Delay End clock and hourglass, and identify Samsung’s reminder to run an empty drum-cleaning cycle.",
+    "brand": "Samsung",
+    "category": "devices",
+    "type": "Display symbols",
+    "diagram": "controls",
+    "tags": [
+      "Samsung washing machine display symbols meaning",
+      "door lock",
+      "Child Lock",
+      "Delay End",
+      "hourglass",
+      "Extra Rinse",
+      "Eco Drum Clean"
+    ],
+    "answer": "On the Samsung panels pictured in its UK guide, a plain key or padlock shows the door is locked. A face or smiling padlock identifies Child Lock. A sparkling drum prompts a cleaning cycle. Use the shape and the adjacent control label to identify your washer’s symbol.",
+    "scope": "These examples follow Samsung UK’s illustrated washer support. The controls for Child Lock, the cleaning programme and its reminder interval depend on the particular model and panel.",
+    "related": [
+      "hitachi-washing-machine-c1-c2-errors"
+    ],
+    "takeaway": "Identify the picture before changing a setting. Let the door unlock, use the named cleaning programme for a drum reminder and look up the full character string for a fault code.",
+    "sources": [
+      {
+        "title": "Samsung UK guide to washing-machine symbols",
+        "url": "https://www.samsung.com/uk/support/home-appliances/what-do-the-symbols-on-my-washing-machine-mean/",
+        "note": "Illustrates the common status indicators and explains the sound, rinse and door-lock symbols used in the table."
+      },
+      {
+        "title": "Samsung UK guidance on opening a washer door during operation",
+        "url": "https://www.samsung.com/uk/support/home-appliances/how-can-i-open-the-door-of-my-washing-machine-during-operation/",
+        "note": "Explains how temperature and water level affect when the door can unlock."
+      },
+      {
+        "title": "Samsung UK Child Lock controls by panel type",
+        "url": "https://www.samsung.com/uk/support/home-appliances/how-do-i-switch-the-child-lock-on-my-samsung-washing-machine-on-and-off/",
+        "note": "Shows the navigation-dial example and the model-dependent button combinations."
+      },
+      {
+        "title": "Samsung UK Delay End instructions",
+        "url": "https://www.samsung.com/uk/support/home-appliances/how-do-i-set-up-the-delay-end-function-on-my-washing-machine/",
+        "note": "Explains how the selected delay determines the planned end of the wash."
+      },
+      {
+        "title": "Samsung UK washer-cleaning functions",
+        "url": "https://www.samsung.com/uk/support/home-appliances/check-the-cleaning-functions-and-sections-on-the-washing-machine/",
+        "note": "Describes the empty-drum programme and the Eco Drum Clean+ example."
+      },
+      {
+        "title": "Samsung UK washing-machine code table",
+        "url": "https://www.samsung.com/uk/support/home-appliances/what-do-the-codes-on-my-washing-machine-mean/",
+        "note": "Lists the water supply, drainage and temperature codes cited in the article."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-04T16:00:00.000Z"
+  },
+  {
+    "slug": "brother-printer-wifi-reset",
+    "title": "How to reset Wi-Fi on a Brother HL-L2350DW and reconnect it",
+    "shortTitle": "Reconnect a Brother HL-L2350DW to Wi-Fi",
+    "description": "Use the HL-L2350DW Setup Wizard after a router change, clear its network settings when needed, and print the WLAN report if the connection fails.",
+    "brand": "Brother",
+    "category": "devices",
+    "type": "Network settings",
+    "diagram": "controls",
+    "tags": [
+      "Brother printer reset WiFi",
+      "HL-L2350DW",
+      "Network Reset",
+      "wireless Setup Wizard",
+      "WLAN report",
+      "new router"
+    ],
+    "answer": "If only your router name or Wi-Fi password changed, run Setup Wizard on the HL-L2350DW. To erase its stored network configuration, choose Network Reset, confirm the reset and let the printer restart before connecting to the new Wi-Fi network.",
+    "scope": "The menu labels and WLAN-report steps are for the Brother HL-L2350DW as listed in its online guide. The reset also affects the print server’s password and IP address.",
+    "related": [],
+    "takeaway": "Have the Wi-Fi name and password available. Connected confirms that the printer joined the network, and the WLAN Report provides an error code if the attempt fails.",
+    "sources": [
+      {
+        "title": "Brother Online User’s Guide for resetting network settings",
+        "url": "https://support.brother.com/g/s/id/htmldoc/printer/cv_hll2310d/use/html/GUID-AD10E66A-D2ED-4BDB-8C52-550C32029372_61.html",
+        "note": "Names the settings cleared by Network Reset and describes the confirmation and restart on models including the HL-L2350DW."
+      },
+      {
+        "title": "Brother Online User’s Guide for the wireless Setup Wizard",
+        "url": "https://support.brother.com/g/s/id/htmldoc/printer/cv_hll2310d/use/html/GUID-6724461D-8AB1-4461-B32B-CA39AE21FD9A_45.html",
+        "note": "Explains how to enable WLAN, select an SSID, enter the network key and check the resulting status."
+      },
+      {
+        "title": "Brother HL-L2350DW support for printing the WLAN Report",
+        "url": "https://support.brother.com/g/b/faqend.aspx?c=us&faqid=faq00002796_512&lang=en&prod=hll2350dw_us_eu_as",
+        "note": "Gives the model-specific control-panel path and explains the report’s connection error code."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-05T07:00:00.000Z"
+  },
+  {
+    "slug": "dymo-letratag-punctuation",
+    "title": "How to type a comma, apostrophe or hyphen on a DYMO LetraTag",
+    "shortTitle": "Find punctuation on a DYMO LetraTag",
+    "description": "Find the apostrophe, comma, period and hyphen on an LT-100H. Follow the Insert and Symbols controls on both the LT-100H and LT-100T.",
+    "brand": "DYMO",
+    "category": "devices",
+    "type": "Keyboard settings",
+    "diagram": "controls",
+    "tags": [
+      "DYMO LetraTag punctuation",
+      "LT-100H",
+      "LT-100T",
+      "apostrophe",
+      "comma",
+      "hyphen",
+      "Symbols menu"
+    ],
+    "answer": "On the LT-100H or LT-100T, press Insert, choose Symbols, press OK, select the character with the arrows, and press OK again. In the US LT-100H chart the apostrophe is in row C, the comma and period in row D, and the hyphen in row F.",
+    "scope": "The Insert menu is documented for the LT-100H and LT-100T. The row letters and symbol positions come from the US LT-100H chart and may differ on another layout.",
+    "related": [],
+    "takeaway": "Each selection inserts one mark at the current point in your label. Open Symbols again for the next mark, and check the completed text on the screen before printing.",
+    "sources": [
+      {
+        "title": "DYMO LetraTag frequently asked questions",
+        "url": "https://www.dymo.com.au/support?cfid=letratag-faqs",
+        "note": "DYMO’s support instructions give the Insert and Symbols sequence and describe how the arrows move through the character grid on both models."
+      },
+      {
+        "title": "DYMO LetraTag LT-100H US user guide, symbol chart",
+        "url": "https://download.dymo.com/dymo/user-guides/LetraTag/LT100H/UG/LT100H_UserGuide_en-US.pdf#page=10",
+        "note": "The chart on printed page 7 shows the US LT-100H row and column positions for the four punctuation marks."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-05T16:00:00.000Z"
+  },
+  {
+    "slug": "mitel-5320e-missed-calls",
+    "title": "How to see missed calls on a Mitel 5320e desk phone",
+    "shortTitle": "Find missed calls on a Mitel 5320e",
+    "description": "Open Call History from Menu or Applications, see when a caller rang, and return the call from a 5320e on MiVoice Business or Office 250.",
+    "brand": "Mitel",
+    "category": "devices",
+    "type": "Call history",
+    "diagram": "controls",
+    "tags": [
+      "Mitel phone missed calls",
+      "5320e",
+      "MiVoice Business",
+      "MiVoice Office 250",
+      "Call History",
+      "Missed list"
+    ],
+    "answer": "On a Mitel 5320e running MiVoice Business, start at Menu. On Office 250, start at Applications. Select Call History and then Missed. The key beside an entry opens its details, and Dial returns the call when a number is available.",
+    "scope": "For the 5320e Call History application on the two documented Mitel platforms. The 50-call limit is shared across call types in that application.",
+    "related": [
+      "mitel-phone-call-forwarding",
+      "mitel-phone-transfer-call"
+    ],
+    "takeaway": "Check the timestamp and number before calling back. Answered and outgoing calls also use the 50-entry history, so an older missed call can leave the list.",
+    "sources": [
+      {
+        "title": "Mitel MiVoice Business 5320e user guide",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20Business/6.5/en/MiVB_5320e_UG_EN.pdf#page=14",
+        "note": "Printed pages 8–9 describe the Menu path, Call History types, repeated calls, detail view and Dial control."
+      },
+      {
+        "title": "Mitel MiVoice Office 250 5320e/5330e/5340e user guide",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20250/6.3/en/5320e5330e5340e_UG_6.3.pdf#page=35",
+        "note": "Printed page 27 gives the Applications path and the Call History limit for the Office 250 example."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-06T07:00:00.000Z"
+  },
+  {
+    "slug": "mitel-5330-5340-speed-call-name",
+    "title": "How to change a saved speed-call name on a Mitel 5330 or 5340",
+    "shortTitle": "Rename a Mitel speed-call key or contact",
+    "description": "Change a key label on a Mitel 5330 or 5340, identify the Edit Info layout, and edit a saved People contact on a 5340.",
+    "brand": "Mitel",
+    "category": "devices",
+    "type": "Phone settings",
+    "diagram": "controls",
+    "tags": [
+      "Mitel change a saved number name",
+      "5330",
+      "5340",
+      "Speed Call",
+      "Edit Label",
+      "Edit Info",
+      "People"
+    ],
+    "answer": "On a 5330 or 5340 with Edit Label, open Settings, then Programmable Keys, select the key and edit its label. Communications Director 6.0 uses a different speed-call flow. For a saved People contact on the 5340, open the contact and choose Edit Name.",
+    "scope": "The key-label sequence comes from Mitel’s 2007 5330/5340 guide. The Edit Info procedure and the 5340 People list come from the Communications Director 6.0 guide.",
+    "related": [
+      "mitel-5320e-missed-calls"
+    ],
+    "takeaway": "Identify whether the old wording appears beside a key or inside People. Have the destination available before reusing an occupied key on a system that asks you to clear it.",
+    "sources": [
+      {
+        "title": "Mitel 5330/5340 IP Phones User Guide, Edit Key Labels",
+        "url": "https://www.sasktel.com/attachments/support/mitel-5330-5340-userguide.pdf#page=17",
+        "note": "Mitel’s 2007 guide hosted by SaskTel documents changing a programmable key’s label and saving it."
+      },
+      {
+        "title": "Mitel Communications Director 6.0 speed-call instructions",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20Business/6.0/en/MCD_5330-5340_UG_R6.0_EN.pdf#page=30",
+        "note": "Identifies the Edit Info label, Edit Number field and the procedure for an occupied key."
+      },
+      {
+        "title": "Mitel Communications Director 6.0 guide to the 5340 People list",
+        "url": "https://www.mitel.com/sites/default/files/s3_imports/Devices%20and%20Accessories/IP%20Phones/5300%20Series/5300%20IP%20Phones%20Platform%20Specific%20Documents/MiVoice%20Business/6.0/en/MCD_5330-5340_UG_R6.0_EN.pdf#page=32",
+        "note": "Shows the contact’s separate Edit Name and Edit Number choices on the 5340."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-06T16:00:00.000Z"
+  },
+  {
+    "slug": "dimension-one-spa-code-32",
+    "title": "What a 32°F display means on a Dimension One @Home spa",
+    "shortTitle": "Why a Dimension One @Home spa reads 32°F",
+    "description": "Identify the 32°F or 132°F display warning on the 2005 @Home control, check the temperature units, and gather the details its service center needs.",
+    "brand": "Dimension One Spas",
+    "category": "home-systems",
+    "type": "Display warnings",
+    "diagram": "controls",
+    "tags": [
+      "Dimension One spa code 32",
+      "@Home Series",
+      "32°F",
+      "0°C",
+      "132°F",
+      "spa temperature",
+      "SETPOINT"
+    ],
+    "answer": "The 2005 Dimension One @Home guide treats a 32°F (0°C) or 132°F (55°C) temperature display as a controller-detected problem. Stay out of the spa because the water temperature is unknown, and contact an authorized dealer or service center.",
+    "scope": "This display warning is documented for the @Home Series control in Dimension One’s 2005 guide, part 01533-0039 Rev B. Match other model years and control layouts to their own instructions.",
+    "related": [],
+    "takeaway": "Record the units, the full display and whether SETPOINT was lit. Keep the spa out of use and report the warning with the model and year to authorized service.",
+    "sources": [
+      {
+        "title": "Dimension One @Home Series owner’s guide, temperature warnings",
+        "url": "https://www.thespaworks.com/sites/default/files/-2005-2011_d1_at_home_owners_manual.pdf#page=14",
+        "note": "Original 2005 guide hosted by The Spa Works. Printed page 11 covers the two extreme readings and directs the owner to authorized service."
+      },
+      {
+        "title": "Dimension One @Home Series control-panel indicators",
+        "url": "https://www.thespaworks.com/sites/default/files/-2005-2011_d1_at_home_owners_manual.pdf#page=11",
+        "note": "The same owner’s guide distinguishes selected setpoint from measured water temperature on this control."
+      },
+      {
+        "title": "Dimension One Spas owner’s guide directory",
+        "url": "https://www.d1spas.com/manuals",
+        "note": "The manufacturer lists documents by collection and model year for identifying other control versions."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-07T07:00:00.000Z"
+  },
+  {
+    "slug": "carrier-30rap-t114",
+    "title": "What T114 means on a Carrier AquaSnap 30RAP chiller",
+    "shortTitle": "What does Carrier 30RAP alert T114 mean?",
+    "description": "Identify the affected circuit, see why two threshold values appear in Carrier’s guide, and record the information a chiller technician needs.",
+    "brand": "Carrier",
+    "category": "cooling",
+    "type": "Chiller alerts",
+    "diagram": "controls",
+    "tags": [
+      "Carrier code T114",
+      "AquaSnap 30RAP",
+      "ComfortLink",
+      "T115",
+      "low circuit A suction superheat"
+    ],
+    "answer": "On the Carrier 30RAP models covered by form 30RAP-7T Rev. A, T114 means low suction superheat on circuit A. The controller stops that circuit when the low reading persists. T115 is the corresponding alert for circuit B.",
+    "scope": "Carrier’s alert table and narrative in form 30RAP-7T Rev. A give different temperature-difference thresholds. Both describe five minutes and a shutdown of the affected circuit.",
+    "related": [
+      "trane-chiller-latched-fault"
+    ],
+    "takeaway": "Record T114, the model, the restart behaviour and any companion alerts. Ask a qualified chiller technician to match the threshold and restart procedure to the unit’s controls documentation.",
+    "sources": [
+      {
+        "title": "Carrier AquaSnap 30RAP controls guide, alert descriptions",
+        "url": "https://www.shareddocs.com/hvac/docs/1005/Public/04/30RAP-7T.pdf#page=93",
+        "note": "Page 93 of form 30RAP-7T Rev. A describes low suction superheat on circuits A and B and gives the narrative trigger value."
+      },
+      {
+        "title": "Carrier 30RAP controls guide, alert table",
+        "url": "https://www.shareddocs.com/hvac/docs/1005/Public/04/30RAP-7T.pdf#page=79",
+        "note": "Page 79 of the same edition gives the table’s different trigger value, the restart behaviour and possible causes."
+      },
+      {
+        "title": "Carrier 30RAP controls guide, superheat definition",
+        "url": "https://www.shareddocs.com/hvac/docs/1005/Public/04/30RAP-7T.pdf#page=55",
+        "note": "Page 55 explains how suction-gas temperature and saturation temperature determine superheat."
+      },
+      {
+        "title": "Carrier 30RAP controls guide, alarm history",
+        "url": "https://www.shareddocs.com/hvac/docs/1005/Public/04/30RAP-7T.pdf#page=113",
+        "note": "Page 113 shows the alarm history that can be reported during a service call."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-07T16:00:00.000Z"
+  },
+  {
+    "slug": "mitsubishi-mr-j2s-alarms",
+    "title": "What do the alarm codes on a Mitsubishi MR-J2S-A mean?",
+    "shortTitle": "Read Mitsubishi MR-J2S-A servo alarm codes",
+    "description": "Distinguish encoder alarms AL.16 and AL.20, overloads AL.50 and AL.51, and position error AL.52 on a MELSERVO-J2-Super A amplifier.",
+    "brand": "Mitsubishi Electric",
+    "category": "devices",
+    "type": "Servo alarms",
+    "diagram": "controls",
+    "tags": [
+      "Mitsubishi J2 driver alarm code",
+      "MR-J2S-A",
+      "MR-J2S-70A",
+      "AL.16",
+      "AL.20",
+      "AL.50",
+      "AL.51",
+      "AL.52"
+    ],
+    "answer": "For a MELSERVO-J2-Super MR-J2S-A amplifier, AL.16 and AL.20 identify encoder-related faults, AL.50 and AL.51 are overload alarms, and AL.52 reports excessive position error. Record which alarm was active and whether a different code appears only in history.",
+    "scope": "These examples follow Mitsubishi Electric’s A-series amplifier instructions, including MR-J2S-70A. Software revision matters for AL.52, and another model suffix requires its own alarm table.",
+    "related": [],
+    "takeaway": "Record the active code, axis, model and movement at the time of the alarm. Leave investigation and a controlled restart to qualified maintenance personnel.",
+    "sources": [
+      {
+        "title": "Mitsubishi Electric MR-J2S-A instructions, alarm list",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=203",
+        "note": "Chapter 10 of the A-series instructions groups the encoder, overload and position alarms used here."
+      },
+      {
+        "title": "Mitsubishi Electric MR-J2S-A display examples",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=164",
+        "note": "Section 6.4 illustrates an active alarm and a separate historical alarm entry."
+      },
+      {
+        "title": "Mitsubishi Electric MR-J2S-A encoder alarm table",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=205",
+        "note": "Distinguishes communication problems from the additional condition covered by AL.20."
+      },
+      {
+        "title": "Mitsubishi Electric overload protection definitions",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=222",
+        "note": "Section 12.1 describes the overload protection curve and continuous maximum-current condition."
+      },
+      {
+        "title": "Mitsubishi Electric instructions following an alarm",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=204",
+        "note": "Section 10.2.2 covers eliminating the cause and allowing cooling after overload."
+      },
+      {
+        "title": "Mitsubishi Electric MR-J2S-A position error definition",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/sh030006/sh030006j.pdf#page=209",
+        "note": "The AL.52 entry identifies allowable position differences and its software-revision qualification."
+      },
+      {
+        "title": "Mitsubishi Electric J2-Super safety and model guide",
+        "url": "https://dl.mitsubishielectric.com/dl/fa/document/manual/servo/ib0300061/ib0300061g.pdf",
+        "note": "Identifies applicable documentation and precautions around alarm clearing and restart."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-08T07:00:00.000Z"
+  },
+  {
+    "slug": "behringer-x32-computer-audio",
+    "title": "How to play computer audio through a Behringer X32 and record over USB",
+    "shortTitle": "Play and record computer audio on an X32",
+    "description": "Connect a full-size Behringer X32 fitted with X-USB, route stereo playback to two mixer channels, and send one local microphone to a recording track.",
+    "brand": "Behringer",
+    "category": "devices",
+    "type": "Audio routing",
+    "diagram": "controls",
+    "tags": [
+      "Behringer X32 computer audio",
+      "X-USB",
+      "Card Out",
+      "Card 1–8",
+      "USB playback",
+      "record over USB",
+      "local input"
+    ],
+    "answer": "Use the USB socket on the X-USB expansion card and select that device in your recording software. Card Out decides what the computer records. Input routing assigns computer playback to mixer channels, so the two directions can be checked separately.",
+    "scope": "The examples use a full-size X32 with the X-USB card and the routing layout in Behringer’s guide. The stereo example changes an eight-channel input bank and assumes those channels are available.",
+    "related": [],
+    "takeaway": "Check meters at each end of one path. Follow playback from software output to a console channel, and follow recording from the microphone socket through Card Out to a selected track.",
+    "sources": [
+      {
+        "title": "Behringer X-USB expansion card",
+        "url": "https://www.behringer.com/en/products/0606-ABV",
+        "note": "Lists supported audio interfaces, channel capacity and the manufacturer’s downloads."
+      },
+      {
+        "title": "Behringer X32 digital console",
+        "url": "https://www.behringer.com/en/products/0603-ACE",
+        "note": "Identifies the console and its different USB connections."
+      },
+      {
+        "title": "Behringer X32 instructions, USB audio interface",
+        "url": "https://cdn-media.empowertribe.com/e452c7959c0d4002908c23044a9558a7/8849399545886.pdf#page=37",
+        "note": "Chapter 6 explains the card connection, channel count and recording configuration."
+      },
+      {
+        "title": "Behringer X32 instructions, input routing",
+        "url": "https://cdn-media.empowertribe.com/e452c7959c0d4002908c23044a9558a7/8849399545886.pdf#page=51",
+        "note": "Shows how a card-return bank can feed console channels for playback."
+      },
+      {
+        "title": "Behringer X32 instructions, card-output routing",
+        "url": "https://cdn-media.empowertribe.com/e452c7959c0d4002908c23044a9558a7/8849399545886.pdf#page=54",
+        "note": "Shows the block of sources sent from the console to the computer."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-08T16:00:00.000Z"
+  },
+  {
+    "slug": "avaya-2030-2050-outgoing-calls",
+    "title": "How to make an outgoing call on an Avaya 2030 or 2050 desk phone",
+    "shortTitle": "Place an outside call on an Avaya 2030 or 2050",
+    "description": "Dial an extension or outside number from an Avaya IP Office desk phone, recognize an account-code prompt, and redial a previously successful call.",
+    "brand": "Avaya",
+    "category": "devices",
+    "type": "Calling controls",
+    "diagram": "controls",
+    "tags": [
+      "Avaya outgoing call",
+      "2030",
+      "2050",
+      "IP Office",
+      "outside line prefix",
+      "account code",
+      "Redial"
+    ],
+    "answer": "On an Avaya 2030 or 2050 connected to IP Office, dial the extension for an internal call. For an outside call, enter the destination number in your office’s format, including an access digit only when your telephone administrator has configured one.",
+    "scope": "The outgoing-call controls are those of the 2030 and 2050 on IP Office. Outside-line digits, account codes and restrictions on destinations are set by the office telephone system.",
+    "related": [
+      "avaya-phone-do-not-disturb"
+    ],
+    "takeaway": "If extensions work but an outside call fails, record the time, destination type, digits entered and display message for the person who manages your IP Office system.",
+    "sources": [
+      {
+        "title": "Avaya IP Office 2030 and 2050 User’s Guide, making calls",
+        "url": "https://device.report/m/84f7df825d5df55f21a52b55b8c6e1b42cb94f197d704570f0f70732a93ebd8c.pdf#page=4",
+        "note": "Archived manufacturer guide covering external calls, hands-free dialling and the redial list on these handsets."
+      },
+      {
+        "title": "Avaya 2030 and 2050 external-call instructions",
+        "url": "https://www.manualsdir.com/manuals/42780/avaya-2050-2030.html?page=10",
+        "note": "An alternate rendering of Avaya’s instructions describes internal and external numbers and local restrictions."
+      },
+      {
+        "title": "Avaya IP Office Web Manager documentation, outside-line prefixes",
+        "url": "https://documentation.avaya.com/en-us/home/bundle/ip-office/ipofficewebmanagerr12_3/general-system-configuration/caller-display.html",
+        "note": "Explains the system configuration for external-number prefixes. The number used at an individual office depends on its settings."
+      },
+      {
+        "title": "Avaya IP Office 2030 and 2050 User’s Guide, account codes",
+        "url": "https://device.report/m/84f7df825d5df55f21a52b55b8c6e1b42cb94f197d704570f0f70732a93ebd8c.pdf#page=8",
+        "note": "The archived account-code section documents the prompts and entry controls on these phones."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-09T07:00:00.000Z"
+  },
+  {
+    "slug": "panasonic-home-phone-caller-id-call-log",
+    "title": "How to check caller ID and the call log on a Panasonic home phone",
+    "shortTitle": "Find the call log on a Panasonic home phone",
+    "description": "Open the caller list on four US Panasonic cordless models, read missed-call notices, and check what happens when Caller ID supplies no number.",
+    "brand": "Panasonic",
+    "category": "devices",
+    "type": "Call history",
+    "diagram": "controls",
+    "tags": [
+      "Panasonic home phone call log",
+      "caller ID",
+      "CID",
+      "KX-TGD810",
+      "KX-TGD813",
+      "KX-TG2431",
+      "KX-TG2432",
+      "missed calls"
+    ],
+    "answer": "On a US Panasonic KX-TGD810 or KX-TGD813, press the down arrow marked CID while the handset is idle. Press down again for the newest caller. On a KX-TG2431 or KX-TG2432, either arrow can open the caller list.",
+    "scope": "The controls and list limits refer to the named US cordless home phones. Provider Caller ID service determines which numbers and names are delivered to the line.",
+    "related": [],
+    "takeaway": "Use CID for incoming callers and Redial for numbers placed from the handset. If incoming calls never display a number, check Caller ID with a known caller and your telephone provider.",
+    "sources": [
+      {
+        "title": "Panasonic KX-TGD810 series operating instructions, Caller List",
+        "url": "https://help.na.panasonic.com/wp-content/uploads/2023/08/KXTGD81_KXTGD83_PNQX9140XA_ENG.pdf#page=40",
+        "note": "Page 40 describes Caller ID controls, caller information, missed-call notices and the 50-caller list on the named US handsets."
+      },
+      {
+        "title": "Panasonic KX-TG2431 and KX-TG2432 operating instructions",
+        "url": "https://help.na.panasonic.com/wp-content/uploads/2023/02/KXTG2431_KXTG2432_PQQX14383YA_ENG.pdf#page=27",
+        "note": "Page 27 gives the older list controls and explains the independent caller histories on the two-handset KX-TG2432."
+      },
+      {
+        "title": "Panasonic KX-TGD810 series operating instructions, redial list",
+        "url": "https://help.na.panasonic.com/wp-content/uploads/2023/08/KXTGD81_KXTGD83_PNQX9140XA_ENG.pdf#page=16",
+        "note": "Page 16 distinguishes outgoing redial entries from the incoming caller list."
+      },
+      {
+        "title": "Panasonic North America Caller ID troubleshooting",
+        "url": "https://help.na.panasonic.com/answers/troubleshooting-caller-information-is-not-displayed-and-or-announced-caller-id-is-not-working/",
+        "note": "Explains subscription, provider delivery and checking caller information when the phone rings."
+      }
+    ],
+    "checkedDate": "2026-11-15",
+    "publishAt": "2026-12-09T16:00:00.000Z"
   }
 ]
