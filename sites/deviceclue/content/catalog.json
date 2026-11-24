@@ -3288,5 +3288,658 @@
     ],
     "checkedDate": "2026-11-15",
     "publishAt": "2026-12-09T16:00:00.000Z"
+  },
+  {
+    "slug": "printer-bypass-tray",
+    "title": "What is a printer bypass tray, and when should you use it?",
+    "shortTitle": "What is a printer bypass tray, and when should you use it?",
+    "description": "A bypass tray is a separate paper feed you can use for a job while the main drawer holds your everyday paper.",
+    "brand": "Sharp",
+    "category": "devices",
+    "type": "Paper handling",
+    "diagram": "controls",
+    "tags": [
+      "Sharp",
+      "printer",
+      "bypass",
+      "tray"
+    ],
+    "answer": "A bypass tray is a separate paper feed you can use for a job while the main drawer holds your everyday paper. On the Sharp BP-70C65, for example, you can print a few envelopes, a sheet of labels, or a page on a different size of plain paper. The tray takes a stack, but its capacity depends on what you load. Sharp lists up to 100 sheets of ordinary paper and up to 20 envelopes. Sharp BP-70C65 bypass tray guide",
+    "scope": "Sharp BP-70C65 loading and Windows-driver examples; other printers and envelope orientations differ.",
+    "related": [
+      "sharp-printer-default-admin-password"
+    ],
+    "takeaway": "A bypass tray is a separate paper feed you can use for a job while the main drawer holds your everyday paper.",
+    "sources": [
+      {
+        "title": "Sharp BP-70C65 bypass tray guide",
+        "url": "https://global.sharp/restricted/print/manuals/4/bp70c65/us/contents_01-02_005.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sharp’s tray setup guidance",
+        "url": "https://global.sharp/restricted/print/manuals/4/bp70c65/us/contents_10-01_003.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sharp’s Windows envelope instructions",
+        "url": "https://global.sharp/restricted/print/manuals/4/bp70c65/us/contents_04-02_001.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-10T07:00:00.000Z"
+  },
+  {
+    "slug": "msi-z77a-gd65-jbat1",
+    "title": "What does JBAT1 do on the MSI Z77A-GD65?",
+    "shortTitle": "What does JBAT1 do on the MSI Z77A-GD65?",
+    "description": "JBAT1 is the clear-CMOS jumper on the MSI Z77A-GD65, MS-7751 v2.x. The battery-backed CMOS memory holds the board's saved configuration.",
+    "brand": "MSI",
+    "category": "devices",
+    "type": "Settings",
+    "diagram": "controls",
+    "tags": [
+      "MSI",
+      "msi",
+      "z77a",
+      "gd65",
+      "jbat1"
+    ],
+    "answer": "JBAT1 is the clear-CMOS jumper on the MSI Z77A-GD65, MS-7751 v2.x. The battery-backed CMOS memory holds the board's saved configuration. Bridging the JBAT1 pins with the computer off clears that configuration. MSI Z77A-GD65 manual, page 1-34, readable copy",
+    "scope": "The jumper procedure and BIOS settings are for MSI Z77A-GD65 MS-7751 v2.x and its documented firmware.",
+    "related": [],
+    "takeaway": "JBAT1 is the clear-CMOS jumper on the MSI Z77A-GD65, MS-7751 v2.x. The battery-backed CMOS memory holds the board's saved configuration.",
+    "sources": [
+      {
+        "title": "MSI Z77A-GD65 manual, page 1-34, readable copy",
+        "url": "https://www.manualsdir.com/manuals/467073/msi-z77a-gd65.html?page=44",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "MSI Z77A-GD65 manual, chapters 1 and 2 (ZIP)",
+        "url": "https://download-2.msi.com/archive/mnu_exe/E7751v2.2.zip",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "MSI Z77A-GD65 BIOS setup, chapter 2, readable copy",
+        "url": "https://manuals.plus/m/aa7c8921577854a05fbc6d401ed43683e44d7ec321ec5bc80ac5ee4f6adc2b3f",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-10T16:00:00.000Z"
+  },
+  {
+    "slug": "scansnap-ix1600-carrier-sheet",
+    "title": "How to scan a folded A3 page with a ScanSnap iX1600 carrier sheet",
+    "shortTitle": "How to scan a folded A3 page with a ScanSnap iX1600 carrier sheet",
+    "description": "To save an A3 drawing as one image on a ScanSnap iX1600, fold it with the printed face outside, put it in the full-size Carrier Sheet, then scan both sides and have ScanSnap Home join them.",
+    "brand": "ScanSnap",
+    "category": "devices",
+    "type": "Scanning",
+    "diagram": "controls",
+    "tags": [
+      "ScanSnap",
+      "scansnap",
+      "ix1600",
+      "carrier",
+      "sheet"
+    ],
+    "answer": "To save an A3 drawing as one image on a ScanSnap iX1600, fold it with the printed face outside, put it in the full-size Carrier Sheet, then scan both sides and have ScanSnap Home join them. PFU identifies this accessory as PA03360-0013. Its black-and-white band marks the edge that enters the feeder first. The smaller Photo Carrier Sheet has a different part number, PA03770-0015. PFU’s carrier sheet identification guide PFU’s illustrated iX1600 loading sequence",
+    "scope": "Carrier sheet and ScanSnap Home examples identify iX1600 and iX100 separately; other models differ.",
+    "related": [],
+    "takeaway": "To save an A3 drawing as one image on a ScanSnap iX1600, fold it with the printed face outside, put it in the full-size Carrier Sheet, then scan both sides and have ScanSnap Home join them.",
+    "sources": [
+      {
+        "title": "PFU’s carrier sheet identification guide",
+        "url": "https://www.pfu.ricoh.com/imaging/downloads/manual/scansnap_help/en/pc/topic/ope_basic_carrier_sheet.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "PFU’s illustrated iX1600 loading sequence",
+        "url": "https://www.pfu.ricoh.com/imaging/downloads/manual/cloud_android/ix1600/en/sscloudmobile/topic/scan_a3cs_larger_a4_ix1600.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "PFU’s desktop carrier sheet settings",
+        "url": "https://www.pfu.ricoh.com/imaging/downloads/manual/scansnap_help/en/pc/topic/ope_scan_set_larger_a4_cs.html?model=ix1600",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "PFU’s photograph and clipping instructions",
+        "url": "https://www.pfu.ricoh.com/imaging/downloads/manual/scansnap_help/en/pc/topic/ope_scan_set_photo_cs.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "PFU’s scanner compatibility and pass counts",
+        "url": "https://scansnap-faq.pfu.ricoh.com/hc/en-us/articles/12928438388377-Can-I-use-ScanSnap-Carrier-Sheets",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "PFU’s missing-image guidance",
+        "url": "https://www.pfu.ricoh.com/imaging/downloads/manual/ss_webhelp/en/help/webhelp/topic/tb_carrier_img_missing.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-11T07:00:00.000Z"
+  },
+  {
+    "slug": "canon-auto-lighting-optimizer",
+    "title": "What Canon Auto Lighting Optimizer changes on the EOS R6 Mark II",
+    "shortTitle": "What Canon Auto Lighting Optimizer changes on the EOS R6 Mark II",
+    "description": "Auto Lighting Optimizer adjusts the brightness and contrast of the finished picture.",
+    "brand": "Canon",
+    "category": "devices",
+    "type": "Camera settings",
+    "diagram": "controls",
+    "tags": [
+      "Canon",
+      "canon",
+      "auto",
+      "lighting",
+      "optimizer"
+    ],
+    "answer": "Auto Lighting Optimizer adjusts the brightness and contrast of the finished picture. On the EOS R6 Mark II, it can help when a face looks dark against a bright background, or when the picture looks flat. The same adjustment can work against a silhouette if you want the foreground to stay dark. Canon’s EOS R6 Mark II Auto Lighting Optimizer guide",
+    "scope": "The setting and menu examples refer to Canon EOS R6 Mark II and its documented image-processing workflow.",
+    "related": [],
+    "takeaway": "Auto Lighting Optimizer adjusts the brightness and contrast of the finished picture.",
+    "sources": [
+      {
+        "title": "Canon’s EOS R6 Mark II Auto Lighting Optimizer guide",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-1_0130.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon’s list of correction levels",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0060.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon’s in-camera RAW processing instructions",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-06_Playback_0190.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon’s Digital Photo Professional tool guide",
+        "url": "https://cam.start.canon/en/S002/manual/html/UG-04_EditImage_0040.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-11T16:00:00.000Z"
+  },
+  {
+    "slug": "audyssey-dsx",
+    "title": "What Audyssey DSX does on a Denon AVR-X4100W",
+    "shortTitle": "What Audyssey DSX does on a Denon AVR-X4100W",
+    "description": "Audyssey DSX stands for Dynamic Surround Expansion. On the Denon AVR-X4100W, it takes a surround mix such as 5.1 and creates additional signals for a pair of front wide or front height speak",
+    "brand": "Denon",
+    "category": "devices",
+    "type": "Audio settings",
+    "diagram": "controls",
+    "tags": [
+      "Denon",
+      "audyssey",
+      "dsx"
+    ],
+    "answer": "Audyssey DSX stands for Dynamic Surround Expansion. On the Denon AVR-X4100W, it takes a surround mix such as 5.1 and creates additional signals for a pair of front wide or front height speakers. The extra speakers determine where you hear the effect. If your aim is to correct how the room sounds through the speakers you already have, MultEQ XT32 handles that job using measurements from the setup microphone. Denon’s guide to Audyssey processing",
+    "scope": "The speaker layout and menu examples refer to Denon AVR-X4100W and supported input signals.",
+    "related": [],
+    "takeaway": "Audyssey DSX stands for Dynamic Surround Expansion. On the Denon AVR-X4100W, it takes a surround mix such as 5.1 and creates additional signals for a pair of front wide or front height speak",
+    "sources": [
+      {
+        "title": "Denon’s guide to Audyssey processing",
+        "url": "https://manuals.denon.com/avrx4100w/NA/EN/WBSPSYezcafzyn.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Denon’s speaker placement diagrams",
+        "url": "https://manuals.denon.com/AVRX4100W/NA/EN/WBSPSYsfbtssfo.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Denon’s DSX settings",
+        "url": "https://manuals.denon.com/AVRX4100W/NA/EN/GFNFSYphwaueoj.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Denon’s menu map",
+        "url": "https://manuals.denon.com/avrx4100w/na/en/GFNFSYghukzrll.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Denon’s input signal display",
+        "url": "https://manuals.denon.com/AVRX4100W/NA/EN/GFNFSYcsmwwkkn.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-12T07:00:00.000Z"
+  },
+  {
+    "slug": "receiver-av-sync-audio-delay",
+    "title": "How to set A/V Sync on a receiver when dialogue is out of time",
+    "shortTitle": "How to set A/V Sync on a receiver when dialogue is out of time",
+    "description": "If you hear a handclap before the hands meet on screen, the sound is early.",
+    "brand": "Sony",
+    "category": "devices",
+    "type": "Audio settings",
+    "diagram": "controls",
+    "tags": [
+      "Sony",
+      "receiver",
+      "av",
+      "sync",
+      "audio",
+      "delay"
+    ],
+    "answer": "If you hear a handclap before the hands meet on screen, the sound is early. A receiver’s audio delay can hold it back. If you see the hands meet first, the sound is already late. Check how much delay the receiver is adding and reduce it if you can. On some Sony TVs, the TV’s own A/V sync setting can delay the picture, so check which device you are adjusting. Sony STR-DN1080 A/V Sync Sony TV guidance for picture and sound timing",
+    "scope": "Sony STR-DN1080 and Denon AVR-X1800H examples have different controls; sources of delay differ.",
+    "related": [],
+    "takeaway": "If you hear a handclap before the hands meet on screen, the sound is early.",
+    "sources": [
+      {
+        "title": "Sony STR-DN1080 A/V Sync",
+        "url": "https://helpguide.sony.net/ha/strdn108/v1/en/contents/TP0001221248.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony TV guidance for picture and sound timing",
+        "url": "https://www.sony.com/electronics/support/articles/00026069",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Denon AVR-X1800H Audio Delay",
+        "url": "https://manuals.denon.com/AVRX1800H/NA/EN/DRDZSYdwbwwnyp.php",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-12T16:00:00.000Z"
+  },
+  {
+    "slug": "asus-boot-override",
+    "title": "How ASUS Boot Override works and when to use it",
+    "shortTitle": "How ASUS Boot Override works and when to use it",
+    "description": "Boot Override starts the computer from the device you choose for this startup.",
+    "brand": "ASUS",
+    "category": "devices",
+    "type": "Computer settings",
+    "diagram": "controls",
+    "tags": [
+      "ASUS",
+      "asus",
+      "boot",
+      "override"
+    ],
+    "answer": "Boot Override starts the computer from the device you choose for this startup. On an ASUS ROG Strix Z490-G Gaming motherboard, it is the convenient choice for starting a Windows installer from a USB drive once. Boot Option Priorities controls which device the motherboard tries first on later starts. Selecting a USB drive under Boot Override starts it immediately. ASUS ROG Strix Z490-G Gaming BIOS manual, page 59",
+    "scope": "The boot menu example applies to ASUS ROG Strix Z490-G Gaming and its documented BIOS interface.",
+    "related": [],
+    "takeaway": "Boot Override starts the computer from the device you choose for this startup.",
+    "sources": [
+      {
+        "title": "ASUS ROG Strix Z490-G Gaming BIOS manual, page 59",
+        "url": "https://dlcdnets.asus.com/pub/ASUS/mb/LGA1200/ROG_STRIX_Z490-G_GAMING/E16801_ROG_STRIX_Z490-G_GAMING_Series_BIOS_manual_EM_WEB.pdf#page=59",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "ASUS motherboard BIOS manual, setup keys and Boot menu",
+        "url": "https://dlcdnets.asus.com/pub/ASUS/mb/LGA1200/ROG_STRIX_Z490-G_GAMING/E16801_ROG_STRIX_Z490-G_GAMING_Series_BIOS_manual_EM_WEB.pdf",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "ASUS guide to USB boot menus",
+        "url": "https://www.asus.com/us/support/faq/1013017/",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "ASUS Windows installation media guide",
+        "url": "https://rog.asus.com/support/faq/1039507/",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "ASUS boot priority instructions",
+        "url": "https://www.asus.com/us/support/faq/1053205/",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "ASUS troubleshooting for a PC that opens BIOS at startup",
+        "url": "https://rog.asus.com/support/faq/1042868/",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-13T07:00:00.000Z"
+  },
+  {
+    "slug": "sony-camera-black-gamma",
+    "title": "What Black Gamma changes on a Sony α6600 or α7 IV",
+    "shortTitle": "What Black Gamma changes on a Sony α6600 or α7 IV",
+    "description": "Black Gamma changes how a Sony Picture Profile renders dark tones. On the α6600 and α7 IV, Range chooses which tones the adjustment reaches.",
+    "brand": "Sony",
+    "category": "devices",
+    "type": "Camera settings",
+    "diagram": "controls",
+    "tags": [
+      "Sony",
+      "sony",
+      "camera",
+      "black",
+      "gamma"
+    ],
+    "answer": "Black Gamma changes how a Sony Picture Profile renders dark tones. On the α6600 and α7 IV, Range chooses which tones the adjustment reaches. Level sets how much to brighten or darken them. For example, if the folds in a black jacket blend together, a small positive Level can help you see the folds. Start with Narrow to judge the effect near black. Sony’s illustrated guide to Black Gamma Sony α6600 Picture Profile controls",
+    "scope": "The picture profile examples and menu paths identify Sony α6600 and α7 IV; other models may differ.",
+    "related": [],
+    "takeaway": "Black Gamma changes how a Sony Picture Profile renders dark tones. On the α6600 and α7 IV, Range chooses which tones the adjustment reaches.",
+    "sources": [
+      {
+        "title": "Sony’s illustrated guide to Black Gamma",
+        "url": "https://helpguide.sony.net/di/pp/v1/en/contents/TP0000909110.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony α6600 Picture Profile controls",
+        "url": "https://helpguide.sony.net/ilc/1940/v1/en/contents/TP0002679609.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony α7 IV profile editing",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000649066.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-13T16:00:00.000Z"
+  },
+  {
+    "slug": "sony-bdp-s3700-bd-live",
+    "title": "How to use BD-Live on a Sony BDP-S3700 Blu-ray player",
+    "shortTitle": "How to use BD-Live on a Sony BDP-S3700 Blu-ray player",
+    "description": "BD-Live on the Sony BDP-S3700 downloads extras offered by certain Blu-ray discs.",
+    "brand": "Sony",
+    "category": "devices",
+    "type": "Playback settings",
+    "diagram": "controls",
+    "tags": [
+      "Sony",
+      "sony",
+      "bdp",
+      "s3700",
+      "bd",
+      "live"
+    ],
+    "answer": "BD-Live on the Sony BDP-S3700 downloads extras offered by certain Blu-ray discs. Look for the BD-LIVE logo on the case. For a disc that includes the feature, the player needs an internet connection, permission to connect for BD content, and a USB drive to store the download. You open the extra from the movie's own menu. Sony BDP-S3700 operating instructions, page 17",
+    "scope": "The disc, storage and network procedure refers to Sony BDP-S3700 and depends on the disc provider.",
+    "related": [],
+    "takeaway": "BD-Live on the Sony BDP-S3700 downloads extras offered by certain Blu-ray discs.",
+    "sources": [
+      {
+        "title": "Sony BDP-S3700 operating instructions, page 17",
+        "url": "https://www.sony.com/electronics/support/res/manuals/4579/f2b13b14d596d6574a73a689b5d4b0dc/45796631M.pdf#page=17",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony player diagram, page 9",
+        "url": "https://www.sony.com/electronics/support/res/manuals/4579/f2b13b14d596d6574a73a689b5d4b0dc/45796631M.pdf#page=9",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony BD-Live storage guidance",
+        "url": "https://www.sony.com/electronics/support/articles/00007443",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sony operating instructions, pages 7 and 27",
+        "url": "https://www.sony.com/electronics/support/res/manuals/4579/f2b13b14d596d6574a73a689b5d4b0dc/45796631M.pdf#page=27",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-14T07:00:00.000Z"
+  },
+  {
+    "slug": "zebra-ds82-bookland-ean-isbn",
+    "title": "Why does a Zebra scanner return 10 digits for a 13-digit book barcode?",
+    "shortTitle": "Why does a Zebra scanner return 10 digits for a 13-digit book barcode?",
+    "description": "A Zebra DS8208 or DS8288 can report the same book in two formats. With Bookland EAN enabled and Bookland ISBN-10 selected, a book barcode starting with 978 is sent as its older ten-character",
+    "brand": "Zebra",
+    "category": "devices",
+    "type": "Barcode settings",
+    "diagram": "controls",
+    "tags": [
+      "Zebra",
+      "zebra",
+      "ds82",
+      "bookland",
+      "ean",
+      "isbn"
+    ],
+    "answer": "A Zebra DS8208 or DS8288 can report the same book in two formats. With Bookland EAN enabled and Bookland ISBN-10 selected, a book barcode starting with 978 is sent as its older ten-character ISBN. Choose Bookland ISBN-13 if your catalog expects the number printed below the main barcode, including the 978 or 979 prefix. Zebra DS82 Bookland ISBN format",
+    "scope": "The Bookland barcode parameters refer to Zebra DS8208 and DS8288; host software can alter output.",
+    "related": [],
+    "takeaway": "A Zebra DS8208 or DS8288 can report the same book in two formats. With Bookland EAN enabled and Bookland ISBN-10 selected, a book barcode starting with 978 is sent as its older ten-character",
+    "sources": [
+      {
+        "title": "Zebra DS82 Bookland ISBN format",
+        "url": "https://docs.zebra.com/us/en/scanners/general/ds8-series/ds82-prg/c-param-desc-symbologies/c-param-desc-upceanjan/r-param-desc-bookland-isbn-format.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "International ISBN Agency guide, title page",
+        "url": "https://ebookconverter.creativindie.com/converter/ISBN/doc/ISBN13.pdf#page=1",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Zebra Bookland EAN programming barcodes",
+        "url": "https://docs.zebra.com/us/en/scanners/general/ds8-series/ds82-prg/c-param-desc-symbologies/c-param-desc-upceanjan/r-param-desc-bookland-ean.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Zebra supplemental decoding options",
+        "url": "https://docs.zebra.com/us/en/scanners/general/ds8-series/ds82-prg/c-param-desc-symbologies/c-param-desc-upceanjan/r-param-desc-decode-upceanjan-supplementals-continued-1.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Zebra DS82 parameter defaults",
+        "url": "https://docs.zebra.com/us/en/scanners/general/ds8-series/ds82-prg/c-param-desc-symbologies/r-ds82-symbology-parameter-defaults.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Book Industry Study Group barcoding guidelines",
+        "url": "https://www.bisg.org/barcoding-guidelines-for-the-us-book-industry",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-14T16:00:00.000Z"
+  },
+  {
+    "slug": "scanner-adf-vs-glass",
+    "title": "Scanner ADF vs. glass for loose pages, books and photos",
+    "shortTitle": "Scanner ADF vs. glass for loose pages, books and photos",
+    "description": "Use the automatic document feeder (ADF) for a stack of loose, flat pages.",
+    "brand": "Brother",
+    "category": "devices",
+    "type": "Scanning",
+    "diagram": "controls",
+    "tags": [
+      "Brother",
+      "scanner",
+      "adf",
+      "vs",
+      "glass"
+    ],
+    "answer": "Use the automatic document feeder (ADF) for a stack of loose, flat pages. Use the scanner glass, also called the flatbed, for a book, a fragile photograph or a small clipping. The feeder pulls each sheet past the scanner. On the glass, the original stays still while you scan one side. On the Brother MFC-L2750DW, the feeder accepts longer sheets, and the glass supports a higher optical resolution. Brother’s ADF loading guide Brother’s US scanning specifications",
+    "scope": "The document handling and scanner specifications refer to Brother MFC-L2750DW and its supported originals.",
+    "related": [],
+    "takeaway": "Use the automatic document feeder (ADF) for a stack of loose, flat pages.",
+    "sources": [
+      {
+        "title": "Brother’s ADF loading guide",
+        "url": "https://support.brother.com/g/s/id/htmldoc/mfc/cv_mfcl2750dw/use/html/GUID-23283B84-E92E-4782-B32E-5E7328CFEBF6_27.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Brother’s US scanning specifications",
+        "url": "https://support.brother.com/g/b/spec.aspx?c=us&lang=en&prod=mfcl2750dw_us_eu_as",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Brother’s glass dimensions",
+        "url": "https://support.brother.com/g/s/id/htmldoc/mfc/cv_mfcl2750dw/use/html/GUID-A8CD1E0D-FF8A-460E-8802-048A8192B422_28.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Brother MFC-L2750DW duplex capability",
+        "url": "https://www.brother-usa.com/p/laser-printers/MFCL2750DW",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Brother’s two-sided scan settings",
+        "url": "https://help.brother-usa.com/app/answers/detail/a_id/152400/p/9311",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-15T07:00:00.000Z"
+  },
+  {
+    "slug": "camera-accessory-shoe-hot-cold",
+    "title": "What can you connect to a camera accessory shoe?",
+    "shortTitle": "What can you connect to a camera accessory shoe?",
+    "description": "An accessory shoe is the bracket that holds a flash, microphone or another accessory.",
+    "brand": "Canon",
+    "category": "devices",
+    "type": "Camera accessories",
+    "diagram": "controls",
+    "tags": [
+      "Canon",
+      "camera",
+      "accessory",
+      "shoe",
+      "hot",
+      "cold"
+    ],
+    "answer": "An accessory shoe is the bracket that holds a flash, microphone or another accessory. Whether the camera can trigger the flash or record the microphone through that bracket depends on the type of shoe and the accessory's connections. Canon's accessory shoe glossary",
+    "scope": "Examples identify Canon EOS R6 Mark II and named Canon accessories; compatibility varies by equipment.",
+    "related": [
+      "canon-auto-lighting-optimizer"
+    ],
+    "takeaway": "An accessory shoe is the bracket that holds a flash, microphone or another accessory.",
+    "sources": [
+      {
+        "title": "Canon's accessory shoe glossary",
+        "url": "https://www.canon.com.au/get-inspired/glossary/accessory-shoe",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon EOS R6 Mark II shoe and adapter instructions",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-01_Preparations_0090.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon microphone compatibility chart",
+        "url": "https://cam.start.canon/en/H002/accessory_0020.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "DM-E100 connection",
+        "url": "https://asia.canon/en/pro-imaging/stereo-microphone-dm-e100/main/product",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "DM-E1D connection",
+        "url": "https://asia.canon/en/consumer/multi-function-shoe-directional-stereo-microphone-dm-e1d/main/specification",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Canon R6 Mark II sound recording",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-2_0080.html",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-15T16:00:00.000Z"
+  },
+  {
+    "slug": "miele-m8260-2-set-clock",
+    "title": "How to set the clock on a Miele M 8260-2 microwave",
+    "shortTitle": "How to set the clock on a Miele M 8260-2 microwave",
+    "description": "On the Miele M 8260-2, use the clock-face button and the dial marked for time and weight.",
+    "brand": "Miele",
+    "category": "devices",
+    "type": "Clock settings",
+    "diagram": "controls",
+    "tags": [
+      "Miele",
+      "miele",
+      "m8260",
+      "2",
+      "set",
+      "clock"
+    ],
+    "answer": "On the Miele M 8260-2, use the clock-face button and the dial marked for time and weight. The separate minute-minder button sets a countdown. These controls are shown in the Australian and New Zealand manual. Miele control-panel diagram, page 5",
+    "scope": "Clock controls refer to the Miele M 8260-2 Australian and New Zealand documentation and pictured panel.",
+    "related": [],
+    "takeaway": "On the Miele M 8260-2, use the clock-face button and the dial marked for time and weight.",
+    "sources": [
+      {
+        "title": "Miele control-panel diagram, page 5",
+        "url": "https://www.miele.com.au/forms2/au/sa/manuals-125.aspx?asDownload=1&mNo=07679380#page=5",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Miele initial clock setup, page 20",
+        "url": "https://www.miele.com.au/forms2/au/sa/manuals-125.aspx?asDownload=1&mNo=07679380#page=20",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-16T07:00:00.000Z"
+  },
+  {
+    "slug": "sharp-toner-replenishment-in-progress",
+    "title": "Sharp “Toner replenishment in progress” on the MX-2314N, MX-2614N and MX-3114N",
+    "shortTitle": "Sharp “Toner replenishment in progress” on the MX-2314N, MX-2614N and MX-3114N",
+    "description": "When this message appears during setup, leave the front cover closed, keep the copier powered on and wait for the message to clear.",
+    "brand": "Sharp",
+    "category": "devices",
+    "type": "Status messages",
+    "diagram": "controls",
+    "tags": [
+      "Sharp",
+      "sharp",
+      "toner",
+      "replenishment",
+      "in",
+      "progress"
+    ],
+    "answer": "When this message appears during setup, leave the front cover closed, keep the copier powered on and wait for the message to clear. Sharp's installation manual explains that the machine is checking the supply of toner from the cartridges to the developing unit. For this step it gives a range of 30 seconds to 6 minutes. A cartridge replacement has its own prompt. Sharp installation manual, section 2-5, hosted by Manuals+",
+    "scope": "The toner-supply check refers to Sharp MX-2314N, MX-2614N and MX-3114N during documented installation.",
+    "related": [
+      "printer-bypass-tray"
+    ],
+    "takeaway": "When this message appears during setup, leave the front cover closed, keep the copier powered on and wait for the message to clear.",
+    "sources": [
+      {
+        "title": "Sharp installation manual, section 2-5, hosted by Manuals+",
+        "url": "https://manuals.plus/m/6b9c430396c57a9012df8dfc30218f2dcd5f9865e247b46cbbac93a82f74f772",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sharp MX-2314N operation guide, toner and waste toner sections",
+        "url": "https://secure.sharp.eu/cps/rde/xbcr/documents/documents/Marketing/Operational_manuals/MX-2314N_OG_UK.pdf",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      },
+      {
+        "title": "Sharp MX-2614N and MX-3114N operation guide, pages 1-61 to 1-64",
+        "url": "https://sharpone.sharp.co.uk/api/pim/download/03c5a45a-5ba9-4844-ba99-4a992d8c3bef",
+        "note": "Documentation supporting the model-specific guidance in this article."
+      }
+    ],
+    "checkedDate": "2026-11-24",
+    "publishAt": "2026-12-16T16:00:00.000Z"
   }
 ]
